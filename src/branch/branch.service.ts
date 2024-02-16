@@ -11,12 +11,22 @@ export class BranchService {
     @InjectModel(Branch.name) private readonly branchRepo: Model<Branch>,
   ) {}
   async create(createBranchDto: CreateBranchDto) {
-    const branch = new this.branchRepo(createBranchDto);
-    return await branch.save();
+    try {
+      const branch = new this.branchRepo(createBranchDto);
+      return await branch.save();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 
   async findAll() {
-    return await this.branchRepo.find().exec();
+    try {
+      return await this.branchRepo.find().exec();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 
   async findOne(id: string) {
@@ -24,10 +34,20 @@ export class BranchService {
   }
 
   update(id: string, updateBranchDto: UpdateBranchDto) {
-    return `This action updates a #${id} branch`;
+    try {
+      return `This action updates a #${id} branch`;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 
   async remove(id: string) {
-    return await this.branchRepo.findByIdAndDelete(id);
+    try {
+      return await this.branchRepo.findByIdAndDelete(id);
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 }

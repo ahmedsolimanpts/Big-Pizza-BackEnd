@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   ConflictException,
   Injectable,
   InternalServerErrorException,
@@ -14,7 +13,6 @@ import * as bcrypt from 'bcrypt';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { AccountStatus } from './enums/account-status.enums';
 import { ChangeUserStatusDTO } from './dto/Change-User-Status.dto';
-import { EmpAttendenceDto } from './dto/Attendence-by-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -139,51 +137,5 @@ export class UsersService {
 
   async ChangeUserStatus(id: string, changeUserStatusDTO: ChangeUserStatusDTO) {
     return await this.userService.findByIdAndUpdate(id, changeUserStatusDTO);
-  }
-
-  async PushtoAttendence(userid: string, attendenceDto: EmpAttendenceDto) {
-    try {
-      const user = await this.userService.findById(userid);
-      if (user) {
-        if (!user.attendence) {
-          user.attendence = [];
-          await user.attendence.push(attendenceDto);
-        }
-        let canPush = true; // Flag to determine if we can push the new attendenceDto
-
-        // If there's at least one attendence record, compare dates
-        if (user.attendence.length > 0) {
-          const lastdate = user.attendence[user.attendence.length - 1];
-
-          // Assuming lastdate.date and attendenceDto.date are Date objects or ISO 8601 strings
-          const lastDateObj = new Date(lastdate.date);
-          const newDateObj = new Date(attendenceDto.date);
-
-          if (lastDateObj >= newDateObj) {
-            throw new BadRequestException(
-              'New attendance date must be later than the last attendance date.',
-            );
-            canPush = false; // Do not push if new date is not later
-          }
-        }
-
-        // Push new attendance if the new date is valid (later than last attendance date)
-        if (canPush) {
-          user.attendence.push(attendenceDto);
-          await user.save();
-        }
-      }
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  }
-
-  async PopFromAttendence(userid: string) {
-    const user = await this.userService.findById(userid);
-    if (user) {
-      user.attendence.pop();
-      await user.save();
-    }
   }
 }

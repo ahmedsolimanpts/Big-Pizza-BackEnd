@@ -10,6 +10,6 @@ import { Branch, BranchSchema } from './Model/branch.model';
   ],
   controllers: [BranchController],
   providers: [BranchService],
-  exports: [BranchService], // Export using forwardRef if needed
+  exports: [BranchService],
 })
 export class BranchModule {}

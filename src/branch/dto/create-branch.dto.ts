@@ -35,7 +35,7 @@ export class CreateBranchDto {
     example: 'user_id',
     required: false,
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   manager: string;
 }

@@ -29,7 +29,7 @@ export class ATStrategy extends PassportStrategy(Strategy) {
 
       return user;
     } catch (err) {
-      console.log('From Strategy');
+      throw err;
     }
   }
 }

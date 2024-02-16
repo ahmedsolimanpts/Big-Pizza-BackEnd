@@ -11,7 +11,9 @@ import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 import { UpdateBranchDto } from './dto/update-branch.dto';
 import { Public } from 'src/auth/decorator/IsPuplic.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('branch')
 @Controller('branch')
 export class BranchController {
   constructor(private readonly branchService: BranchService) {}

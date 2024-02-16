@@ -16,8 +16,9 @@ import { Role } from 'src/auth/decorator/roles.decorator';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { Public } from 'src/auth/decorator/IsPuplic.decorator';
 import { ProductCategory } from './enums/product-category.enums';
+import { ApiTags } from '@nestjs/swagger';
 
-// @UseGuards(RolesGuard)
+@ApiTags('product')
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
