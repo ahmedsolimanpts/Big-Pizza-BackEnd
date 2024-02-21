@@ -21,5 +21,6 @@ import {
   ],
   controllers: [EmployeeController],
   providers: [EmployeeService],
+  exports: [EmployeeService],
 })
 export class EmployeeModule {}

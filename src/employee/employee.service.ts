@@ -52,6 +52,40 @@ export class EmployeeService {
     }
   }
 
+  async findEmpByUserId(id: string): Promise<Employee> {
+    try {
+      return await this.employeeRepo.findOne({ user: id });
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
+
+  async IsUserEmployee(userid: string): Promise<boolean> {
+    try {
+      const user = await this.employeeRepo.findOne({ user: userid });
+      if (user) return true;
+      return false;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
+
+  async IsUserWorkingInBranch(userId, branchid: string): Promise<boolean> {
+    try {
+      const isExist = await this.employeeRepo.findOne({
+        user: userId,
+        working_in: branchid,
+      });
+      if (isExist) return true;
+      return false;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
+
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     try {
       return await this.employeeRepo.findByIdAndUpdate(id, updateEmployeeDto);

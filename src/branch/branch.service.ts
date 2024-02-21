@@ -29,13 +29,18 @@ export class BranchService {
     }
   }
 
-  async findOne(id: string) {
-    return await this.branchRepo.findById(id);
+  async findOneByID(id: string) {
+    try {
+      return await this.branchRepo.findById(id);
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }
 
   update(id: string, updateBranchDto: UpdateBranchDto) {
     try {
-      return `This action updates a #${id} branch`;
+      return this.branchRepo.findByIdAndUpdate(id, updateBranchDto);
     } catch (err) {
       console.log(err);
       throw err;

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { OffersService } from './offers.service';
 import { CreateOfferDto } from './dto/create-offer.dto';
@@ -28,8 +29,13 @@ export class OffersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOneById(@Param('id') id: string) {
     return this.offersService.findOneById(id);
+  }
+
+  @Get('search')
+  findByname(@Query('name') offerName: string) {
+    return this.offersService.findOfferByName(offerName);
   }
 
   @Patch(':id')

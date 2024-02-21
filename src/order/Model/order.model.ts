@@ -5,13 +5,14 @@ import { OrderType } from '../enums/Order-Types.enums';
 import { User } from 'src/users/Model/user.model';
 import { OrderStatus } from '../enums/Order-Status.enums';
 import { Product } from 'src/product/Model/product.model';
-import { Model } from 'mongoose';
-import { DeliveryOrder } from 'src/delivery/Model/delivery.model';
 import { Customer } from 'src/customer/Model/customer.model';
 import { ProductComponents } from 'src/product/enums/product-components.enum';
 import { Payment } from 'src/payment/Model/payment.model';
 import { Coupon } from 'src/coupon/Model/coupon.model';
 import { Offer } from 'src/offers/Model/offer.model';
+import { DelivereyOrder } from 'src/delivery/Model/delivery.model';
+import { Model } from 'mongoose';
+
 @Schema()
 export class OrderItems {
   @Prop()
@@ -33,7 +34,37 @@ export class OrderItems {
   without_component: ProductComponents[];
 }
 
-@Schema({ timestamps: true })
+@Schema()
+export class DelivereyType {
+  order_type: OrderType = OrderType.DELIVEREY;
+
+  @Prop({ type: DelivereyOrder })
+  delivery: DelivereyOrder;
+}
+
+export const DelivereyTypeSchema = SchemaFactory.createForClass(DelivereyType);
+
+@Schema()
+export class TakeAwayType {
+  order_type: OrderType = OrderType.TAKEAWAY;
+}
+
+export const TakeAwayTypeSchema = SchemaFactory.createForClass(TakeAwayType);
+
+@Schema()
+export class DineinType {
+  order_type: OrderType = OrderType.DINEIN;
+
+  @Prop({ default: 30 })
+  service_price: number;
+
+  @Prop()
+  table_number: string;
+}
+
+export const DineinTypeSchema = SchemaFactory.createForClass(DineinType);
+
+@Schema({ timestamps: true, discriminatorKey: 'order_type' })
 export class Order {
   @Prop()
   daily_orderid: number;
@@ -42,9 +73,13 @@ export class Order {
   items: OrderItems[];
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Branch.name })
-  branch: Branch;
+  branch: string;
 
-  @Prop({ required: true })
+  @Prop({
+    type: String,
+    required: true,
+    enum: [DelivereyType.name, TakeAwayType.name, DineinType.name],
+  })
   order_type: OrderType;
 
   @Prop()
@@ -53,9 +88,6 @@ export class Order {
   @Prop({ default: 14, required: true })
   tax_percent: number;
 
-  @Prop({ default: 0 })
-  service: number;
-
   @Prop()
   discount: number;
 
@@ -63,7 +95,7 @@ export class Order {
   percent_discount: number;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Offer.name })
-  offer: string;
+  offers: string[];
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Coupon.name })
   coupon: string;
@@ -74,17 +106,14 @@ export class Order {
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name, required: true })
   createby: string;
 
-  @Prop({ default: OrderStatus.COMPELETED, required: true })
+  @Prop({ default: OrderStatus.PREPARING, required: true })
   order_status: OrderStatus;
 
   @Prop()
-  notes: string;
-
-  @Prop({ type: mongoose.Types.ObjectId, ref: DeliveryOrder.name })
-  delivery: DeliveryOrder;
+  kitchen_notes: string;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Customer.name })
-  customer: Customer;
+  customer: string;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Payment.name })
   payment: Payment;
@@ -127,10 +156,7 @@ OrderSchema.virtual('total').get(function () {
   });
   const order_tax = total * (this.tax_percent / 100);
 
-  if (this.delivery && 'delivery_price' in this.delivery) {
-    return total + order_tax + this.delivery.delivery_price + this.service;
-  }
-  return total + order_tax + this.service;
+  return total + order_tax;
 });
 
 OrderSchema.set('toJSON', { virtuals: true });

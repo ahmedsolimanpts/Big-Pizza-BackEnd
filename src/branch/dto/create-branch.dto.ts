@@ -1,10 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsDateString,
   IsNotEmpty,
   IsOptional,
   IsString,
+  ValidateNested,
 } from 'class-validator';
+import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 
 export class CreateBranchDto {
   @ApiProperty({
@@ -38,4 +41,14 @@ export class CreateBranchDto {
   @IsNotEmpty()
   @IsString()
   manager: string;
+
+  @ApiProperty({
+    // example: ,
+    type: CreateLocationDto,
+    required: false,
+  })
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreateLocationDto)
+  location?: CreateLocationDto;
 }

@@ -4,17 +4,21 @@ import { User } from 'src/users/Model/user.model';
 import { DeliveryStatus } from '../enums/delivery-status.enums';
 import { DeliveryPrice } from '../enums/Deliver-price.enums';
 import { Location } from 'src/location/Model/location.model';
+import { DelivereyMethod } from '../enums/Deliverey-method.enums';
 
 @Schema({ timestamps: true })
-export class DeliveryOrder {
-  @Prop({ required: true })
+export class DelivereyOrder {
+  @Prop({ required: true, type: Location })
   start_location: Location;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: Location })
   end_location: Location;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
-  pilot: User;
+  pilot: string;
+
+  @Prop()
+  deliverey_method: DelivereyMethod;
 
   @Prop({ required: true, default: DeliveryStatus.WAITINGORDER })
   status: DeliveryStatus;
@@ -23,4 +27,4 @@ export class DeliveryOrder {
   delivery_price: DeliveryPrice;
 }
 
-export const DeliveryOrderSchema = SchemaFactory.createForClass(DeliveryOrder);
+export const DeliveryOrderSchema = SchemaFactory.createForClass(DelivereyOrder);

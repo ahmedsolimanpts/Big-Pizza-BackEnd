@@ -6,22 +6,61 @@ import {
   Param,
   Delete,
   Req,
+  UseGuards,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
-import { CashierCreateOrderDto } from './dto/cashier-create-order.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { CreateTakeAwayOrderDto } from './dto/takeaway/create-takeaway-order.dto';
+import { CreateDineInOrderDto } from './dto/dinein/create-dinein-order.dto';
+import { CreateDelivereyOrderDto } from './dto/delivery/create-deliverey-order.dto';
+import { IsEmployeeGuard } from 'src/employee/guards/IsEmployee.guard';
 
 @ApiTags('order')
+@UseGuards(IsEmployeeGuard)
 @Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post('cashier')
-  createOrderByCahier(
-    @Body() createOrderDto: CashierCreateOrderDto,
-    @Req() req: any,
+  @Post(':branchid/takeaway')
+  createTakeAwayOrder(
+    @Param('branchid') branchid: string,
+    @Body() createOrderDto: CreateTakeAwayOrderDto,
+    @Req() req: Request,
   ) {
-    return this.orderService.createOrderByCashier(req.user, createOrderDto);
+    const data: CreateTakeAwayOrderDto = {
+      ...createOrderDto,
+      branch: branchid,
+      createby: (req as any).user._id,
+    };
+    return this.orderService.CreateOrder(data);
+  }
+
+  @Post(':branchid/deliverey')
+  createDelivereyOrder(
+    @Param('branchid') branchid: string,
+    @Body() createOrderDto: CreateDelivereyOrderDto,
+    @Req() req: Request,
+  ) {
+    const data: CreateDelivereyOrderDto = {
+      ...createOrderDto,
+      branch: branchid,
+      createby: (req as any).user._id,
+    };
+    return this.orderService.CreateOrder(data);
+  }
+
+  @Post(':branchid/dinein')
+  createDineInOrder(
+    @Param('branchid') branchid: string,
+    @Body() createOrderDto: CreateDineInOrderDto,
+    @Req() req: Request,
+  ) {
+    const data: CreateDineInOrderDto = {
+      ...createOrderDto,
+      branch: branchid,
+      createby: (req as any).user._id,
+    };
+    return this.orderService.CreateOrder(data);
   }
 
   @Get()
@@ -31,7 +70,7 @@ export class OrderController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.orderService.findOne(id);
+    return this.orderService.findOneByID(id);
   }
 
   @Delete(':id')

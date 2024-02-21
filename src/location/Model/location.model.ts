@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-
 class Coordinates {
   @Prop({ required: true })
   long: number;

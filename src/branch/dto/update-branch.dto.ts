@@ -1,6 +1,13 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { CreateBranchDto } from './create-branch.dto';
-import { IsOptional, IsString, IsDateString } from 'class-validator';
+import {
+  IsOptional,
+  IsString,
+  IsDateString,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 
 export class UpdateBranchDto extends PartialType(CreateBranchDto) {
   @ApiProperty({
@@ -9,7 +16,7 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
   })
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @ApiProperty({
     example: '2020-02-20',
@@ -17,7 +24,7 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
   })
   @IsOptional()
   @IsDateString()
-  work_from: Date;
+  work_from?: Date;
 
   @ApiProperty({
     example: '2020-02-20',
@@ -25,7 +32,7 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
   })
   @IsOptional()
   @IsDateString()
-  work_to: Date;
+  work_to?: Date;
 
   @ApiProperty({
     example: 'user_id',
@@ -33,5 +40,15 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
   })
   @IsOptional()
   @IsString()
-  manager: string;
+  manager?: string;
+
+  @ApiProperty({
+    // example: ,
+    type: CreateLocationDto,
+    required: false,
+  })
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreateLocationDto)
+  location?: CreateLocationDto;
 }

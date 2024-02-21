@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, SchemaTypes } from 'mongoose';
-import * as mongoose from 'mongoose';
 import { AccountStatus } from 'src/users/enums/account-status.enums';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { Location } from 'src/location/Model/location.model';
@@ -32,7 +31,7 @@ export class User {
   @Prop({ default: AccountStatus.ACTIVE, required: true })
   status: AccountStatus;
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: Location.name })
+  @Prop({ type: [Location], default: [] })
   locations: Location[];
 }
 

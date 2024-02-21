@@ -13,11 +13,14 @@ import * as bcrypt from 'bcrypt';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { AccountStatus } from './enums/account-status.enums';
 import { ChangeUserStatusDTO } from './dto/Change-User-Status.dto';
+import { CreateLocationDto } from 'src/location/dto/create-location.dto';
+import { LocationService } from 'src/location/location.service';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User.name) private userService: Model<UserDocument>,
+    @InjectModel(User.name) private userRepo: Model<UserDocument>,
+    private locationService: LocationService,
   ) {}
 
   async hashFunction(text: string): Promise<string> {
@@ -26,7 +29,7 @@ export class UsersService {
   }
   async create(createUserDto: CreateUserDto): Promise<User> {
     try {
-      const user = new this.userService(createUserDto);
+      const user = new this.userRepo(createUserDto);
       user.password = await this.hashFunction(createUserDto.password);
       return await user.save();
     } catch (err) {
@@ -39,12 +42,12 @@ export class UsersService {
   }
 
   findAll() {
-    return this.userService.find().exec();
+    return this.userRepo.find().exec();
   }
 
   async findOneByid(id: string): Promise<User> {
     try {
-      const user = await this.userService.findById(id).exec();
+      const user = await this.userRepo.findById(id).exec();
       if (user) {
         return user;
       }
@@ -54,17 +57,17 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string): Promise<User> {
-    const user = await this.userService.findOne({ email }).exec();
+    const user = await this.userRepo.findOne({ email }).exec();
     if (user) {
       return user;
     }
     throw new NotFoundException();
   }
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
-    return await this.userService.findByIdAndUpdate(id, updateUserDto);
+    return await this.userRepo.findByIdAndUpdate(id, updateUserDto);
   }
   async updateRefresh(id: string, updateUserDto: string): Promise<void> {
-    await this.userService.updateMany(
+    await this.userRepo.updateMany(
       { _id: id },
       {
         refreshToken: updateUserDto,
@@ -72,7 +75,7 @@ export class UsersService {
     );
   }
   async DeleteRefresh(id: string): Promise<void> {
-    await this.userService.updateMany(
+    await this.userRepo.updateMany(
       { _id: id },
       {
         $unset: {
@@ -82,7 +85,7 @@ export class UsersService {
     );
   }
   async remove(id: string) {
-    return await this.userService.findByIdAndDelete(id);
+    return await this.userRepo.findByIdAndDelete(id);
   }
 
   async CompareTextWithHash(
@@ -94,7 +97,7 @@ export class UsersService {
 
   async AddRoleToUser(userid: string, newRole: Roles): Promise<User> {
     try {
-      const document = await this.userService.findById(userid);
+      const document = await this.userRepo.findById(userid);
       if (!document) throw new NotFoundException();
       if (document.roles.includes(newRole))
         throw new ConflictException('Role Is Already Exist');
@@ -112,7 +115,7 @@ export class UsersService {
     RemovedRole: Roles,
   ): Promise<User> {
     try {
-      return await this.userService.findByIdAndUpdate(
+      return await this.userRepo.findByIdAndUpdate(
         userid,
         { $pull: { roles: RemovedRole } },
         { new: true },
@@ -122,7 +125,7 @@ export class UsersService {
     }
   }
   async IsUserHaveRole(id: string, role: Roles) {
-    const isexist = await this.userService.find({
+    const isexist = await this.userRepo.find({
       _id: id,
       roles: { $in: [role] },
     });
@@ -130,12 +133,53 @@ export class UsersService {
     return false;
   }
   async BlockUser(id: string) {
-    return await this.userService.findByIdAndUpdate(id, {
+    return await this.userRepo.findByIdAndUpdate(id, {
       status: AccountStatus.BLOCK,
     });
   }
 
   async ChangeUserStatus(id: string, changeUserStatusDTO: ChangeUserStatusDTO) {
-    return await this.userService.findByIdAndUpdate(id, changeUserStatusDTO);
+    return await this.userRepo.findByIdAndUpdate(id, changeUserStatusDTO);
+  }
+
+  async AddLocationToUser(
+    userid: string,
+    createLocationDTO: CreateLocationDto,
+  ) {
+    try {
+      const updatedUser = await this.userRepo
+        .findByIdAndUpdate(
+          userid,
+          { $push: { locations: createLocationDTO } },
+          { new: true, runValidators: true },
+        )
+        .exec();
+
+      if (!updatedUser) {
+        throw new NotFoundException(`No user found with ID ${userid}`);
+      }
+
+      return updatedUser;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async RemoveLocationFromUser(userId: string, locationId: string) {
+    try {
+      const user = await this.userRepo.findOneAndUpdate(
+        { _id: userId, 'locations._id': locationId },
+        { $pull: { locations: { _id: locationId } } },
+        { new: true }, // Return the updated document
+      );
+
+      if (!user) {
+        throw new NotFoundException('User or Location not found');
+      }
+
+      return user;
+    } catch (err) {
+      throw err;
+    }
   }
 }

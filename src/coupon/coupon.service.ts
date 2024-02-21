@@ -23,7 +23,7 @@ export class CouponService {
 
   async findByCouponName(name: string) {
     try {
-      return await this.couponRepo.find({ name }).exec();
+      return await this.couponRepo.findOne({ name });
     } catch (err) {
       console.log(err);
       throw err;
@@ -61,6 +61,45 @@ export class CouponService {
       return await this.couponRepo.findByIdAndDelete(id);
     } catch (err) {
       console.log(err);
+      throw err;
+    }
+  }
+
+  async IsValidCouponByName(couponName: string) {
+    try {
+      const currentDate = new Date();
+
+      const validCoupon = await this.couponRepo
+        .findOne({
+          name: couponName,
+          quantity: { $gt: 0 },
+          from: { $lte: currentDate },
+          to: { $gte: currentDate },
+        })
+        .exec();
+
+      return !!validCoupon;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsValidCouponInBranchByName(couponName: string, branchId: string) {
+    try {
+      const currentDate = new Date();
+
+      const validCoupon = await this.couponRepo
+        .findOne({
+          name: couponName,
+          quantity: { $gt: 0 },
+          from: { $lte: currentDate },
+          to: { $gte: currentDate },
+          branches: branchId,
+        })
+        .exec();
+
+      return !!validCoupon;
+    } catch (err) {
       throw err;
     }
   }

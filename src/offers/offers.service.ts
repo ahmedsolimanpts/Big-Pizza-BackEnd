@@ -64,4 +64,43 @@ export class OffersService {
       throw err;
     }
   }
+
+  async IsValidCouponByID(offerId: string) {
+    try {
+      const currentDate = new Date();
+
+      const validOffer = await this.offerRepo
+        .findOne({
+          _id: offerId,
+          quantity: { $gt: 0 },
+          from: { $lte: currentDate },
+          to: { $gte: currentDate },
+        })
+        .exec();
+
+      return !!validOffer;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsValidOfferInBranchByID(OfferId: string, branchId: string) {
+    try {
+      const currentDate = new Date();
+
+      const validOffer = await this.offerRepo
+        .findOne({
+          _id: OfferId,
+          quantity: { $gt: 0 },
+          from: { $lte: currentDate },
+          to: { $gte: currentDate },
+          branches: branchId,
+        })
+        .exec();
+
+      return !!validOffer;
+    } catch (err) {
+      throw err;
+    }
+  }
 }

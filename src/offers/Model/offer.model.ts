@@ -11,10 +11,10 @@ export class Offer {
   @Prop({ type: mongoose.Types.ObjectId, ref: Branch.name, required: true })
   branches: string[];
 
-  @Prop()
+  @Prop({ type: Date })
   from: Date;
 
-  @Prop()
+  @Prop({ type: Date })
   to: Date;
 
   @Prop({ required: true })
