@@ -5,19 +5,16 @@ import { User } from 'src/users/Model/user.model';
 import { AttendenceActions } from '../enums/attendence-action.enums';
 import { Department } from '../enums/department.enums';
 import { Sex } from 'src/users/enums/Sex.enum';
-import { Location } from 'src/location/Model/location.model';
+import { Coordinates, Location } from 'src/location/Model/location.model';
 import { Transaction } from '../enums/emp-transaction.enum';
 
 @Schema({ timestamps: true })
 export class Attendence {
-  @Prop({ type: mongoose.Schema.Types.ObjectId, auto: true })
-  _id: mongoose.Schema.Types.ObjectId;
-
   @Prop()
   action: AttendenceActions;
 
-  @Prop()
-  location: string;
+  @Prop({ type: Coordinates })
+  location: Coordinates;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
   signby: string;
@@ -41,12 +38,27 @@ export class EmployeeTransactions {
 
   @Prop({ required: true })
   transaction: Transaction;
+
   @Prop()
   notes: string;
 }
 
 export const EmployeeTransactionsSchema =
   SchemaFactory.createForClass(EmployeeTransactions);
+
+@Schema({ timestamps: true })
+export class EmployeePDR {
+  @Prop({ required: true })
+  pdr: number;
+
+  @Prop()
+  details: string;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
+  createby: string;
+}
+
+export const EmployeePDRSchema = SchemaFactory.createForClass(EmployeePDR);
 
 @Schema({ timestamps: true })
 export class Employee {
@@ -79,7 +91,7 @@ export class Employee {
   @Prop({ default: Sex.MALE })
   gender: Sex;
 
-  @Prop()
+  @Prop({ type: Location })
   addrees: Location;
 
   @Prop()
@@ -90,6 +102,9 @@ export class Employee {
 
   @Prop()
   bank_account: string;
+
+  @Prop({ type: [EmployeePDR] })
+  monthly_pdr: EmployeePDR[];
 }
 
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);

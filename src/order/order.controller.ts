@@ -6,7 +6,8 @@ import {
   Param,
   Delete,
   Req,
-  UseGuards,
+  // UseGuards,
+  NotFoundException,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -14,25 +15,35 @@ import { CreateTakeAwayOrderDto } from './dto/takeaway/create-takeaway-order.dto
 import { CreateDineInOrderDto } from './dto/dinein/create-dinein-order.dto';
 import { CreateDelivereyOrderDto } from './dto/delivery/create-deliverey-order.dto';
 import { IsEmployeeGuard } from 'src/employee/guards/IsEmployee.guard';
+import { CreateOrderInterface } from './Interface/Create-Order.interface';
+import { OrderType } from './enums/Order-Types.enums';
+import { BranchService } from 'src/branch/branch.service';
+import { TakeAwayOrderInterface } from './Interface/TakeAway-Order.interfce';
 
 @ApiTags('order')
-@UseGuards(IsEmployeeGuard)
+// @UseGuards(IsEmployeeGuard)
 @Controller('order')
 export class OrderController {
-  constructor(private readonly orderService: OrderService) {}
+  constructor(
+    private readonly orderService: OrderService,
+    private branchService: BranchService,
+  ) {}
 
   @Post(':branchid/takeaway')
-  createTakeAwayOrder(
+  async createTakeAwayOrder(
     @Param('branchid') branchid: string,
     @Body() createOrderDto: CreateTakeAwayOrderDto,
     @Req() req: Request,
   ) {
-    const data: CreateTakeAwayOrderDto = {
-      ...createOrderDto,
+    const branch = await this.branchService.findOneByID(branchid);
+    if (!branch) throw new NotFoundException('Not Valid Branch');
+    const data: TakeAwayOrderInterface = {
       branch: branchid,
       createby: (req as any).user._id,
+      order_type: OrderType.TAKEAWAY,
+      ...createOrderDto,
     };
-    return this.orderService.CreateOrder(data);
+    return this.orderService.CreateTakeAwayOrder(data);
   }
 
   @Post(':branchid/deliverey')
@@ -41,10 +52,11 @@ export class OrderController {
     @Body() createOrderDto: CreateDelivereyOrderDto,
     @Req() req: Request,
   ) {
-    const data: CreateDelivereyOrderDto = {
-      ...createOrderDto,
+    const data: CreateOrderInterface = {
       branch: branchid,
       createby: (req as any).user._id,
+      order_type: OrderType.DELIVEREY,
+      ...createOrderDto,
     };
     return this.orderService.CreateOrder(data);
   }
@@ -55,10 +67,11 @@ export class OrderController {
     @Body() createOrderDto: CreateDineInOrderDto,
     @Req() req: Request,
   ) {
-    const data: CreateDineInOrderDto = {
-      ...createOrderDto,
+    const data: CreateOrderInterface = {
       branch: branchid,
       createby: (req as any).user._id,
+      order_type: OrderType.DINEIN,
+      ...createOrderDto,
     };
     return this.orderService.CreateOrder(data);
   }

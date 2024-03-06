@@ -13,16 +13,7 @@ import {
 import { Type } from 'class-transformer';
 import { Sex } from 'src/users/enums/Sex.enum';
 import { Department } from '../enums/department.enums';
-
-class Location {
-  // Define your Location class properties here
-  // For example:
-  @ApiProperty({ description: 'The latitude of the location' })
-  latitude: number;
-
-  @ApiProperty({ description: 'The longitude of the location' })
-  longitude: number;
-}
+import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 
 export class CreateEmployeeDto {
   @ApiProperty({
@@ -80,13 +71,13 @@ export class CreateEmployeeDto {
 
   @ApiProperty({
     description: 'Address of the employee',
-    type: Location,
+    type: CreateLocationDto,
     required: false,
   })
   @IsOptional()
   @ValidateNested()
-  @Type(() => Location)
-  address?: Location;
+  @Type(() => CreateLocationDto)
+  address?: CreateLocationDto;
 
   @ApiProperty({
     description: 'Social Security ID (optional)',

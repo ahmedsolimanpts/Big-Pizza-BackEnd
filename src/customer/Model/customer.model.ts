@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Location } from 'src/location/Model/location.model';
-import * as mongoose from 'mongoose';
 
 @Schema()
 export class Customer {
@@ -10,7 +9,7 @@ export class Customer {
   @Prop({ required: true })
   phone: string[];
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: Location.name, required: true })
+  @Prop({ type: [Location], required: true, default: [] })
   location: Location[];
 
   @Prop()

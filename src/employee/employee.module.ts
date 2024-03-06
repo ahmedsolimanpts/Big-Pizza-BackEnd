@@ -6,10 +6,13 @@ import {
   Attendence,
   AttendenceSchema,
   Employee,
+  EmployeePDR,
+  EmployeePDRSchema,
   EmployeeSchema,
   EmployeeTransactions,
   EmployeeTransactionsSchema,
 } from './Model/employee.model';
+import { LocationModule } from 'src/location/location.module';
 
 @Module({
   imports: [
@@ -17,7 +20,9 @@ import {
       { name: Employee.name, schema: EmployeeSchema },
       { name: Attendence.name, schema: AttendenceSchema },
       { name: EmployeeTransactions.name, schema: EmployeeTransactionsSchema },
+      { name: EmployeePDR.name, schema: EmployeePDRSchema },
     ]),
+    LocationModule,
   ],
   controllers: [EmployeeController],
   providers: [EmployeeService],

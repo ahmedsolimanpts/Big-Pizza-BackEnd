@@ -1,14 +1,16 @@
-import { Prop, Schema } from '@nestjs/mongoose';
-import { Location } from 'src/common/interfaces/location.interface';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Location } from 'src/location/Model/location.model';
 
 @Schema({ timestamps: true })
 export class Supplier {
-  @Prop()
+  @Prop({ required: true, unique: true })
   name: string;
 
   @Prop()
-  phone: string;
+  phones: string[];
 
-  @Prop()
+  @Prop({ type: Location })
   location: Location;
 }
+
+export const SupplierSchema = SchemaFactory.createForClass(Supplier);

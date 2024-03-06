@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { PaymentType } from '../enums/payment-type.enums';
 import { PaymentStatus } from '../enums/payment-status.enums';
+import mongoose from 'mongoose';
+import { User } from 'src/users/Model/user.model';
 
 @Schema({ timestamps: true })
 export class Payment {
@@ -12,6 +14,12 @@ export class Payment {
 
   @Prop()
   payment_id: string;
+
+  @Prop()
+  amount: number;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
+  createby: string;
 }
 
 export const PaymentSchema = SchemaFactory.createForClass(Payment);

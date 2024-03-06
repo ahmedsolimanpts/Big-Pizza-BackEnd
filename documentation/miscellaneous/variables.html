@@ -1,0 +1,951 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>big-pizza-back-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">big-pizza-back-end documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#AttendenceSchema" title="src/employee/Model/employee.model.ts" ><b>AttendenceSchema</b>&nbsp;&nbsp;&nbsp;(src/.../employee.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BranchSchema" title="src/branch/Model/branch.model.ts" ><b>BranchSchema</b>&nbsp;&nbsp;&nbsp;(src/.../branch.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CoordinatesSchema" title="src/location/Model/location.model.ts" ><b>CoordinatesSchema</b>&nbsp;&nbsp;&nbsp;(src/.../location.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CouponSchema" title="src/coupon/Model/coupon.model.ts" ><b>CouponSchema</b>&nbsp;&nbsp;&nbsp;(src/.../coupon.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CustomerSchema" title="src/customer/Model/customer.model.ts" ><b>CustomerSchema</b>&nbsp;&nbsp;&nbsp;(src/.../customer.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DelivereyOrderTypeSchema" title="src/order/Model/order.model.ts" ><b>DelivereyOrderTypeSchema</b>&nbsp;&nbsp;&nbsp;(src/.../order.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DeliveryOrderSchema" title="src/delivery/Model/delivery.model.ts" ><b>DeliveryOrderSchema</b>&nbsp;&nbsp;&nbsp;(src/.../delivery.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DineinOrderSchema" title="src/order/Model/order.model.ts" ><b>DineinOrderSchema</b>&nbsp;&nbsp;&nbsp;(src/.../order.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EmployeePDRSchema" title="src/employee/Model/employee.model.ts" ><b>EmployeePDRSchema</b>&nbsp;&nbsp;&nbsp;(src/.../employee.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EmployeeSchema" title="src/employee/Model/employee.model.ts" ><b>EmployeeSchema</b>&nbsp;&nbsp;&nbsp;(src/.../employee.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EmployeeTransactionsSchema" title="src/employee/Model/employee.model.ts" ><b>EmployeeTransactionsSchema</b>&nbsp;&nbsp;&nbsp;(src/.../employee.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LocationSchema" title="src/location/Model/location.model.ts" ><b>LocationSchema</b>&nbsp;&nbsp;&nbsp;(src/.../location.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#OfferSchema" title="src/offers/Model/offer.model.ts" ><b>OfferSchema</b>&nbsp;&nbsp;&nbsp;(src/.../offer.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#OrderSchema" title="src/order/Model/order.model.ts" ><b>OrderSchema</b>&nbsp;&nbsp;&nbsp;(src/.../order.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PaymentSchema" title="src/payment/Model/payment.model.ts" ><b>PaymentSchema</b>&nbsp;&nbsp;&nbsp;(src/.../payment.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ProductSchema" title="src/product/Model/product.model.ts" ><b>ProductSchema</b>&nbsp;&nbsp;&nbsp;(src/.../product.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Public" title="src/auth/decorator/IsPuplic.decorator.ts" ><b>Public</b>&nbsp;&nbsp;&nbsp;(src/.../IsPuplic.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Role" title="src/auth/decorator/roles.decorator.ts" ><b>Role</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLES_KEYS" title="src/auth/decorator/roles.decorator.ts" ><b>ROLES_KEYS</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockGardSchema" title="src/stock/Model/Stock-Gard.model.ts" ><b>StockGardSchema</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-Gard.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockItemQuantitySchema" title="src/stock/Model/Stock-item-quantity.model.ts" ><b>StockItemQuantitySchema</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-item-quantity.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockItemSchema" title="src/stock/Model/Stock-Item.model.ts" ><b>StockItemSchema</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-Item.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockItemslogsSchema" title="src/stock/Model/Stock-item-logs.model.ts" ><b>StockItemslogsSchema</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-item-logs.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockSchema" title="src/stock/Model/stock.model.ts" ><b>StockSchema</b>&nbsp;&nbsp;&nbsp;(src/.../stock.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockTransactionSchema" title="src/stock/Model/Stock-Transaction.model.ts" ><b>StockTransactionSchema</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-Transaction.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SupplierSchema" title="src/supplier/Model/supplier.Model.ts" ><b>SupplierSchema</b>&nbsp;&nbsp;&nbsp;(src/.../supplier.Model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TakeAwayOrderSchema" title="src/order/Model/order.model.ts" ><b>TakeAwayOrderSchema</b>&nbsp;&nbsp;&nbsp;(src/.../order.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TicketSchema" title="src/ticket/Models/ticket.model.ts" ><b>TicketSchema</b>&nbsp;&nbsp;&nbsp;(src/.../ticket.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TicketUpdatesSchema" title="src/ticket/Models/ticket-updates.model.ts" ><b>TicketUpdatesSchema</b>&nbsp;&nbsp;&nbsp;(src/.../ticket-updates.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserSchema" title="src/users/Model/user.model.ts" ><b>UserSchema</b>&nbsp;&nbsp;&nbsp;(src/.../user.model.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/employee/Model/employee.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AttendenceSchema"></a>
+                    <span class="name">
+                        <span ><b>AttendenceSchema</b></span>
+                        <a href="#AttendenceSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Attendence)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EmployeePDRSchema"></a>
+                    <span class="name">
+                        <span ><b>EmployeePDRSchema</b></span>
+                        <a href="#EmployeePDRSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(EmployeePDR)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EmployeeSchema"></a>
+                    <span class="name">
+                        <span ><b>EmployeeSchema</b></span>
+                        <a href="#EmployeeSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Employee)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EmployeeTransactionsSchema"></a>
+                    <span class="name">
+                        <span ><b>EmployeeTransactionsSchema</b></span>
+                        <a href="#EmployeeTransactionsSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(EmployeeTransactions)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/branch/Model/branch.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BranchSchema"></a>
+                    <span class="name">
+                        <span ><b>BranchSchema</b></span>
+                        <a href="#BranchSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Branch)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/location/Model/location.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CoordinatesSchema"></a>
+                    <span class="name">
+                        <span ><b>CoordinatesSchema</b></span>
+                        <a href="#CoordinatesSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Coordinates)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LocationSchema"></a>
+                    <span class="name">
+                        <span ><b>LocationSchema</b></span>
+                        <a href="#LocationSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Location)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/coupon/Model/coupon.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CouponSchema"></a>
+                    <span class="name">
+                        <span ><b>CouponSchema</b></span>
+                        <a href="#CouponSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Coupon)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/customer/Model/customer.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CustomerSchema"></a>
+                    <span class="name">
+                        <span ><b>CustomerSchema</b></span>
+                        <a href="#CustomerSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Customer)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/order/Model/order.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DelivereyOrderTypeSchema"></a>
+                    <span class="name">
+                        <span ><b>DelivereyOrderTypeSchema</b></span>
+                        <a href="#DelivereyOrderTypeSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(DelivereyOrderType)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DineinOrderSchema"></a>
+                    <span class="name">
+                        <span ><b>DineinOrderSchema</b></span>
+                        <a href="#DineinOrderSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(DineinOrder)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OrderSchema"></a>
+                    <span class="name">
+                        <span ><b>OrderSchema</b></span>
+                        <a href="#OrderSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Order)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TakeAwayOrderSchema"></a>
+                    <span class="name">
+                        <span ><b>TakeAwayOrderSchema</b></span>
+                        <a href="#TakeAwayOrderSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(TakeAwayOrder)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/delivery/Model/delivery.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeliveryOrderSchema"></a>
+                    <span class="name">
+                        <span ><b>DeliveryOrderSchema</b></span>
+                        <a href="#DeliveryOrderSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(DelivereyOrder)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/offers/Model/offer.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OfferSchema"></a>
+                    <span class="name">
+                        <span ><b>OfferSchema</b></span>
+                        <a href="#OfferSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Offer)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/payment/Model/payment.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PaymentSchema"></a>
+                    <span class="name">
+                        <span ><b>PaymentSchema</b></span>
+                        <a href="#PaymentSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Payment)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/product/Model/product.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ProductSchema"></a>
+                    <span class="name">
+                        <span ><b>ProductSchema</b></span>
+                        <a href="#ProductSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Product)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/auth/decorator/IsPuplic.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Public"></a>
+                    <span class="name">
+                        <span ><b>Public</b></span>
+                        <a href="#Public"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; SetMetadata(&#x27;isPublic&#x27;, true)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/auth/decorator/roles.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Role"></a>
+                    <span class="name">
+                        <span ><b>Role</b></span>
+                        <a href="#Role"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...roles: Roles[]) &#x3D;&gt; SetMetadata(ROLES_KEYS, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLES_KEYS"></a>
+                    <span class="name">
+                        <span ><b>ROLES_KEYS</b></span>
+                        <a href="#ROLES_KEYS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;roles&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/Stock-Gard.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockGardSchema"></a>
+                    <span class="name">
+                        <span ><b>StockGardSchema</b></span>
+                        <a href="#StockGardSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(StockGard)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/Stock-item-quantity.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockItemQuantitySchema"></a>
+                    <span class="name">
+                        <span ><b>StockItemQuantitySchema</b></span>
+                        <a href="#StockItemQuantitySchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(StockItemQuantity)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/Stock-Item.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockItemSchema"></a>
+                    <span class="name">
+                        <span ><b>StockItemSchema</b></span>
+                        <a href="#StockItemSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(StockItem)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/Stock-item-logs.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockItemslogsSchema"></a>
+                    <span class="name">
+                        <span ><b>StockItemslogsSchema</b></span>
+                        <a href="#StockItemslogsSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(StockItemslogs)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/stock.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockSchema"></a>
+                    <span class="name">
+                        <span ><b>StockSchema</b></span>
+                        <a href="#StockSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Stock)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/stock/Model/Stock-Transaction.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StockTransactionSchema"></a>
+                    <span class="name">
+                        <span ><b>StockTransactionSchema</b></span>
+                        <a href="#StockTransactionSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(StockTransaction)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/supplier/Model/supplier.Model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SupplierSchema"></a>
+                    <span class="name">
+                        <span ><b>SupplierSchema</b></span>
+                        <a href="#SupplierSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Supplier)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/ticket/Models/ticket.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TicketSchema"></a>
+                    <span class="name">
+                        <span ><b>TicketSchema</b></span>
+                        <a href="#TicketSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Ticket)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/ticket/Models/ticket-updates.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TicketUpdatesSchema"></a>
+                    <span class="name">
+                        <span ><b>TicketUpdatesSchema</b></span>
+                        <a href="#TicketUpdatesSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(TicketUpdates)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/users/Model/user.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserSchema"></a>
+                    <span class="name">
+                        <span ><b>UserSchema</b></span>
+                        <a href="#UserSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(User)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

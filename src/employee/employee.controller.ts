@@ -17,6 +17,7 @@ import { EmployeeTransactionDto } from './dto/emp-transaction.dto';
 import { Transaction } from './enums/emp-transaction.enum';
 import { EmployeeTransactionInterface } from './interfaces/emp-transaction.interface';
 import { ApiTags } from '@nestjs/swagger';
+import { CreateEmployeePDRDTO } from './dto/create-employee-pdr.dto';
 
 @ApiTags('employee')
 @Controller('employee')
@@ -93,6 +94,19 @@ export class EmployeeController {
     return this.employeeService.addEmployeeTransaction(data);
   }
 
+  @Post('pdr/:userid')
+  addEmpPDR(
+    @Param('userid') user_id: string,
+    @Body() createDto: CreateEmployeePDRDTO,
+    @Req() req: Request,
+  ) {
+    return this.employeeService.AddEmployeePDR(
+      user_id,
+      (req as any).user._id,
+      createDto,
+    );
+  }
+
   @Delete('transaction/:employeeid/:transactionid')
   removeTransaction(
     @Param('transactionid') transactionid: string,
@@ -113,5 +127,13 @@ export class EmployeeController {
       employeeid,
       AttendenceId,
     );
+  }
+
+  @Delete('attendance/:userid/:pdr_id')
+  removeEmpPDR(
+    @Param('userid') user_id: string,
+    @Param('pdr_id') pdr_id: string,
+  ) {
+    return this.employeeService.removeEmployeePDR(user_id, pdr_id);
   }
 }

@@ -10,5 +10,6 @@ import { Offer, OfferSchema } from './Model/offer.model';
   ],
   controllers: [OffersController],
   providers: [OffersService],
+  exports: [OffersService],
 })
 export class OffersModule {}

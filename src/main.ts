@@ -17,6 +17,9 @@ import { DeliveryModule } from './delivery/delivery.module';
 import { BranchModule } from './branch/branch.module';
 import { CartModule } from './cart/cart.module';
 import { SupplierModule } from './supplier/supplier.module';
+import { TicketModule } from './ticket/ticket.module';
+import { StockModule } from './stock/stock.module';
+import { BillingModule } from './billing/billing.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -45,6 +48,9 @@ async function bootstrap() {
       BranchModule,
       CartModule,
       SupplierModule,
+      TicketModule,
+      StockModule,
+      BillingModule,
     ],
   });
   SwaggerModule.setup('swagger', app, document);

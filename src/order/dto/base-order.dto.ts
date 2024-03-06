@@ -1,4 +1,5 @@
 import {
+  ArrayMinSize,
   IsArray,
   IsDateString,
   IsEnum,
@@ -15,16 +16,18 @@ import { OrderStatus } from '../enums/Order-Status.enums';
 export class CreateBaseOrderDto {
   @ValidateNested({ each: true })
   @Type(() => CreateOrderItemsDto)
-  items: CreateOrderItemsDto;
+  @IsArray()
+  @ArrayMinSize(1)
+  items: CreateOrderItemsDto[];
 
   @IsOptional()
   @IsDateString()
-  readyat: Date;
+  readyat?: Date;
 
   @IsOptional()
   @IsString()
   @IsArray()
-  offers?: string;
+  offers?: string[];
 
   @IsOptional()
   @IsMongoId()
@@ -43,13 +46,6 @@ export class CreateBaseOrderDto {
   @Type(() => CreatePaymentDto)
   payment?: CreatePaymentDto;
 
-  @IsMongoId()
-  branch: string;
-  @IsMongoId()
-  createby: string;
-  @IsMongoId()
-  approvedby: string;
-
   @IsEnum(OrderStatus)
-  order_status: OrderStatus;
+  order_status?: OrderStatus;
 }
