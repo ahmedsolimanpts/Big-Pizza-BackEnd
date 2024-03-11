@@ -65,8 +65,7 @@ export class StockService {
             path: 'stock_item',
             model: StockItem.name, // Make sure this matches the name you've given your stock item model
           },
-        },
-      });
+        },      });
 
       if (!stock) {
         throw new Error('Stock not found');
