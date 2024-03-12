@@ -60,6 +60,72 @@ export class ProductService {
     }
   }
 
+  async IsProductAvailableInBranch(
+    product_id: string,
+    branch_id: string,
+  ): Promise<boolean> {
+    try {
+      const product = await this.productRepo
+        .findOne({ _id: product_id, branch: branch_id })
+        .exec();
+      if (product && product.quantity > 0) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async IsProductAvailableInBranchWithQuantity(
+    product_id: string,
+    branch_id: string,
+    quantity: number,
+  ): Promise<boolean> {
+    try {
+      const product = await this.productRepo
+        .findOne({ _id: product_id, branch: branch_id })
+        .exec();
+      if (product && product.quantity >= quantity) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async SubtractproductQuantity(
+    product_id: string,
+    quantity: number,
+  ): Promise<Product> {
+    try {
+      const product = await this.productRepo.findById(product_id).exec();
+      const new_qantity = product.quantity - quantity;
+      product.quantity = new_qantity;
+      return await product.save();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async areProductsAvailable(
+    productIds: string[],
+    branchId: string,
+  ): Promise<boolean> {
+    const products = await this.productRepo
+      .find({
+        _id: { $in: productIds },
+        branch: branchId,
+        quantity: { $gt: 0 },
+      })
+      .exec();
+
+    return products.length === productIds.length;
+  }
+
   async findOneByID(id: string): Promise<Product> {
     try {
       return await this.productRepo.findById(id).exec();

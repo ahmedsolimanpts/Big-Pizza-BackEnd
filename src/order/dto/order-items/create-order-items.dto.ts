@@ -21,7 +21,7 @@ export class CreateOrderItemsDto {
   @IsNumber()
   quantity: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   note?: string;
 

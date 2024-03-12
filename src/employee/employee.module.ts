@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { EmployeeService } from './employee.service';
-import { EmployeeController } from './employee.controller';
+import { EmployeeService } from './service/employee.service';
+import { EmployeeController } from './controller/employee.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Attendence,
@@ -13,6 +13,12 @@ import {
   EmployeeTransactionsSchema,
 } from './Model/employee.model';
 import { LocationModule } from 'src/location/location.module';
+import { AttendenceService } from './service/attendence.service';
+import { PdrService } from './service/pdr.service';
+import { PaymentService } from './service/payment.service';
+import { AttendenceController } from './controller/attendence.controller';
+import { PdrController } from './controller/pdr.controller';
+import { PaymentController } from './controller/payment.controller';
 
 @Module({
   imports: [
@@ -24,8 +30,8 @@ import { LocationModule } from 'src/location/location.module';
     ]),
     LocationModule,
   ],
-  controllers: [EmployeeController],
-  providers: [EmployeeService],
+  controllers: [EmployeeController, AttendenceController, PdrController, PaymentController],
+  providers: [EmployeeService, AttendenceService, PdrService, PaymentService],
   exports: [EmployeeService],
 })
 export class EmployeeModule {}

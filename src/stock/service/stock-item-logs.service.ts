@@ -16,12 +16,12 @@ export class StockItemLogsService {
 
   async create(data: StockItemLogsInterface) {
     try {
-      const { branch_id, ...newData } = data;
+      const { stock_id, ...newData } = data;
 
       const newItem = new this.stockItemLogRepo(newData);
 
-      return await this.stockRepo.findOneAndUpdate(
-        { branch: branch_id },
+      return await this.stockRepo.findByIdAndUpdate(
+        stock_id,
         { $push: { items: newItem } },
         { new: true },
       );
@@ -38,22 +38,22 @@ export class StockItemLogsService {
     }
   }
 
-  async findOneBranchTransactionById(id: string, branch_id: string) {
+  async findOneStockTransactionById(item_log_id: string, stock_id: string) {
     try {
       return await this.stockRepo.findOne({
-        branch: branch_id,
-        'items._id': id,
+        _id: stock_id,
+        'items._id': item_log_id,
       });
     } catch (err) {
       throw err;
     }
   }
 
-  async UpdateById(id: string, data: StockItemLogsInterface) {
+  async UpdateStockItemLogById(id: string, data: StockItemLogsInterface) {
     try {
       return await this.stockRepo
         .updateOne(
-          { branch: data.branch_id, 'items._id': id },
+          { _id: data.stock_id, 'items._id': id },
           { $set: { 'items.$[elem]': data } },
           { arrayFilters: [{ 'elem._id': id }] },
         )
@@ -63,12 +63,11 @@ export class StockItemLogsService {
     }
   }
 
-  async DeleteById(id: string, branch_id: string) {
+  async DeleteStockItemLogById(log_id: string, stock_id: string) {
     try {
-      return await this.stockRepo.updateOne(
-        { branch: branch_id },
-        { $pull: { items: { _id: id } } },
-      );
+      return await this.stockRepo.findByIdAndUpdate(stock_id, {
+        $pull: { items: { _id: log_id } },
+      });
     } catch (err) {
       throw err;
     }

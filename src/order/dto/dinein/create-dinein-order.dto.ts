@@ -1,8 +1,8 @@
-import { IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { CreateBaseOrderDto } from '../base-order.dto';
 
 export class CreateDineInOrderDto extends CreateBaseOrderDto {
-  @IsNumber()
-  @IsOptional()
-  table_number: number;
+  @IsString()
+  @IsNotEmpty()
+  table_number: string;
 }

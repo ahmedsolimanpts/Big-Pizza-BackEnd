@@ -32,6 +32,14 @@ export class CreateProductDto {
 
   @ApiProperty({
     example: 100,
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsNumber()
+  quantity: number;
+
+  @ApiProperty({
+    example: 100,
     required: false,
   })
   @IsOptional()

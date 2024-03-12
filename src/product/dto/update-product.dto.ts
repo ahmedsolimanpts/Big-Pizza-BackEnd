@@ -27,6 +27,10 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   production_price?: number;
 
   @IsOptional()
+  @IsNumber()
+  quantity?: number;
+
+  @IsOptional()
   branch?: string;
 
   @IsOptional()

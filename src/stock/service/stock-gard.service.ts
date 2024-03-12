@@ -16,12 +16,12 @@ export class StockGardService {
 
   async create(data: StockGardInterface) {
     try {
-      const { branch_id, ...newData } = data;
+      const { stock_id, ...newData } = data;
 
       const newGard = new this.stockGardRepo(newData);
 
-      return await this.stockRepo.findOneAndUpdate(
-        { branch: branch_id },
+      return await this.stockRepo.findByIdAndUpdate(
+        stock_id,
         { $push: { gard: newGard } },
         { new: true },
       );
@@ -30,18 +30,18 @@ export class StockGardService {
     }
   }
 
-  async findAllForOneBranch(branch_id: string) {
+  async findAllForOneStock(stock_id: string) {
     try {
-      return await this.stockRepo.find({ branch: branch_id }).exec();
+      return await this.stockRepo.find({ _id: stock_id }).exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async findOneBranchGardById(id: string, branch_id: string) {
+  async findOneStockGardById(id: string, stock_id: string) {
     try {
       return await this.stockRepo.findOne({
-        branch: branch_id,
+        _id: stock_id,
         'gard._id': id,
       });
     } catch (err) {
@@ -49,11 +49,11 @@ export class StockGardService {
     }
   }
 
-  async UpdateById(id: string, data: StockGardInterface) {
+  async UpdateStockGardById(id: string, data: StockGardInterface) {
     try {
       return await this.stockRepo
         .updateOne(
-          { branch: data.branch_id, 'gard._id': id },
+          { _id: data.stock_id, 'gard._id': id },
           { $set: { 'gard.$[elem]': data } },
           { arrayFilters: [{ 'elem._id': id }] },
         )
@@ -63,10 +63,10 @@ export class StockGardService {
     }
   }
 
-  async DeleteById(id: string, branch_id: string) {
+  async DeleteStockGardById(id: string, stock_id: string) {
     try {
       return await this.stockRepo.updateOne(
-        { branch: branch_id },
+        { _id: stock_id },
         { $pull: { gard: { _id: id } } },
       );
     } catch (err) {

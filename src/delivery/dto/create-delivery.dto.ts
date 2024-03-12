@@ -2,20 +2,29 @@ import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 import { DeliveryPrice } from '../enums/Deliver-price.enums';
 import { DelivereyMethod } from '../enums/Deliverey-method.enums';
 import { DeliveryStatus } from '../enums/delivery-status.enums';
-import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateDeliveryDto {
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreateLocationDto)
+  start_location?: CreateLocationDto;
+
   @IsNotEmpty()
-  @Type(() => CreateDeliveryDto)
-  start_location: CreateLocationDto;
-  @IsNotEmpty()
-  @Type(() => CreateDeliveryDto)
+  @ValidateNested()
+  @Type(() => CreateLocationDto)
   end_location: CreateLocationDto;
 
   @ApiProperty({
-    example: 'MOhamed',
+    example: 'Mohamed',
   })
   @IsOptional()
   @IsString()

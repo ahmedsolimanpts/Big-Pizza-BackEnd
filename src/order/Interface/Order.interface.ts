@@ -1,15 +1,14 @@
+import { CreatePaymentInterface } from 'src/payment/interface/Create-Payment.interface';
 import { OrderStatus } from '../enums/Order-Status.enums';
-import { OrderType } from '../enums/Order-Types.enums';
 import { Product } from 'src/product/Model/product.model';
 import { ProductComponents } from 'src/product/enums/product-components.enum';
-import { CreatePaymentInterface } from 'src/payment/interface/Create-Payment.interface';
 
-export interface CreateOrderItemsInterface {
-  item: string;
-
+export interface OrderItemsInterface {
   verbose_name?: string;
 
-  quantity: number;
+  item?: string;
+
+  quantity?: number;
 
   note?: string;
 
@@ -18,18 +17,18 @@ export interface CreateOrderItemsInterface {
   without_component?: ProductComponents[];
 }
 
-export interface CreateOrderInterface {
-  items: CreateOrderItemsInterface[];
+export interface OrderInterface {
+  daily_orderid?: number;
 
-  branch: string;
+  items?: OrderItemsInterface[];
 
-  order_type: OrderType;
+  branch?: string;
+
+  order_type?: string;
 
   readyat?: Date;
 
   tax_percent?: number;
-
-  discount?: number;
 
   percent_discount?: number;
 
@@ -39,7 +38,7 @@ export interface CreateOrderInterface {
 
   approvedby?: string;
 
-  createby: string;
+  createby?: string;
 
   order_status?: OrderStatus;
 

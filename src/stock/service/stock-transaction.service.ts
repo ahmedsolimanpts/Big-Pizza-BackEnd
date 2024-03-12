@@ -34,7 +34,7 @@ export class StockTransactionService {
     createby: string,
   ) {
     try {
-      const data = await this.findByID(transaction_id);
+      const data = await this.findOneByID(transaction_id);
       if (data.status === status) {
         throw new ConflictException('Status Already ', status);
       } else {
@@ -46,14 +46,14 @@ export class StockTransactionService {
 
           await session.withTransaction(async () => {
             this.AddTransactionToStock(transaction_id, createby);
-            await this.UpdateById(transaction_id, { status });
+            await this.UpdateOneByID(transaction_id, { status });
           });
 
           session.endSession();
 
           return { MSG: 'Transaction added successfully' };
         } else {
-          return await this.UpdateById(transaction_id, { status });
+          return await this.UpdateOneByID(transaction_id, { status });
         }
       }
     } catch (err) {
@@ -73,7 +73,7 @@ export class StockTransactionService {
             item: { stock_item: item.stock_item, quantity: item.quantity },
             createby,
             transaction: StockTransactionTYPE.ADD,
-            branch_id: transaction.transfer_to,
+            stock_id: transaction.stock,
           };
           await this.stockItemlogSerivce.create(newLogData);
         });
@@ -84,7 +84,7 @@ export class StockTransactionService {
     }
   }
 
-  async findByID(id: string) {
+  async findOneByID(id: string) {
     try {
       return await this.stockTransactionRepo.findById(id);
     } catch (err) {
@@ -100,7 +100,7 @@ export class StockTransactionService {
     }
   }
 
-  async findAllForTransactionForSpecificBranch(branch_id: string) {
+  async findAllTransactionForSpecificBranch(branch_id: string) {
     try {
       return await this.stockTransactionRepo.find({ branch: branch_id }).exec();
     } catch (err) {
@@ -108,19 +108,21 @@ export class StockTransactionService {
     }
   }
 
-  async UpdateById(id: string, data: StockTransactionInterface) {
+  async UpdateOneByID(transaction_id: string, data: StockTransactionInterface) {
     try {
       return await this.stockTransactionRepo
-        .findByIdAndUpdate(id, { data }, { new: true })
+        .findByIdAndUpdate(transaction_id, { data }, { new: true })
         .exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async DeleteById(id: string) {
+  async DeleteOneByID(transaction_id: string) {
     try {
-      return await this.stockTransactionRepo.findByIdAndDelete(id).exec();
+      return await this.stockTransactionRepo
+        .findByIdAndDelete(transaction_id)
+        .exec();
     } catch (err) {
       throw err;
     }

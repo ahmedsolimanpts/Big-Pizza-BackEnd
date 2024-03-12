@@ -4,7 +4,7 @@ import { StockItemQuantityInterface } from './Stock-Item-quantity.interface';
 export interface StockTransactionInterface {
   stock_items?: StockItemQuantityInterface[];
 
-  transfer_to?: string;
+  stock?: string;
   createby?: string;
   status?: StockTransactionStatus;
 }

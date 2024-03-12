@@ -8,5 +8,5 @@ export interface StockItemLogsInterface {
 
   transaction?: StockTransactionTYPE;
 
-  branch_id?: string;
+  stock_id?: string;
 }

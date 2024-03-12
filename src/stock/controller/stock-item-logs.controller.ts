@@ -13,28 +13,28 @@ import { CreateStockItemLogsDto } from '../dto/Stock Item Logs/create-Stock-Item
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { StockItemLogsInterface } from '../interfaces/Stock-Item-logs.interface';
-import { BranchService } from 'src/branch/branch.service';
+import { StockService } from '../service/stock.service';
 
 @ApiTags('Stock Item Logs')
 @Controller('stock-item-logs')
 export class StockItemLogsController {
   constructor(
     private readonly stockItemLogsService: StockItemLogsService,
-    private branchService: BranchService,
+    private stockService: StockService,
   ) {}
 
-  @Post(':branch_id')
+  @Post(':stock_id')
   create(
-    @Param('branch_id') branch_id: string,
+    @Param('stock_id') stock_id: string,
     @Body() createDto: CreateStockItemLogsDto,
     @Req() req: Request,
   ) {
-    const branch = this.branchService.findOneByID(branch_id);
-    if (!branch) throw new NotFoundException('Error Branch');
+    const stock = this.stockService.findOneByID(stock_id);
+    if (!stock) throw new NotFoundException('Error Branch');
 
     const data: StockItemLogsInterface = {
       createby: (req as any).user._id,
-      branch_id: branch_id,
+      stock_id: stock_id,
       ...createDto,
     };
     return this.stockItemLogsService.create(data);
@@ -45,22 +45,25 @@ export class StockItemLogsController {
     return this.stockItemLogsService.findAllForOneBranch(branch_id);
   }
 
-  @Get(':transaction_id/:branch_id')
+  @Get(':item-log-id/:stock-id')
   findOneBranchTransactionById(
-    @Param('transaction_id') transaction_id: string,
-    @Param('branch_id') branch_id: string,
+    @Param('item-log-id') item_log_id: string,
+    @Param('stock-id') stock_id: string,
   ) {
-    return this.stockItemLogsService.findOneBranchTransactionById(
-      transaction_id,
-      branch_id,
+    return this.stockItemLogsService.findOneStockTransactionById(
+      item_log_id,
+      stock_id,
     );
   }
 
-  @Delete(':transaction_id/:branch_id')
+  @Delete(':item-log-id/:stock_id')
   remove(
-    @Param('transaction_id') transaction_id: string,
-    @Param('branch_id') branch_id: string,
+    @Param('item-log-id') item_log_id: string,
+    @Param('stock_id') stock_id: string,
   ) {
-    return this.stockItemLogsService.DeleteById(transaction_id, branch_id);
+    return this.stockItemLogsService.DeleteStockItemLogById(
+      item_log_id,
+      stock_id,
+    );
   }
 }

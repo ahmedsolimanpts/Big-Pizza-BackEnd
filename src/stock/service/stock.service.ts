@@ -29,9 +29,9 @@ export class StockService {
 
   async CreateStockItemlog(data: StockItemLogsInterface) {
     try {
-      const { branch_id, ...stocklogdata } = data;
+      const { stock_id, ...stocklogdata } = data;
       const newStckItemLog = new this.stockItemLogRepo(stocklogdata);
-      return await this.stockRepo.findByIdAndUpdate(branch_id, {
+      return await this.stockRepo.findByIdAndUpdate(stock_id, {
         $push: { items: newStckItemLog },
       });
     } catch (err) {
@@ -49,7 +49,7 @@ export class StockService {
 
   async findOneByID(id: string) {
     try {
-      return await this.stockRepo.findById(id);
+      return await this.stockRepo.findById(id).exec();
     } catch (err) {
       throw err;
     }
@@ -65,7 +65,8 @@ export class StockService {
             path: 'stock_item',
             model: StockItem.name, // Make sure this matches the name you've given your stock item model
           },
-        },      });
+        },
+      });
 
       if (!stock) {
         throw new Error('Stock not found');
@@ -95,7 +96,7 @@ export class StockService {
     }
   }
 
-  async update(id: string, updateStockDto: UpdateStockDto) {
+  async updateOnebyID(id: string, updateStockDto: UpdateStockDto) {
     try {
       return await this.stockRepo.findByIdAndUpdate(id, updateStockDto);
     } catch (err) {
@@ -103,7 +104,7 @@ export class StockService {
     }
   }
 
-  async remove(id: string) {
+  async removeOnebyID(id: string) {
     try {
       return await this.stockRepo.findByIdAndDelete(id);
     } catch (err) {

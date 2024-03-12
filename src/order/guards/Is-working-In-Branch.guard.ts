@@ -2,7 +2,7 @@ import { ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
-import { EmployeeService } from 'src/employee/employee.service';
+import { EmployeeService } from 'src/employee/service/employee.service';
 
 export class IsWorkingInBranchGuard extends AuthGuard('jwt') {
   constructor(

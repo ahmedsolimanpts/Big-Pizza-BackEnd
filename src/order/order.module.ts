@@ -1,70 +1,66 @@
 import { Module } from '@nestjs/common';
-import { OrderService } from './order.service';
-import { OrderController } from './order.controller';
+import { OrderService } from './service/order.service';
+import { OrderController } from './controller/order.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import {
-  DelivereyOrderType,
-  DelivereyOrderTypeSchema,
-  DineinOrder,
-  DineinOrderSchema,
-  Order,
-  OrderSchema,
-  TakeAwayOrder,
-  TakeAwayOrderSchema,
-} from './Model/order.model';
+import { Order, OrderSchema } from './Model/order.model';
 import { BranchModule } from 'src/branch/branch.module';
 import { EmployeeModule } from 'src/employee/employee.module';
 import { OffersModule } from 'src/offers/offers.module';
-import { OrderType } from './enums/Order-Types.enums';
+import { TakeAwayController } from './controller/take-away.controller';
+import { DeliveryController } from './controller/delivery.controller';
+import { DineInController } from './controller/dine-in.controller';
+import { OnlineController } from './controller/online.controller';
+import { TakeAwayService } from './service/take-away.service';
+import { DeliveryService } from './service/delivery.service';
+import { DineInService } from './service/dine-in.service';
+import { OnlineService } from './service/online.service';
+
+import { DineinOrder, DineinOrderSchema } from './Model/DineIn.model';
+import { TakeAwayOrder, TakeAwayOrderSchema } from './Model/TakeAway.model';
+import { DeliveryOrder, DeliveryOrderSchema } from './Model/Delivery.model';
+import { ProductModule } from 'src/product/product.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      // {
-      //   name: Order.name,
-      //   schema: OrderSchema,
-      //   discriminators: [
-      //     {
-      //       name: DineinOrder.name,
-      //       schema: DineinOrderSchema,
-      //     },
-      //     {
-      //       name: TakeAwayOrder.name,
-      //       schema: TakeAwayOrderSchema,
-      //     },
-      //     {
-      //       name: DelivereyOrderType.name,
-      //       schema: DelivereyOrderTypeSchema,
-      //     },
-      //   ],
-      // },
-      { name: Order.name, schema: OrderSchema },
       {
-        name: DineinOrder.name,
-        schema: DineinOrderSchema,
-        discriminators: [{ name: OrderType.DINEIN, schema: DineinOrderSchema }],
-      },
-      {
-        name: TakeAwayOrder.name,
-        schema: TakeAwayOrderSchema,
+        name: Order.name,
+        schema: OrderSchema,
         discriminators: [
-          { name: OrderType.TAKEAWAY, schema: TakeAwayOrderSchema },
-        ],
-      },
-      {
-        name: DelivereyOrderType.name,
-        schema: DelivereyOrderTypeSchema,
-        discriminators: [
-          { name: OrderType.DELIVEREY, schema: DelivereyOrderTypeSchema },
+          {
+            name: DineinOrder.name,
+            schema: DineinOrderSchema,
+          },
+          {
+            name: TakeAwayOrder.name,
+            schema: TakeAwayOrderSchema,
+          },
+          {
+            name: DeliveryOrder.name,
+            schema: DeliveryOrderSchema,
+          },
         ],
       },
     ]),
     BranchModule,
     EmployeeModule,
     OffersModule,
+    ProductModule,
   ],
-  controllers: [OrderController],
-  providers: [OrderService],
+  controllers: [
+    OrderController,
+    TakeAwayController,
+    DeliveryController,
+    DineInController,
+    OnlineController,
+  ],
+  providers: [
+    OrderService,
+    TakeAwayService,
+    DeliveryService,
+    DineInService,
+    OnlineService,
+  ],
   exports: [OrderService],
 })
 export class OrderModule {}

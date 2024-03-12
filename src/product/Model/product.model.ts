@@ -35,6 +35,9 @@ export class Product {
   @Prop()
   images: string[];
 
+  @Prop({ default: 10, required: true })
+  quantity: number;
+
   @Prop({ default: true })
   can_deliver: boolean;
 }

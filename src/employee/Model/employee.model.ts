@@ -20,7 +20,7 @@ export class Attendence {
   signby: string;
 
   @Prop()
-  phone: string;
+  phone_ip: string;
 
   @Prop()
   note: string;
@@ -56,6 +56,9 @@ export class EmployeePDR {
 
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
   createby: string;
+
+  @Prop({ required: true, unique: true })
+  date: Date;
 }
 
 export const EmployeePDRSchema = SchemaFactory.createForClass(EmployeePDR);

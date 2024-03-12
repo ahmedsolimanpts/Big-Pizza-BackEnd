@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -33,11 +34,15 @@ export class StockTransactionController {
   }
 
   @Post('change-status/:transaction_id')
-  ChangeTransactionStatus(
+  async ChangeTransactionStatus(
     @Param('transaction_id') transaction_id: string,
     @Body('status') status: StockTransactionStatus,
     @Req() req: Request,
   ) {
+    const transaction =
+      await this.stockTransactionService.findOneByID(transaction_id);
+    if (!transaction)
+      throw new NotFoundException('No Transaction With this ID');
     const userid = (req as any).user._id;
     return this.stockTransactionService.ChangeTransactionStatus(
       transaction_id,
@@ -52,29 +57,27 @@ export class StockTransactionController {
   }
 
   @Get('branch/:branch_id')
-  findAllForTransactionForSpecificBranch(
-    @Param('branch_id') branch_id: string,
-  ) {
-    return this.stockTransactionService.findAllForTransactionForSpecificBranch(
+  findAllTransactionForSpecificBranch(@Param('branch_id') branch_id: string) {
+    return this.stockTransactionService.findAllTransactionForSpecificBranch(
       branch_id,
     );
   }
 
   @Get(':id')
   findOneByID(@Param('id') id: string) {
-    return this.stockTransactionService.findByID(id);
+    return this.stockTransactionService.findOneByID(id);
   }
 
   @Patch(':id')
-  update(
+  updateOneByID(
     @Param('id') id: string,
     @Body() updateDto: UpdateStockTransactionDto,
   ) {
-    return this.stockTransactionService.UpdateById(id, updateDto);
+    return this.stockTransactionService.UpdateOneByID(id, updateDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.stockTransactionService.DeleteById(id);
+  removeOneByID(@Param('id') id: string) {
+    return this.stockTransactionService.DeleteOneByID(id);
   }
 }

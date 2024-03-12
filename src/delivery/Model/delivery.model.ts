@@ -7,7 +7,7 @@ import { Location } from 'src/location/Model/location.model';
 import { DelivereyMethod } from '../enums/Deliverey-method.enums';
 
 @Schema({ timestamps: true })
-export class DelivereyOrder {
+export class Delivery {
   @Prop({ required: true, type: Location })
   start_location: Location;
 
@@ -27,4 +27,4 @@ export class DelivereyOrder {
   delivery_price: DeliveryPrice;
 }
 
-export const DeliveryOrderSchema = SchemaFactory.createForClass(DelivereyOrder);
+export const DeliverySchema = SchemaFactory.createForClass(Delivery);
