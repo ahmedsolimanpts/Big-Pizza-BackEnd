@@ -31,16 +31,19 @@ export class BranchController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.branchService.findOneByID(id);
+    return this.branchService.findOneBranchByID(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBranchDto: UpdateBranchDto) {
-    return this.branchService.update(id, updateBranchDto);
+  updateBranch(
+    @Param('id') id: string,
+    @Body() updateBranchDto: UpdateBranchDto,
+  ) {
+    return this.branchService.updateOneBranchByID(id, updateBranchDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.branchService.remove(id);
+  removeBranch(@Param('id') id: string) {
+    return this.branchService.removeOneBranchById(id);
   }
 }

@@ -20,10 +20,19 @@ import { SupplierModule } from './supplier/supplier.module';
 import { TicketModule } from './ticket/ticket.module';
 import { StockModule } from './stock/stock.module';
 import { BillingModule } from './billing/billing.module';
+import { WalletModule } from './wallet/wallet.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      // exceptionFactory: (errors) => new BadRequestException(errors),
+    }),
+  );
   app.enableCors({ origin: '*' });
   const config = new DocumentBuilder()
     .setTitle('BigPizza BackEnd')
@@ -51,6 +60,8 @@ async function bootstrap() {
       TicketModule,
       StockModule,
       BillingModule,
+      WalletModule,
+      NotificationsModule,
     ],
   });
   SwaggerModule.setup('swagger', app, document);

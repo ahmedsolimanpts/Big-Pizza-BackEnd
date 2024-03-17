@@ -4,17 +4,17 @@ import { TicketCategory } from '../enums/Ticket-category.enum';
 import { TicketStatus } from '../enums/ticket-status.enum';
 
 export interface TicketInterface {
-  status: TicketStatus;
+  status?: TicketStatus;
 
-  createby: string;
+  createby?: string;
 
-  branch: string;
+  branch?: string;
 
-  category: TicketCategory;
+  category?: TicketCategory;
 
-  segment: TicketSegment;
+  segment?: TicketSegment;
 
-  description: string;
+  description?: string;
 
   updates?: TicketUpdates[];
 }

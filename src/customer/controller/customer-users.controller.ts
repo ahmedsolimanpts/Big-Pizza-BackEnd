@@ -31,22 +31,17 @@ export class CustomerUserController {
 
   @Get()
   findOneById(@Req() req: Request) {
-    return this.customerService.findOneById((req as any).user._id);
+    return this.customerService.findOneCustomerById((req as any).user._id);
   }
 
   updateOneById(
     @Req() req: Request,
     @Body() updateCustomerDto: UpdateCustomerDto,
   ) {
-    return this.customerService.updateOneById(
+    return this.customerService.updateOneCustomerById(
       (req as any).user._id,
       updateCustomerDto,
     );
-  }
-
-  @Delete()
-  removeOneById(@Req() req: Request) {
-    return this.customerService.removeOneById((req as any).user._id);
   }
 
   @Post('/locations')

@@ -1,9 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { StockItemQuantity } from './Stock-item-quantity.model';
 import { User } from 'src/users/Model/user.model';
 import { StockTransactionStatus } from '../enums/Stock-Transaction-Status.enum';
-import { Stock } from './stock.model';
 
 @Schema({ timestamps: true })
 export class StockTransaction {
@@ -12,13 +11,20 @@ export class StockTransaction {
     required: true,
     default: [],
   })
-  stock_items: StockItemQuantity[];
+  items_quantity: StockItemQuantity[];
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: Stock.name, required: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Stock' })
   stock: string;
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: User.name, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User.name,
+    required: true,
+  })
   createby: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
+  updated_user: string;
 
   @Prop({ required: true, default: StockTransactionStatus.INPROGRESS })
   status: StockTransactionStatus;

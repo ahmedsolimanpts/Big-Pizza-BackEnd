@@ -1,4 +1,5 @@
 import {
+  ArrayMinSize,
   IsMongoId,
   IsNotEmpty,
   IsString,
@@ -14,9 +15,10 @@ export class CreateTransactionDto {
     type: [CreateStockItemQuantityDto],
   })
   @IsNotEmpty()
+  @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => CreateStockItemQuantityDto)
-  stock_items: CreateStockItemQuantityDto[];
+  items_quantity: CreateStockItemQuantityDto[];
 
   @ApiProperty({
     description: 'The MongoDB ObjectId of the branch transferring to',
@@ -25,5 +27,5 @@ export class CreateTransactionDto {
   @IsMongoId()
   @IsNotEmpty()
   @IsString()
-  transfer_to: string;
+  stock: string;
 }

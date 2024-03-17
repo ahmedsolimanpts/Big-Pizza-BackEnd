@@ -9,4 +9,6 @@ export interface StockItemLogsInterface {
   transaction?: StockTransactionTYPE;
 
   stock_id?: string;
+
+  transaction_id?: string;
 }

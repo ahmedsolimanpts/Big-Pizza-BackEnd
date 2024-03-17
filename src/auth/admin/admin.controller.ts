@@ -17,16 +17,16 @@ export class AdminController {
     private userserivce: UsersService,
   ) {}
 
-  @Post('assign-role')
+  @Post('assign-one-role')
   @Role(Roles.SUPERUSER)
   AddRoleToUser(@Body() asssignRoleDto: AssignRoleDto) {
-    return this.authService.AddRoleToUser(asssignRoleDto);
+    return this.authService.AddOneRoleToUser(asssignRoleDto);
   }
 
-  @Post('unassign-role')
+  @Post('unassign-one-role')
   @Role(Roles.SUPERUSER)
   RemoveRoleFromUser(@Body() asssignRoleDto: AssignRoleDto) {
-    return this.authService.RemoveRoleFromUser(asssignRoleDto);
+    return this.authService.RemoveOneRoleFromUser(asssignRoleDto);
   }
 
   @Post('block/:id')

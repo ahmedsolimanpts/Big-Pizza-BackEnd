@@ -1,8 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
-import { Roles } from 'src/auth/enums/roles.enums';
 
-export class CreateSuperUserDto {
+export class CreateUserDto {
   @ApiProperty({
     example: 'ahmed@gmail.com',
     required: true,
@@ -26,6 +25,4 @@ export class CreateSuperUserDto {
   @IsNotEmpty()
   @MinLength(8)
   password: string;
-
-  roles: Roles = Roles.SUPERUSER;
 }

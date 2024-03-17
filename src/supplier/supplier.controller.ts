@@ -6,13 +6,19 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { SupplierService } from './supplier.service';
 import { CreateSupplierDto } from './dto/create-supplier.dto';
 import { UpdateSupplierDto } from './dto/update-supplier.dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/auth/decorator/roles.decorator';
+import { Roles } from 'src/auth/enums/roles.enums';
 
 @ApiTags('supplier')
+@Role(Roles.SUPERUSER)
+@UseGuards(RolesGuard)
 @Controller('supplier')
 export class SupplierController {
   constructor(private readonly supplierService: SupplierService) {}
@@ -38,11 +44,11 @@ export class SupplierController {
     @Param('id') id: string,
     @Body() updateSupplierDto: UpdateSupplierDto,
   ) {
-    return this.supplierService.update(id, updateSupplierDto);
+    return this.supplierService.updateOneSupplierByID(id, updateSupplierDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.supplierService.remove(id);
+    return this.supplierService.removeOneSupplierByID(id);
   }
 }

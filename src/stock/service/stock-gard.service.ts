@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { StockGard } from '../Model/Stock-Gard.model';
 import { StockGardInterface } from '../interfaces/Stock-Gard.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Stock } from '../Model/stock.model';
+import { StockItemService } from './stock-item.service';
 
 @Injectable()
 export class StockGardService {
@@ -12,19 +13,31 @@ export class StockGardService {
     private readonly stockGardRepo: Model<StockGard>,
     @InjectModel(Stock.name)
     private readonly stockRepo: Model<Stock>,
+    private stockItemService: StockItemService,
   ) {}
 
-  async create(data: StockGardInterface) {
+  async create(data: StockGardInterface): Promise<Stock> {
     try {
       const { stock_id, ...newData } = data;
 
-      const newGard = new this.stockGardRepo(newData);
+      const stock = await this.stockRepo.findById(stock_id);
+      if (!stock) throw new NotFoundException('Stock Not Exist');
 
-      return await this.stockRepo.findByIdAndUpdate(
-        stock_id,
-        { $push: { gard: newGard } },
-        { new: true },
-      );
+      if (newData.items) {
+        for (const item of newData.items) {
+          const itemObject = await this.stockItemService.findOneById(
+            item.stock_item,
+          );
+          if (!itemObject) throw new NotFoundException('item Not Exist ');
+        }
+        const newGard = new this.stockGardRepo(newData);
+
+        return await this.stockRepo.findByIdAndUpdate(
+          stock_id,
+          { $push: { gard: newGard } },
+          { new: true },
+        );
+      }
     } catch (err) {
       throw err;
     }

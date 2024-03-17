@@ -25,12 +25,12 @@ export class OffersController {
 
   @Get()
   findAll() {
-    return this.offersService.findAll();
+    return this.offersService.findAllOffers();
   }
 
   @Get(':id')
   findOneById(@Param('id') id: string) {
-    return this.offersService.findOneById(id);
+    return this.offersService.findOneOfferById(id);
   }
 
   @Get('search')
@@ -40,11 +40,11 @@ export class OffersController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOfferDto: UpdateOfferDto) {
-    return this.offersService.update(id, updateOfferDto);
+    return this.offersService.updateOneOfferById(id, updateOfferDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.offersService.remove(id);
+    return this.offersService.removeOneOfferByID(id);
   }
 }

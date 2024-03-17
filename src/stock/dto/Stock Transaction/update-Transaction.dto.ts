@@ -1,6 +1,7 @@
 import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateTransactionDto } from './create-Transaction.dto';
 import {
+  IsEnum,
   IsMongoId,
   IsOptional,
   IsString,
@@ -8,6 +9,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateStockItemQuantityDto } from '../stock item quantity/create-stock-item-quantity.dto';
+import { StockTransactionStatus } from 'src/stock/enums/Stock-Transaction-Status.enum';
 
 export class UpdateStockTransactionDto extends PartialType(
   CreateTransactionDto,
@@ -19,7 +21,7 @@ export class UpdateStockTransactionDto extends PartialType(
   @IsOptional()
   @ValidateNested({ each: true })
   @Type(() => CreateStockItemQuantityDto)
-  stock_items?: CreateStockItemQuantityDto[];
+  items_quantity?: CreateStockItemQuantityDto[];
 
   @ApiPropertyOptional({
     description: 'The MongoDB ObjectId of the branch transferring to',
@@ -28,5 +30,13 @@ export class UpdateStockTransactionDto extends PartialType(
   @IsMongoId()
   @IsOptional()
   @IsString()
-  transfer_to?: string;
+  stock?: string;
+
+  @ApiPropertyOptional({
+    description: 'status of transacetion',
+  })
+  @IsEnum(StockTransactionStatus)
+  @IsOptional()
+  @IsString()
+  status?: StockTransactionStatus;
 }

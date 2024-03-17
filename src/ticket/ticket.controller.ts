@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   Req,
-  NotFoundException,
 } from '@nestjs/common';
 import { TicketService } from './ticket.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
@@ -15,7 +14,6 @@ import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { TicketInterface } from './interface/Ticket.interface';
-import { BranchService } from 'src/branch/branch.service';
 import { AddTicketUpdateDto } from './dto/Add-Ticket-updates.dtos';
 import { AddTicketUpdatesInterface } from './interface/AddTicket-Updates.inteface';
 import { Role } from 'src/auth/decorator/roles.decorator';
@@ -25,10 +23,7 @@ import { TicketStatus } from './enums/ticket-status.enum';
 @ApiTags('Tickets')
 @Controller('ticket')
 export class TicketController {
-  constructor(
-    private readonly ticketService: TicketService,
-    private readonly brnachService: BranchService,
-  ) {}
+  constructor(private readonly ticketService: TicketService) {}
 
   @Post(':branchid')
   async create(
@@ -36,8 +31,6 @@ export class TicketController {
     @Body() createTicketDto: CreateTicketDto,
     @Req() req: Request,
   ) {
-    const branch = await this.brnachService.findOneByID(branchid);
-    if (!branch) throw new NotFoundException('UnValid Branch');
     const data: TicketInterface = {
       ...createTicketDto,
       createby: (req as any).user._id,
@@ -85,12 +78,12 @@ export class TicketController {
   @Role(Roles.SUPERUSER)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-    return this.ticketService.update(id, updateTicketDto);
+    return this.ticketService.updateOneTicketById(id, updateTicketDto);
   }
 
   @Role(Roles.SUPERUSER)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ticketService.remove(id);
+    return this.ticketService.removeOneTicketById(id);
   }
 }

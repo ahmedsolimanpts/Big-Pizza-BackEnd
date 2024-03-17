@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { Branch } from 'src/branch/Model/branch.model';
 import { StockItemslogs } from './Stock-item-logs.model';
 import { StockGard } from './Stock-Gard.model';
@@ -7,7 +7,7 @@ import { StockGard } from './Stock-Gard.model';
 @Schema({ timestamps: true })
 export class Stock {
   @Prop({
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: Branch.name,
     required: true,
     unique: true,

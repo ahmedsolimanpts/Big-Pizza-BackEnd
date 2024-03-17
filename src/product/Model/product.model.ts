@@ -35,11 +35,14 @@ export class Product {
   @Prop()
   images: string[];
 
-  @Prop({ default: 10, required: true })
+  @Prop({ default: 5, required: true })
   quantity: number;
 
   @Prop({ default: true })
   can_deliver: boolean;
+
+  @Prop()
+  is_sensetive: boolean;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

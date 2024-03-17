@@ -1,12 +1,12 @@
-import { StockGard } from '../Model/Stock-Gard.model';
-import { StockItemslogs } from '../Model/Stock-item-logs.model';
+import { StockGardInterface } from './Stock-Gard.interface';
+import { StockItemLogsInterface } from './Stock-Item-logs.interface';
 
 export interface StockInterface {
   branch?: string;
 
-  items?: StockItemslogs[];
+  items?: StockItemLogsInterface[];
 
   transaction?: string[];
 
-  gard?: StockGard[];
+  gard?: StockGardInterface[];
 }

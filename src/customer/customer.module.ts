@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { CustomerService } from './customer.service';
-import { CustomerAdminController } from './admins/customer.controller';
+import { CustomerAdminController } from './controller/customer.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Customer, CustomerSchema } from './Model/customer.model';
 import { UsersModule } from 'src/users/users.module';
 import { LocationModule } from 'src/location/location.module';
-import { CustomerUserController } from './users/customer-users.controller';
+import { CustomerUserController } from './controller/customer-users.controller';
 
 @Module({
   imports: [

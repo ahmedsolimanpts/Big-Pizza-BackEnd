@@ -1,10 +1,11 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
-import { CreateUserDto } from './dto/User-Singup.dto';
-import { Token } from './dto/token.payload';
+import { Body, Controller, HttpCode, Post, Req } from '@nestjs/common';
+import { CreateUserDto } from './dto/Singup.dto';
+import { Token } from './interface/token-payload.interface';
 import { SignInByEmailDto } from './dto/SignIn-by-email.dto';
 import { Public } from 'src/auth/decorator/IsPuplic.decorator';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
+import { Request } from 'express';
 
 @ApiTags('auth')
 @Public()
@@ -26,7 +27,7 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(200)
-  async Logout(@Body('id') id: string): Promise<any> {
-    return await this.authService.logout(id);
+  async Logout(@Req() req: Request): Promise<any> {
+    return await this.authService.logout((req as any).user._id);
   }
 }

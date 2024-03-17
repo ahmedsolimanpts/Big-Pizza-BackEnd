@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSupplierDto } from './dto/create-supplier.dto';
-import { UpdateSupplierDto } from './dto/update-supplier.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Supplier } from './Model/supplier.Model';
 import { Model } from 'mongoose';
+import { SupplierInterface } from './interface/supplier.interface';
 
 @Injectable()
 export class SupplierService {
   constructor(
     @InjectModel(Supplier.name) private readonly supplierRepo: Model<Supplier>,
   ) {}
-  async create(createSupplierDto: CreateSupplierDto) {
+
+  async create(createSupplierData: SupplierInterface): Promise<Supplier> {
     try {
-      const newSupplier = new this.supplierRepo(createSupplierDto);
+      const newSupplier = new this.supplierRepo(createSupplierData);
       return await newSupplier.save();
     } catch (err) {
       throw err;
     }
   }
 
-  async findAll() {
+  async findAll(): Promise<Supplier[]> {
     try {
       return await this.supplierRepo.find().exec();
     } catch (err) {
@@ -27,25 +27,31 @@ export class SupplierService {
     }
   }
 
-  async findOneById(id: string) {
+  async findOneById(supplier_id: string): Promise<Supplier> {
     try {
-      return await this.supplierRepo.findById(id);
+      return await this.supplierRepo.findById(supplier_id);
     } catch (err) {
       throw err;
     }
   }
 
-  async update(id: string, updateSupplierDto: UpdateSupplierDto) {
+  async updateOneSupplierByID(
+    supplier_id: string,
+    updatedSupplierData: SupplierInterface,
+  ): Promise<Supplier> {
     try {
-      return await this.supplierRepo.findByIdAndUpdate(id, updateSupplierDto);
+      return await this.supplierRepo.findByIdAndUpdate(
+        supplier_id,
+        updatedSupplierData,
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async removeOneSupplierByID(supplier_id: string): Promise<Supplier> {
     try {
-      return await this.supplierRepo.findByIdAndDelete(id);
+      return await this.supplierRepo.findByIdAndDelete(supplier_id);
     } catch (err) {
       throw err;
     }

@@ -1,4 +1,3 @@
-import { CreatePaymentInterface } from 'src/payment/interface/Create-Payment.interface';
 import { OrderStatus } from '../enums/Order-Status.enums';
 import { Product } from 'src/product/Model/product.model';
 import { ProductComponents } from 'src/product/enums/product-components.enum';
@@ -45,6 +44,4 @@ export interface OrderInterface {
   kitchen_notes?: string;
 
   customer?: string;
-
-  payment?: CreatePaymentInterface;
 }

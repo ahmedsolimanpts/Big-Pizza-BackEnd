@@ -7,7 +7,6 @@ export class StockItemQuantity {
   @Prop({
     type: mongoose.Types.ObjectId,
     ref: StockItem.name,
-    unique: true,
     required: true,
   })
   stock_item: string;

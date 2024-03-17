@@ -1,20 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Customer } from './Model/customer.model';
 import { Model } from 'mongoose';
 import { CustomerInterface } from './interface/Customer.interface';
 import { LocationInterface } from 'src/location/interface/Location.interface';
 import { LocationService } from 'src/location/location.service';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class CustomerService {
   constructor(
     @InjectModel(Customer.name) private readonly customerRepo: Model<Customer>,
     private locationService: LocationService,
+    private UserService: UsersService,
   ) {}
 
   async create(createData: CustomerInterface) {
     try {
+      if (createData.user) {
+        const user = await this.UserService.findOneByid(createData.user);
+        if (!user) throw new NotFoundException('Wrong User ID');
+      }
       const newCustomer = new this.customerRepo(createData);
       return await newCustomer.save();
     } catch (err) {
@@ -22,7 +28,7 @@ export class CustomerService {
     }
   }
 
-  async findAll() {
+  async findAllCustomers() {
     try {
       return await this.customerRepo.find().exec();
     } catch (err) {
@@ -30,27 +36,38 @@ export class CustomerService {
     }
   }
 
-  async findOneById(id: string) {
+  async findOneCustomerById(customer_id: string) {
     try {
-      return await this.customerRepo.findById(id).exec();
+      return await this.customerRepo.findById(customer_id).exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async updateOneById(id: string, updateData: CustomerInterface) {
+  async updateOneCustomerById(
+    customer_id: string,
+    NewUpdateData: CustomerInterface,
+  ) {
     try {
-      return await this.customerRepo.findByIdAndUpdate(id, updateData, {
-        new: true,
-      });
+      if (NewUpdateData.user) {
+        const user = await this.UserService.findOneByid(NewUpdateData.user);
+        if (!user) throw new NotFoundException('Wrong User ID');
+      }
+      return await this.customerRepo.findByIdAndUpdate(
+        customer_id,
+        NewUpdateData,
+        {
+          new: true,
+        },
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async removeOneById(id: string) {
+  async removeOneCustomerById(customer_id: string) {
     try {
-      return await this.customerRepo.findByIdAndDelete(id);
+      return await this.customerRepo.findByIdAndDelete(customer_id);
     } catch (err) {
       throw err;
     }

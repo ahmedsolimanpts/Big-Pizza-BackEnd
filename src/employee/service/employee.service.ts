@@ -3,10 +3,11 @@ import { CreateEmployeeDto } from '../dto/create-employee.dto';
 import { UpdateEmployeeDto } from '../dto/update-employee.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Attendence, Employee } from '../Model/employee.model';
-import { Model } from 'mongoose';
+import { ClientSession, Model } from 'mongoose';
 
 import * as moment from 'moment'; // Import moment.js for date manipulation
 import { AttendenceActions } from '../enums/attendence-action.enums';
+import { Roles } from 'src/auth/enums/roles.enums';
 
 @Injectable()
 export class EmployeeService {
@@ -63,16 +64,50 @@ export class EmployeeService {
     }
   }
 
-  async IsUserWorkingInBranch(userId, branchid: string): Promise<boolean> {
+  async IsUserWorkingInBranchAndHaveRole(
+    userid: string,
+    branchid: string,
+    role: Roles,
+    session?: ClientSession,
+  ): Promise<boolean> {
     try {
-      const isExist = await this.employeeRepo.findOne({
-        user: userId,
-        working_in: branchid,
-      });
-      if (isExist) return true;
+      const employee = await this.employeeRepo
+        .findOne({ user: userid, working_in: branchid })
+        .populate('user')
+        .session(session);
+
+      // Check if the employee exists and if the populated user has the specified role
+      if (
+        employee &&
+        employee.user &&
+        (employee as any).user.roles.includes(role)
+      ) {
+        return true;
+      }
+
       return false;
     } catch (err) {
       console.log(err);
+      throw err;
+    }
+  }
+
+  async IsUserWorkingInBranch(
+    userId,
+    branchid: string,
+    session?: ClientSession,
+  ): Promise<boolean> {
+    try {
+      const isExist = await this.employeeRepo
+        .findOne({
+          user: userId,
+          working_in: branchid,
+        })
+        .session(session)
+        .exec();
+      if (!isExist) return false;
+      return true;
+    } catch (err) {
       throw err;
     }
   }

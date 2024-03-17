@@ -14,7 +14,7 @@ export class Branch {
   @Prop({ type: Date })
   work_to: Date;
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: User.name, required: true })
+  @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
   manager: string;
 
   @Prop({ type: Location })

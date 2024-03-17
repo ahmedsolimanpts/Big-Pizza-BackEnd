@@ -2,6 +2,7 @@ import {
   IsArray,
   IsBoolean,
   IsEnum,
+  IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -52,6 +53,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsString()
+  @IsMongoId()
   branch: string;
 
   @ApiProperty({
@@ -93,7 +95,7 @@ export class CreateProductDto {
   @IsOptional()
   @IsArray()
   @IsString()
-  images: string[];
+  images?: string[];
 
   @ApiProperty({
     example: 'true',
@@ -101,5 +103,13 @@ export class CreateProductDto {
   })
   @IsOptional()
   @IsBoolean()
-  can_deliver: boolean;
+  can_deliver?: boolean;
+
+  @ApiProperty({
+    example: 'true',
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  is_sensetive?: boolean;
 }

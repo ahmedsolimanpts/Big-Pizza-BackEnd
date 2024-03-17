@@ -1,7 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  ArrayMinSize,
   IsArray,
   IsDateString,
+  IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -22,6 +24,9 @@ export class CreateCouponDto {
     required: false,
   })
   @IsNotEmpty()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   @IsArray()
   branches: string[];
 

@@ -1,4 +1,11 @@
-import { IsEnum, IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsEnum,
+  IsNotEmpty,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { CreateStockItemQuantityDto } from '../stock item quantity/create-stock-item-quantity.dto';
 import { Type } from 'class-transformer';
 import { StockTransactionTYPE } from 'src/stock/enums/Stock-Transactions.enum';
@@ -11,6 +18,8 @@ export class CreateStockItemLogsDto {
   })
   @IsNotEmpty()
   @ValidateNested()
+  @ArrayMinSize(1)
+  @ArrayMaxSize(1)
   @Type(() => CreateStockItemQuantityDto)
   item: CreateStockItemQuantityDto;
 

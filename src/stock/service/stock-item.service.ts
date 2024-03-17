@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { StockItemInterface } from '../interfaces/Stock-Item.interface';
@@ -16,6 +16,9 @@ export class StockItemService {
       const newItem = new this.stockItemRepo(data);
       return await newItem.save();
     } catch (err) {
+      if (err.code == 11000) {
+        throw new ConflictException('Item Is Already Exist');
+      }
       throw err;
     }
   }
@@ -28,27 +31,39 @@ export class StockItemService {
     }
   }
 
-  async findOneById(id: string) {
+  async AreStockItemsExist(stockItems: string[]): Promise<boolean> {
     try {
-      return await this.stockItemRepo.findById(id).exec();
+      const items = await this.stockItemRepo.find({ _id: stockItems }).exec();
+      if (items.length == stockItems.length) {
+        return true;
+      }
+      return false;
     } catch (err) {
       throw err;
     }
   }
 
-  async UpdateById(id: string, data: StockItemInterface) {
+  async findOneById(item_id: string) {
+    try {
+      return await this.stockItemRepo.findById(item_id).exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async UpdateById(item_id: string, data: StockItemInterface) {
     try {
       return await this.stockItemRepo
-        .findByIdAndUpdate(id, { data }, { new: true })
+        .findByIdAndUpdate(item_id, { data }, { new: true })
         .exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async DeleteById(id: string) {
+  async DeleteById(item_id: string) {
     try {
-      return await this.stockItemRepo.findByIdAndDelete(id).exec();
+      return await this.stockItemRepo.findByIdAndDelete(item_id).exec();
     } catch (err) {
       throw err;
     }

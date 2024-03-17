@@ -6,14 +6,16 @@ import {
   Patch,
   Param,
   Delete,
-  Req,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateLocationDto } from 'src/location/dto/create-location.dto';
-import { Request } from 'express';
+
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/auth/decorator/roles.decorator';
+import { Roles } from 'src/auth/enums/roles.enums';
 
 @ApiTags('users')
 @Controller('users')
@@ -23,15 +25,6 @@ export class UsersController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
-  }
-
-  @Post('location')
-  AddLocation(
-    @Body() createLocationDto: CreateLocationDto,
-    @Req() req: Request,
-  ) {
-    const user_id = (req as any).user._id;
-    return this.usersService.AddLocationToUser(user_id, createLocationDto);
   }
 
   @Get()
@@ -44,19 +37,17 @@ export class UsersController {
     return this.usersService.findOneByid(id);
   }
 
+  @UseGuards(RolesGuard)
+  @Role(Roles.SUPERUSER)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+    return this.usersService.updateOneByID(id, updateUserDto);
   }
 
+  @UseGuards(RolesGuard)
+  @Role(Roles.SUPERUSER)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
-  }
-
-  @Delete('location/:id')
-  removeLocation(@Param('id') locationid: string, @Req() req: Request) {
-    const user_id = (req as any).user._id;
-    return this.usersService.RemoveLocationFromUser(user_id, locationid);
+    return this.usersService.removeOneUserByID(id);
   }
 }

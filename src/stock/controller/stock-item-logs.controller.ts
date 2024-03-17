@@ -3,9 +3,9 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
+  Query,
   Req,
 } from '@nestjs/common';
 import { StockItemLogsService } from '../service/stock-item-logs.service';
@@ -29,9 +29,6 @@ export class StockItemLogsController {
     @Body() createDto: CreateStockItemLogsDto,
     @Req() req: Request,
   ) {
-    const stock = this.stockService.findOneByID(stock_id);
-    if (!stock) throw new NotFoundException('Error Branch');
-
     const data: StockItemLogsInterface = {
       createby: (req as any).user._id,
       stock_id: stock_id,
@@ -40,15 +37,10 @@ export class StockItemLogsController {
     return this.stockItemLogsService.create(data);
   }
 
-  @Get(':branch_id')
-  findAllForOneBranch(@Param('branch_id') branch_id: string) {
-    return this.stockItemLogsService.findAllForOneBranch(branch_id);
-  }
-
-  @Get(':item-log-id/:stock-id')
-  findOneBranchTransactionById(
-    @Param('item-log-id') item_log_id: string,
-    @Param('stock-id') stock_id: string,
+  @Get()
+  findOneStockTransactionById(
+    @Query('item-log-id') item_log_id: string,
+    @Query('stock-id') stock_id: string,
   ) {
     return this.stockItemLogsService.findOneStockTransactionById(
       item_log_id,
@@ -56,10 +48,10 @@ export class StockItemLogsController {
     );
   }
 
-  @Delete(':item-log-id/:stock_id')
+  @Delete()
   remove(
-    @Param('item-log-id') item_log_id: string,
-    @Param('stock_id') stock_id: string,
+    @Query('item-log-id') item_log_id: string,
+    @Query('stock-id') stock_id: string,
   ) {
     return this.stockItemLogsService.DeleteStockItemLogById(
       item_log_id,

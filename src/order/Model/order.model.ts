@@ -4,7 +4,6 @@ import * as mongoose from 'mongoose';
 import { User } from 'src/users/Model/user.model';
 import { OrderStatus } from '../enums/Order-Status.enums';
 import { Customer } from 'src/customer/Model/customer.model';
-import { Payment } from 'src/payment/Model/payment.model';
 import { Coupon } from 'src/coupon/Model/coupon.model';
 import { Offer } from 'src/offers/Model/offer.model';
 import { OrderItems } from './Order-Items.model';
@@ -59,9 +58,6 @@ export class Order {
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Customer.name })
   customer: string;
-
-  @Prop({ type: mongoose.Types.ObjectId, ref: Payment.name })
-  payment: Payment;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);

@@ -5,6 +5,7 @@ import {
   IsString,
   IsDateString,
   ValidateNested,
+  IsMongoId,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateLocationDto } from 'src/location/dto/create-location.dto';
@@ -39,6 +40,7 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
     required: false,
   })
   @IsOptional()
+  @IsMongoId()
   @IsString()
   manager?: string;
 

@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Patch,
   Post,
@@ -39,10 +38,6 @@ export class StockTransactionController {
     @Body('status') status: StockTransactionStatus,
     @Req() req: Request,
   ) {
-    const transaction =
-      await this.stockTransactionService.findOneByID(transaction_id);
-    if (!transaction)
-      throw new NotFoundException('No Transaction With this ID');
     const userid = (req as any).user._id;
     return this.stockTransactionService.ChangeTransactionStatus(
       transaction_id,
@@ -65,7 +60,7 @@ export class StockTransactionController {
 
   @Get(':id')
   findOneByID(@Param('id') id: string) {
-    return this.stockTransactionService.findOneByID(id);
+    return this.stockTransactionService.findOneStockTransactionByID(id);
   }
 
   @Patch(':id')

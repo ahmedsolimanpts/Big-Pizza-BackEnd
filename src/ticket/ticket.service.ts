@@ -1,20 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Ticket } from './Models/ticket.model';
 import { Model } from 'mongoose';
 import { TicketInterface } from './interface/Ticket.interface';
 import { AddTicketUpdatesInterface } from './interface/AddTicket-Updates.inteface';
 import { TicketStatus } from './enums/ticket-status.enum';
+import { UsersService } from 'src/users/users.service';
+import { BranchService } from 'src/branch/branch.service';
 
 @Injectable()
 export class TicketService {
   constructor(
     @InjectModel(Ticket.name) private readonly ticketRepo: Model<Ticket>,
+    private userService: UsersService,
+    private branchService: BranchService,
   ) {}
 
   async create(data: TicketInterface) {
     try {
+      const branch = await this.branchService.findOneBranchByID(data.branch);
+      if (!branch) throw new NotFoundException('Wrong Branch ID');
+
+      const user = await this.userService.findOneByid(data.createby);
+      if (!user) throw new NotFoundException('Wrong User ID');
+
       const newTicket = new this.ticketRepo(data);
       return await newTicket.save();
     } catch (err) {
@@ -38,9 +47,23 @@ export class TicketService {
     }
   }
 
-  async update(id: string, updateTicketDto: UpdateTicketDto) {
+  async updateOneTicketById(id: string, newTicketUpdate: TicketInterface) {
     try {
-      return await this.ticketRepo.findByIdAndUpdate(id, updateTicketDto);
+      if (newTicketUpdate.branch) {
+        const branch = await this.branchService.findOneBranchByID(
+          newTicketUpdate.branch,
+        );
+        if (!branch) throw new NotFoundException('Wrong Branch ID');
+      }
+
+      if (newTicketUpdate.createby) {
+        const user = await this.userService.findOneByid(
+          newTicketUpdate.createby,
+        );
+        if (!user) throw new NotFoundException('Wrong User ID');
+      }
+
+      return await this.ticketRepo.findByIdAndUpdate(id, newTicketUpdate);
     } catch (err) {
       throw err;
     }
@@ -66,7 +89,7 @@ export class TicketService {
       throw err;
     }
   }
-  async remove(id: string) {
+  async removeOneTicketById(id: string) {
     try {
       return await this.ticketRepo.findByIdAndDelete(id);
     } catch (err) {

@@ -25,12 +25,12 @@ export class CustomerAdminController {
 
   @Get()
   findAll() {
-    return this.customerService.findAll();
+    return this.customerService.findAllCustomers();
   }
 
   @Get(':id')
   findOneById(@Param('id') id: string) {
-    return this.customerService.findOneById(id);
+    return this.customerService.findOneCustomerById(id);
   }
 
   @Patch(':id')
@@ -38,12 +38,12 @@ export class CustomerAdminController {
     @Param('id') id: string,
     @Body() updateCustomerDto: UpdateCustomerDto,
   ) {
-    return this.customerService.updateOneById(id, updateCustomerDto);
+    return this.customerService.updateOneCustomerById(id, updateCustomerDto);
   }
 
   @Delete(':id')
   removeOneById(@Param('id') id: string) {
-    return this.customerService.removeOneById(id);
+    return this.customerService.removeOneCustomerById(id);
   }
 
   @Post(':customerid/locations')

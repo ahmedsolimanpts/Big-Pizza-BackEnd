@@ -16,7 +16,7 @@ import { Request } from 'express';
 import { DineinOrder } from '../Model/DineIn.model';
 import { CreateTakeAwayOrderDto } from '../dto/takeaway/create-takeaway-order.dto';
 import { TakeAwayOrder } from '../Model/TakeAway.model';
-import { CreateDelivereyOrderDto } from '../dto/delivery/create-deliverey-order.dto';
+import { CreateDeliveryOrderDto } from '../dto/delivery/create-delivery-order.dto';
 import { DeliveryOrder } from '../Model/Delivery.model';
 
 @ApiTags('order')
@@ -46,7 +46,6 @@ export class OrderController {
   createTakeAwayOrder(
     @Body()
     createOrderDto: CreateTakeAwayOrderDto,
-
     @Param('branchid') branchid: string,
     @Req() req: Request,
   ) {
@@ -62,7 +61,7 @@ export class OrderController {
   @Post(':branchid/delivery')
   createDeliveryOrder(
     @Body()
-    createOrderDto: CreateDelivereyOrderDto,
+    createOrderDto: CreateDeliveryOrderDto,
     @Param('branchid') branchid: string,
     @Req() req: Request,
   ) {
@@ -82,7 +81,7 @@ export class OrderController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.orderService.findOneByID(id);
+    return this.orderService.findOneOrderByID(id);
   }
 
   @Delete(':id')

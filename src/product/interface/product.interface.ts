@@ -25,4 +25,6 @@ export interface ProductInterface {
   quantity?: number;
 
   can_deliver?: boolean;
+
+  is_sensetive?: boolean;
 }

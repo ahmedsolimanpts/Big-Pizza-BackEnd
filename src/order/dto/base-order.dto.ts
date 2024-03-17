@@ -2,7 +2,6 @@ import {
   ArrayMinSize,
   IsArray,
   IsDateString,
-  IsEnum,
   IsMongoId,
   IsOptional,
   IsString,
@@ -10,8 +9,6 @@ import {
 } from 'class-validator';
 import { CreateOrderItemsDto } from './order-items/create-order-items.dto';
 import { Type } from 'class-transformer';
-import { CreatePaymentDto } from 'src/payment/dto/create-payment.dto';
-import { OrderStatus } from '../enums/Order-Status.enums';
 
 export class CreateBaseOrderDto {
   @ValidateNested({ each: true })
@@ -25,7 +22,8 @@ export class CreateBaseOrderDto {
   readyat?: Date;
 
   @IsOptional()
-  @IsString()
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   @IsArray()
   offers?: string[];
 
@@ -40,12 +38,4 @@ export class CreateBaseOrderDto {
   @IsOptional()
   @IsMongoId()
   customer?: string;
-
-  @IsOptional()
-  @ValidateNested({ each: true })
-  @Type(() => CreatePaymentDto)
-  payment?: CreatePaymentDto;
-
-  @IsEnum(OrderStatus)
-  order_status?: OrderStatus;
 }

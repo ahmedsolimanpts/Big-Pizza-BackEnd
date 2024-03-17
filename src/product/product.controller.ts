@@ -6,12 +6,10 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Role } from 'src/auth/decorator/roles.decorator';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { Public } from 'src/auth/decorator/IsPuplic.decorator';
@@ -51,24 +49,24 @@ export class ProductController {
   @Get()
   @Role(Roles.SUPERUSER)
   findAll() {
-    return this.productService.findAll();
+    return this.productService.findAllProducts();
   }
 
   @Get(':id')
   @Role(Roles.SUPERUSER)
   findOneByID(@Param('id') id: string) {
-    return this.productService.findOneByID(id);
+    return this.productService.findOneProductByID(id);
   }
 
   @Patch(':id')
   @Role(Roles.SUPERUSER)
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(id, updateProductDto);
+    return this.productService.updateOneProductByID(id, updateProductDto);
   }
 
   @Delete(':id')
   @Role(Roles.SUPERUSER)
   remove(@Param('id') id: string) {
-    return this.productService.remove(id);
+    return this.productService.removeOneProductByID(id);
   }
 }

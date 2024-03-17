@@ -1,57 +1,77 @@
-import { Injectable } from '@nestjs/common';
-import { CreateBranchDto } from './dto/create-branch.dto';
-import { UpdateBranchDto } from './dto/update-branch.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Branch } from './Model/branch.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { BranchInterface } from './interface/branch.interface';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class BranchService {
   constructor(
     @InjectModel(Branch.name) private readonly branchRepo: Model<Branch>,
+    private userService: UsersService,
   ) {}
-  async create(createBranchDto: CreateBranchDto) {
+
+  async create(createBranchData: BranchInterface): Promise<Branch> {
     try {
-      const branch = new this.branchRepo(createBranchDto);
+      if (createBranchData.manager) {
+        const user = await this.userService.findOneByid(
+          createBranchData.manager,
+        );
+        if (!user) throw new NotFoundException('Wrong Manager ID');
+      }
+
+      const branch = new this.branchRepo(createBranchData);
       return await branch.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findAll() {
+  async findAll(): Promise<Branch[]> {
     try {
       return await this.branchRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOneByID(id: string) {
+  async findOneBranchByID(branch_id: string): Promise<Branch> {
     try {
-      return await this.branchRepo.findById(id);
+      return await this.branchRepo.findById(branch_id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  update(id: string, updateBranchDto: UpdateBranchDto) {
+  async IsBranchsAvaliables(branch_id: string[]) {
     try {
-      return this.branchRepo.findByIdAndUpdate(id, updateBranchDto);
+      const branchs = await this.branchRepo.find({ _id: branch_id });
+      if (branchs.length == branch_id.length) {
+        return true;
+      }
+      return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOneBranchByID(branch_id: string, NewBranchData: BranchInterface) {
     try {
-      return await this.branchRepo.findByIdAndDelete(id);
+      if (NewBranchData.manager) {
+        const user = await this.userService.findOneByid(NewBranchData.manager);
+        if (!user) throw new NotFoundException('Wrong Manager Id');
+      }
+      return await this.branchRepo.findByIdAndUpdate(branch_id, NewBranchData);
     } catch (err) {
-      console.log(err);
+      throw err;
+    }
+  }
+
+  async removeOneBranchById(branch_id: string) {
+    try {
+      return await this.branchRepo.findByIdAndDelete(branch_id);
+    } catch (err) {
       throw err;
     }
   }

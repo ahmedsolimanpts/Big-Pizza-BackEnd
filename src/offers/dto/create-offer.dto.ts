@@ -1,10 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  ArrayMinSize,
   IsArray,
   IsDateString,
   IsMongoId,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
 } from 'class-validator';
 
@@ -21,8 +23,10 @@ export class CreateOfferDto {
     example: ['65d5b8076bf8d67aee25ccd5', '65d5b8076bf8d67aee25ccd2'],
     required: true,
   })
-  @IsString()
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   @IsArray()
+  @ArrayMinSize(1)
   @IsNotEmpty()
   branches: string[];
 
@@ -31,16 +35,16 @@ export class CreateOfferDto {
     required: true,
   })
   @IsDateString()
-  @IsNotEmpty()
-  from: Date;
+  @IsOptional()
+  from?: Date;
 
   @ApiProperty({
     example: '2020-02-02',
     required: true,
   })
   @IsDateString()
-  @IsNotEmpty()
-  to: Date;
+  @IsOptional()
+  to?: Date;
 
   @ApiProperty({
     example: 100,
@@ -56,8 +60,9 @@ export class CreateOfferDto {
   })
   @IsNotEmpty()
   @IsArray()
-  @IsString()
-  @IsMongoId()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   items: string[];
 
   @ApiProperty({

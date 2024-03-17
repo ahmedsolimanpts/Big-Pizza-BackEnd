@@ -1,71 +1,107 @@
-import { Injectable } from '@nestjs/common';
-import { CreateOfferDto } from './dto/create-offer.dto';
-import { UpdateOfferDto } from './dto/update-offer.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { ClientSession, Model } from 'mongoose';
 import { Offer } from './Model/offer.model';
+import { BranchService } from 'src/branch/branch.service';
+import { ProductService } from 'src/product/product.service';
+import { OfferInterface } from './interface/Offer.interface';
 
 @Injectable()
 export class OffersService {
   constructor(
     @InjectModel(Offer.name) private readonly offerRepo: Model<Offer>,
+    private branchService: BranchService,
+    private productService: ProductService,
   ) {}
-  async create(createOfferDto: CreateOfferDto) {
+  async create(NewOfferData: OfferInterface) {
     try {
-      const newOffer = new this.offerRepo(createOfferDto);
+      // Check If Branchs IDs Valid
+      const is_branchs_available = await this.branchService.IsBranchsAvaliables(
+        NewOfferData.branches,
+      );
+      if (!is_branchs_available) throw new NotFoundException('Wrong Branch ID');
+
+      // Check If Products IDs Valid
+      const is_products_available =
+        await this.productService.IsProductsAvailable(NewOfferData.items);
+      if (!is_products_available)
+        throw new NotFoundException('Wrong Products ID');
+
+      // Create New Offer
+      const newOffer = new this.offerRepo(NewOfferData);
       return await newOffer.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findAll() {
+  async findAllOffers() {
     try {
       return await this.offerRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOneById(id: string) {
+  async findOneOfferById(offer_id: string) {
     try {
-      return await this.offerRepo.findById(id);
+      return await this.offerRepo.findById(offer_id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOfferByName(name: string) {
+  async SubtractOneFromOfferQuantity(
+    offer_id: string,
+    session?: ClientSession,
+  ) {
     try {
-      return await this.offerRepo.find({ name }).exec();
+      return await this.offerRepo
+        .findByIdAndUpdate(offer_id, { $inc: { quantity: -1 } }, { new: true })
+        .session(session);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async update(id: string, updateOfferDto: UpdateOfferDto) {
+  async findOfferByName(OfferName: string) {
     try {
-      return await this.offerRepo.findByIdAndUpdate(id, updateOfferDto);
+      return await this.offerRepo.find({ OfferName }).exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOneOfferById(offer_id: string, NewUpdatedData: OfferInterface) {
     try {
-      return await this.offerRepo.findByIdAndDelete(id);
+      if (NewUpdatedData.branches) {
+        const is_branchs_available =
+          await this.branchService.IsBranchsAvaliables(NewUpdatedData.branches);
+        if (!is_branchs_available)
+          throw new NotFoundException('Wrong Branch ID');
+      }
+
+      if (NewUpdatedData.items) {
+        const is_products_available =
+          await this.productService.IsProductsAvailable(NewUpdatedData.items);
+        if (!is_products_available)
+          throw new NotFoundException('Wrong Products ID');
+      }
+      return await this.offerRepo.findByIdAndUpdate(offer_id, NewUpdatedData);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async IsValidCouponByID(offerId: string) {
+  async removeOneOfferByID(offer_id: string) {
+    try {
+      return await this.offerRepo.findByIdAndDelete(offer_id);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsValidCouponByID(offerId: string, session?: ClientSession) {
     try {
       const currentDate = new Date();
 
@@ -76,6 +112,7 @@ export class OffersService {
           from: { $lte: currentDate },
           to: { $gte: currentDate },
         })
+        .session(session)
         .exec();
 
       return !!validOffer;
@@ -84,7 +121,11 @@ export class OffersService {
     }
   }
 
-  async IsValidOfferInBranchByID(OfferId: string, branchId: string) {
+  async IsValidOfferInBranchByID(
+    OfferId: string,
+    branchId: string,
+    session?: ClientSession,
+  ) {
     try {
       const currentDate = new Date();
 
@@ -92,10 +133,13 @@ export class OffersService {
         .findOne({
           _id: OfferId,
           quantity: { $gt: 0 },
-          from: { $lte: currentDate },
-          to: { $gte: currentDate },
-          branches: branchId,
+          $or: [
+            { from: { $exists: false }, to: { $exists: false } }, // Neither from nor to dates exist
+            { from: { $lte: currentDate }, to: { $gte: currentDate } }, // Current date is within the from and to dates
+          ],
+          branches: { $in: [branchId] },
         })
+        .session(session)
         .exec();
 
       return !!validOffer;

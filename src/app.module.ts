@@ -19,6 +19,8 @@ import { EmployeeModule } from './employee/employee.module';
 import { StockModule } from './stock/stock.module';
 import { BillingModule } from './billing/billing.module';
 import { TicketModule } from './ticket/ticket.module';
+import { WalletModule } from './wallet/wallet.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import * as joi from 'joi';
 
 @Module({
@@ -53,6 +55,8 @@ import * as joi from 'joi';
     StockModule,
     BillingModule,
     TicketModule,
+    WalletModule,
+    NotificationsModule,
   ],
   controllers: [],
   providers: [],

@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   ArrayMinSize,
+  IsArray,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -27,6 +28,7 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   @IsString({ each: true })
   @ArrayMinSize(1)
+  @IsArray()
   phone: string[];
 
   @ApiProperty({
@@ -34,11 +36,11 @@ export class CreateCustomerDto {
     type: [CreateLocationDto],
     isArray: true,
   })
-  @IsNotEmpty()
-  @IsString({ each: true })
-  @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => CreateLocationDto)
+  @IsNotEmpty()
+  @ArrayMinSize(1)
+  @IsArray()
   locations: CreateLocationDto[];
 
   @ApiProperty({

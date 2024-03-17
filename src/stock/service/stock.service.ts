@@ -1,6 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { CreateStockDto } from '../dto/Stock/create-stock.dto';
-import { UpdateStockDto } from '../dto/Stock/update-stock.dto';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Stock } from '../Model/stock.model';
 import mongoose, { Model } from 'mongoose';
@@ -8,6 +10,8 @@ import { StockItemLogsInterface } from '../interfaces/Stock-Item-logs.interface'
 import { StockItemslogs } from '../Model/Stock-item-logs.model';
 import { StockTransactionTYPE } from '../enums/Stock-Transactions.enum';
 import { StockItem } from '../Model/Stock-Item.model';
+import { BranchService } from 'src/branch/branch.service';
+import { StockInterface } from '../interfaces/Stock.interface';
 
 @Injectable()
 export class StockService {
@@ -16,13 +20,21 @@ export class StockService {
     @InjectModel(StockItemslogs.name)
     private readonly stockItemLogRepo: Model<StockItemslogs>,
     @InjectConnection() private readonly connection: mongoose.Connection,
+    private banchService: BranchService,
   ) {}
 
-  async createStock(createStockDto: CreateStockDto) {
+  async createStock(createStockData: StockInterface): Promise<Stock> {
     try {
-      const newStock = new this.stockRepo(createStockDto);
+      const branch = await this.banchService.findOneBranchByID(
+        createStockData.branch,
+      );
+      if (!branch) throw new NotFoundException('Branch Not Exist');
+      const newStock = new this.stockRepo(createStockData);
       return await newStock.save();
     } catch (err) {
+      if (err.code == 11000) {
+        throw new ConflictException('Stock Already Exist');
+      }
       throw err;
     }
   }
@@ -96,9 +108,15 @@ export class StockService {
     }
   }
 
-  async updateOnebyID(id: string, updateStockDto: UpdateStockDto) {
+  async updateOnebyID(stock_id: string, updatedStockData: StockInterface) {
     try {
-      return await this.stockRepo.findByIdAndUpdate(id, updateStockDto);
+      if (updatedStockData.branch) {
+        const branch = await this.banchService.findOneBranchByID(
+          updatedStockData.branch,
+        );
+        if (!branch) throw new NotFoundException('Branch Not Exist');
+      }
+      return await this.stockRepo.findByIdAndUpdate(stock_id, updatedStockData);
     } catch (err) {
       throw err;
     }

@@ -19,6 +19,7 @@ import { DineinOrder, DineinOrderSchema } from './Model/DineIn.model';
 import { TakeAwayOrder, TakeAwayOrderSchema } from './Model/TakeAway.model';
 import { DeliveryOrder, DeliveryOrderSchema } from './Model/Delivery.model';
 import { ProductModule } from 'src/product/product.module';
+import { CouponModule } from 'src/coupon/coupon.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { ProductModule } from 'src/product/product.module';
     BranchModule,
     EmployeeModule,
     OffersModule,
+    CouponModule,
     ProductModule,
   ],
   controllers: [

@@ -1,37 +1,57 @@
-import { Injectable } from '@nestjs/common';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
-import { Model } from 'mongoose';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { ClientSession, Model } from 'mongoose';
 import { Product } from './Model/product.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { ProductCategory } from './enums/product-category.enums';
 import { ProductSubCategory } from './enums/product-subcategory.enum';
+import { ProductInterface } from './interface/product.interface';
+import { BranchService } from 'src/branch/branch.service';
 
 @Injectable()
 export class ProductService {
-  constructor(@InjectModel(Product.name) private productRepo: Model<Product>) {}
+  constructor(
+    @InjectModel(Product.name) private productRepo: Model<Product>,
+    private branchService: BranchService,
+  ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
+  async create(NewProductData: ProductInterface): Promise<Product> {
     try {
-      const product = new this.productRepo(createProductDto);
+      const branch = await this.branchService.findOneBranchByID(
+        NewProductData.branch,
+      );
+      if (!branch) throw new NotFoundException('Wrong Branch Id');
+      const product = new this.productRepo(NewProductData);
       return await product.save();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async findAll(): Promise<Product[]> {
+  async findAllProducts(): Promise<Product[]> {
     try {
       return await this.productRepo.find().exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
+
+  async IsProductsAvailable(products_id: string[]): Promise<boolean> {
+    try {
+      const products = await this.productRepo.find({ _id: products_id }).exec();
+      if (products.length == products_id.length) {
+        return true;
+      }
+      return false;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async findProductsByBranchID(branchid: string): Promise<Product[]> {
     try {
       return await this.productRepo.find({ branch: branchid }).exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -63,10 +83,12 @@ export class ProductService {
   async IsProductAvailableInBranch(
     product_id: string,
     branch_id: string,
+    session?: ClientSession,
   ): Promise<boolean> {
     try {
       const product = await this.productRepo
         .findOne({ _id: product_id, branch: branch_id })
+        .session(session)
         .exec();
       if (product && product.quantity > 0) {
         return true;
@@ -74,7 +96,7 @@ export class ProductService {
 
       return false;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -82,10 +104,12 @@ export class ProductService {
     product_id: string,
     branch_id: string,
     quantity: number,
+    session?: ClientSession,
   ): Promise<boolean> {
     try {
       const product = await this.productRepo
         .findOne({ _id: product_id, branch: branch_id })
+        .session(session)
         .exec();
       if (product && product.quantity >= quantity) {
         return true;
@@ -93,61 +117,99 @@ export class ProductService {
 
       return false;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
   async SubtractproductQuantity(
     product_id: string,
     quantity: number,
+    session?: ClientSession,
   ): Promise<Product> {
     try {
-      const product = await this.productRepo.findById(product_id).exec();
-      const new_qantity = product.quantity - quantity;
-      product.quantity = new_qantity;
-      return await product.save();
+      const product = await this.productRepo
+        .findById(product_id)
+        .session(session)
+        .exec();
+
+      // Check if the product exists
+      if (!product) {
+        throw new Error('Product not found');
+      }
+
+      // Subtract the quantity and save
+      product.quantity -= quantity; // Simplified subtraction operation
+      return await product.save({ session });
     } catch (err) {
       throw err;
     }
   }
 
-  async areProductsAvailable(
+  async AreProductsAvailableInBranch(
     productIds: string[],
     branchId: string,
+    session?: ClientSession,
   ): Promise<boolean> {
-    const products = await this.productRepo
-      .find({
-        _id: { $in: productIds },
-        branch: branchId,
-        quantity: { $gt: 0 },
-      })
-      .exec();
-
-    return products.length === productIds.length;
-  }
-
-  async findOneByID(id: string): Promise<Product> {
     try {
-      return await this.productRepo.findById(id).exec();
+      const products = await this.productRepo
+        .find({
+          _id: { $in: productIds },
+          branch: branchId,
+          quantity: { $gt: 0 },
+        })
+        .session(session)
+        .exec();
+
+      return products.length === productIds.length;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async update(
-    id: string,
-    updateProductDto: UpdateProductDto,
+  async findOneProductByID(
+    product_id: string,
+    session?: ClientSession,
   ): Promise<Product> {
     try {
-      return await this.productRepo.findByIdAndUpdate(id, updateProductDto);
+      let query = this.productRepo.findById(product_id);
+
+      // If a session is provided, use it with the query
+      if (session) {
+        query = query.session(session);
+      }
+
+      // Now execute the query with or without the session, as applicable
+      return await query.exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async remove(id: string): Promise<Product> {
+  async updateOneProductByID(
+    product_id: string,
+    newProductData: ProductInterface,
+  ): Promise<Product> {
     try {
-      return await this.productRepo.findByIdAndDelete(id);
+      if (newProductData.branch) {
+        const branch = await this.branchService.findOneBranchByID(
+          newProductData.branch,
+        );
+
+        if (!branch) throw new NotFoundException('Wrong Branch Id');
+      }
+
+      return await this.productRepo.findByIdAndUpdate(
+        product_id,
+        newProductData,
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOneProductByID(product_id: string): Promise<Product> {
+    try {
+      return await this.productRepo.findByIdAndDelete(product_id);
     } catch (err) {
       console.log(err);
     }

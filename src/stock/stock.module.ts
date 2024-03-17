@@ -27,17 +27,22 @@ import { StockTransactionController } from './controller/stock-transaction.contr
 import { StockItemLogsController } from './controller/stock-item-logs.controller';
 import { StockGardController } from './controller/stock-gard.controller';
 import { StockGardService } from './service/stock-gard.service';
+import { StockItemQuantityService } from './service/stock-item-quantity.service';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       {
-        name: StockItem.name,
-        schema: StockItemSchema,
-      },
-      {
         name: Stock.name,
         schema: StockSchema,
+      },
+      {
+        name: StockItemQuantity.name,
+        schema: StockItemQuantitySchema,
+      },
+      {
+        name: StockItem.name,
+        schema: StockItemSchema,
       },
       {
         name: StockItemslogs.name,
@@ -50,10 +55,6 @@ import { StockGardService } from './service/stock-gard.service';
       {
         name: StockGard.name,
         schema: StockGardSchema,
-      },
-      {
-        name: StockItemQuantity.name,
-        schema: StockItemQuantitySchema,
       },
     ]),
     BranchModule,
@@ -72,6 +73,7 @@ import { StockGardService } from './service/stock-gard.service';
     StockTransactionService,
     StockItemLogsService,
     StockGardService,
+    StockItemQuantityService,
   ],
   exports: [StockService, StockItemService, StockTransactionService],
 })

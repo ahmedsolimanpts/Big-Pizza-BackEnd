@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { User } from 'src/users/Model/user.model';
 import { StockTransactionTYPE } from '../enums/Stock-Transactions.enum';
 import { StockItemQuantity } from './Stock-item-quantity.model';
+import { StockTransaction } from './Stock-Transaction.model';
 
 @Schema({ timestamps: true })
 export class StockItemslogs {
@@ -14,6 +15,9 @@ export class StockItemslogs {
 
   @Prop()
   transaction: StockTransactionTYPE;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: StockTransaction.name })
+  transaction_id: string;
 }
 
 export const StockItemslogsSchema =

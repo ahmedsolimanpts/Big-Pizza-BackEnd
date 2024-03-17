@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   IsDateString,
+  IsMongoId,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -38,9 +39,10 @@ export class CreateBranchDto {
     example: 'user_id',
     required: false,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  manager: string;
+  @IsMongoId()
+  manager?: string;
 
   @ApiProperty({
     // example: ,
