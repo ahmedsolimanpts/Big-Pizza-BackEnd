@@ -24,6 +24,7 @@ export class CreateBaseOrderDto {
   @IsOptional()
   @IsString({ each: true })
   @IsMongoId({ each: true })
+  @ArrayMinSize(1)
   @IsArray()
   offers?: string[];
 

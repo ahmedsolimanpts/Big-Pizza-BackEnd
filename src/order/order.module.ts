@@ -20,9 +20,16 @@ import { TakeAwayOrder, TakeAwayOrderSchema } from './Model/TakeAway.model';
 import { DeliveryOrder, DeliveryOrderSchema } from './Model/Delivery.model';
 import { ProductModule } from 'src/product/product.module';
 import { CouponModule } from 'src/coupon/coupon.module';
+import { CustomerModule } from 'src/customer/customer.module';
 
 @Module({
   imports: [
+    BranchModule,
+    EmployeeModule,
+    OffersModule,
+    CouponModule,
+    ProductModule,
+    CustomerModule,
     MongooseModule.forFeature([
       {
         name: Order.name,
@@ -43,11 +50,6 @@ import { CouponModule } from 'src/coupon/coupon.module';
         ],
       },
     ]),
-    BranchModule,
-    EmployeeModule,
-    OffersModule,
-    CouponModule,
-    ProductModule,
   ],
   controllers: [
     OrderController,

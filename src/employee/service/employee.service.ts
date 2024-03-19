@@ -1,27 +1,37 @@
-import { Injectable } from '@nestjs/common';
-import { CreateEmployeeDto } from '../dto/create-employee.dto';
-import { UpdateEmployeeDto } from '../dto/update-employee.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Attendence, Employee } from '../Model/employee.model';
+import { Employee } from '../Model/employee.model';
 import { ClientSession, Model } from 'mongoose';
-
-import * as moment from 'moment'; // Import moment.js for date manipulation
-import { AttendenceActions } from '../enums/attendence-action.enums';
 import { Roles } from 'src/auth/enums/roles.enums';
+import { UsersService } from 'src/users/users.service';
+import { BranchService } from 'src/branch/branch.service';
+import { EmployeeInterface } from '../interfaces/employee.interface';
 
 @Injectable()
 export class EmployeeService {
   constructor(
     @InjectModel(Employee.name) private readonly employeeRepo: Model<Employee>,
-    @InjectModel(Attendence.name)
-    private readonly AttendenceRepo: Model<Attendence>,
+    private userService: UsersService,
+    private branchService: BranchService,
   ) {}
-  async create(createEmployeeDto: CreateEmployeeDto): Promise<Employee> {
+
+  async create(createEmployeeData: EmployeeInterface): Promise<Employee> {
     try {
-      const Newemployee = new this.employeeRepo(createEmployeeDto);
+      if (createEmployeeData.user) {
+        const user = await this.userService.findOneByid(
+          createEmployeeData.user,
+        );
+        if (!user) throw new NotFoundException('User Not Exist');
+      }
+
+      const branch = await this.branchService.findOneBranchByID(
+        createEmployeeData.working_in,
+      );
+      if (!branch) throw new NotFoundException('Branch Not Exist');
+
+      const Newemployee = new this.employeeRepo(createEmployeeData);
       return await Newemployee.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -30,16 +40,14 @@ export class EmployeeService {
     try {
       return await this.employeeRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findById(id: string): Promise<Employee> {
+  async findOneById(id: string): Promise<Employee> {
     try {
-      return await this.employeeRepo.findById(id).populate('attendence').exec();
+      return await this.employeeRepo.findById(id).exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -48,7 +56,6 @@ export class EmployeeService {
     try {
       return await this.employeeRepo.findOne({ user: id });
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -59,7 +66,6 @@ export class EmployeeService {
       if (user) return true;
       return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -87,7 +93,6 @@ export class EmployeeService {
 
       return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -112,11 +117,22 @@ export class EmployeeService {
     }
   }
 
-  async updateOneByID(id: string, updateEmployeeDto: UpdateEmployeeDto) {
+  async updateOneByID(id: string, UpdatedData: EmployeeInterface) {
     try {
-      return await this.employeeRepo.findByIdAndUpdate(id, updateEmployeeDto);
+      if (UpdatedData.user) {
+        const user = await this.userService.findOneByid(UpdatedData.user);
+        if (!user) throw new NotFoundException('User Not Exist');
+      }
+
+      if (UpdatedData.working_in) {
+        const branch = await this.branchService.findOneBranchByID(
+          UpdatedData.working_in,
+        );
+        if (!branch) throw new NotFoundException('Branch Not Exist');
+      }
+
+      return await this.employeeRepo.findByIdAndUpdate(id, UpdatedData);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -125,55 +141,7 @@ export class EmployeeService {
     try {
       return await this.employeeRepo.findByIdAndDelete(id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
-  }
-
-  async calculateWorkingHoursForMonth(
-    month: number,
-    year: number,
-  ): Promise<any[]> {
-    const employees = await this.findAll();
-    const workingHours = [];
-
-    for (const employee of employees) {
-      let totalHours = 0;
-      const attendances = employee.attendence.filter((att) => {
-        const attDate = moment((att as any).createdAt);
-        return attDate.month() === month && attDate.year() === year;
-      });
-
-      let dailyHours = 0;
-      let signInTime = null;
-
-      for (const attendance of attendances) {
-        const actionTime = moment((attendance as any).createdAt);
-
-        if (attendance.action === AttendenceActions.SIGNIN) {
-          signInTime = actionTime;
-        } else if (
-          attendance.action === AttendenceActions.SIGNOUT &&
-          signInTime
-        ) {
-          dailyHours += actionTime.diff(signInTime, 'hours', true);
-          signInTime = null; // Reset signInTime for the next day
-        }
-      }
-
-      // Add a check for the last action being SignOut
-      if (signInTime !== null) {
-        // If the last action is not SignOut, don't count the hours for the last day
-        dailyHours = 0;
-      }
-
-      totalHours += dailyHours;
-      workingHours.push({
-        employeeId: employee.user,
-        totalHours: totalHours.toFixed(2),
-      });
-    }
-
-    return workingHours;
   }
 }

@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Product } from 'src/product/Model/product.model';
 import { ProductComponents } from 'src/product/enums/product-components.enum';
@@ -9,7 +9,7 @@ export class OrderItems {
   verbose_name: string;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: Product.name })
-  item: string;
+  product: string;
 
   @Prop()
   quantity: number;
@@ -17,9 +17,11 @@ export class OrderItems {
   @Prop()
   note: string;
 
-  @Prop()
-  extra: Product[];
+  @Prop({ type: mongoose.Types.ObjectId, ref: Product.name })
+  extra: string[];
 
   @Prop()
   without_component: ProductComponents[];
 }
+
+export const OrderItemsSchema = SchemaFactory.createForClass(OrderItems);

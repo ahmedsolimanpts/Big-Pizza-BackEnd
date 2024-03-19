@@ -27,4 +27,6 @@ export interface ProductInterface {
   can_deliver?: boolean;
 
   is_sensetive?: boolean;
+
+  is_extra?: boolean;
 }

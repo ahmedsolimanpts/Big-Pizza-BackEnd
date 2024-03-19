@@ -1,22 +1,25 @@
 import {
+  ArrayMinSize,
   IsArray,
   IsEnum,
+  IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
-import { Product } from 'src/product/Model/product.model';
 import { ProductComponents } from 'src/product/enums/product-components.enum';
 
 export class CreateOrderItemsDto {
   @IsNotEmpty()
   @IsString()
-  item: string;
+  @IsMongoId()
+  product: string;
 
   @IsOptional()
   @IsString()
   verbose_name?: string;
+
   @IsNotEmpty()
   @IsNumber()
   quantity: number;
@@ -26,9 +29,11 @@ export class CreateOrderItemsDto {
   note?: string;
 
   @IsOptional()
-  @IsEnum(Product)
   @IsArray()
-  extra?: Product[];
+  @ArrayMinSize(1)
+  @IsMongoId({ each: true })
+  @IsString({ each: true })
+  extra?: string[];
 
   @IsOptional()
   @IsEnum(ProductComponents)

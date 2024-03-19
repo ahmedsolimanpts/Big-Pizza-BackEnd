@@ -21,6 +21,7 @@ import { BillingModule } from './billing/billing.module';
 import { TicketModule } from './ticket/ticket.module';
 import { WalletModule } from './wallet/wallet.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { PaypalModule } from './paypal/paypal.module';
 import * as joi from 'joi';
 
 @Module({
@@ -57,6 +58,7 @@ import * as joi from 'joi';
     TicketModule,
     WalletModule,
     NotificationsModule,
+    PaypalModule,
   ],
   controllers: [],
   providers: [],

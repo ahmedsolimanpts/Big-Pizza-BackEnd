@@ -1,77 +1,61 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Delete,
-  Post,
-  Body,
-  Req,
-  // UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Param, Delete, Patch, Req } from '@nestjs/common';
 import { OrderService } from '../service/order.service';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateDineInOrderDto } from '../dto/dinein/create-dinein-order.dto';
-import { OrderInterface } from '../Interface/Order.interface';
+import { OrderStatus } from '../enums/Order-Status.enums';
 import { Request } from 'express';
-import { DineinOrder } from '../Model/DineIn.model';
-import { CreateTakeAwayOrderDto } from '../dto/takeaway/create-takeaway-order.dto';
-import { TakeAwayOrder } from '../Model/TakeAway.model';
-import { CreateDeliveryOrderDto } from '../dto/delivery/create-delivery-order.dto';
-import { DeliveryOrder } from '../Model/Delivery.model';
 
 @ApiTags('order')
-// @UseGuards(IsEmployeeGuard)
 @Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post(':branchid/dinein')
-  createDineInOrder(
-    @Body()
-    createOrderDto: CreateDineInOrderDto,
-
-    @Param('branchid') branchid: string,
-    @Req() req: Request,
-  ) {
-    const data: OrderInterface = {
-      ...createOrderDto,
-      branch: branchid,
-      order_type: DineinOrder.name,
-      createby: (req as any).user._id,
-    };
-    return this.orderService.create(data);
+  @Patch('aprove-order/:orderid')
+  approveOrder(@Param('orderid') orderid: string, @Req() req: Request) {
+    return this.orderService.ApproveOrderByOrderID(
+      orderid,
+      OrderStatus.PREPARING,
+      (req as any).user._id,
+    );
   }
 
-  @Post(':branchid/takeaway')
-  createTakeAwayOrder(
-    @Body()
-    createOrderDto: CreateTakeAwayOrderDto,
-    @Param('branchid') branchid: string,
-    @Req() req: Request,
-  ) {
-    const data: OrderInterface = {
-      ...createOrderDto,
-      branch: branchid,
-      order_type: TakeAwayOrder.name,
-      createby: (req as any).user._id,
-    };
-    return this.orderService.create(data);
+  @Get('pending')
+  findAllPendingOrder() {
+    return this.orderService.findAllPendingOrder();
   }
 
-  @Post(':branchid/delivery')
-  createDeliveryOrder(
-    @Body()
-    createOrderDto: CreateDeliveryOrderDto,
-    @Param('branchid') branchid: string,
-    @Req() req: Request,
-  ) {
-    const data: OrderInterface = {
-      ...createOrderDto,
-      branch: branchid,
-      order_type: DeliveryOrder.name,
-      createby: (req as any).user._id,
-    };
-    return this.orderService.create(data);
+  @Get('pending/:branch_id')
+  findAllPendingOrderByBranchID(@Param('branch_id') branch_id: string) {
+    return this.orderService.findAllPendingOrderByBranchID(branch_id);
+  }
+
+  @Get('pending/:user_id')
+  findAllPendingOrderByUserID(@Param('user_id') user_id: string) {
+    return this.orderService.findAllPendingOrderByUserID(user_id);
+  }
+
+  @Get('all/:branch_id')
+  findAllOrderInBranch(@Param('branch_id') branch_id: string) {
+    return this.orderService.findAllOrderInBranch(branch_id);
+  }
+
+  @Get('compeleted/:branch_id')
+  findAllCompeletedOrderByBranchId(@Param('branch_id') branch_id: string) {
+    return this.orderService.findAllCompeletedOrderByBranchId(branch_id);
+  }
+
+  @Get('preparing')
+  findAllPreparingOrder() {
+    return this.orderService.findAllPreparingOrder();
+  }
+
+  @Get('preparing/:branch_id')
+  findAllPreparingdOrderByBranchId(@Param('branch_id') branch_id: string) {
+    return this.orderService.findAllPreparingOrderByBranchID(branch_id);
+  }
+
+  @Get('approveby/:user_id')
+  findAllOrdersApprovedByUserID(@Param('user_id') user_id: string) {
+    return this.orderService.findAllOrdersApprovedByUserID(user_id);
   }
 
   @Get()

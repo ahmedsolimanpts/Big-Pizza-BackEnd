@@ -1,57 +1,78 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Employee, Attendence } from '../Model/employee.model';
-import { CreateAttendActionDTO } from '../dto/create-attend-action.dto';
+import { Employee } from '../Model/employee.model';
+import { Attendence } from '../Model/attendence.model';
+import { AttendenceInterface } from '../interfaces/emp-attendence.interface';
 
 @Injectable()
 export class AttendenceService {
   constructor(
     @InjectModel(Employee.name) private readonly employeeRepo: Model<Employee>,
     @InjectModel(Attendence.name)
-    private readonly AttendenceRepo: Model<Attendence>,
+    private readonly attendenceRepo: Model<Attendence>,
   ) {}
 
-  async AddEmployeeAttendAction(
-    user_id: string,
-    createAttendActionDTO: CreateAttendActionDTO,
-  ) {
+  async create(NewData: AttendenceInterface) {
     try {
-      const emp = await this.employeeRepo.findById(
-        createAttendActionDTO.employee_id,
-      );
-      const new_Record = new this.AttendenceRepo({
-        ...createAttendActionDTO,
-        signby: user_id,
+      const emp = await this.employeeRepo.findById(NewData.employee);
+      if (!emp) throw new NotFoundException('Employee Not Exist');
+      const new_Record = new this.attendenceRepo({
+        NewData,
       });
 
-      if (emp && emp.attendence) {
-        const last_record = emp.attendence[emp.attendence.length - 1];
-        if (last_record && last_record.action == new_Record.action) {
-          throw new ConflictException("Can't Add This Action");
-        }
-        await emp.attendence.push(new_Record);
-        return await emp.save();
-      }
-      emp.attendence = [new_Record];
-      return await emp.save();
+      return await new_Record.save();
     } catch (err) {
       throw err;
     }
   }
 
-  async removeEmployeeAttendAction(
-    employeeId: string,
+  async findAll(): Promise<Attendence[]> {
+    try {
+      return await this.attendenceRepo.find().exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findByID(attend_id: string): Promise<Attendence> {
+    try {
+      return await this.attendenceRepo.findById(attend_id).exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findByEmployeeID(employee_id: string): Promise<Attendence[]> {
+    try {
+      return await this.attendenceRepo.find({ employee: employee_id }).exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateEmployeeAttend(
     attendenceId: string,
+    updatedData: AttendenceInterface,
   ): Promise<Employee> {
     try {
-      return await this.employeeRepo.findByIdAndUpdate(
-        employeeId,
-        { $pull: { attendence: { _id: attendenceId } } },
-        { new: true },
+      if (updatedData.employee) {
+        const emp = await this.employeeRepo.findById(updatedData.employee);
+        if (!emp) throw new NotFoundException('Employee Not Exist');
+      }
+      return await this.attendenceRepo.findByIdAndUpdate(
+        attendenceId,
+        updatedData,
       );
     } catch (err) {
-      console.log(err);
+      throw err;
+    }
+  }
+
+  async removeEmployeeAttend(attendenceId: string): Promise<Employee> {
+    try {
+      return await this.attendenceRepo.findByIdAndDelete(attendenceId);
+    } catch (err) {
       throw err;
     }
   }

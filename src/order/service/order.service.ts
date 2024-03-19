@@ -1,5 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import mongoose, { Model } from 'mongoose';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import mongoose, { ClientSession, Model } from 'mongoose';
 import { Order } from '../Model/order.model';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { OrderStatus } from '../enums/Order-Status.enums';
@@ -10,6 +14,8 @@ import { OffersService } from 'src/offers/offers.service';
 import { CouponService } from 'src/coupon/coupon.service';
 import { BranchService } from 'src/branch/branch.service';
 import { Roles } from 'src/auth/enums/roles.enums';
+import { CustomerService } from 'src/customer/service/customer.service';
+import { CustomerLocationsService } from 'src/customer/service/customer-locations.service';
 
 @Injectable()
 export class OrderService {
@@ -20,6 +26,8 @@ export class OrderService {
     private offerService: OffersService,
     private coponService: CouponService,
     private branchService: BranchService,
+    private customerService: CustomerService,
+    private cutomerlocationService: CustomerLocationsService,
     @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
@@ -31,15 +39,38 @@ export class OrderService {
         if (!branch) throw new NotFoundException('Branch Not Exist');
         const items = data['items'];
 
+        if (data.customer) {
+          const customer = await this.customerService.findOneCustomerById(
+            data.customer,
+          );
+          if (!customer) throw new NotFoundException('Cudstomer Not Exist');
+        }
+
+        if (data.end_location) {
+          const customerLoction =
+            await this.cutomerlocationService.findOneCustomerLocationById(
+              data.end_location,
+            );
+          if (!customerLoction)
+            throw new NotFoundException('Location Not Exist');
+        }
+
         // Check Item Availability
         for (const item of items) {
           const isProductAvailable =
             await this.productService.IsProductAvailableInBranchWithQuantity(
-              item.item,
+              item.product,
               data['branch'],
               item.quantity,
               session,
             );
+          if (item.extra) {
+            const IsValidExtra = await this.productService.IsExtraProducts(
+              item.extra,
+            );
+            if (!IsValidExtra)
+              throw new NotFoundException('Products Not Valid For Extra');
+          }
           if (!isProductAvailable) {
             throw new NotFoundException(
               "item Doesn't exist with this quantity",
@@ -88,7 +119,7 @@ export class OrderService {
         // Subtract from stock quantity
         for (const item of items) {
           await this.productService.SubtractproductQuantity(
-            item.item,
+            item.product,
             item.quantity,
             session,
           );
@@ -128,7 +159,19 @@ export class OrderService {
 
   async findOneOrderByID(id: string): Promise<Order> {
     try {
-      return this.orderRepo.findById(id);
+      return await this.orderRepo
+        .findById(id)
+        .populate([
+          'offers',
+          'coupon',
+          'branch',
+          'items',
+          'items.product',
+          'end_location',
+          'createby',
+          'customer',
+        ])
+        .exec();
     } catch (err) {
       throw err;
     }
@@ -160,6 +203,17 @@ export class OrderService {
     try {
       return await this.orderRepo
         .find({ order_status: OrderStatus.COMPELETED })
+        .populate('items.item')
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllCompeletedOrderByBranchId(branch_id: string): Promise<Order[]> {
+    try {
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.COMPELETED, branch: branch_id })
         .populate('items.item')
         .exec();
     } catch (err) {
@@ -200,11 +254,92 @@ export class OrderService {
     }
   }
 
-  async UpdateOrderStatusByOrderID(orderid: string, newStatus: OrderStatus) {
+  async findAllPreparingOrderByBranchID(branchid: string) {
     try {
-      return await this.orderRepo.findByIdAndUpdate(orderid, {
-        $set: { order_status: newStatus },
-      });
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.PREPARING, branch: branchid })
+        .populate('items.item')
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllOrdersApprovedByUserID(userid: string) {
+    try {
+      return await this.orderRepo
+        .find({ approvedby: userid })
+        .populate('items.item')
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllOrdersApprovedByUserIDInSpecificTime(
+    userid: string,
+    from: Date,
+    to: Date,
+  ) {
+    try {
+      return await this.orderRepo
+        .find({
+          approvedby: userid,
+          createdAt: {
+            $gte: from,
+            $lte: to,
+          },
+        })
+        .populate('items.item')
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ApproveOrderByOrderID(
+    orderid: string,
+    newStatus: OrderStatus,
+    createby: string,
+    session?: ClientSession,
+  ) {
+    try {
+      const order = await this.orderRepo.findById(orderid);
+      if (order.order_status == newStatus)
+        throw new ConflictException('Order In this Status Already');
+      // Check If User Work In Branch and Cashier
+      const isInBrnch =
+        await this.employeeService.IsUserWorkingInBranchAndHaveRole(
+          createby,
+          order.branch,
+          Roles.CASHIER,
+          session,
+        );
+      if (isInBrnch) {
+        order.order_status = newStatus;
+      }
+      return await order.save();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeOrderStatusByOrderID(
+    orderid: string,
+    newStatus: OrderStatus,
+    session?: ClientSession,
+  ) {
+    try {
+      return await this.orderRepo
+        .findByIdAndUpdate(
+          orderid,
+          {
+            order_status: newStatus,
+          },
+          { new: true },
+        )
+        .session(session)
+        .exec();
     } catch (err) {
       throw err;
     }

@@ -100,6 +100,25 @@ export class ProductService {
     }
   }
 
+  async IsExtraProducts(
+    products: string[],
+    session?: ClientSession,
+  ): Promise<boolean> {
+    try {
+      const product = await this.productRepo
+        .find({ _id: products, is_extra: true })
+        .session(session)
+        .exec();
+      if (product && product.length == products.length) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async IsProductAvailableInBranchWithQuantity(
     product_id: string,
     branch_id: string,

@@ -1,19 +1,29 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Param, Post, Req } from '@nestjs/common';
+import { OrderInterface } from '../Interface/Order.interface';
+import { DineinOrder } from '../Model/DineIn.model';
+import { CreateDineInOrderDto } from '../dto/dinein/create-dinein-order.dto';
+import { OrderService } from '../service/order.service';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('dine-in')
+@ApiTags('DineIn Order')
+@Controller('order/dine-in')
 export class DineInController {
-  // @Post(':branchid/dinein')
-  // createDineInOrder(
-  //   @Param('branchid') branchid: string,
-  //   @Body() createOrderDto: CreateDineInOrderDto,
-  //   @Req() req: Request,
-  // ) {
-  //   const data: CreateOrderInterface = {
-  //     branch: branchid,
-  //     createby: (req as any).user._id,
-  //     order_type: OrderType.DINEIN,
-  //     ...createOrderDto,
-  //   };
-  //   return this.dineInService.CreateOrder(data);
-  // }
+  constructor(private readonly orderService: OrderService) {}
+
+  @Post(':branchid')
+  createDineInOrder(
+    @Body()
+    createOrderDto: CreateDineInOrderDto,
+
+    @Param('branchid') branchid: string,
+    @Req() req: Request,
+  ) {
+    const data: OrderInterface = {
+      ...createOrderDto,
+      branch: branchid,
+      order_type: DineinOrder.name,
+      createby: (req as any).user._id,
+    };
+    return this.orderService.create(data);
+  }
 }

@@ -7,14 +7,13 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { CustomerService } from '../customer.service';
-import { CreateCustomerDto } from '../dto/create-customer.dto';
-import { UpdateCustomerDto } from '../dto/update-customer.dto';
+import { CustomerService } from '../service/customer.service';
+import { CreateCustomerDto } from '../dto/customer/create-customer.dto';
+import { UpdateCustomerDto } from '../dto/customer/update-customer.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 
-@ApiTags('Admin Customer')
-@Controller('admin-customer')
+@ApiTags('Customer')
+@Controller('customer')
 export class CustomerAdminController {
   constructor(private readonly customerService: CustomerService) {}
 
@@ -26,6 +25,11 @@ export class CustomerAdminController {
   @Get()
   findAll() {
     return this.customerService.findAllCustomers();
+  }
+
+  @Get('phone/:number')
+  findAllCustomersByPhone(@Param('number') number: string) {
+    return this.customerService.findAllCustomersByPhone(number);
   }
 
   @Get(':id')
@@ -44,24 +48,5 @@ export class CustomerAdminController {
   @Delete(':id')
   removeOneById(@Param('id') id: string) {
     return this.customerService.removeOneCustomerById(id);
-  }
-
-  @Post(':customerid/locations')
-  AddLocationToCustomer(
-    @Param('customerid') customerid: string,
-    @Body() new_Location: CreateLocationDto,
-  ) {
-    return this.customerService.AddLocationToCustomer(customerid, new_Location);
-  }
-
-  @Delete(':customerid/:locationid/locations')
-  RemoveLocationFromCustomer(
-    @Param('customerid') customerid: string,
-    @Param('locationid') locationid: string,
-  ) {
-    return this.customerService.RemoveLocationFromCustomer(
-      customerid,
-      locationid,
-    );
   }
 }

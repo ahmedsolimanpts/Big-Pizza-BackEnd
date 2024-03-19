@@ -112,4 +112,12 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   @IsOptional()
   @IsBoolean()
   is_sensetive?: boolean;
+
+  @ApiPropertyOptional({
+    example: 'true',
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  is_extra?: boolean;
 }

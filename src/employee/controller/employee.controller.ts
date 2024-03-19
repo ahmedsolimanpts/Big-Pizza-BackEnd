@@ -8,8 +8,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { EmployeeService } from '../service/employee.service';
-import { CreateEmployeeDto } from '../dto/create-employee.dto';
-import { UpdateEmployeeDto } from '../dto/update-employee.dto';
+import { CreateEmployeeDto } from '../dto/employee/create-employee.dto';
+import { UpdateEmployeeDto } from '../dto/employee/update-employee.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('employee')
@@ -29,7 +29,7 @@ export class EmployeeController {
 
   @Get(':id')
   findById(@Param('id') id: string) {
-    return this.employeeService.findById(id);
+    return this.employeeService.findOneById(id);
   }
 
   @Patch(':id')

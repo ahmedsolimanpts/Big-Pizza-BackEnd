@@ -6,6 +6,8 @@ sudo docker run --name mongodb-replica-set -d -p 27017:27017 mongo --replSet MyR
 
 sudo docker exec -it mongodb-replica-set mongosh
 
+echo "Start Creating Replica"
+
 rs.status()
 
 rs.initiate()

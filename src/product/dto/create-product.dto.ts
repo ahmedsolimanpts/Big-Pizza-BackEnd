@@ -112,4 +112,12 @@ export class CreateProductDto {
   @IsOptional()
   @IsBoolean()
   is_sensetive?: boolean;
+
+  @ApiProperty({
+    example: 'true',
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  is_extra?: boolean;
 }

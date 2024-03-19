@@ -91,18 +91,23 @@ OrderSchema.pre('save', async function (next) {
 
 // const OfferModel = mongoose.model(Offer.name, OfferSchema);
 // const CouponModel = mongoose.model(Coupon.name, CouponSchema);
+// const ProductModel = mongoose.model(Product.name, ProductSchema);
 
-// OrderSchema.virtual('total_without_tax').get(async function () {
+// OrderSchema.virtual('total').get(async function () {
 //   let total = 0;
-//   this.items.forEach((item) => {
-//     const item_price = item.item.price * item.quantity;
+
+//   for (const item of this.items) {
+//     const product = await ProductModel.findById(item.product).exec();
+
+//     const item_price = product.price * item.quantity;
 //     total += item_price;
-//   });
+//   }
+
 //   if (this.offers) {
-//     this.offers.forEach(async (offerid) => {
+//     for (const offerid of this.offers) {
 //       const offer = await OfferModel.findById(offerid).exec();
 //       total += offer.price;
-//     });
+//     }
 //   }
 
 //   if (this.coupon) {
@@ -111,9 +116,6 @@ OrderSchema.pre('save', async function (next) {
 //     total -= couponDiscount;
 //   }
 
-//   if (this.discount) {
-//     total -= this.discount;
-//   }
 //   if (this.percent_discount) {
 //     const percent = total * (this.percent_discount / 100);
 //     total -= percent;
@@ -121,5 +123,5 @@ OrderSchema.pre('save', async function (next) {
 //   return total;
 // });
 
-OrderSchema.set('toJSON', { virtuals: true });
-OrderSchema.set('toObject', { virtuals: true });
+// OrderSchema.set('toJSON', { virtuals: true });
+// OrderSchema.set('toObject', { virtuals: true });

@@ -1,17 +1,8 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Req,
-} from '@nestjs/common';
-import { CustomerService } from '../customer.service';
-import { CreateCustomerDto } from '../dto/create-customer.dto';
-import { UpdateCustomerDto } from '../dto/update-customer.dto';
+import { Controller, Get, Post, Body, Req } from '@nestjs/common';
+import { CustomerService } from '../service/customer.service';
+import { CreateCustomerDto } from '../dto/customer/create-customer.dto';
+import { UpdateCustomerDto } from '../dto/customer/update-customer.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateLocationDto } from 'src/location/dto/create-location.dto';
 import { CustomerInterface } from '../interface/Customer.interface';
 import { Request } from 'express';
 
@@ -41,28 +32,6 @@ export class CustomerUserController {
     return this.customerService.updateOneCustomerById(
       (req as any).user._id,
       updateCustomerDto,
-    );
-  }
-
-  @Post('/locations')
-  AddLocationToCustomer(
-    @Req() req: Request,
-    @Body() new_Location: CreateLocationDto,
-  ) {
-    return this.customerService.AddLocationToCustomer(
-      (req as any).user._id,
-      new_Location,
-    );
-  }
-
-  @Delete(':locationid/locations')
-  RemoveLocationFromCustomer(
-    @Req() req: Request,
-    @Param('locationid') locationid: string,
-  ) {
-    return this.customerService.RemoveLocationFromCustomer(
-      (req as any).user._id,
-      locationid,
     );
   }
 }

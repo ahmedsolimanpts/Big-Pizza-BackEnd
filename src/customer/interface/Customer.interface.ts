@@ -1,5 +1,3 @@
-import { LocationInterface } from 'src/location/interface/Location.interface';
-
 export interface CustomerInterface {
   name?: string;
 
@@ -7,7 +5,8 @@ export interface CustomerInterface {
 
   phone?: string[];
 
-  locations?: LocationInterface[];
-
   notes?: string;
+  notification_phone?: string;
+
+  notification_email?: string;
 }

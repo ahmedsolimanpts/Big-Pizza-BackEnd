@@ -43,6 +43,9 @@ export class Product {
 
   @Prop()
   is_sensetive: boolean;
+
+  @Prop()
+  is_extra: boolean;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { Location } from 'src/location/Model/location.model';
 import { User } from 'src/users/Model/user.model';
 
 @Schema()
@@ -14,11 +13,14 @@ export class Customer {
   @Prop({ required: true })
   phone: string[];
 
-  @Prop({ type: [Location], required: true, default: [] })
-  locations: Location[];
-
   @Prop()
   notes: string;
+
+  @Prop()
+  notification_phone: string;
+
+  @Prop()
+  notification_email: string;
 }
 
 export const CustomerSchema = SchemaFactory.createForClass(Customer);
