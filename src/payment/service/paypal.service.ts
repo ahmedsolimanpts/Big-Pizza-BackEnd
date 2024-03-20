@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { Payment } from '../Model/payment.model';
 import { UpdatePayPalPaymentInterface } from '../interface/Paypal/Update-PayPal-Payment.interface';
 import { OrderService } from 'src/order/service/order.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { CreateBasePaymentInterface } from '../interface/Create-Base-Payment.interface';
 
 @Injectable()

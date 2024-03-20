@@ -13,4 +13,7 @@ export interface UserInterface {
   refreshToken?: string;
 
   status?: AccountStatus;
+  is_valid_email?: boolean;
+  is_verified?: boolean;
+  isRegisteredWithGoogle?: boolean;
 }

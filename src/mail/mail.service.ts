@@ -3,11 +3,11 @@ import { ConfigService } from '@nestjs/config';
 import { google } from 'googleapis';
 // import { Options } from 'nodemailer/lib/smtp-transport';
 import * as nodemailer from 'nodemailer';
+import { SendMailOption } from './type/SendMail-Option.type';
 
 @Injectable()
 export class MailService {
   constructor(private configService: ConfigService) {}
-
   private async setTransport() {
     const OAuth2 = google.auth.OAuth2;
     const oauth2Client = new OAuth2(
@@ -43,15 +43,15 @@ export class MailService {
     return transport;
   }
 
-  public async sendMail(to: string[], subject: string, body: string) {
+  public async sendMail(mailOption: SendMailOption) {
     try {
       const transport = await this.setTransport();
 
       const option = {
-        to: to, // list of receivers
+        to: mailOption.to, // list of receivers
         from: `No Reply <${this.configService.get('EMAIL_USER')}>`,
-        subject: subject,
-        text: body,
+        subject: mailOption.subject,
+        text: mailOption.body,
       };
 
       return await transport.sendMail(option);

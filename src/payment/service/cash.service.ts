@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 import { CreateCashPaymentInterface } from '../interface/Cash/Create-Cash-Payment.interface';
 import { UpdateCashPaymentInterface } from '../interface/Cash/Update-Cash-Payment.interface';
 import { OrderService } from 'src/order/service/order.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { BranchService } from 'src/branch/branch.service';
 
 @Injectable()

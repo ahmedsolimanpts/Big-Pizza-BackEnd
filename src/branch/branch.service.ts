@@ -3,7 +3,7 @@ import { Branch } from './Model/branch.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { BranchInterface } from './interface/branch.interface';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 
 @Injectable()
 export class BranchService {

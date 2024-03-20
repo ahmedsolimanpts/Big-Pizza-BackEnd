@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Customer } from '../Model/customer.model';
 import { Model } from 'mongoose';
 import { CustomerInterface } from '../interface/Customer.interface';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 
 @Injectable()
 export class CustomerService {

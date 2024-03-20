@@ -5,7 +5,7 @@ import { Employee } from '../Model/employee.model';
 import { EmployeeMonthlyPDR } from '../Model/emp-monthly-pdr.model';
 import { EmployeeService } from './employee.service';
 import { EmployeeMonthlyPDRInterface } from '../interfaces/employee-monthly-pdr.interface';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 
 @Injectable()
 export class PdrService {

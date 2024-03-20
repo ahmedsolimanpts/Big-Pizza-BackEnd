@@ -6,7 +6,7 @@ import { AssignRoleDto } from '../dto/AssignRole.dto';
 import { Roles } from '../enums/roles.enums';
 import { RolesGuard } from '../guards/roles.guard';
 import { AuthService } from '../auth.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 
 @ApiTags('Auth Admin')
 @UseGuards(RolesGuard)

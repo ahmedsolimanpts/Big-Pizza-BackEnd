@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { google, Auth } from 'googleapis';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { AuthService } from '../auth.service';
 import { User } from 'src/users/Model/user.model';
 

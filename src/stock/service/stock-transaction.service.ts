@@ -11,7 +11,7 @@ import { StockTransaction } from '../Model/Stock-Transaction.model';
 import { StockItemLogsInterface } from '../interfaces/Stock-Item-logs.interface';
 import { StockTransactionTYPE } from '../enums/Stock-Transactions.enum';
 import { StockItemLogsService } from './stock-item-logs.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { StockService } from './stock.service';
 import { StockItemService } from './stock-item.service';
 

@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 import { TicketInterface } from './interface/Ticket.interface';
 import { AddTicketUpdatesInterface } from './interface/AddTicket-Updates.inteface';
 import { TicketStatus } from './enums/ticket-status.enum';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { BranchService } from 'src/branch/branch.service';
 
 @Injectable()

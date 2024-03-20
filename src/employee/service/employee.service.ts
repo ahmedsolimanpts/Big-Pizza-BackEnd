@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Employee } from '../Model/employee.model';
 import { ClientSession, Model } from 'mongoose';
 import { Roles } from 'src/auth/enums/roles.enums';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from 'src/users/service/users.service';
 import { BranchService } from 'src/branch/branch.service';
 import { EmployeeInterface } from '../interfaces/employee.interface';
 
