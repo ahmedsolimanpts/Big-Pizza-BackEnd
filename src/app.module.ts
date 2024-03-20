@@ -22,6 +22,7 @@ import { TicketModule } from './ticket/ticket.module';
 import { WalletModule } from './wallet/wallet.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { PaypalModule } from './paypal/paypal.module';
+import { MailModule } from './mail/mail.module';
 import * as joi from 'joi';
 
 @Module({
@@ -29,6 +30,13 @@ import * as joi from 'joi';
     ConfigModule.forRoot({
       validationSchema: joi.object({
         mongoCluster: joi.string().required(),
+        GOOGLE_AUTH_CLIENT_ID: joi.string().required(),
+        GOOGLE_AUTH_CLIENT_SECRET: joi.string().required(),
+        EMAIL_SERVICE: joi.string().required(),
+        EMAIL_USER: joi.string().required(),
+        EMAIL_PASSWORD: joi.string().required(),
+        GOOGLE_REFRESH: joi.string().required(),
+        GOOGLE_REDIRECT_URL: joi.string().required(),
       }),
     }),
     MongooseModule.forRootAsync({
@@ -59,6 +67,7 @@ import * as joi from 'joi';
     WalletModule,
     NotificationsModule,
     PaypalModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],

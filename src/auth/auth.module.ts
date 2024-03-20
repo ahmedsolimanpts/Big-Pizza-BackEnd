@@ -9,6 +9,8 @@ import { AuthService } from './auth.service';
 import { JWTGuard } from './guards/jwt.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { AdminController } from './admin/admin.controller';
+import { GoogleService } from './google/google.service';
+import { GoogleController } from './google/google.controller';
 
 @Module({
   imports: [
@@ -24,7 +26,7 @@ import { AdminController } from './admin/admin.controller';
     }),
     UsersModule,
   ],
-  controllers: [AuthController, AdminController],
+  controllers: [AuthController, AdminController, GoogleController],
   providers: [
     AuthService,
     ATStrategy,
@@ -32,6 +34,7 @@ import { AdminController } from './admin/admin.controller';
       provide: APP_GUARD,
       useClass: JWTGuard,
     },
+    GoogleService,
   ],
   exports: [],
 })

@@ -50,6 +50,18 @@ export class UsersService {
     }
   }
 
+  async createWithGoogle(email: string, name: string) {
+    // const stripeCustomer = await this.stripeService.createCustomer(name, email);
+
+    const newUser = await this.userRepo.create({
+      email,
+      name,
+      isRegisteredWithGoogle: true,
+      // stripeCustomerId: stripeCustomer.id,
+    });
+    return await newUser.save();
+  }
+
   async findOneByEmail(email: string): Promise<User> {
     try {
       return await this.userRepo.findOne({ email }).exec();

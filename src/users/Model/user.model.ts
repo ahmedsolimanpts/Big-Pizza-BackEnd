@@ -23,6 +23,15 @@ export class User {
 
   @Prop({ default: AccountStatus.ACTIVE, required: true })
   status: AccountStatus;
+
+  @Prop({ required: true, default: false })
+  is_valid_email: boolean;
+
+  @Prop({ required: true, default: false })
+  is_verified: boolean;
+
+  @Prop({ required: true, default: false })
+  isRegisteredWithGoogle: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
