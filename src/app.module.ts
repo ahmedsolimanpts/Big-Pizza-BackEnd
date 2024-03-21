@@ -37,6 +37,7 @@ import * as joi from 'joi';
         EMAIL_PASSWORD: joi.string().required(),
         GOOGLE_REFRESH: joi.string().required(),
         GOOGLE_REDIRECT_URL: joi.string().required(),
+        RESET_PASSWORD_LINK: joi.string().required(),
       }),
     }),
     MongooseModule.forRootAsync({

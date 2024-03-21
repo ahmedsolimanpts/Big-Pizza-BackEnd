@@ -19,6 +19,8 @@ import { Roles } from 'src/auth/enums/roles.enums';
 import { VerifyEmailService } from '../service/verify-email.service';
 import { UsersService } from '../service/users.service';
 import { Request } from 'express';
+import { ResetPasswordService } from '../service/reset-password.service';
+import { Public } from 'src/auth/decorator/IsPuplic.decorator';
 
 @ApiTags('users')
 @Controller('users')
@@ -26,6 +28,7 @@ export class UsersController {
   constructor(
     private readonly usersService: UsersService,
     private verifyEmailService: VerifyEmailService,
+    private resetPasswordService: ResetPasswordService,
   ) {}
 
   @Post()
@@ -52,6 +55,21 @@ export class UsersController {
   ConfirmverifyEmail(@Req() req: Request, @Body('code') code: number) {
     return this.verifyEmailService.VerifyAndUpdate((req as any).user._id, code);
   }
+
+  @Public()
+  @Post('forget-password')
+  async ResetPassword(@Body('email') email: string): Promise<any> {
+    return await this.resetPasswordService.RequestResetPassword(email);
+  }
+  @Public()
+  @Post('update-forget-password')
+  async UpdatePassword(
+    @Body('code') code: number,
+    @Body('password') password: string,
+  ): Promise<any> {
+    return await this.resetPasswordService.VerifyAndUpdate(code, password);
+  }
+
   @UseGuards(RolesGuard)
   @Role(Roles.SUPERUSER)
   @Patch(':id')

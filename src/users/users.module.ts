@@ -10,6 +10,12 @@ import {
   VerifyUserEmailSchema,
 } from './Model/verify-user-email.model';
 import { MailModule } from 'src/mail/mail.module';
+import {
+  ResetPassword,
+  ResetPasswordSchema,
+} from './Model/Reset-Password.model';
+import { ConfigModule } from '@nestjs/config';
+import { ResetPasswordService } from './service/reset-password.service';
 
 @Module({
   imports: [
@@ -19,12 +25,14 @@ import { MailModule } from 'src/mail/mail.module';
         name: VerifyUserEmail.name,
         schema: VerifyUserEmailSchema,
       },
+      { name: ResetPassword.name, schema: ResetPasswordSchema },
     ]),
     LocationModule,
     MailModule,
+    ConfigModule,
   ],
   controllers: [UsersController],
-  providers: [UsersService, VerifyEmailService],
-  exports: [UsersService],
+  providers: [UsersService, VerifyEmailService, ResetPasswordService],
+  exports: [UsersService, ResetPasswordService],
 })
 export class UsersModule {}

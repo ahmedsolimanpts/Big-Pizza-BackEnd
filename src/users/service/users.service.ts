@@ -71,7 +71,18 @@ export class UsersService {
   }
   async updateOneByID(id: string, newData: UserInterface): Promise<User> {
     try {
+      if (newData.password) {
+        newData.password = await this.hashFunction(newData.password);
+      }
       return await this.userRepo.findByIdAndUpdate(id, newData);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateOneByemail(email: string, newData: UserInterface): Promise<User> {
+    try {
+      return await this.userRepo.findOneAndUpdate({ email: email }, newData);
     } catch (err) {
       throw err;
     }
