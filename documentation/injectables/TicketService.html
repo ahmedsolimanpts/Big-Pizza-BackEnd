@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/ticket/ticket.service.ts</code>
+            <code>src/ticket/service/ticket.service.ts</code>
         </p>
 
 
@@ -144,10 +144,6 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#AddTicketupdate" >AddTicketupdate</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
                                 <a href="#ChangeTicketStatus" >ChangeTicketStatus</a>
                             </li>
                             <li>
@@ -164,11 +160,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeOneTicketById" >removeOneTicketById</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#updateOneTicketById" >updateOneTicketById</a>
                             </li>
                         </ul>
                     </td>
@@ -188,12 +184,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(ticketRepo: <a href="../classes/Ticket.html" target="_self">Model&lt;Ticket&gt;</a>)</code>
+<code>constructor(ticketRepo: <a href="../classes/Ticket.html" target="_self">Model&lt;Ticket&gt;</a>, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/ticket/ticket.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/ticket/service/ticket.service.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -222,6 +218,30 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>branchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -236,87 +256,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="AddTicketupdate"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>AddTicketupdate</b></span>
-                        <a href="#AddTicketupdate"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>AddTicketupdate(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../interfaces/AddTicketUpdatesInterface.html" target="_self">AddTicketUpdatesInterface</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:49</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>data</td>
-                                            <td>
-                                                            <code><a href="../interfaces/AddTicketUpdatesInterface.html" target="_self" >AddTicketUpdatesInterface</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -339,8 +278,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -420,8 +359,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -457,7 +396,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Ticket.html" target="_self" >Promise&lt;Ticket&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -489,8 +428,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -499,7 +438,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Ticket.html" target="_self" >Promise&lt;Ticket[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -528,146 +467,146 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:33</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="remove"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:69</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="update"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateTicketDto: <a href="../classes/UpdateTicketDto.html" target="_self">UpdateTicketDto</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/ticket/ticket.service.ts:41</a></div>
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Ticket.html" target="_self" >Promise&lt;Ticket&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOneTicketById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOneTicketById</b></span>
+                        <a href="#removeOneTicketById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOneTicketById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneTicketById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneTicketById</b></span>
+                        <a href="#updateOneTicketById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneTicketById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newTicketUpdate: <a href="../interfaces/TicketInterface.html" target="_self">TicketInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/ticket/service/ticket.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -700,9 +639,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateTicketDto</td>
+                                                <td>newTicketUpdate</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateTicketDto.html" target="_self" >UpdateTicketDto</a></code>
+                                                            <code><a href="../interfaces/TicketInterface.html" target="_self" >TicketInterface</a></code>
                                             </td>
 
                                             <td>
@@ -715,7 +654,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Ticket.html" target="_self" >Promise&lt;Ticket&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -731,23 +670,31 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { UpdateTicketDto } from &#x27;./dto/update-ticket.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { Ticket } from &#x27;./Models/ticket.model&#x27;;
+import { Ticket } from &#x27;../Models/ticket.model&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
-import { TicketInterface } from &#x27;./interface/Ticket.interface&#x27;;
-import { AddTicketUpdatesInterface } from &#x27;./interface/AddTicket-Updates.inteface&#x27;;
-import { TicketStatus } from &#x27;./enums/ticket-status.enum&#x27;;
+import { TicketInterface } from &#x27;../interface/Ticket.interface&#x27;;
+import { TicketStatus } from &#x27;../enums/ticket-status.enum&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
 
 @Injectable()
 export class TicketService {
   constructor(
     @InjectModel(Ticket.name) private readonly ticketRepo: Model&lt;Ticket&gt;,
+    private userService: UsersService,
+    private branchService: BranchService,
   ) {}
 
-  async create(data: TicketInterface) {
+  async create(data: TicketInterface): Promise&lt;Ticket&gt; {
     try {
+      const branch &#x3D; await this.branchService.findOneBranchByID(data.branch);
+      if (!branch) throw new NotFoundException(&#x27;Wrong Branch ID&#x27;);
+
+      const user &#x3D; await this.userService.findOneByid(data.createby);
+      if (!user) throw new NotFoundException(&#x27;Wrong User ID&#x27;);
+
       const newTicket &#x3D; new this.ticketRepo(data);
       return await newTicket.save();
     } catch (err) {
@@ -755,7 +702,7 @@ export class TicketService {
     }
   }
 
-  async findAll() {
+  async findAll(): Promise&lt;Ticket[]&gt; {
     try {
       return await this.ticketRepo.find().exec();
     } catch (err) {
@@ -763,7 +710,7 @@ export class TicketService {
     }
   }
 
-  async findOneById(id: string) {
+  async findOneById(id: string): Promise&lt;Ticket&gt; {
     try {
       return await this.ticketRepo.findById(id);
     } catch (err) {
@@ -771,19 +718,26 @@ export class TicketService {
     }
   }
 
-  async update(id: string, updateTicketDto: UpdateTicketDto) {
+  async updateOneTicketById(
+    id: string,
+    newTicketUpdate: TicketInterface,
+  ): Promise&lt;Ticket&gt; {
     try {
-      return await this.ticketRepo.findByIdAndUpdate(id, updateTicketDto);
-    } catch (err) {
-      throw err;
-    }
-  }
+      if (newTicketUpdate.branch) {
+        const branch &#x3D; await this.branchService.findOneBranchByID(
+          newTicketUpdate.branch,
+        );
+        if (!branch) throw new NotFoundException(&#x27;Wrong Branch ID&#x27;);
+      }
 
-  async AddTicketupdate(id: string, data: AddTicketUpdatesInterface) {
-    try {
-      return await this.ticketRepo.findByIdAndUpdate(id, {
-        $push: { updates: data },
-      });
+      if (newTicketUpdate.createby) {
+        const user &#x3D; await this.userService.findOneByid(
+          newTicketUpdate.createby,
+        );
+        if (!user) throw new NotFoundException(&#x27;Wrong User ID&#x27;);
+      }
+
+      return await this.ticketRepo.findByIdAndUpdate(id, newTicketUpdate);
     } catch (err) {
       throw err;
     }
@@ -799,7 +753,8 @@ export class TicketService {
       throw err;
     }
   }
-  async remove(id: string) {
+
+  async removeOneTicketById(id: string) {
     try {
       return await this.ticketRepo.findByIdAndDelete(id);
     } catch (err) {

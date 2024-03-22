@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import { User } from 'src/users/Model/user.model';
 import { Branch } from 'src/branch/Model/branch.model';
 import { TicketCategory } from '../enums/Ticket-category.enum';
-import { TicketUpdates } from './ticket-updates.model';
 import { TicketSegment } from '../enums/Ticket-Segment.enum';
+import { TicketsPool } from '../enums/Ticket-Pool.enum';
 
 @Schema({ timestamps: true })
 export class Ticket {
@@ -18,6 +18,9 @@ export class Ticket {
   @Prop({ type: mongoose.Types.ObjectId, ref: Branch.name, required: true })
   branch: string;
 
+  @Prop({ required: true, defalt: TicketsPool.HR })
+  pool: TicketsPool;
+
   @Prop({ required: true, default: TicketCategory.IMPROVE })
   category: TicketCategory;
 
@@ -26,9 +29,6 @@ export class Ticket {
 
   @Prop({ required: true })
   description: string;
-
-  @Prop({ type: [TicketUpdates] })
-  updates: TicketUpdates[];
 }
 
 export const TicketSchema = SchemaFactory.createForClass(Ticket);

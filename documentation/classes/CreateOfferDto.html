@@ -151,15 +151,19 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#branches" >branches</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#from" >from</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
@@ -189,6 +193,7 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#to" >to</a>
                             </li>
                         </ul>
@@ -220,6 +225,8 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>branches</b></span>
                         <a href="#branches"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -236,13 +243,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: undefined, required: true})<br />@IsString()<br />@IsArray()<br />@IsNotEmpty()<br />
+                            @ApiProperty({example: undefined, required: true})<br />@IsString({each: true})<br />@IsMongoId({each: true})<br />@IsArray()<br />@ArrayMinSize(1)<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/offers/dto/create-offer.dto.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/offers/dto/create-offer.dto.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -258,6 +265,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>from</b></span>
                         <a href="#from"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -274,13 +282,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;2020-02-02&#x27;, required: true})<br />@IsDateString()<br />@IsNotEmpty()<br />
+                            @ApiProperty({example: &#x27;2020-02-02&#x27;, required: true})<br />@IsDateString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/offers/dto/create-offer.dto.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/offers/dto/create-offer.dto.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -293,6 +301,7 @@
                 <td class="col-md-4">
                     <a name="items"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
@@ -314,13 +323,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: undefined, required: true})<br />@IsNotEmpty()<br />@IsArray()<br />@IsString()<br />@IsMongoId()<br />
+                            @ApiProperty({example: undefined, required: true})<br />@IsNotEmpty()<br />@IsArray()<br />@ArrayMinSize(1)<br />@IsString({each: true})<br />@IsMongoId({each: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/offers/dto/create-offer.dto.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/offers/dto/create-offer.dto.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -358,7 +367,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/offers/dto/create-offer.dto.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/offers/dto/create-offer.dto.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -396,7 +405,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/offers/dto/create-offer.dto.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/offers/dto/create-offer.dto.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -434,7 +443,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/offers/dto/create-offer.dto.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/offers/dto/create-offer.dto.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -450,6 +459,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>to</b></span>
                         <a href="#to"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -466,13 +476,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;2020-02-02&#x27;, required: true})<br />@IsDateString()<br />@IsNotEmpty()<br />
+                            @ApiProperty({example: &#x27;2020-02-02&#x27;, required: true})<br />@IsDateString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/offers/dto/create-offer.dto.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/offers/dto/create-offer.dto.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -493,11 +503,13 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 import {
+  ArrayMinSize,
   IsArray,
   IsDateString,
   IsMongoId,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
 } from &#x27;class-validator&#x27;;
 
@@ -514,8 +526,10 @@ export class CreateOfferDto {
     example: [&#x27;65d5b8076bf8d67aee25ccd5&#x27;, &#x27;65d5b8076bf8d67aee25ccd2&#x27;],
     required: true,
   })
-  @IsString()
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   @IsArray()
+  @ArrayMinSize(1)
   @IsNotEmpty()
   branches: string[];
 
@@ -524,16 +538,16 @@ export class CreateOfferDto {
     required: true,
   })
   @IsDateString()
-  @IsNotEmpty()
-  from: Date;
+  @IsOptional()
+  from?: Date;
 
   @ApiProperty({
     example: &#x27;2020-02-02&#x27;,
     required: true,
   })
   @IsDateString()
-  @IsNotEmpty()
-  to: Date;
+  @IsOptional()
+  to?: Date;
 
   @ApiProperty({
     example: 100,
@@ -549,8 +563,9 @@ export class CreateOfferDto {
   })
   @IsNotEmpty()
   @IsArray()
-  @IsString()
-  @IsMongoId()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   items: string[];
 
   @ApiProperty({

@@ -150,12 +150,14 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#branch" >branch</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#can_deliver" >can_deliver</a>
                             </li>
                             <li>
@@ -175,7 +177,22 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#images" >images</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#is_extra" >is_extra</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#is_sensetive" >is_sensetive</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -194,6 +211,12 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#production_price" >production_price</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#quantity" >quantity</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -235,6 +258,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>branch</b></span>
                         <a href="#branch"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -251,13 +275,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;BRANCH ID&#x27;, required: true})<br />@IsNotEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;BRANCH ID&#x27;, required: true})<br />@IsNotEmpty()<br />@IsString()<br />@IsMongoId()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/product/dto/create-product.dto.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/product/dto/create-product.dto.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -273,6 +297,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>can_deliver</b></span>
                         <a href="#can_deliver"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -295,7 +320,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/product/dto/create-product.dto.ts:96</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/product/dto/create-product.dto.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -333,7 +358,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/product/dto/create-product.dto.ts:55</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/product/dto/create-product.dto.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -371,7 +396,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/product/dto/create-product.dto.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/product/dto/create-product.dto.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -388,6 +413,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>images</b></span>
                         <a href="#images"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -410,7 +436,85 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/product/dto/create-product.dto.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/product/dto/create-product.dto.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="is_extra"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>is_extra</b></span>
+                        <a href="#is_extra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({example: &#x27;true&#x27;, required: false})<br />@IsOptional()<br />@IsBoolean()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/product/dto/create-product.dto.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="is_sensetive"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>is_sensetive</b></span>
+                        <a href="#is_sensetive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({example: &#x27;true&#x27;, required: false})<br />@IsOptional()<br />@IsBoolean()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/product/dto/create-product.dto.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -448,7 +552,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/product/dto/create-product.dto.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/product/dto/create-product.dto.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -486,7 +590,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/product/dto/create-product.dto.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/product/dto/create-product.dto.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -524,7 +628,45 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/product/dto/create-product.dto.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/product/dto/create-product.dto.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="quantity"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>quantity</b></span>
+                        <a href="#quantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({example: 100, required: true})<br />@IsNotEmpty()<br />@IsNumber()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/product/dto/create-product.dto.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -562,7 +704,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/product/dto/create-product.dto.ts:71</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/product/dto/create-product.dto.ts:81</a></div>
                         </td>
                     </tr>
 
@@ -600,7 +742,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/product/dto/create-product.dto.ts:63</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/product/dto/create-product.dto.ts:73</a></div>
                         </td>
                     </tr>
 
@@ -623,6 +765,7 @@
   IsArray,
   IsBoolean,
   IsEnum,
+  IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -653,6 +796,14 @@ export class CreateProductDto {
 
   @ApiProperty({
     example: 100,
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsNumber()
+  quantity: number;
+
+  @ApiProperty({
+    example: 100,
     required: false,
   })
   @IsOptional()
@@ -665,6 +816,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsString()
+  @IsMongoId()
   branch: string;
 
   @ApiProperty({
@@ -706,7 +858,7 @@ export class CreateProductDto {
   @IsOptional()
   @IsArray()
   @IsString()
-  images: string[];
+  images?: string[];
 
   @ApiProperty({
     example: &#x27;true&#x27;,
@@ -714,7 +866,23 @@ export class CreateProductDto {
   })
   @IsOptional()
   @IsBoolean()
-  can_deliver: boolean;
+  can_deliver?: boolean;
+
+  @ApiProperty({
+    example: &#x27;true&#x27;,
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  is_sensetive?: boolean;
+
+  @ApiProperty({
+    example: &#x27;true&#x27;,
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  is_extra?: boolean;
 }
 </code></pre>
     </div>

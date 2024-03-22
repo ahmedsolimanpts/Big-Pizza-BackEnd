@@ -161,11 +161,18 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#remove" >remove</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#GetItemsCountAtStock" >GetItemsCountAtStock</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#update" >update</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeOnebyID" >removeOnebyID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOnebyID" >updateOnebyID</a>
                             </li>
                         </ul>
                     </td>
@@ -213,8 +220,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/stock/controller/stock.controller.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -289,8 +296,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/stock/controller/stock.controller.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -335,8 +342,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/stock/controller/stock.controller.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -386,18 +393,96 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="GetItemsCountAtStock"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>GetItemsCountAtStock</b></span>
+                        <a href="#GetItemsCountAtStock"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>GetItemsCountAtStock(stockid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;item-count/:stockid&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>stockid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOnebyID"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOnebyID</b></span>
+                        <a href="#removeOnebyID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOnebyID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -411,8 +496,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/stock/controller/stock.controller.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -448,7 +533,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -462,18 +547,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateOnebyID"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOnebyID</b></span>
+                        <a href="#updateOnebyID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateStockDto: <a href="../classes/UpdateStockDto.html" target="_self">UpdateStockDto</a>)</code>
+                    <code>updateOnebyID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateStockDto: <a href="../classes/UpdateStockDto.html" target="_self">UpdateStockDto</a>)</code>
                 </td>
             </tr>
 
@@ -487,8 +573,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/stock/controller/stock.controller.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/stock/controller/stock.controller.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -536,7 +622,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -558,6 +644,7 @@
   Patch,
   Param,
   Delete,
+  NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
 import { StockService } from &#x27;../service/stock.service&#x27;;
 import { CreateStockDto } from &#x27;../dto/Stock/create-stock.dto&#x27;;
@@ -584,14 +671,28 @@ export class StockController {
     return this.stockService.findOneByID(id);
   }
 
+  @Get(&#x27;item-count/:stockid&#x27;)
+  async GetItemsCountAtStock(@Param(&#x27;stockid&#x27;) stockid: string) {
+    const stock &#x3D; await this.stockService.findOneByID(stockid);
+    if (!stock) throw new NotFoundException(&#x27;No Stock With This ID&#x27;);
+    return this.stockService.GetItemsCountAtStock(stockid);
+  }
+
   @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updateStockDto: UpdateStockDto) {
-    return this.stockService.update(id, updateStockDto);
+  async updateOnebyID(
+    @Param(&#x27;id&#x27;) id: string,
+    @Body() updateStockDto: UpdateStockDto,
+  ) {
+    const stock &#x3D; await this.stockService.findOneByID(id);
+    if (!stock) throw new NotFoundException(&#x27;No Stock With This ID&#x27;);
+    return this.stockService.updateOnebyID(id, updateStockDto);
   }
 
   @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.stockService.remove(id);
+  async removeOnebyID(@Param(&#x27;id&#x27;) id: string) {
+    const stock &#x3D; await this.stockService.findOneByID(id);
+    if (!stock) throw new NotFoundException(&#x27;No Stock With This ID&#x27;);
+    return this.stockService.removeOnebyID(id);
   }
 }
 </code></pre>

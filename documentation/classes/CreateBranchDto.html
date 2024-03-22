@@ -158,6 +158,8 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#manager" >manager</a>
                             </li>
                             <li>
@@ -230,7 +232,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/branch/dto/create-branch.dto.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/branch/dto/create-branch.dto.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -246,6 +248,8 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>manager</b></span>
                         <a href="#manager"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -262,13 +266,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;user_id&#x27;, required: false})<br />@IsNotEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;user_id&#x27;, required: false})<br />@IsOptional()<br />@IsString()<br />@IsMongoId()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/branch/dto/create-branch.dto.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/branch/dto/create-branch.dto.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -306,7 +310,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/branch/dto/create-branch.dto.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/branch/dto/create-branch.dto.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -344,7 +348,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/branch/dto/create-branch.dto.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/branch/dto/create-branch.dto.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -382,7 +386,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/branch/dto/create-branch.dto.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/branch/dto/create-branch.dto.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -405,6 +409,7 @@
 import { Type } from &#x27;class-transformer&#x27;;
 import {
   IsDateString,
+  IsMongoId,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -441,9 +446,10 @@ export class CreateBranchDto {
     example: &#x27;user_id&#x27;,
     required: false,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  manager: string;
+  @IsMongoId()
+  manager?: string;
 
   @ApiProperty({
     // example: ,

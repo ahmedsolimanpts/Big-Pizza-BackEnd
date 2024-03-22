@@ -164,15 +164,23 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#IsValidCouponInBranchByName" >IsValidCouponInBranchByName</a>
+                                <a href="#IsValidCouponInBranchByCouponID" >IsValidCouponInBranchByCouponID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#IsValidCouponInBranchByCouponName" >IsValidCouponInBranchByCouponName</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#removeOneCouponByID" >removeOneCouponByID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#SubtractOneFromCouponQuantity" >SubtractOneFromCouponQuantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOneCouponByID" >updateOneCouponByID</a>
                             </li>
                         </ul>
                     </td>
@@ -192,7 +200,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(couponRepo: <a href="../classes/Coupon.html" target="_self">Model&lt;Coupon&gt;</a>)</code>
+<code>constructor(couponRepo: <a href="../classes/Coupon.html" target="_self">Model&lt;Coupon&gt;</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -219,6 +227,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/Coupon.html" target="_self" >Model&lt;Coupon&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>branchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -255,15 +275,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createCouponDto: <a href="../classes/CreateCouponDto.html" target="_self">CreateCouponDto</a>)</code>
+                    <code>create(createCouponData: <a href="../interfaces/CouponInterface.html" target="_self">CouponInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -284,9 +304,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createCouponDto</td>
+                                                <td>createCouponData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateCouponDto.html" target="_self" >CreateCouponDto</a></code>
+                                                            <code><a href="../interfaces/CouponInterface.html" target="_self" >CouponInterface</a></code>
                                             </td>
 
                                             <td>
@@ -331,8 +351,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -370,8 +390,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -432,15 +452,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneByID(coupon_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -461,7 +481,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>coupon_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -501,15 +521,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsValidCouponByName(couponName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsValidCouponByName(couponName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="68"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:68</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -541,6 +561,18 @@
 
 
                                         </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -559,26 +591,119 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="IsValidCouponInBranchByName"></a>
+                    <a name="IsValidCouponInBranchByCouponID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>IsValidCouponInBranchByName</b></span>
-                        <a href="#IsValidCouponInBranchByName"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>IsValidCouponInBranchByCouponID</b></span>
+                        <a href="#IsValidCouponInBranchByCouponID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsValidCouponInBranchByName(couponName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsValidCouponInBranchByCouponID(couponID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>couponID</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>branchId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IsValidCouponInBranchByCouponName"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>IsValidCouponInBranchByCouponName</b></span>
+                        <a href="#IsValidCouponInBranchByCouponName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>IsValidCouponInBranchByCouponName(couponName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:104</a></div>
                         </td>
                     </tr>
 
@@ -622,6 +747,18 @@
 
 
                                         </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -640,26 +777,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeOneCouponByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneCouponByID</b></span>
+                        <a href="#removeOneCouponByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeOneCouponByID(coupon_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:76</a></div>
                         </td>
                     </tr>
 
@@ -680,7 +817,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>coupon_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -709,26 +846,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="SubtractOneFromCouponQuantity"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>SubtractOneFromCouponQuantity</b></span>
+                        <a href="#SubtractOneFromCouponQuantity"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateCouponDto: <a href="../classes/UpdateCouponDto.html" target="_self">UpdateCouponDto</a>)</code>
+                    <code>SubtractOneFromCouponQuantity(couponID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/coupon/coupon.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:156</a></div>
                         </td>
                     </tr>
 
@@ -749,7 +886,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>couponID</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -761,9 +898,90 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateCouponDto</td>
+                                                <td>session</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateCouponDto.html" target="_self" >UpdateCouponDto</a></code>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneCouponByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneCouponByID</b></span>
+                        <a href="#updateOneCouponByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneCouponByID(coupon_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatedCouponData: <a href="../interfaces/CouponInterface.html" target="_self">CouponInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/coupon/coupon.service.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>coupon_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>updatedCouponData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CouponInterface.html" target="_self" >CouponInterface</a></code>
                                             </td>
 
                                             <td>
@@ -792,25 +1010,32 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateCouponDto } from &#x27;./dto/create-coupon.dto&#x27;;
-import { UpdateCouponDto } from &#x27;./dto/update-coupon.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Coupon } from &#x27;./Model/coupon.model&#x27;;
-import { Model } from &#x27;mongoose&#x27;;
+import { ClientSession, Model } from &#x27;mongoose&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
+import { CouponInterface } from &#x27;./interface/Coupon.interface&#x27;;
 
 @Injectable()
 export class CouponService {
   constructor(
     @InjectModel(Coupon.name) private readonly couponRepo: Model&lt;Coupon&gt;,
+    private branchService: BranchService,
   ) {}
 
-  async create(createCouponDto: CreateCouponDto) {
+  async create(createCouponData: CouponInterface) {
     try {
-      const coupon &#x3D; new this.couponRepo(createCouponDto);
+      const is_branchavailable &#x3D; await this.branchService.IsBranchsAvaliables(
+        createCouponData.branches,
+      );
+
+      if (!is_branchavailable) throw new NotFoundException(&#x27;Wrong Branch IDs&#x27;);
+
+      const coupon &#x3D; new this.couponRepo(createCouponData);
+
       return await coupon.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -819,7 +1044,6 @@ export class CouponService {
     try {
       return await this.couponRepo.findOne({ name });
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -827,39 +1051,49 @@ export class CouponService {
     try {
       return await this.couponRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOneByID(id: string) {
+  async findOneByID(coupon_id: string) {
     try {
-      return await this.couponRepo.findById(id);
+      return await this.couponRepo.findById(coupon_id);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateOneCouponByID(
+    coupon_id: string,
+    updatedCouponData: CouponInterface,
+  ) {
+    try {
+      if (updatedCouponData.branches) {
+        const is_branchavailable &#x3D; await this.branchService.IsBranchsAvaliables(
+          updatedCouponData.branches,
+        );
+        if (!is_branchavailable)
+          throw new NotFoundException(&#x27;Wrong Branch IDs&#x27;);
+      }
+      return await this.couponRepo.findByIdAndUpdate(
+        coupon_id,
+        updatedCouponData,
+      );
     } catch (err) {
       console.log(err);
       throw err;
     }
   }
 
-  async update(id: string, updateCouponDto: UpdateCouponDto) {
+  async removeOneCouponByID(coupon_id: string) {
     try {
-      return await this.couponRepo.findByIdAndUpdate(id, updateCouponDto);
+      return await this.couponRepo.findByIdAndDelete(coupon_id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
-    try {
-      return await this.couponRepo.findByIdAndDelete(id);
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  }
-
-  async IsValidCouponByName(couponName: string) {
+  async IsValidCouponByName(couponName: string, session?: ClientSession) {
     try {
       const currentDate &#x3D; new Date();
 
@@ -870,6 +1104,7 @@ export class CouponService {
           from: { $lte: currentDate },
           to: { $gte: currentDate },
         })
+        .session(session)
         .exec();
 
       return !!validCoupon;
@@ -878,7 +1113,11 @@ export class CouponService {
     }
   }
 
-  async IsValidCouponInBranchByName(couponName: string, branchId: string) {
+  async IsValidCouponInBranchByCouponName(
+    couponName: string,
+    branchId: string,
+    session?: ClientSession,
+  ) {
     try {
       const currentDate &#x3D; new Date();
 
@@ -890,9 +1129,50 @@ export class CouponService {
           to: { $gte: currentDate },
           branches: branchId,
         })
+        .session(session)
         .exec();
 
       return !!validCoupon;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsValidCouponInBranchByCouponID(
+    couponID: string,
+    branchId: string,
+    session?: ClientSession,
+  ) {
+    try {
+      const currentDate &#x3D; new Date();
+
+      const validCoupon &#x3D; await this.couponRepo
+        .findOne({
+          _id: couponID,
+          quantity: { $gt: 0 },
+          $or: [
+            { from: { $exists: false }, to: { $exists: false } }, // Neither from nor to dates exist
+            { from: { $lte: currentDate }, to: { $gte: currentDate } }, // Current date is within the from and to dates
+          ],
+          branches: { $in: [branchId] },
+        })
+        .session(session)
+        .exec();
+
+      return !!validCoupon;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async SubtractOneFromCouponQuantity(
+    couponID: string,
+    session?: ClientSession,
+  ) {
+    try {
+      return await this.couponRepo
+        .findByIdAndUpdate(couponID, { $inc: { quantity: -1 } }, { new: true })
+        .session(session);
     } catch (err) {
       throw err;
     }

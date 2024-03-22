@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/users.service.ts</code>
+            <code>src/users/service/users.service.ts</code>
         </p>
 
 
@@ -144,11 +144,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#AddLocationToUser" >AddLocationToUser</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#AddRoleToUser" >AddRoleToUser</a>
+                                <a href="#AddOneRoleToUser" >AddOneRoleToUser</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -168,9 +164,14 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#DeleteRefresh" >DeleteRefresh</a>
+                                <a href="#createWithGoogle" >createWithGoogle</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#DeleteOneUserRefreshByUserID" >DeleteOneUserRefreshByUserID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
@@ -187,23 +188,23 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#IsUserHaveRole" >IsUserHaveRole</a>
+                                <a href="#IsUserHaveOneRole" >IsUserHaveOneRole</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeOneUserByID" >removeOneUserByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#RemoveLocationFromUser" >RemoveLocationFromUser</a>
+                                <a href="#UnAssignOneRoleFromUser" >UnAssignOneRoleFromUser</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#UnAssignRoleFromUser" >UnAssignRoleFromUser</a>
+                                <a href="#updateOneByemail" >updateOneByemail</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#updateOneByID" >updateOneByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -227,12 +228,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userRepo: <a href="../classes/User.html" target="_self">Model&lt;UserDocument&gt;</a>, locationService: <a href="../injectables/LocationService.html" target="_self">LocationService</a>)</code>
+<code>constructor(userRepo: <a href="../classes/User.html" target="_self">Model&lt;User&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/users/users.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/users/service/users.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -253,19 +254,7 @@
                                                         <td>userRepo</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/User.html" target="_self" >Model&lt;UserDocument&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>locationService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/LocationService.html" target="_self" >LocationService</a></code>
+                                                                        <code><a href="../classes/User.html" target="_self" >Model&lt;User&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -291,107 +280,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="AddLocationToUser"></a>
+                    <a name="AddOneRoleToUser"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>AddLocationToUser</b></span>
-                        <a href="#AddLocationToUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>AddOneRoleToUser</b></span>
+                        <a href="#AddOneRoleToUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>AddLocationToUser(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createLocationDTO: <a href="../classes/CreateLocationDto.html" target="_self">CreateLocationDto</a>)</code>
+                    <code>AddOneRoleToUser(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newRole: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="145"
-                                    class="link-to-prism">src/users/users.service.ts:145</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>userid</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>createLocationDTO</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateLocationDto.html" target="_self" >CreateLocationDto</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="AddRoleToUser"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>AddRoleToUser</b></span>
-                        <a href="#AddRoleToUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>AddRoleToUser(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newRole: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="98"
-                                    class="link-to-prism">src/users/users.service.ts:98</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/users/service/users.service.ts:135</a></div>
                         </td>
                     </tr>
 
@@ -471,8 +379,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="135"
-                                    class="link-to-prism">src/users/users.service.ts:135</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/users/service/users.service.ts:178</a></div>
                         </td>
                     </tr>
 
@@ -508,7 +416,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -540,8 +448,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="141"
-                                    class="link-to-prism">src/users/users.service.ts:141</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/users/service/users.service.ts:188</a></div>
                         </td>
                     </tr>
 
@@ -589,7 +497,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -621,8 +529,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/users/users.service.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/users/service/users.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -695,15 +603,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
+                    <code>create(createData: <a href="../interfaces/UserInterface.html" target="_self">UserInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/users/users.service.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/users/service/users.service.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -724,9 +632,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createUserDto</td>
+                                                <td>createData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateUserDto.html" target="_self" >CreateUserDto</a></code>
+                                                            <code><a href="../interfaces/UserInterface.html" target="_self" >UserInterface</a></code>
                                             </td>
 
                                             <td>
@@ -753,26 +661,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="DeleteRefresh"></a>
+                    <a name="createWithGoogle"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>DeleteRefresh</b></span>
-                        <a href="#DeleteRefresh"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createWithGoogle</b></span>
+                        <a href="#createWithGoogle"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>DeleteRefresh(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>createWithGoogle(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/users/users.service.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/users/service/users.service.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -793,7 +701,88 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteOneUserRefreshByUserID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>DeleteOneUserRefreshByUserID</b></span>
+                        <a href="#DeleteOneUserRefreshByUserID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>DeleteOneUserRefreshByUserID(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/users/service/users.service.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -824,6 +813,7 @@
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -831,15 +821,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/users/users.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/users/service/users.service.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -848,7 +839,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -877,8 +868,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/users/users.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/users/service/users.service.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -946,8 +937,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/users/users.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/users/service/users.service.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -1015,8 +1006,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/users/users.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/users/service/users.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -1066,26 +1057,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="IsUserHaveRole"></a>
+                    <a name="IsUserHaveOneRole"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>IsUserHaveRole</b></span>
-                        <a href="#IsUserHaveRole"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>IsUserHaveOneRole</b></span>
+                        <a href="#IsUserHaveOneRole"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsUserHaveRole(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, role: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
+                    <code>IsUserHaveOneRole(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, role: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/users/users.service.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">src/users/service/users.service.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -1133,7 +1124,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -1147,26 +1138,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeOneUserByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneUserByID</b></span>
+                        <a href="#removeOneUserByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeOneUserByID(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/users/users.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/users/service/users.service.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -1187,7 +1178,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>user_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -1216,107 +1207,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="RemoveLocationFromUser"></a>
+                    <a name="UnAssignOneRoleFromUser"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>RemoveLocationFromUser</b></span>
-                        <a href="#RemoveLocationFromUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>UnAssignOneRoleFromUser</b></span>
+                        <a href="#UnAssignOneRoleFromUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>RemoveLocationFromUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, locationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>UnAssignOneRoleFromUser(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, RemovedRole: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="168"
-                                    class="link-to-prism">src/users/users.service.ts:168</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>userId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>locationId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="UnAssignRoleFromUser"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>UnAssignRoleFromUser</b></span>
-                        <a href="#UnAssignRoleFromUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>UnAssignRoleFromUser(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, RemovedRole: <a href="../undefineds/Roles.html" target="_self">Roles</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="113"
-                                    class="link-to-prism">src/users/users.service.ts:113</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/users/service/users.service.ts:150</a></div>
                         </td>
                     </tr>
 
@@ -1378,26 +1288,107 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateOneByemail"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateOneByemail</b></span>
+                        <a href="#updateOneByemail"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateUserDto: <a href="../classes/UpdateUserDto.html" target="_self">UpdateUserDto</a>)</code>
+                    <code>updateOneByemail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newData: <a href="../interfaces/UserInterface.html" target="_self">UserInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/users/users.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/users/service/users.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>newData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/UserInterface.html" target="_self" >UserInterface</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneByID</b></span>
+                        <a href="#updateOneByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newData: <a href="../interfaces/UserInterface.html" target="_self">UserInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/users/service/users.service.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -1430,9 +1421,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateUserDto</td>
+                                                <td>newData</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateUserDto.html" target="_self" >UpdateUserDto</a></code>
+                                                            <code><a href="../interfaces/UserInterface.html" target="_self" >UserInterface</a></code>
                                             </td>
 
                                             <td>
@@ -1470,15 +1461,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateRefresh(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateUserDto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>updateRefresh(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newRefresh: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/users/users.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/users/service/users.service.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -1511,7 +1502,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateUserDto</td>
+                                                <td>newRefresh</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -1542,119 +1533,156 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ConflictException,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from &#x27;@nestjs/common&#x27;;
-import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
-import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { User, UserDocument } from &#x27;./Model/user.model&#x27;;
+import { User } from &#x27;../Model/user.model&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
 import * as bcrypt from &#x27;bcrypt&#x27;;
 import { Roles } from &#x27;src/auth/enums/roles.enums&#x27;;
-import { AccountStatus } from &#x27;./enums/account-status.enums&#x27;;
-import { ChangeUserStatusDTO } from &#x27;./dto/Change-User-Status.dto&#x27;;
-import { CreateLocationDto } from &#x27;src/location/dto/create-location.dto&#x27;;
-import { LocationService } from &#x27;src/location/location.service&#x27;;
+import { AccountStatus } from &#x27;../enums/account-status.enums&#x27;;
+import { ChangeUserStatusDTO } from &#x27;../dto/Change-User-Status.dto&#x27;;
+import { UserInterface } from &#x27;../interfaces/User.interface&#x27;;
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectModel(User.name) private userRepo: Model&lt;UserDocument&gt;,
-    private locationService: LocationService,
-  ) {}
+  constructor(@InjectModel(User.name) private userRepo: Model&lt;User&gt;) {}
 
   async hashFunction(text: string): Promise&lt;string&gt; {
-    const salt &#x3D; await bcrypt.genSalt();
-    return await bcrypt.hash(text, salt);
-  }
-  async create(createUserDto: CreateUserDto): Promise&lt;User&gt; {
     try {
-      const user &#x3D; new this.userRepo(createUserDto);
-      user.password &#x3D; await this.hashFunction(createUserDto.password);
+      const salt &#x3D; await bcrypt.genSalt();
+      return await bcrypt.hash(text, salt);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async create(createData: UserInterface): Promise&lt;User&gt; {
+    try {
+      const user &#x3D; new this.userRepo(createData);
+      user.password &#x3D; await this.hashFunction(createData.password);
       return await user.save();
     } catch (err) {
       if (err.code &#x3D;&#x3D; 11000) {
         throw new ConflictException(&quot;Can&#x27;t Save , User Already Exist&quot;);
       }
-      console.log(err);
-      throw new InternalServerErrorException();
+      throw err;
     }
   }
 
-  findAll() {
-    return this.userRepo.find().exec();
+  async findAll(): Promise&lt;User[]&gt; {
+    try {
+      return await this.userRepo.find().exec();
+    } catch (err) {
+      throw err;
+    }
   }
 
   async findOneByid(id: string): Promise&lt;User&gt; {
     try {
-      const user &#x3D; await this.userRepo.findById(id).exec();
-      if (user) {
-        return user;
-      }
+      return await this.userRepo.findById(id).exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
+  async createWithGoogle(email: string, name: string) {
+    // const stripeCustomer &#x3D; await this.stripeService.createCustomer(name, email);
+
+    const newUser &#x3D; await this.userRepo.create({
+      email,
+      name,
+      isRegisteredWithGoogle: true,
+      // stripeCustomerId: stripeCustomer.id,
+    });
+    return await newUser.save();
+  }
+
   async findOneByEmail(email: string): Promise&lt;User&gt; {
-    const user &#x3D; await this.userRepo.findOne({ email }).exec();
-    if (user) {
-      return user;
+    try {
+      return await this.userRepo.findOne({ email }).exec();
+    } catch (err) {
+      throw err;
     }
-    throw new NotFoundException();
   }
-  async update(id: string, updateUserDto: UpdateUserDto): Promise&lt;User&gt; {
-    return await this.userRepo.findByIdAndUpdate(id, updateUserDto);
+  async updateOneByID(id: string, newData: UserInterface): Promise&lt;User&gt; {
+    try {
+      if (newData.password) {
+        newData.password &#x3D; await this.hashFunction(newData.password);
+      }
+      return await this.userRepo.findByIdAndUpdate(id, newData);
+    } catch (err) {
+      throw err;
+    }
   }
-  async updateRefresh(id: string, updateUserDto: string): Promise&lt;void&gt; {
-    await this.userRepo.updateMany(
-      { _id: id },
-      {
-        refreshToken: updateUserDto,
-      },
-    );
+
+  async updateOneByemail(email: string, newData: UserInterface): Promise&lt;User&gt; {
+    try {
+      return await this.userRepo.findOneAndUpdate({ email: email }, newData);
+    } catch (err) {
+      throw err;
+    }
   }
-  async DeleteRefresh(id: string): Promise&lt;void&gt; {
-    await this.userRepo.updateMany(
-      { _id: id },
-      {
+
+  async updateRefresh(id: string, newRefresh: string): Promise&lt;void&gt; {
+    try {
+      await this.userRepo.updateOne(
+        { _id: id },
+        {
+          refreshToken: newRefresh,
+        },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async DeleteOneUserRefreshByUserID(user_id: string): Promise&lt;void&gt; {
+    try {
+      await this.userRepo.findByIdAndUpdate(user_id, {
         $unset: {
           refreshToken: 1,
         },
-      },
-    );
+      });
+    } catch (err) {
+      throw err;
+    }
   }
-  async remove(id: string) {
-    return await this.userRepo.findByIdAndDelete(id);
+
+  async removeOneUserByID(user_id: string) {
+    try {
+      return await this.userRepo.findByIdAndDelete(user_id);
+    } catch (err) {
+      throw err;
+    }
   }
 
   async CompareTextWithHash(
     text: string,
     HashedValue: string,
   ): Promise&lt;boolean&gt; {
-    return await bcrypt.compare(text, HashedValue);
+    try {
+      return await bcrypt.compare(text, HashedValue);
+    } catch (err) {
+      throw err;
+    }
   }
 
-  async AddRoleToUser(userid: string, newRole: Roles): Promise&lt;User&gt; {
+  async AddOneRoleToUser(userid: string, newRole: Roles): Promise&lt;User&gt; {
     try {
-      const document &#x3D; await this.userRepo.findById(userid);
-      if (!document) throw new NotFoundException();
-      if (document.roles.includes(newRole))
-        throw new ConflictException(&#x27;Role Is Already Exist&#x27;);
-      await document.roles.push(newRole);
-      return await document.save();
+      return await this.userRepo.findByIdAndUpdate(
+        userid,
+        { $push: { roles: newRole } },
+        { new: true },
+      );
     } catch (err) {
       if (err.status &#x3D;&#x3D; 409) {
         throw new ConflictException(&#x27;Role Is Already Exist&#x27;);
       }
-      console.log(err);
+      throw err;
     }
   }
-  async UnAssignRoleFromUser(
+
+  async UnAssignOneRoleFromUser(
     userid: string,
     RemovedRole: Roles,
   ): Promise&lt;User&gt; {
@@ -1665,63 +1693,39 @@ export class UsersService {
         { new: true },
       );
     } catch (err) {
-      throw new InternalServerErrorException(err);
+      throw err;
     }
   }
-  async IsUserHaveRole(id: string, role: Roles) {
-    const isexist &#x3D; await this.userRepo.find({
-      _id: id,
-      roles: { $in: [role] },
-    });
-    if (isexist.length &gt; 0) return true;
-    return false;
-  }
-  async BlockUser(id: string) {
-    return await this.userRepo.findByIdAndUpdate(id, {
-      status: AccountStatus.BLOCK,
-    });
-  }
 
-  async ChangeUserStatus(id: string, changeUserStatusDTO: ChangeUserStatusDTO) {
-    return await this.userRepo.findByIdAndUpdate(id, changeUserStatusDTO);
-  }
-
-  async AddLocationToUser(
-    userid: string,
-    createLocationDTO: CreateLocationDto,
-  ) {
+  async IsUserHaveOneRole(id: string, role: Roles): Promise&lt;boolean&gt; {
     try {
-      const updatedUser &#x3D; await this.userRepo
-        .findByIdAndUpdate(
-          userid,
-          { $push: { locations: createLocationDTO } },
-          { new: true, runValidators: true },
-        )
-        .exec();
-
-      if (!updatedUser) {
-        throw new NotFoundException(&#x60;No user found with ID ${userid}&#x60;);
-      }
-
-      return updatedUser;
+      const isexist &#x3D; await this.userRepo.find({
+        _id: id,
+        roles: { $in: [role] },
+      });
+      if (isexist.length &gt; 0) return true;
+      return false;
     } catch (err) {
       throw err;
     }
   }
 
-  async RemoveLocationFromUser(userId: string, locationId: string) {
+  async BlockUser(id: string): Promise&lt;User&gt; {
     try {
-      const user &#x3D; await this.userRepo.findOneAndUpdate(
-        { _id: userId, &#x27;locations._id&#x27;: locationId },
-        { $pull: { locations: { _id: locationId } } },
-        { new: true }, // Return the updated document
-      );
+      return await this.userRepo.findByIdAndUpdate(id, {
+        status: AccountStatus.BLOCK,
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
 
-      if (!user) {
-        throw new NotFoundException(&#x27;User or Location not found&#x27;);
-      }
-
-      return user;
+  async ChangeUserStatus(
+    id: string,
+    changeUserStatusDTO: ChangeUserStatusDTO,
+  ): Promise&lt;User&gt; {
+    try {
+      return await this.userRepo.findByIdAndUpdate(id, changeUserStatusDTO);
     } catch (err) {
       throw err;
     }

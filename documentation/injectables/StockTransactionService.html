@@ -156,7 +156,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#DeleteById" >DeleteById</a>
+                                <a href="#DeleteOneByID" >DeleteOneByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -164,11 +164,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findByID" >findByID</a>
+                                <a href="#findAllTransactionForSpecificBranch" >findAllTransactionForSpecificBranch</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#UpdateById" >UpdateById</a>
+                                <a href="#findOneStockTransactionByID" >findOneStockTransactionByID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#UpdateOneByID" >UpdateOneByID</a>
                             </li>
                         </ul>
                     </td>
@@ -188,12 +192,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(stockTransactionRepo: <a href="../undefineds/Transaction.html" target="_self">Model&lt;StockTransaction&gt;</a>, stockItemSerivce: <a href="../injectables/StockItemService.html" target="_self">StockItemService</a>, stockItemlogSerivce: <a href="../injectables/StockItemLogsService.html" target="_self">StockItemLogsService</a>, connection: mongoose.Connection)</code>
+<code>constructor(stockTransactionRepo: <a href="../undefineds/Transaction.html" target="_self">Model&lt;StockTransaction&gt;</a>, stockItemlogSerivce: <a href="../injectables/StockItemLogsService.html" target="_self">StockItemLogsService</a>, connection: mongoose.Connection, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, stockService: <a href="../injectables/StockService.html" target="_self">StockService</a>, stockItemService: <a href="../injectables/StockItemService.html" target="_self">StockItemService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/stock/service/stock-transaction.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/stock/service/stock-transaction.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -223,18 +227,6 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>stockItemSerivce</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/StockItemService.html" target="_self" >StockItemService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
                                                         <td>stockItemlogSerivce</td>
                                                   
                                                         <td>
@@ -251,6 +243,42 @@
                                                   
                                                         <td>
                                                                     <code>mongoose.Connection</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stockService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StockService.html" target="_self" >StockService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stockItemService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StockItemService.html" target="_self" >StockItemService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -294,8 +322,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -343,7 +371,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -368,15 +396,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>ChangeTransactionStatus(transaction_id, status: <a href="../undefineds/StockTransactionStatus.html" target="_self">StockTransactionStatus</a>, createby: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>ChangeTransactionStatus(transaction_id, status: <a href="../undefineds/StockTransactionStatus.html" target="_self">StockTransactionStatus</a>, updateby: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -420,7 +448,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>createby</td>
+                                                <td>updateby</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -435,7 +463,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction | object&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -467,8 +495,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -504,7 +532,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -518,26 +546,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="DeleteById"></a>
+                    <a name="DeleteOneByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>DeleteById</b></span>
-                        <a href="#DeleteById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>DeleteOneByID</b></span>
+                        <a href="#DeleteOneByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>DeleteById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>DeleteOneByID(transaction_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="108"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:108</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:195</a></div>
                         </td>
                     </tr>
 
@@ -558,7 +586,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>transaction_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -573,7 +601,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -605,8 +633,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="90"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:90</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -615,7 +643,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -626,26 +654,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findByID"></a>
+                    <a name="findAllTransactionForSpecificBranch"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findByID</b></span>
-                        <a href="#findByID"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAllTransactionForSpecificBranch</b></span>
+                        <a href="#findAllTransactionForSpecificBranch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findAllTransactionForSpecificBranch(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -666,7 +694,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>branch_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -681,7 +709,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -695,26 +723,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="UpdateById"></a>
+                    <a name="findOneStockTransactionByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>UpdateById</b></span>
-                        <a href="#UpdateById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneStockTransactionByID</b></span>
+                        <a href="#findOneStockTransactionByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>UpdateById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../interfaces/StockTransactionInterface.html" target="_self">StockTransactionInterface</a>)</code>
+                    <code>findOneStockTransactionByID(stock_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="98"
-                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:98</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:129</a></div>
                         </td>
                     </tr>
 
@@ -735,7 +763,76 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>stock_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UpdateOneByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>UpdateOneByID</b></span>
+                        <a href="#UpdateOneByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>UpdateOneByID(transaction_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../interfaces/StockTransactionInterface.html" target="_self">StockTransactionInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/stock/service/stock-transaction.service.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>transaction_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -762,7 +859,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Promise&lt;StockTransaction&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -778,32 +875,59 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from &#x27;@nestjs/common&#x27;;
 import { StockTransactionStatus } from &#x27;../enums/Stock-Transaction-Status.enum&#x27;;
 import { StockTransactionInterface } from &#x27;../interfaces/Stock-Transaction.interface&#x27;;
 import { InjectModel, InjectConnection } from &#x27;@nestjs/mongoose&#x27;;
 import mongoose, { Model } from &#x27;mongoose&#x27;;
 import { StockTransaction } from &#x27;../Model/Stock-Transaction.model&#x27;;
-import { StockItemService } from &#x27;./stock-item.service&#x27;;
 import { StockItemLogsInterface } from &#x27;../interfaces/Stock-Item-logs.interface&#x27;;
 import { StockTransactionTYPE } from &#x27;../enums/Stock-Transactions.enum&#x27;;
 import { StockItemLogsService } from &#x27;./stock-item-logs.service&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
+import { StockService } from &#x27;./stock.service&#x27;;
+import { StockItemService } from &#x27;./stock-item.service&#x27;;
 
 @Injectable()
 export class StockTransactionService {
   constructor(
     @InjectModel(StockTransaction.name)
     private readonly stockTransactionRepo: Model&lt;StockTransaction&gt;,
-    private stockItemSerivce: StockItemService,
     private stockItemlogSerivce: StockItemLogsService,
     @InjectConnection() private readonly connection: mongoose.Connection,
+    private userService: UsersService,
+    private stockService: StockService,
+    private stockItemService: StockItemService,
   ) {}
 
-  async Create(data: StockTransactionInterface) {
+  async Create(data: StockTransactionInterface): Promise&lt;StockTransaction&gt; {
     try {
+      // Check If User Valid
+      const createby &#x3D; await this.userService.findOneByid(data.createby);
+      if (!createby) throw new NotFoundException(&#x27;User Not Exist&#x27;);
+
+      // Check If Stock Valid
+      const stock &#x3D; await this.stockService.findOneByID(data.stock);
+      if (!stock) throw new NotFoundException(&#x27;Stock Not found&#x27;);
+
+      // Check If Stock Valid
+      for (const item of data.items_quantity) {
+        const is_item_available &#x3D; await this.stockItemService.findOneById(
+          item.stock_item,
+        );
+        if (!is_item_available) throw new NotFoundException(&#x27;Item not found&#x27;);
+      }
       const newTransactin &#x3D; new this.stockTransactionRepo(data);
       return await newTransactin.save();
     } catch (err) {
+      if (err.code) {
+        console.log(err.message);
+        throw new ConflictException();
+      }
       throw err;
     }
   }
@@ -811,23 +935,43 @@ export class StockTransactionService {
   async ChangeTransactionStatus(
     transaction_id,
     status: StockTransactionStatus,
-    createby: string,
-  ) {
+    updateby: string,
+  ): Promise&lt;StockTransaction | object&gt; {
     try {
-      const data &#x3D; await this.findByID(transaction_id);
-      if (data.status &#x3D;&#x3D;&#x3D; status) {
-        throw new ConflictException(&#x27;Status Already &#x27;, status);
+      // Check is Transaction ID Valid
+      const transactionObject &#x3D;
+        await this.findOneStockTransactionByID(transaction_id);
+      if (!transactionObject)
+        throw new NotFoundException(&#x27;Not Valid Transaction&#x27;);
+
+      //  Check If Status Not The Same
+      if (transactionObject.status &#x3D;&#x3D;&#x3D; status) {
+        throw new ConflictException(&#x27;You Need To Call Your SuperVisor&#x27;);
       } else {
-        if (status &#x3D;&#x3D; StockTransactionStatus.COMPELETED) {
-          const session &#x3D; await this.connection.startSession();
-          await session.withTransaction(async () &#x3D;&gt; {
-            this.AddTransactionToStock(transaction_id, createby);
-            await this.UpdateById(transaction_id, { status });
-          });
-          session.endSession();
-          return { MSG: &#x27;Transaction added successfully&#x27; };
+        if (transactionObject.status &#x3D;&#x3D; StockTransactionStatus.INPROGRESS) {
+          //  If Status Completed add to Stock then Update the status
+          if (status &#x3D;&#x3D; StockTransactionStatus.COMPELETED) {
+            const session &#x3D; await this.connection.startSession();
+
+            await session.withTransaction(async () &#x3D;&gt; {
+              this.AddTransactionToStock(transactionObject, updateby);
+              await this.UpdateOneByID(transaction_id, { status });
+            });
+
+            session.endSession();
+
+            return { MSG: &#x27;Transaction added successfully&#x27; };
+          } else {
+            // Status Is Canceled only Update
+            return await this.UpdateOneByID(transaction_id, {
+              status,
+              updated_user: updateby,
+            });
+          }
         } else {
-          return await this.UpdateById(transaction_id, { status });
+          throw new ConflictException(
+            &quot;You Need To Call Your SuperVisor, Can&#x27;t Change Status After Accept Or Cancel&quot;,
+          );
         }
       }
     } catch (err) {
@@ -838,17 +982,17 @@ export class StockTransactionService {
   async AddTransactionToStock(
     transaction: StockTransactionInterface,
     createby: string,
-  ) {
+  ): Promise&lt;void&gt; {
     try {
       const session &#x3D; await this.connection.startSession();
       await session.withTransaction(async () &#x3D;&gt; {
-        (await transaction).stock_items.forEach(async (item) &#x3D;&gt; {
+        (await transaction).items_quantity.forEach(async (item) &#x3D;&gt; {
           const newLogData: StockItemLogsInterface &#x3D; {
-            item: item.stock_item,
-            quantity: item.quantity,
+            item: { stock_item: item.stock_item, quantity: item.quantity },
             createby,
             transaction: StockTransactionTYPE.ADD,
-            branch_id: transaction.transfer_to,
+            transaction_id: (transaction as any)._id,
+            stock_id: transaction.stock,
           };
           await this.stockItemlogSerivce.create(newLogData);
         });
@@ -859,15 +1003,17 @@ export class StockTransactionService {
     }
   }
 
-  async findByID(id: string) {
+  async findOneStockTransactionByID(
+    stock_id: string,
+  ): Promise&lt;StockTransaction&gt; {
     try {
-      return await this.stockTransactionRepo.findById(id);
+      return await this.stockTransactionRepo.findById(stock_id);
     } catch (err) {
       throw err;
     }
   }
 
-  async findAll() {
+  async findAll(): Promise&lt;StockTransaction[]&gt; {
     try {
       return await this.stockTransactionRepo.find().exec();
     } catch (err) {
@@ -875,19 +1021,59 @@ export class StockTransactionService {
     }
   }
 
-  async UpdateById(id: string, data: StockTransactionInterface) {
+  async findAllTransactionForSpecificBranch(
+    branch_id: string,
+  ): Promise&lt;StockTransaction[]&gt; {
     try {
-      return await this.stockTransactionRepo
-        .findByIdAndUpdate(id, { data }, { new: true })
-        .exec();
+      return await this.stockTransactionRepo.find({ branch: branch_id }).exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async DeleteById(id: string) {
+  async UpdateOneByID(
+    transaction_id: string,
+    data: StockTransactionInterface,
+  ): Promise&lt;StockTransaction&gt; {
     try {
-      return await this.stockTransactionRepo.findByIdAndDelete(id).exec();
+      if (data.stock) {
+        // Check If Stock Valid
+        const stock &#x3D; await this.stockService.findOneByID(data.stock);
+        if (!stock) throw new NotFoundException(&#x27;Stock Not found&#x27;);
+      }
+
+      if (data.createby) {
+        // Check If user Valid
+        const user &#x3D; await this.userService.findOneByid(data.createby);
+        if (!user) throw new NotFoundException(&#x27;User Not found&#x27;);
+      }
+
+      if (data.updated_user) {
+        // Check If user Valid
+        const user &#x3D; await this.userService.findOneByid(data.updated_user);
+        if (!user) throw new NotFoundException(&#x27;User Not found&#x27;);
+      }
+
+      if (data.status) {
+        const enumValues &#x3D; Object.values(StockTransactionStatus);
+        if (!enumValues.includes(data.status))
+          throw new NotFoundException(&#x27;Status Not Exist&#x27;);
+      }
+      return await this.stockTransactionRepo.findByIdAndUpdate(
+        transaction_id,
+        data,
+        { new: true },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async DeleteOneByID(transaction_id: string): Promise&lt;StockTransaction&gt; {
+    try {
+      return await this.stockTransactionRepo
+        .findByIdAndDelete(transaction_id)
+        .exec();
     } catch (err) {
       throw err;
     }

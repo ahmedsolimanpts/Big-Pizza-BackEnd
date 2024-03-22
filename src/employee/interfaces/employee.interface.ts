@@ -1,5 +1,6 @@
 import { Sex } from 'src/users/enums/Sex.enum';
 import { Department } from '../enums/department.enums';
+import { TicketsPool } from 'src/ticket/enums/Ticket-Pool.enum';
 
 export interface EmployeeInterface {
   join_at?: Date;
@@ -23,4 +24,6 @@ export interface EmployeeInterface {
   birthdate?: Date;
 
   bank_account?: string;
+
+  ticket_pool?: TicketsPool;
 }

@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/order/order.service.ts</code>
+            <code>src/order/service/order.service.ts</code>
         </p>
 
 
@@ -144,19 +144,39 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#CreateBaseOrder" >CreateBaseOrder</a>
+                                <a href="#ApproveOrderByOrderID" >ApproveOrderByOrderID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#CreateOrder" >CreateOrder</a>
+                                <a href="#ChangeOrderStatusByOrderID" >ChangeOrderStatusByOrderID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#CreateTakeAwayOrder" >CreateTakeAwayOrder</a>
+                                <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllCompeletedOrder" >findAllCompeletedOrder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllCompeletedOrderByBranchId" >findAllCompeletedOrderByBranchId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllOrderInBranch" >findAllOrderInBranch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllOrdersApprovedByUserID" >findAllOrdersApprovedByUserID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllOrdersApprovedByUserIDInSpecificTime" >findAllOrdersApprovedByUserIDInSpecificTime</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -172,15 +192,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findOneByID" >findOneByID</a>
+                                <a href="#findAllPreparingOrder" >findAllPreparingOrder</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#findAllPreparingOrderByBranchID" >findAllPreparingOrderByBranchID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#UpdateOrderStatusByOrderID" >UpdateOrderStatusByOrderID</a>
+                                <a href="#findOneOrderByID" >findOneOrderByID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeOneOrderByID" >removeOneOrderByID</a>
                             </li>
                         </ul>
                     </td>
@@ -200,12 +224,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(orderRepo: <a href="../classes/Order.html" target="_self">Model&lt;Order&gt;</a>, TakeAwayRepo: Model<TakeAwayOrder>, DineInRepo: Model<DineinOrder>, DelivereyRepo: <a href="../undefineds/OrderType.html" target="_self">Model&lt;DelivereyOrderType&gt;</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>, employeeService: <a href="../injectables/EmployeeService.html" target="_self">EmployeeService</a>)</code>
+<code>constructor(orderRepo: <a href="../classes/Order.html" target="_self">Model&lt;Order&gt;</a>, productService: <a href="../injectables/ProductService.html" target="_self">ProductService</a>, employeeService: <a href="../injectables/EmployeeService.html" target="_self">EmployeeService</a>, offerService: <a href="../injectables/OffersService.html" target="_self">OffersService</a>, coponService: <a href="../injectables/CouponService.html" target="_self">CouponService</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>, customerService: <a href="../injectables/CustomerService.html" target="_self">CustomerService</a>, cutomerlocationService: <a href="../injectables/CustomerLocationsService.html" target="_self">CustomerLocationsService</a>, connection: mongoose.Connection)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/order/order.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/order/service/order.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -235,10 +259,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>TakeAwayRepo</td>
+                                                        <td>productService</td>
                                                   
                                                         <td>
-                                                                    <code>Model&lt;TakeAwayOrder&gt;</code>
+                                                                        <code><a href="../injectables/ProductService.html" target="_self" >ProductService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -247,10 +271,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>DineInRepo</td>
+                                                        <td>employeeService</td>
                                                   
                                                         <td>
-                                                                    <code>Model&lt;DineinOrder&gt;</code>
+                                                                        <code><a href="../injectables/EmployeeService.html" target="_self" >EmployeeService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -259,10 +283,22 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>DelivereyRepo</td>
+                                                        <td>offerService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../miscellaneous/enumerations.html#OrderType" target="_self" >Model&lt;DelivereyOrderType&gt;</a></code>
+                                                                        <code><a href="../injectables/OffersService.html" target="_self" >OffersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>coponService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CouponService.html" target="_self" >CouponService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -283,10 +319,34 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>employeeService</td>
+                                                        <td>customerService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/EmployeeService.html" target="_self" >EmployeeService</a></code>
+                                                                        <code><a href="../injectables/CustomerService.html" target="_self" >CustomerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cutomerlocationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomerLocationsService.html" target="_self" >CustomerLocationsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>connection</td>
+                                                  
+                                                        <td>
+                                                                    <code>mongoose.Connection</code>
                                                         </td>
                                                   
                                                     <td>
@@ -312,26 +372,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="CreateBaseOrder"></a>
+                    <a name="ApproveOrderByOrderID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>CreateBaseOrder</b></span>
-                        <a href="#CreateBaseOrder"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ApproveOrderByOrderID</b></span>
+                        <a href="#ApproveOrderByOrderID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>CreateBaseOrder(CreateOrderData: <a href="../classes/CreateBaseOrderDto.html" target="_self">CreateBaseOrderDto</a>)</code>
+                    <code>ApproveOrderByOrderID(orderid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newStatus: <a href="../undefineds/OrderStatus.html" target="_self">OrderStatus</a>, createby: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/order/order.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="300"
+                                    class="link-to-prism">src/order/service/order.service.ts:300</a></div>
                         </td>
                     </tr>
 
@@ -352,13 +412,49 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>CreateOrderData</td>
+                                                <td>orderid</td>
                                             <td>
-                                                            <code><a href="../classes/CreateBaseOrderDto.html" target="_self" >CreateBaseOrderDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
                                                     No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>newStatus</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#OrderStatus" target="_self" >OrderStatus</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>createby</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
                                             </td>
 
 
@@ -381,26 +477,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="CreateOrder"></a>
+                    <a name="ChangeOrderStatusByOrderID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>CreateOrder</b></span>
-                        <a href="#CreateOrder"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ChangeOrderStatusByOrderID</b></span>
+                        <a href="#ChangeOrderStatusByOrderID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>CreateOrder(CreateOrderData: <a href="../interfaces/CreateOrderInterface.html" target="_self">CreateOrderInterface</a>)</code>
+                    <code>ChangeOrderStatusByOrderID(orderid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newStatus: <a href="../undefineds/OrderStatus.html" target="_self">OrderStatus</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/order/order.service.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="327"
+                                    class="link-to-prism">src/order/service/order.service.ts:327</a></div>
                         </td>
                     </tr>
 
@@ -421,9 +517,102 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>CreateOrderData</td>
+                                                <td>orderid</td>
                                             <td>
-                                                            <code><a href="../interfaces/CreateOrderInterface.html" target="_self" >CreateOrderInterface</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>newStatus</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#OrderStatus" target="_self" >OrderStatus</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(data: <a href="../interfaces/OrderInterface.html" target="_self">OrderInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/order/service/order.service.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="../interfaces/OrderInterface.html" target="_self" >OrderInterface</a></code>
                                             </td>
 
                                             <td>
@@ -437,75 +626,6 @@
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="CreateTakeAwayOrder"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>CreateTakeAwayOrder</b></span>
-                        <a href="#CreateTakeAwayOrder"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>CreateTakeAwayOrder(CreateOrderData: <a href="../interfaces/TakeAwayOrderInterface.html" target="_self">TakeAwayOrderInterface</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/order/order.service.ts:76</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>CreateOrderData</td>
-                                            <td>
-                                                            <code><a href="../interfaces/TakeAwayOrderInterface.html" target="_self" >TakeAwayOrderInterface</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -537,8 +657,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="101"
-                                    class="link-to-prism">src/order/order.service.ts:101</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/order/service/order.service.ts:152</a></div>
                         </td>
                     </tr>
 
@@ -547,9 +667,348 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllCompeletedOrder"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllCompeletedOrder</b></span>
+                        <a href="#findAllCompeletedOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllCompeletedOrder()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/order/service/order.service.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllCompeletedOrderByBranchId"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllCompeletedOrderByBranchId</b></span>
+                        <a href="#findAllCompeletedOrderByBranchId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllCompeletedOrderByBranchId(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/order/service/order.service.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllOrderInBranch"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllOrderInBranch</b></span>
+                        <a href="#findAllOrderInBranch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllOrderInBranch(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/order/service/order.service.ts:224</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branchid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllOrdersApprovedByUserID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllOrdersApprovedByUserID</b></span>
+                        <a href="#findAllOrdersApprovedByUserID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllOrdersApprovedByUserID(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">src/order/service/order.service.ts:268</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
                             <b>Returns : </b>    <code>unknown</code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllOrdersApprovedByUserIDInSpecificTime"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllOrdersApprovedByUserIDInSpecificTime</b></span>
+                        <a href="#findAllOrdersApprovedByUserIDInSpecificTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllOrdersApprovedByUserIDInSpecificTime(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, from: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>, to: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="279"
+                                    class="link-to-prism">src/order/service/order.service.ts:279</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>from</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>to</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -576,8 +1035,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/order/order.service.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/order/service/order.service.ts:180</a></div>
                         </td>
                     </tr>
 
@@ -586,7 +1045,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -615,8 +1074,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/order/order.service.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/order/service/order.service.ts:235</a></div>
                         </td>
                     </tr>
 
@@ -684,8 +1143,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="139"
-                                    class="link-to-prism">src/order/order.service.ts:139</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="246"
+                                    class="link-to-prism">src/order/service/order.service.ts:246</a></div>
                         </td>
                     </tr>
 
@@ -735,26 +1194,65 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findOneByID"></a>
+                    <a name="findAllPreparingOrder"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findOneByID</b></span>
-                        <a href="#findOneByID"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAllPreparingOrder</b></span>
+                        <a href="#findAllPreparingOrder"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findAllPreparingOrder()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="109"
-                                    class="link-to-prism">src/order/order.service.ts:109</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/order/service/order.service.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order[]&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPreparingOrderByBranchID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllPreparingOrderByBranchID</b></span>
+                        <a href="#findAllPreparingOrderByBranchID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPreparingOrderByBranchID(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/order/service/order.service.ts:257</a></div>
                         </td>
                     </tr>
 
@@ -775,7 +1273,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>branchid</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -804,18 +1302,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="findOneOrderByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneOrderByID</b></span>
+                        <a href="#findOneOrderByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneOrderByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -823,7 +1321,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="160"
-                                    class="link-to-prism">src/order/order.service.ts:160</a></div>
+                                    class="link-to-prism">src/order/service/order.service.ts:160</a></div>
                         </td>
                     </tr>
 
@@ -859,7 +1357,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Promise&lt;Order&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -873,26 +1371,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="UpdateOrderStatusByOrderID"></a>
+                    <a name="removeOneOrderByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>UpdateOrderStatusByOrderID</b></span>
-                        <a href="#UpdateOrderStatusByOrderID"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneOrderByID</b></span>
+                        <a href="#removeOneOrderByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>UpdateOrderStatusByOrderID(orderid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newStatus: <a href="../undefineds/OrderStatus.html" target="_self">OrderStatus</a>)</code>
+                    <code>removeOneOrderByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="150"
-                                    class="link-to-prism">src/order/order.service.ts:150</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="348"
+                                    class="link-to-prism">src/order/service/order.service.ts:348</a></div>
                         </td>
                     </tr>
 
@@ -913,21 +1411,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>orderid</td>
+                                                <td>id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>newStatus</td>
-                                            <td>
-                                                            <code><a href="../miscellaneous/enumerations.html#OrderStatus" target="_self" >OrderStatus</a></code>
                                             </td>
 
                                             <td>
@@ -956,107 +1442,158 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import mongoose, { Model } from &#x27;mongoose&#x27;;
-import {
-  DelivereyOrderType,
-  DineinOrder,
-  Order,
-  TakeAwayOrder,
-} from &#x27;./Model/order.model&#x27;;
-import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { CreateBaseOrderDto } from &#x27;./dto/base-order.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from &#x27;@nestjs/common&#x27;;
+import mongoose, { ClientSession, Model } from &#x27;mongoose&#x27;;
+import { Order } from &#x27;../Model/order.model&#x27;;
+import { InjectConnection, InjectModel } from &#x27;@nestjs/mongoose&#x27;;
+import { OrderStatus } from &#x27;../enums/Order-Status.enums&#x27;;
+import { OrderInterface } from &#x27;../Interface/Order.interface&#x27;;
+import { ProductService } from &#x27;src/product/product.service&#x27;;
+import { EmployeeService } from &#x27;src/employee/service/employee.service&#x27;;
+import { OffersService } from &#x27;src/offers/offers.service&#x27;;
+import { CouponService } from &#x27;src/coupon/coupon.service&#x27;;
 import { BranchService } from &#x27;src/branch/branch.service&#x27;;
-import { EmployeeService } from &#x27;src/employee/employee.service&#x27;;
-import { OrderStatus } from &#x27;./enums/Order-Status.enums&#x27;;
-import { CreateOrderInterface } from &#x27;./Interface/Create-Order.interface&#x27;;
-import { TakeAwayOrderInterface } from &#x27;./Interface/TakeAway-Order.interfce&#x27;;
+import { Roles } from &#x27;src/auth/enums/roles.enums&#x27;;
+import { CustomerService } from &#x27;src/customer/service/customer.service&#x27;;
+import { CustomerLocationsService } from &#x27;src/customer/service/customer-locations.service&#x27;;
 
 @Injectable()
 export class OrderService {
   constructor(
     @InjectModel(Order.name) private readonly orderRepo: Model&lt;Order&gt;,
-    @InjectModel(TakeAwayOrder.name)
-    private readonly TakeAwayRepo: Model&lt;TakeAwayOrder&gt;,
-    @InjectModel(DineinOrder.name)
-    private readonly DineInRepo: Model&lt;DineinOrder&gt;,
-    @InjectModel(DelivereyOrderType.name)
-    private readonly DelivereyRepo: Model&lt;DelivereyOrderType&gt;,
-    private branchService: BranchService,
+    private productService: ProductService,
     private employeeService: EmployeeService,
+    private offerService: OffersService,
+    private coponService: CouponService,
+    private branchService: BranchService,
+    private customerService: CustomerService,
+    private cutomerlocationService: CustomerLocationsService,
+    @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
-  async CreateBaseOrder(CreateOrderData: CreateBaseOrderDto) {
+  async create(data: OrderInterface) {
+    const session &#x3D; await this.connection.startSession();
     try {
-      const newOrder &#x3D; new this.orderRepo(CreateOrderData);
-      return await newOrder.save();
-    } catch (err) {
-      throw err;
-    }
-  }
+      await session.withTransaction(async () &#x3D;&gt; {
+        const branch &#x3D; await this.branchService.findOneBranchByID(data.branch);
+        if (!branch) throw new NotFoundException(&#x27;Branch Not Exist&#x27;);
+        const items &#x3D; data[&#x27;items&#x27;];
 
-  async CreateOrder(CreateOrderData: CreateOrderInterface) {
-    // try {
-    //   const emp &#x3D; await this.employeeService.findEmpByUserId(
-    //     CreateOrderData.createby,
-    //   );
-    //   //  Check If this is Employee
-    //   if (emp) {
-    //     // Employee But Check His Working Location
-    //     if (
-    //       new mongoose.Types.ObjectId(emp.working_in) &#x3D;&#x3D;
-    //       new mongoose.Types.ObjectId(CreateOrderData.branch)
-    //     ) {
-    //       CreateOrderData.approvedby &#x3D; CreateOrderData.createby;
-    //       if (CreateOrderData.order_type &#x3D;&#x3D; OrderType.TAKEAWAY) {
-    //         return this.CreateTakeAwayOrder(CreateOrderData);
-    //       }
-    //     }
-    //     // Employee But Working in Another Location
-    //     else {
-    //       CreateOrderData.order_status &#x3D; OrderStatus.PENDING;
-    //       if (CreateOrderData.order_type &#x3D;&#x3D; OrderType.TAKEAWAY) {
-    //         return this.CreateTakeAwayOrder(CreateOrderData);
-    //       }
-    //     }
-    //     // User But Not An Employee
-    //   } else {
-    //     CreateOrderData.order_status &#x3D; OrderStatus.PENDING;
-    //     if (CreateOrderData.order_type &#x3D;&#x3D; OrderType.TAKEAWAY) {
-    //       return this.CreateTakeAwayOrder(CreateOrderData);
-    //     }
-    //   }
-    // } catch (err) {
-    //   throw err;
-    // }
-  }
-
-  async CreateTakeAwayOrder(CreateOrderData: TakeAwayOrderInterface) {
-    try {
-      const emp &#x3D; await this.employeeService.findEmpByUserId(
-        CreateOrderData.createby,
-      );
-      //  Check If this is Employee
-      if (emp) {
-        // Employee But Check His Working Location
-        if (
-          new mongoose.Types.ObjectId(emp.working_in) &#x3D;&#x3D;
-          new mongoose.Types.ObjectId(CreateOrderData.branch)
-        ) {
-          CreateOrderData.approvedby &#x3D; CreateOrderData.createby;
-          const order &#x3D; new this.TakeAwayRepo(CreateOrderData);
-          return await order.save();
+        if (data.customer) {
+          const customer &#x3D; await this.customerService.findOneCustomerById(
+            data.customer,
+          );
+          if (!customer) throw new NotFoundException(&#x27;Cudstomer Not Exist&#x27;);
         }
-      }
-      CreateOrderData.order_status &#x3D; OrderStatus.PENDING;
-      const order &#x3D; new this.TakeAwayRepo(CreateOrderData);
-      return await order.save();
+
+        if (data.end_location) {
+          const customerLoction &#x3D;
+            await this.cutomerlocationService.findOneCustomerLocationById(
+              data.end_location,
+            );
+          if (!customerLoction)
+            throw new NotFoundException(&#x27;Location Not Exist&#x27;);
+        }
+
+        // Check Item Availability
+        for (const item of items) {
+          const isProductAvailable &#x3D;
+            await this.productService.IsProductAvailableInBranchWithQuantity(
+              item.product,
+              data[&#x27;branch&#x27;],
+              item.quantity,
+              session,
+            );
+          if (item.extra) {
+            const IsValidExtra &#x3D; await this.productService.IsExtraProducts(
+              item.extra,
+            );
+            if (!IsValidExtra)
+              throw new NotFoundException(&#x27;Products Not Valid For Extra&#x27;);
+          }
+          if (!isProductAvailable) {
+            throw new NotFoundException(
+              &quot;item Doesn&#x27;t exist with this quantity&quot;,
+            );
+          }
+        }
+        //  Check Order Offer Availability
+        if (data.offers) {
+          for (const offer of data.offers) {
+            const Is_ValidOffer &#x3D;
+              await this.offerService.IsValidOfferInBranchByID(
+                offer,
+                data.branch,
+                session,
+              );
+            if (!Is_ValidOffer)
+              throw new NotFoundException(&#x27;Not Valid Offer in Branch&#x27;);
+          }
+        }
+        // Check Order Coupon Availability
+        if (data.coupon) {
+          const Is_ValidCoupon &#x3D;
+            await this.coponService.IsValidCouponInBranchByCouponID(
+              data.coupon,
+              data.branch,
+              session,
+            );
+          if (!Is_ValidCoupon) throw new NotFoundException(&#x27;Not Valid Coupon&#x27;);
+        }
+        // Subtract from Offer
+        if (data.offers) {
+          for (const offer of data.offers) {
+            await this.offerService.SubtractOneFromOfferQuantity(
+              offer,
+              session,
+            );
+          }
+        }
+        // Subtract from Coupon
+        if (data.coupon) {
+          await this.coponService.SubtractOneFromCouponQuantity(
+            data.coupon,
+            session,
+          );
+        }
+        // Subtract from stock quantity
+        for (const item of items) {
+          await this.productService.SubtractproductQuantity(
+            item.product,
+            item.quantity,
+            session,
+          );
+        }
+
+        // Check If User Work In Branch and Cashier
+        const isInBrnch &#x3D;
+          await this.employeeService.IsUserWorkingInBranchAndHaveRole(
+            data[&#x27;createby&#x27;],
+            data[&#x27;branch&#x27;],
+            Roles.CASHIER,
+            session,
+          );
+        if (!isInBrnch) {
+          data[&#x27;order_status&#x27;] &#x3D; OrderStatus.PENDING;
+        } else {
+          data[&#x27;order_status&#x27;] &#x3D; OrderStatus.PREPARING;
+        }
+        const newOrder &#x3D; new this.orderRepo(data); // Removed session from here
+        await newOrder.save({ session });
+      });
     } catch (err) {
-      throw err;
+      // Error handling logic here, if any specific actions needed
+      throw err; // Rethrow the error to be handled elsewhere or logged
+    } finally {
+      await session.endSession(); // Ensure session is ended properly
     }
   }
 
-  async findAll() {
+  async findAll(): Promise&lt;Order[]&gt; {
     try {
       return await this.orderRepo.find().populate(&#x27;items.item&#x27;).exec();
     } catch (err) {
@@ -1064,18 +1601,74 @@ export class OrderService {
     }
   }
 
-  async findOneByID(id: string) {
+  async findOneOrderByID(id: string): Promise&lt;Order&gt; {
     try {
-      return this.orderRepo.findById(id);
+      return await this.orderRepo
+        .findById(id)
+        .populate([
+          &#x27;offers&#x27;,
+          &#x27;coupon&#x27;,
+          &#x27;branch&#x27;,
+          &#x27;items&#x27;,
+          &#x27;items.product&#x27;,
+          &#x27;end_location&#x27;,
+          &#x27;createby&#x27;,
+          &#x27;customer&#x27;,
+        ])
+        .exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async findAllPendingOrder() {
+  async findAllPendingOrder(): Promise&lt;Order[]&gt; {
     try {
       return await this.orderRepo
         .find({ order_status: OrderStatus.PENDING })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllPreparingOrder(): Promise&lt;Order[]&gt; {
+    try {
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.PREPARING })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllCompeletedOrder(): Promise&lt;Order[]&gt; {
+    try {
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.COMPELETED })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllCompeletedOrderByBranchId(branch_id: string): Promise&lt;Order[]&gt; {
+    try {
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.COMPELETED, branch: branch_id })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllOrderInBranch(branchid: string): Promise&lt;Order[]&gt; {
+    try {
+      return await this.orderRepo
+        .find({ branch: branchid })
         .populate(&#x27;items.item&#x27;)
         .exec();
     } catch (err) {
@@ -1105,17 +1698,98 @@ export class OrderService {
     }
   }
 
-  async UpdateOrderStatusByOrderID(orderid: string, newStatus: OrderStatus) {
+  async findAllPreparingOrderByBranchID(branchid: string) {
     try {
-      return await this.orderRepo.findByIdAndUpdate(orderid, {
-        $set: { order_status: newStatus },
-      });
+      return await this.orderRepo
+        .find({ order_status: OrderStatus.PREPARING, branch: branchid })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async findAllOrdersApprovedByUserID(userid: string) {
+    try {
+      return await this.orderRepo
+        .find({ approvedby: userid })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAllOrdersApprovedByUserIDInSpecificTime(
+    userid: string,
+    from: Date,
+    to: Date,
+  ) {
+    try {
+      return await this.orderRepo
+        .find({
+          approvedby: userid,
+          createdAt: {
+            $gte: from,
+            $lte: to,
+          },
+        })
+        .populate(&#x27;items.item&#x27;)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ApproveOrderByOrderID(
+    orderid: string,
+    newStatus: OrderStatus,
+    createby: string,
+    session?: ClientSession,
+  ) {
+    try {
+      const order &#x3D; await this.orderRepo.findById(orderid);
+      if (order.order_status &#x3D;&#x3D; newStatus)
+        throw new ConflictException(&#x27;Order In this Status Already&#x27;);
+      // Check If User Work In Branch and Cashier
+      const isInBrnch &#x3D;
+        await this.employeeService.IsUserWorkingInBranchAndHaveRole(
+          createby,
+          order.branch,
+          Roles.CASHIER,
+          session,
+        );
+      if (isInBrnch) {
+        order.order_status &#x3D; newStatus;
+      }
+      return await order.save();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeOrderStatusByOrderID(
+    orderid: string,
+    newStatus: OrderStatus,
+    session?: ClientSession,
+  ) {
+    try {
+      return await this.orderRepo
+        .findByIdAndUpdate(
+          orderid,
+          {
+            order_status: newStatus,
+          },
+          { new: true },
+        )
+        .session(session)
+        .exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOneOrderByID(id: string) {
     try {
       return await this.orderRepo.findByIdAndDelete(id);
     } catch (err) {

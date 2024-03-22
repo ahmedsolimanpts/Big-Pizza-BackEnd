@@ -156,11 +156,11 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#quantity" >quantity</a>
+                                <a href="#transaction" >transaction</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#transaction" >transaction</a>
+                                <a href="#transaction_id" >transaction_id</a>
                             </li>
                         </ul>
                     </td>
@@ -210,7 +210,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -231,7 +231,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>        <code><a href="../classes/StockItemQuantity.html" target="_self" >StockItemQuantity</a></code>
 
                     </td>
                 </tr>
@@ -240,49 +240,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Prop({type: undefined, ref: undefined})<br />
+                            @Prop({type: StockItemQuantity})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:10</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="quantity"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>quantity</b></span>
-                        <a href="#quantity"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @Prop()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:11</a></div>
                         </td>
                     </tr>
 
@@ -318,7 +282,43 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transaction_id"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>transaction_id</b></span>
+                        <a href="#transaction_id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Prop({type: undefined, ref: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/stock/Model/Stock-item-logs.model.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -341,21 +341,22 @@
 import mongoose from &#x27;mongoose&#x27;;
 import { User } from &#x27;src/users/Model/user.model&#x27;;
 import { StockTransactionTYPE } from &#x27;../enums/Stock-Transactions.enum&#x27;;
-import { StockItem } from &#x27;./Stock-Item.model&#x27;;
+import { StockItemQuantity } from &#x27;./Stock-item-quantity.model&#x27;;
+import { StockTransaction } from &#x27;./Stock-Transaction.model&#x27;;
 
 @Schema({ timestamps: true })
 export class StockItemslogs {
-  @Prop({ type: mongoose.Types.ObjectId, ref: StockItem.name })
-  item: string;
-
-  @Prop()
-  quantity: number;
+  @Prop({ type: StockItemQuantity })
+  item: StockItemQuantity;
 
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
   createby: string;
 
   @Prop()
   transaction: StockTransactionTYPE;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: StockTransaction.name })
+  transaction_id: string;
 }
 
 export const StockItemslogsSchema &#x3D;

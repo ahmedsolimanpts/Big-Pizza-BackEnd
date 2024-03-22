@@ -153,19 +153,11 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#findAll" >findAll</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#findOneByID" >findOneByID</a>
+                                <a href="#findOneStockTransactionById" >findOneStockTransactionById</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#remove" >remove</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -199,7 +191,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createDto: <a href="../classes/CreateStockItemLogsDto.html" target="_self">CreateStockItemLogsDto</a>)</code>
+                    <code>create(stock_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createDto: <a href="../classes/CreateStockItemLogsDto.html" target="_self">CreateStockItemLogsDto</a>, req: Request)</code>
                 </td>
             </tr>
 
@@ -207,14 +199,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br /></code>
+                    <code>@Post(&#x27;:stock_id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -235,9 +227,33 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                                <td>stock_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
                                                 <td>createDto</td>
                                             <td>
                                                             <code><a href="../classes/CreateStockItemLogsDto.html" target="_self" >CreateStockItemLogsDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                        <code>Request</code>
                                             </td>
 
                                             <td>
@@ -264,18 +280,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findAll"></a>
+                    <a name="findOneStockTransactionById"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>findAll</b></span>
-                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneStockTransactionById</b></span>
+                        <a href="#findOneStockTransactionById"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findAll()</code>
+                    <code>findOneStockTransactionById(item_log_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, stock_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -289,54 +305,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:26</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findOneByID"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>findOneByID</b></span>
-                        <a href="#findOneByID"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -357,7 +327,19 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>item_log_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>stock_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -397,7 +379,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>remove(item_log_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, stock_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -405,14 +387,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
+                    <code>@Delete()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -433,83 +415,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="update"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateDto: <a href="../classes/UpdateStockItemLogsDto.html" target="_self">UpdateStockItemLogsDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/stock/controller/stock-item-logs.controller.ts:36</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
+                                                <td>item_log_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -521,9 +427,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateDto</td>
+                                                <td>stock_id</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateStockItemLogsDto.html" target="_self" >UpdateStockItemLogsDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -556,42 +462,59 @@
   Delete,
   Get,
   Param,
-  Patch,
   Post,
+  Query,
+  Req,
 } from &#x27;@nestjs/common&#x27;;
 import { StockItemLogsService } from &#x27;../service/stock-item-logs.service&#x27;;
 import { CreateStockItemLogsDto } from &#x27;../dto/Stock Item Logs/create-Stock-Item-Logs.dto&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { UpdateStockItemLogsDto } from &#x27;../dto/Stock Item Logs/update-Stock-item-Logs.dto&#x27;;
+import { Request } from &#x27;express&#x27;;
+import { StockItemLogsInterface } from &#x27;../interfaces/Stock-Item-logs.interface&#x27;;
+import { StockService } from &#x27;../service/stock.service&#x27;;
 
 @ApiTags(&#x27;Stock Item Logs&#x27;)
 @Controller(&#x27;stock-item-logs&#x27;)
 export class StockItemLogsController {
-  constructor(private readonly stockItemLogsService: StockItemLogsService) {}
+  constructor(
+    private readonly stockItemLogsService: StockItemLogsService,
+    private stockService: StockService,
+  ) {}
 
-  @Post()
-  create(@Body() createDto: CreateStockItemLogsDto) {
-    return this.stockItemLogsService.create(createDto);
+  @Post(&#x27;:stock_id&#x27;)
+  create(
+    @Param(&#x27;stock_id&#x27;) stock_id: string,
+    @Body() createDto: CreateStockItemLogsDto,
+    @Req() req: Request,
+  ) {
+    const data: StockItemLogsInterface &#x3D; {
+      createby: (req as any).user._id,
+      stock_id: stock_id,
+      ...createDto,
+    };
+    return this.stockItemLogsService.create(data);
   }
 
   @Get()
-  findAll() {
-    return this.stockItemLogsService.findAll();
+  findOneStockTransactionById(
+    @Query(&#x27;item-log-id&#x27;) item_log_id: string,
+    @Query(&#x27;stock-id&#x27;) stock_id: string,
+  ) {
+    return this.stockItemLogsService.findOneStockTransactionById(
+      item_log_id,
+      stock_id,
+    );
   }
 
-  @Get(&#x27;:id&#x27;)
-  findOneByID(@Param(&#x27;id&#x27;) id: string) {
-    return this.stockItemLogsService.findOneById(id);
-  }
-
-  @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updateDto: UpdateStockItemLogsDto) {
-    return this.stockItemLogsService.UpdateById(id, updateDto);
-  }
-
-  @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.stockItemLogsService.DeleteById(id);
+  @Delete()
+  remove(
+    @Query(&#x27;item-log-id&#x27;) item_log_id: string,
+    @Query(&#x27;stock-id&#x27;) stock_id: string,
+  ) {
+    return this.stockItemLogsService.DeleteStockItemLogById(
+      item_log_id,
+      stock_id,
+    );
   }
 }
 </code></pre>

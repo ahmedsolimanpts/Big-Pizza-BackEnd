@@ -23,6 +23,7 @@ import { WalletModule } from './wallet/wallet.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { PaypalModule } from './paypal/paypal.module';
 import { MailModule } from './mail/mail.module';
+import { CashierModule } from './cashier/cashier.module';
 import * as joi from 'joi';
 
 @Module({
@@ -69,6 +70,7 @@ import * as joi from 'joi';
     NotificationsModule,
     PaypalModule,
     MailModule,
+    CashierModule,
   ],
   controllers: [],
   providers: [],

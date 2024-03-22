@@ -164,15 +164,15 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                <a href="#pool" >pool</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
                                 <a href="#segment" >segment</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#status" >status</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#updates" >updates</a>
                             </li>
                         </ul>
                     </td>
@@ -258,7 +258,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/ticket/Models/ticket.model.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/ticket/Models/ticket.model.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -330,7 +330,43 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/ticket/Models/ticket.model.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/ticket/Models/ticket.model.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pool"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>pool</b></span>
+                        <a href="#pool"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#TicketsPool" target="_self" >TicketsPool</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Prop({required: true, defalt: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/ticket/Models/ticket.model.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -366,7 +402,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/ticket/Models/ticket.model.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/ticket/Models/ticket.model.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -409,42 +445,6 @@
 
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updates"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>updates</b></span>
-                        <a href="#updates"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>TicketUpdates[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @Prop({type: undefined})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/ticket/Models/ticket.model.ts:31</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
 </section>
 
 
@@ -463,8 +463,8 @@ import mongoose from &#x27;mongoose&#x27;;
 import { User } from &#x27;src/users/Model/user.model&#x27;;
 import { Branch } from &#x27;src/branch/Model/branch.model&#x27;;
 import { TicketCategory } from &#x27;../enums/Ticket-category.enum&#x27;;
-import { TicketUpdates } from &#x27;./ticket-updates.model&#x27;;
 import { TicketSegment } from &#x27;../enums/Ticket-Segment.enum&#x27;;
+import { TicketsPool } from &#x27;../enums/Ticket-Pool.enum&#x27;;
 
 @Schema({ timestamps: true })
 export class Ticket {
@@ -477,6 +477,9 @@ export class Ticket {
   @Prop({ type: mongoose.Types.ObjectId, ref: Branch.name, required: true })
   branch: string;
 
+  @Prop({ required: true, defalt: TicketsPool.HR })
+  pool: TicketsPool;
+
   @Prop({ required: true, default: TicketCategory.IMPROVE })
   category: TicketCategory;
 
@@ -485,9 +488,6 @@ export class Ticket {
 
   @Prop({ required: true })
   description: string;
-
-  @Prop({ type: [TicketUpdates] })
-  updates: TicketUpdates[];
 }
 
 export const TicketSchema &#x3D; SchemaFactory.createForClass(Ticket);

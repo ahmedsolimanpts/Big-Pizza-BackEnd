@@ -164,6 +164,7 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Optional</span>
                                 <a href="#manager" >manager</a>
                             </li>
@@ -240,7 +241,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/branch/dto/update-branch.dto.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/branch/dto/update-branch.dto.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -253,6 +254,7 @@
                 <td class="col-md-4">
                     <a name="manager"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
@@ -273,13 +275,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;user_id&#x27;, required: false})<br />@IsOptional()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;user_id&#x27;, required: false})<br />@IsOptional()<br />@IsMongoId()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/branch/dto/update-branch.dto.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/branch/dto/update-branch.dto.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -318,7 +320,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/branch/dto/update-branch.dto.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/branch/dto/update-branch.dto.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -357,7 +359,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/branch/dto/update-branch.dto.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/branch/dto/update-branch.dto.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -396,7 +398,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/branch/dto/update-branch.dto.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/branch/dto/update-branch.dto.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -422,6 +424,7 @@ import {
   IsString,
   IsDateString,
   ValidateNested,
+  IsMongoId,
 } from &#x27;class-validator&#x27;;
 import { Type } from &#x27;class-transformer&#x27;;
 import { CreateLocationDto } from &#x27;src/location/dto/create-location.dto&#x27;;
@@ -456,6 +459,7 @@ export class UpdateBranchDto extends PartialType(CreateBranchDto) {
     required: false,
   })
   @IsOptional()
+  @IsMongoId()
   @IsString()
   manager?: string;
 

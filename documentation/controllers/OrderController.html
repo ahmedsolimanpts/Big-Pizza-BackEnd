@@ -119,7 +119,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/order/order.controller.ts</code>
+            <code>src/order/controller/order.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -149,16 +149,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#createDelivereyOrder" >createDelivereyOrder</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#createDineInOrder" >createDineInOrder</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier">Async</span>
-                                <a href="#createTakeAwayOrder" >createTakeAwayOrder</a>
+                                <a href="#approveOrder" >approveOrder</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -166,11 +157,43 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                <a href="#findAllCompeletedOrderByBranchId" >findAllCompeletedOrderByBranchId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllOrderInBranch" >findAllOrderInBranch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllOrdersApprovedByUserID" >findAllOrdersApprovedByUserID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllPendingOrder" >findAllPendingOrder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllPendingOrderByBranchID" >findAllPendingOrderByBranchID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllPendingOrderByUserID" >findAllPendingOrderByUserID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllPreparingdOrderByBranchId" >findAllPreparingdOrderByBranchId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAllPreparingOrder" >findAllPreparingOrder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeOneOrderByID" >removeOneOrderByID</a>
                             </li>
                         </ul>
                     </td>
@@ -193,18 +216,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createDelivereyOrder"></a>
+                    <a name="approveOrder"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>createDelivereyOrder</b></span>
-                        <a href="#createDelivereyOrder"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>approveOrder</b></span>
+                        <a href="#approveOrder"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createDelivereyOrder(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createOrderDto: <a href="../classes/CreateDelivereyOrderDto.html" target="_self">CreateDelivereyOrderDto</a>, req: Request)</code>
+                    <code>approveOrder(orderid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, req: Request)</code>
                 </td>
             </tr>
 
@@ -212,14 +235,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;:branchid/deliverey&#x27;)<br /></code>
+                    <code>@Patch(&#x27;aprove-order/:orderid&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/order/order.controller.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -240,21 +263,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>branchid</td>
+                                                <td>orderid</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>createOrderDto</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateDelivereyOrderDto.html" target="_self" >CreateDelivereyOrderDto</a></code>
                                             </td>
 
                                             <td>
@@ -280,207 +291,6 @@
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="createDineInOrder"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>createDineInOrder</b></span>
-                        <a href="#createDineInOrder"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createDineInOrder(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createOrderDto: <a href="../classes/CreateDineInOrderDto.html" target="_self">CreateDineInOrderDto</a>, req: Request)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post(&#x27;:branchid/dinein&#x27;)<br /></code>
-                </td>
-            </tr>
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/order/order.controller.ts:65</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>branchid</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>createOrderDto</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateDineInOrderDto.html" target="_self" >CreateDineInOrderDto</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>req</td>
-                                            <td>
-                                                        <code>Request</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="createTakeAwayOrder"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                            <span class="modifier">Async</span>
-                        <span ><b>createTakeAwayOrder</b></span>
-                        <a href="#createTakeAwayOrder"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createTakeAwayOrder(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createOrderDto: <a href="../classes/CreateTakeAwayOrderDto.html" target="_self">CreateTakeAwayOrderDto</a>, req: Request)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post(&#x27;:branchid/takeaway&#x27;)<br /></code>
-                </td>
-            </tr>
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/order/order.controller.ts:33</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>branchid</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>createOrderDto</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateTakeAwayOrderDto.html" target="_self" >CreateTakeAwayOrderDto</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>req</td>
-                                            <td>
-                                                        <code>Request</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -519,8 +329,556 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="80"
-                                    class="link-to-prism">src/order/order.controller.ts:80</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllCompeletedOrderByBranchId"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllCompeletedOrderByBranchId</b></span>
+                        <a href="#findAllCompeletedOrderByBranchId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllCompeletedOrderByBranchId(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;compeleted/:branch_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllOrderInBranch"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllOrderInBranch</b></span>
+                        <a href="#findAllOrderInBranch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllOrderInBranch(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;all/:branch_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllOrdersApprovedByUserID"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllOrdersApprovedByUserID</b></span>
+                        <a href="#findAllOrdersApprovedByUserID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllOrdersApprovedByUserID(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;approveby/:user_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPendingOrder"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllPendingOrder</b></span>
+                        <a href="#findAllPendingOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPendingOrder()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;pending&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPendingOrderByBranchID"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllPendingOrderByBranchID</b></span>
+                        <a href="#findAllPendingOrderByBranchID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPendingOrderByBranchID(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;pending/:branch_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPendingOrderByUserID"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllPendingOrderByUserID</b></span>
+                        <a href="#findAllPendingOrderByUserID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPendingOrderByUserID(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;pending/:user_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPreparingdOrderByBranchId"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllPreparingdOrderByBranchId</b></span>
+                        <a href="#findAllPreparingdOrderByBranchId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPreparingdOrderByBranchId(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;preparing/:branch_id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllPreparingOrder"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAllPreparingOrder</b></span>
+                        <a href="#findAllPreparingOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllPreparingOrder()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;preparing&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -565,8 +923,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="85"
-                                    class="link-to-prism">src/order/order.controller.ts:85</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -616,18 +974,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeOneOrderByID"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneOrderByID</b></span>
+                        <a href="#removeOneOrderByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeOneOrderByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -641,8 +999,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="90"
-                                    class="link-to-prism">src/order/order.controller.ts:90</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/order/controller/order.controller.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -692,82 +1050,64 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Req,
-  // UseGuards,
-  NotFoundException,
-} from &#x27;@nestjs/common&#x27;;
-import { OrderService } from &#x27;./order.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Param, Delete, Patch, Req } from &#x27;@nestjs/common&#x27;;
+import { OrderService } from &#x27;../service/order.service&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { CreateTakeAwayOrderDto } from &#x27;./dto/takeaway/create-takeaway-order.dto&#x27;;
-import { CreateDineInOrderDto } from &#x27;./dto/dinein/create-dinein-order.dto&#x27;;
-import { CreateDelivereyOrderDto } from &#x27;./dto/delivery/create-deliverey-order.dto&#x27;;
-import { IsEmployeeGuard } from &#x27;src/employee/guards/IsEmployee.guard&#x27;;
-import { CreateOrderInterface } from &#x27;./Interface/Create-Order.interface&#x27;;
-import { OrderType } from &#x27;./enums/Order-Types.enums&#x27;;
-import { BranchService } from &#x27;src/branch/branch.service&#x27;;
-import { TakeAwayOrderInterface } from &#x27;./Interface/TakeAway-Order.interfce&#x27;;
+import { OrderStatus } from &#x27;../enums/Order-Status.enums&#x27;;
+import { Request } from &#x27;express&#x27;;
 
 @ApiTags(&#x27;order&#x27;)
-// @UseGuards(IsEmployeeGuard)
 @Controller(&#x27;order&#x27;)
 export class OrderController {
-  constructor(
-    private readonly orderService: OrderService,
-    private branchService: BranchService,
-  ) {}
+  constructor(private readonly orderService: OrderService) {}
 
-  @Post(&#x27;:branchid/takeaway&#x27;)
-  async createTakeAwayOrder(
-    @Param(&#x27;branchid&#x27;) branchid: string,
-    @Body() createOrderDto: CreateTakeAwayOrderDto,
-    @Req() req: Request,
-  ) {
-    const branch &#x3D; await this.branchService.findOneByID(branchid);
-    if (!branch) throw new NotFoundException(&#x27;Not Valid Branch&#x27;);
-    const data: TakeAwayOrderInterface &#x3D; {
-      branch: branchid,
-      createby: (req as any).user._id,
-      order_type: OrderType.TAKEAWAY,
-      ...createOrderDto,
-    };
-    return this.orderService.CreateTakeAwayOrder(data);
+  @Patch(&#x27;aprove-order/:orderid&#x27;)
+  approveOrder(@Param(&#x27;orderid&#x27;) orderid: string, @Req() req: Request) {
+    return this.orderService.ApproveOrderByOrderID(
+      orderid,
+      OrderStatus.PREPARING,
+      (req as any).user._id,
+    );
   }
 
-  @Post(&#x27;:branchid/deliverey&#x27;)
-  createDelivereyOrder(
-    @Param(&#x27;branchid&#x27;) branchid: string,
-    @Body() createOrderDto: CreateDelivereyOrderDto,
-    @Req() req: Request,
-  ) {
-    const data: CreateOrderInterface &#x3D; {
-      branch: branchid,
-      createby: (req as any).user._id,
-      order_type: OrderType.DELIVEREY,
-      ...createOrderDto,
-    };
-    return this.orderService.CreateOrder(data);
+  @Get(&#x27;pending&#x27;)
+  findAllPendingOrder() {
+    return this.orderService.findAllPendingOrder();
   }
 
-  @Post(&#x27;:branchid/dinein&#x27;)
-  createDineInOrder(
-    @Param(&#x27;branchid&#x27;) branchid: string,
-    @Body() createOrderDto: CreateDineInOrderDto,
-    @Req() req: Request,
-  ) {
-    const data: CreateOrderInterface &#x3D; {
-      branch: branchid,
-      createby: (req as any).user._id,
-      order_type: OrderType.DINEIN,
-      ...createOrderDto,
-    };
-    return this.orderService.CreateOrder(data);
+  @Get(&#x27;pending/:branch_id&#x27;)
+  findAllPendingOrderByBranchID(@Param(&#x27;branch_id&#x27;) branch_id: string) {
+    return this.orderService.findAllPendingOrderByBranchID(branch_id);
+  }
+
+  @Get(&#x27;pending/:user_id&#x27;)
+  findAllPendingOrderByUserID(@Param(&#x27;user_id&#x27;) user_id: string) {
+    return this.orderService.findAllPendingOrderByUserID(user_id);
+  }
+
+  @Get(&#x27;all/:branch_id&#x27;)
+  findAllOrderInBranch(@Param(&#x27;branch_id&#x27;) branch_id: string) {
+    return this.orderService.findAllOrderInBranch(branch_id);
+  }
+
+  @Get(&#x27;compeleted/:branch_id&#x27;)
+  findAllCompeletedOrderByBranchId(@Param(&#x27;branch_id&#x27;) branch_id: string) {
+    return this.orderService.findAllCompeletedOrderByBranchId(branch_id);
+  }
+
+  @Get(&#x27;preparing&#x27;)
+  findAllPreparingOrder() {
+    return this.orderService.findAllPreparingOrder();
+  }
+
+  @Get(&#x27;preparing/:branch_id&#x27;)
+  findAllPreparingdOrderByBranchId(@Param(&#x27;branch_id&#x27;) branch_id: string) {
+    return this.orderService.findAllPreparingOrderByBranchID(branch_id);
+  }
+
+  @Get(&#x27;approveby/:user_id&#x27;)
+  findAllOrdersApprovedByUserID(@Param(&#x27;user_id&#x27;) user_id: string) {
+    return this.orderService.findAllOrdersApprovedByUserID(user_id);
   }
 
   @Get()
@@ -777,12 +1117,12 @@ export class OrderController {
 
   @Get(&#x27;:id&#x27;)
   findOne(@Param(&#x27;id&#x27;) id: string) {
-    return this.orderService.findOneByID(id);
+    return this.orderService.findOneOrderByID(id);
   }
 
   @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.orderService.remove(id);
+  removeOneOrderByID(@Param(&#x27;id&#x27;) id: string) {
+    return this.orderService.removeOneOrderByID(id);
   }
 }
 </code></pre>

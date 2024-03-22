@@ -144,6 +144,10 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#AreStockItemsExist" >AreStockItemsExist</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
@@ -180,12 +184,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(stockItemRepo: Model<StockItem>, connection: mongoose.Connection, stockSerive: <a href="../injectables/StockService.html" target="_self">StockService</a>)</code>
+<code>constructor(stockItemRepo: Model<StockItem>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/stock/service/stock-item.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/stock/service/stock-item.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -214,30 +218,6 @@
                                                     </td>
                                                     
                                                 </tr>
-                                                <tr>
-                                                        <td>connection</td>
-                                                  
-                                                        <td>
-                                                                    <code>mongoose.Connection</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>stockSerive</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/StockService.html" target="_self" >StockService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -252,6 +232,75 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AreStockItemsExist"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>AreStockItemsExist</b></span>
+                        <a href="#AreStockItemsExist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>AreStockItemsExist(stockItems: string[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/stock/service/stock-item.service.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>stockItems</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -274,8 +323,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/stock/service/stock-item.service.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="14"
+                                    class="link-to-prism">src/stock/service/stock-item.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -336,15 +385,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>DeleteById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>DeleteById(item_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/stock/service/stock-item.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/stock/service/stock-item.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -365,7 +414,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>item_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -444,15 +493,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneById(item_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/stock/service/stock-item.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/stock/service/stock-item.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -473,7 +522,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>item_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -513,15 +562,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>UpdateById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../interfaces/StockItemInterface.html" target="_self">StockItemInterface</a>)</code>
+                    <code>UpdateById(item_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../interfaces/StockItemInterface.html" target="_self">StockItemInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/stock/service/stock-item.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/stock/service/stock-item.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -542,7 +591,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>item_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -585,10 +634,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { InjectModel, InjectConnection } from &#x27;@nestjs/mongoose&#x27;;
-import mongoose, { Model } from &#x27;mongoose&#x27;;
-import { StockService } from &#x27;./stock.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, Injectable } from &#x27;@nestjs/common&#x27;;
+import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
+import { Model } from &#x27;mongoose&#x27;;
 import { StockItemInterface } from &#x27;../interfaces/Stock-Item.interface&#x27;;
 import { StockItem } from &#x27;../Model/Stock-Item.model&#x27;;
 
@@ -597,8 +645,6 @@ export class StockItemService {
   constructor(
     @InjectModel(StockItem.name)
     private readonly stockItemRepo: Model&lt;StockItem&gt;,
-    @InjectConnection() private readonly connection: mongoose.Connection,
-    private stockSerive: StockService,
   ) {}
 
   async create(data: StockItemInterface) {
@@ -606,6 +652,9 @@ export class StockItemService {
       const newItem &#x3D; new this.stockItemRepo(data);
       return await newItem.save();
     } catch (err) {
+      if (err.code &#x3D;&#x3D; 11000) {
+        throw new ConflictException(&#x27;Item Is Already Exist&#x27;);
+      }
       throw err;
     }
   }
@@ -618,27 +667,39 @@ export class StockItemService {
     }
   }
 
-  async findOneById(id: string) {
+  async AreStockItemsExist(stockItems: string[]): Promise&lt;boolean&gt; {
     try {
-      return await this.stockItemRepo.findById(id).exec();
+      const items &#x3D; await this.stockItemRepo.find({ _id: stockItems }).exec();
+      if (items.length &#x3D;&#x3D; stockItems.length) {
+        return true;
+      }
+      return false;
     } catch (err) {
       throw err;
     }
   }
 
-  async UpdateById(id: string, data: StockItemInterface) {
+  async findOneById(item_id: string) {
+    try {
+      return await this.stockItemRepo.findById(item_id).exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async UpdateById(item_id: string, data: StockItemInterface) {
     try {
       return await this.stockItemRepo
-        .findByIdAndUpdate(id, { data }, { new: true })
+        .findByIdAndUpdate(item_id, { data }, { new: true })
         .exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async DeleteById(id: string) {
+  async DeleteById(item_id: string) {
     try {
-      return await this.stockItemRepo.findByIdAndDelete(id).exec();
+      return await this.stockItemRepo.findByIdAndDelete(item_id).exec();
     } catch (err) {
       throw err;
     }

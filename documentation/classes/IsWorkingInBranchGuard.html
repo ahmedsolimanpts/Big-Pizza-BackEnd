@@ -316,7 +316,7 @@
 import { Reflector } from &#x27;@nestjs/core&#x27;;
 import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
 import { Request } from &#x27;express&#x27;;
-import { EmployeeService } from &#x27;src/employee/employee.service&#x27;;
+import { EmployeeService } from &#x27;src/employee/service/employee.service&#x27;;
 
 export class IsWorkingInBranchGuard extends AuthGuard(&#x27;jwt&#x27;) {
   constructor(

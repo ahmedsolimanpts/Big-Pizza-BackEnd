@@ -148,7 +148,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findAll" >findAll</a>
+                                <a href="#findAllOffers" >findAllOffers</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -156,7 +156,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findOneById" >findOneById</a>
+                                <a href="#findOneOfferById" >findOneOfferById</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -168,11 +168,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeOneOfferByID" >removeOneOfferByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#SubtractOneFromOfferQuantity" >SubtractOneFromOfferQuantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOneOfferById" >updateOneOfferById</a>
                             </li>
                         </ul>
                     </td>
@@ -192,12 +196,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(offerRepo: <a href="../classes/Offer.html" target="_self">Model&lt;Offer&gt;</a>)</code>
+<code>constructor(offerRepo: <a href="../classes/Offer.html" target="_self">Model&lt;Offer&gt;</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>, productService: <a href="../injectables/ProductService.html" target="_self">ProductService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/offers/offers.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/offers/offers.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -219,6 +223,30 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/Offer.html" target="_self" >Model&lt;Offer&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>branchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>productService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProductService.html" target="_self" >ProductService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -255,15 +283,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createOfferDto: <a href="../classes/CreateOfferDto.html" target="_self">CreateOfferDto</a>)</code>
+                    <code>create(NewOfferData: <a href="../interfaces/OfferInterface.html" target="_self">OfferInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/offers/offers.service.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/offers/offers.service.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -284,9 +312,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createOfferDto</td>
+                                                <td>NewOfferData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateOfferDto.html" target="_self" >CreateOfferDto</a></code>
+                                                            <code><a href="../interfaces/OfferInterface.html" target="_self" >OfferInterface</a></code>
                                             </td>
 
                                             <td>
@@ -313,26 +341,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findAll"></a>
+                    <a name="findAllOffers"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findAll</b></span>
-                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAllOffers</b></span>
+                        <a href="#findAllOffers"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findAll()</code>
+                    <code>findAllOffers()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/offers/offers.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/offers/offers.service.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -363,15 +391,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOfferByName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOfferByName(OfferName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/offers/offers.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/offers/offers.service.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -392,7 +420,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>name</td>
+                                                <td>OfferName</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -421,26 +449,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findOneById"></a>
+                    <a name="findOneOfferById"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findOneById</b></span>
-                        <a href="#findOneById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneOfferById</b></span>
+                        <a href="#findOneOfferById"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneOfferById(offer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/offers/offers.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/offers/offers.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -461,7 +489,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>offer_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -501,15 +529,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsValidCouponByID(offerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsValidCouponByID(offerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="68"
-                                    class="link-to-prism">src/offers/offers.service.ts:68</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/offers/offers.service.ts:104</a></div>
                         </td>
                     </tr>
 
@@ -537,6 +565,18 @@
 
                                             <td>
                                                     No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
                                             </td>
 
 
@@ -570,15 +610,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsValidOfferInBranchByID(OfferId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsValidOfferInBranchByID(OfferId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/offers/offers.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/offers/offers.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -622,6 +662,18 @@
 
 
                                         </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -640,26 +692,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeOneOfferByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneOfferByID</b></span>
+                        <a href="#removeOneOfferByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeOneOfferByID(offer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/offers/offers.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/offers/offers.service.ts:96</a></div>
                         </td>
                     </tr>
 
@@ -680,7 +732,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>offer_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -709,26 +761,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="SubtractOneFromOfferQuantity"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>SubtractOneFromOfferQuantity</b></span>
+                        <a href="#SubtractOneFromOfferQuantity"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateOfferDto: <a href="../classes/UpdateOfferDto.html" target="_self">UpdateOfferDto</a>)</code>
+                    <code>SubtractOneFromOfferQuantity(offer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/offers/offers.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/offers/offers.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -749,7 +801,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>offer_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -761,9 +813,90 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateOfferDto</td>
+                                                <td>session</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateOfferDto.html" target="_self" >UpdateOfferDto</a></code>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneOfferById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneOfferById</b></span>
+                        <a href="#updateOneOfferById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneOfferById(offer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, NewUpdatedData: <a href="../interfaces/OfferInterface.html" target="_self">OfferInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/offers/offers.service.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>offer_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>NewUpdatedData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/OfferInterface.html" target="_self" >OfferInterface</a></code>
                                             </td>
 
                                             <td>
@@ -792,74 +925,110 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateOfferDto } from &#x27;./dto/create-offer.dto&#x27;;
-import { UpdateOfferDto } from &#x27;./dto/update-offer.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { Model } from &#x27;mongoose&#x27;;
+import { ClientSession, Model } from &#x27;mongoose&#x27;;
 import { Offer } from &#x27;./Model/offer.model&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
+import { ProductService } from &#x27;src/product/product.service&#x27;;
+import { OfferInterface } from &#x27;./interface/Offer.interface&#x27;;
 
 @Injectable()
 export class OffersService {
   constructor(
     @InjectModel(Offer.name) private readonly offerRepo: Model&lt;Offer&gt;,
+    private branchService: BranchService,
+    private productService: ProductService,
   ) {}
-  async create(createOfferDto: CreateOfferDto) {
+  async create(NewOfferData: OfferInterface) {
     try {
-      const newOffer &#x3D; new this.offerRepo(createOfferDto);
+      // Check If Branchs IDs Valid
+      const is_branchs_available &#x3D; await this.branchService.IsBranchsAvaliables(
+        NewOfferData.branches,
+      );
+      if (!is_branchs_available) throw new NotFoundException(&#x27;Wrong Branch ID&#x27;);
+
+      // Check If Products IDs Valid
+      const is_products_available &#x3D;
+        await this.productService.IsProductsAvailable(NewOfferData.items);
+      if (!is_products_available)
+        throw new NotFoundException(&#x27;Wrong Products ID&#x27;);
+
+      // Create New Offer
+      const newOffer &#x3D; new this.offerRepo(NewOfferData);
       return await newOffer.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findAll() {
+  async findAllOffers() {
     try {
       return await this.offerRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOneById(id: string) {
+  async findOneOfferById(offer_id: string) {
     try {
-      return await this.offerRepo.findById(id);
+      return await this.offerRepo.findById(offer_id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOfferByName(name: string) {
+  async SubtractOneFromOfferQuantity(
+    offer_id: string,
+    session?: ClientSession,
+  ) {
     try {
-      return await this.offerRepo.find({ name }).exec();
+      return await this.offerRepo
+        .findByIdAndUpdate(offer_id, { $inc: { quantity: -1 } }, { new: true })
+        .session(session);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async update(id: string, updateOfferDto: UpdateOfferDto) {
+  async findOfferByName(OfferName: string) {
     try {
-      return await this.offerRepo.findByIdAndUpdate(id, updateOfferDto);
+      return await this.offerRepo.find({ OfferName }).exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOneOfferById(offer_id: string, NewUpdatedData: OfferInterface) {
     try {
-      return await this.offerRepo.findByIdAndDelete(id);
+      if (NewUpdatedData.branches) {
+        const is_branchs_available &#x3D;
+          await this.branchService.IsBranchsAvaliables(NewUpdatedData.branches);
+        if (!is_branchs_available)
+          throw new NotFoundException(&#x27;Wrong Branch ID&#x27;);
+      }
+
+      if (NewUpdatedData.items) {
+        const is_products_available &#x3D;
+          await this.productService.IsProductsAvailable(NewUpdatedData.items);
+        if (!is_products_available)
+          throw new NotFoundException(&#x27;Wrong Products ID&#x27;);
+      }
+      return await this.offerRepo.findByIdAndUpdate(offer_id, NewUpdatedData);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async IsValidCouponByID(offerId: string) {
+  async removeOneOfferByID(offer_id: string) {
+    try {
+      return await this.offerRepo.findByIdAndDelete(offer_id);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsValidCouponByID(offerId: string, session?: ClientSession) {
     try {
       const currentDate &#x3D; new Date();
 
@@ -870,6 +1039,7 @@ export class OffersService {
           from: { $lte: currentDate },
           to: { $gte: currentDate },
         })
+        .session(session)
         .exec();
 
       return !!validOffer;
@@ -878,7 +1048,11 @@ export class OffersService {
     }
   }
 
-  async IsValidOfferInBranchByID(OfferId: string, branchId: string) {
+  async IsValidOfferInBranchByID(
+    OfferId: string,
+    branchId: string,
+    session?: ClientSession,
+  ) {
     try {
       const currentDate &#x3D; new Date();
 
@@ -886,10 +1060,13 @@ export class OffersService {
         .findOne({
           _id: OfferId,
           quantity: { $gt: 0 },
-          from: { $lte: currentDate },
-          to: { $gte: currentDate },
-          branches: branchId,
+          $or: [
+            { from: { $exists: false }, to: { $exists: false } }, // Neither from nor to dates exist
+            { from: { $lte: currentDate }, to: { $gte: currentDate } }, // Current date is within the from and to dates
+          ],
+          branches: { $in: [branchId] },
         })
+        .session(session)
         .exec();
 
       return !!validOffer;

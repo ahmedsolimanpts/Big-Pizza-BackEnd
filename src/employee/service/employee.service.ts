@@ -6,6 +6,7 @@ import { Roles } from 'src/auth/enums/roles.enums';
 import { UsersService } from 'src/users/service/users.service';
 import { BranchService } from 'src/branch/branch.service';
 import { EmployeeInterface } from '../interfaces/employee.interface';
+import { TicketsPool } from 'src/ticket/enums/Ticket-Pool.enum';
 
 @Injectable()
 export class EmployeeService {
@@ -132,6 +133,32 @@ export class EmployeeService {
       }
 
       return await this.employeeRepo.findByIdAndUpdate(id, UpdatedData);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeTicketPoolByEmployeeID(
+    employee_id: string,
+    ticket_pool: TicketsPool,
+  ) {
+    try {
+      return await this.employeeRepo.findByIdAndUpdate(employee_id, {
+        ticket_pool: ticket_pool,
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeTicketPoolByUserID(user_id: string, ticket_pool: TicketsPool) {
+    try {
+      return await this.employeeRepo.findOne(
+        { user: user_id },
+        {
+          ticket_pool: ticket_pool,
+        },
+      );
     } catch (err) {
       throw err;
     }

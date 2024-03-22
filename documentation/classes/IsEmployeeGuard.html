@@ -316,7 +316,7 @@
 import { Reflector } from &#x27;@nestjs/core&#x27;;
 import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { EmployeeService } from &#x27;../employee.service&#x27;;
+import { EmployeeService } from &#x27;../service/employee.service&#x27;;
 
 export class IsEmployeeGuard extends AuthGuard(&#x27;jwt&#x27;) {
   constructor(

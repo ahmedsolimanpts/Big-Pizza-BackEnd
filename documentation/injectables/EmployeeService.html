@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/employee/employee.service.ts</code>
+            <code>src/employee/service/employee.service.ts</code>
         </p>
 
 
@@ -144,27 +144,11 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#AddEmployeeAttendAction" >AddEmployeeAttendAction</a>
+                                <a href="#ChangeTicketPoolByEmployeeID" >ChangeTicketPoolByEmployeeID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#AddEmployeePDR" >AddEmployeePDR</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#addEmployeeTransaction" >addEmployeeTransaction</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#calculateTotalSalaryForMonth" >calculateTotalSalaryForMonth</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#calculateTotalSalaryForMonthForUser" >calculateTotalSalaryForMonthForUser</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#calculateWorkingHoursForMonth" >calculateWorkingHoursForMonth</a>
+                                <a href="#ChangeTicketPoolByUserID" >ChangeTicketPoolByUserID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -176,11 +160,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findById" >findById</a>
+                                <a href="#findEmpByUserId" >findEmpByUserId</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findEmpByUserId" >findEmpByUserId</a>
+                                <a href="#findOneById" >findOneById</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -192,23 +176,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#IsUserWorkingInBranchAndHaveRole" >IsUserWorkingInBranchAndHaveRole</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#removeEmployeeAttendAction" >removeEmployeeAttendAction</a>
+                                <a href="#removeOneByID" >removeOneByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#removeEmployeePDR" >removeEmployeePDR</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#removeEmployeeTransaction" >removeEmployeeTransaction</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#updateOneByID" >updateOneByID</a>
                             </li>
                         </ul>
                     </td>
@@ -228,12 +204,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(employeeRepo: <a href="../classes/Employee.html" target="_self">Model&lt;Employee&gt;</a>, employeeTransactionRepo: <a href="../undefineds/Transaction.html" target="_self">Model&lt;EmployeeTransactions&gt;</a>, AttendenceRepo: <a href="../classes/Attendence.html" target="_self">Model&lt;Attendence&gt;</a>)</code>
+<code>constructor(employeeRepo: <a href="../classes/Employee.html" target="_self">Model&lt;Employee&gt;</a>, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/employee/employee.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/employee/service/employee.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -263,10 +239,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>employeeTransactionRepo</td>
+                                                        <td>userService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../miscellaneous/enumerations.html#Transaction" target="_self" >Model&lt;EmployeeTransactions&gt;</a></code>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -275,10 +251,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>AttendenceRepo</td>
+                                                        <td>branchService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/Attendence.html" target="_self" >Model&lt;Attendence&gt;</a></code>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -304,26 +280,107 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="AddEmployeeAttendAction"></a>
+                    <a name="ChangeTicketPoolByEmployeeID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>AddEmployeeAttendAction</b></span>
-                        <a href="#AddEmployeeAttendAction"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ChangeTicketPoolByEmployeeID</b></span>
+                        <a href="#ChangeTicketPoolByEmployeeID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>AddEmployeeAttendAction(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createAttendActionDTO: <a href="../classes/CreateAttendActionDTO.html" target="_self">CreateAttendActionDTO</a>)</code>
+                    <code>ChangeTicketPoolByEmployeeID(employee_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, ticket_pool: <a href="../undefineds/TicketsPool.html" target="_self">TicketsPool</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="146"
-                                    class="link-to-prism">src/employee/employee.service.ts:146</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>employee_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>ticket_pool</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#TicketsPool" target="_self" >TicketsPool</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ChangeTicketPoolByUserID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>ChangeTicketPoolByUserID</b></span>
+                        <a href="#ChangeTicketPoolByUserID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ChangeTicketPoolByUserID(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, ticket_pool: <a href="../undefineds/TicketsPool.html" target="_self">TicketsPool</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:154</a></div>
                         </td>
                     </tr>
 
@@ -356,9 +413,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>createAttendActionDTO</td>
+                                                <td>ticket_pool</td>
                                             <td>
-                                                            <code><a href="../classes/CreateAttendActionDTO.html" target="_self" >CreateAttendActionDTO</a></code>
+                                                            <code><a href="../miscellaneous/enumerations.html#TicketsPool" target="_self" >TicketsPool</a></code>
                                             </td>
 
                                             <td>
@@ -372,399 +429,6 @@
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="AddEmployeePDR"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>AddEmployeePDR</b></span>
-                        <a href="#AddEmployeePDR"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>AddEmployeePDR(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createby: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../classes/CreateEmployeePDRDTO.html" target="_self">CreateEmployeePDRDTO</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="190"
-                                    class="link-to-prism">src/employee/employee.service.ts:190</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>user_id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>createby</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>data</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateEmployeePDRDTO.html" target="_self" >CreateEmployeePDRDTO</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="addEmployeeTransaction"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>addEmployeeTransaction</b></span>
-                        <a href="#addEmployeeTransaction"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>addEmployeeTransaction(data: <a href="../interfaces/EmployeeTransactionInterface.html" target="_self">EmployeeTransactionInterface</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/employee/employee.service.ts:111</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>data</td>
-                                            <td>
-                                                            <code><a href="../interfaces/EmployeeTransactionInterface.html" target="_self" >EmployeeTransactionInterface</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="calculateTotalSalaryForMonth"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>calculateTotalSalaryForMonth</b></span>
-                        <a href="#calculateTotalSalaryForMonth"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>calculateTotalSalaryForMonth(month: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="219"
-                                    class="link-to-prism">src/employee/employee.service.ts:219</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>month</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="calculateTotalSalaryForMonthForUser"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>calculateTotalSalaryForMonthForUser</b></span>
-                        <a href="#calculateTotalSalaryForMonthForUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>calculateTotalSalaryForMonthForUser(month: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="250"
-                                    class="link-to-prism">src/employee/employee.service.ts:250</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>month</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>user_id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="calculateWorkingHoursForMonth"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>calculateWorkingHoursForMonth</b></span>
-                        <a href="#calculateWorkingHoursForMonth"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>calculateWorkingHoursForMonth(month: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, year: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="278"
-                                    class="link-to-prism">src/employee/employee.service.ts:278</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>month</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>year</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -789,15 +453,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createEmployeeDto: <a href="../classes/CreateEmployeeDto.html" target="_self">CreateEmployeeDto</a>)</code>
+                    <code>create(createEmployeeData: <a href="../interfaces/EmployeeInterface.html" target="_self">EmployeeInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/employee/employee.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="19"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -818,9 +482,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createEmployeeDto</td>
+                                                <td>createEmployeeData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateEmployeeDto.html" target="_self" >CreateEmployeeDto</a></code>
+                                                            <code><a href="../interfaces/EmployeeInterface.html" target="_self" >EmployeeInterface</a></code>
                                             </td>
 
                                             <td>
@@ -865,8 +529,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/employee/employee.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -886,26 +550,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findById"></a>
+                    <a name="findEmpByUserId"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findById</b></span>
-                        <a href="#findById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findEmpByUserId</b></span>
+                        <a href="#findEmpByUserId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findEmpByUserId(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/employee/employee.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -955,26 +619,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findEmpByUserId"></a>
+                    <a name="findOneById"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findEmpByUserId</b></span>
-                        <a href="#findEmpByUserId"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneById</b></span>
+                        <a href="#findOneById"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findEmpByUserId(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/employee/employee.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -1042,8 +706,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="68"
-                                    class="link-to-prism">src/employee/employee.service.ts:68</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -1104,15 +768,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>IsUserWorkingInBranch(userId, branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsUserWorkingInBranch(userId, branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="79"
-                                    class="link-to-prism">src/employee/employee.service.ts:79</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -1155,6 +819,18 @@
 
 
                                         </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -1173,26 +849,131 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="IsUserWorkingInBranchAndHaveRole"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>IsUserWorkingInBranchAndHaveRole</b></span>
+                        <a href="#IsUserWorkingInBranchAndHaveRole"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsUserWorkingInBranchAndHaveRole(userid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, role: <a href="../undefineds/Roles.html" target="_self">Roles</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/employee/employee.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>branchid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>role</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#Roles" target="_self" >Roles</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOneByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOneByID</b></span>
+                        <a href="#removeOneByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:167</a></div>
                         </td>
                     </tr>
 
@@ -1242,269 +1023,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="removeEmployeeAttendAction"></a>
+                    <a name="updateOneByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>removeEmployeeAttendAction</b></span>
-                        <a href="#removeEmployeeAttendAction"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateOneByID</b></span>
+                        <a href="#updateOneByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>removeEmployeeAttendAction(employeeId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, attendenceId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>updateOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, UpdatedData: <a href="../interfaces/EmployeeInterface.html" target="_self">EmployeeInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="174"
-                                    class="link-to-prism">src/employee/employee.service.ts:174</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>employeeId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>attendenceId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../classes/Employee.html" target="_self" >Promise&lt;Employee&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="removeEmployeePDR"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>removeEmployeePDR</b></span>
-                        <a href="#removeEmployeePDR"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>removeEmployeePDR(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, pdr_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="206"
-                                    class="link-to-prism">src/employee/employee.service.ts:206</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>user_id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>pdr_id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../classes/Employee.html" target="_self" >Promise&lt;Employee&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="removeEmployeeTransaction"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>removeEmployeeTransaction</b></span>
-                        <a href="#removeEmployeeTransaction"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>removeEmployeeTransaction(employeeId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, transactionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="130"
-                                    class="link-to-prism">src/employee/employee.service.ts:130</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>employeeId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>transactionId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../classes/Employee.html" target="_self" >Promise&lt;Employee&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="update"></a>
-                    <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateEmployeeDto: <a href="../classes/UpdateEmployeeDto.html" target="_self">UpdateEmployeeDto</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="93"
-                                    class="link-to-prism">src/employee/employee.service.ts:93</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/employee/service/employee.service.ts:121</a></div>
                         </td>
                     </tr>
 
@@ -1537,9 +1075,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateEmployeeDto</td>
+                                                <td>UpdatedData</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateEmployeeDto.html" target="_self" >UpdateEmployeeDto</a></code>
+                                                            <code><a href="../interfaces/EmployeeInterface.html" target="_self" >EmployeeInterface</a></code>
                                             </td>
 
                                             <td>
@@ -1568,42 +1106,41 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from &#x27;@nestjs/common&#x27;;
-import { CreateEmployeeDto } from &#x27;./dto/create-employee.dto&#x27;;
-import { UpdateEmployeeDto } from &#x27;./dto/update-employee.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import {
-  Attendence,
-  Employee,
-  EmployeeTransactions,
-} from &#x27;./Model/employee.model&#x27;;
-import { Model } from &#x27;mongoose&#x27;;
-import { CreateAttendActionDTO } from &#x27;./dto/create-attend-action.dto&#x27;;
-import { EmployeeTransactionInterface } from &#x27;./interfaces/emp-transaction.interface&#x27;;
-import { CreateEmployeePDRDTO } from &#x27;./dto/create-employee-pdr.dto&#x27;;
-import { Transaction } from &#x27;./enums/emp-transaction.enum&#x27;;
-import * as moment from &#x27;moment&#x27;; // Import moment.js for date manipulation
-import { AttendenceActions } from &#x27;./enums/attendence-action.enums&#x27;;
+import { Employee } from &#x27;../Model/employee.model&#x27;;
+import { ClientSession, Model } from &#x27;mongoose&#x27;;
+import { Roles } from &#x27;src/auth/enums/roles.enums&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
+import { EmployeeInterface } from &#x27;../interfaces/employee.interface&#x27;;
+import { TicketsPool } from &#x27;src/ticket/enums/Ticket-Pool.enum&#x27;;
 
 @Injectable()
 export class EmployeeService {
   constructor(
     @InjectModel(Employee.name) private readonly employeeRepo: Model&lt;Employee&gt;,
-    @InjectModel(EmployeeTransactions.name)
-    private readonly employeeTransactionRepo: Model&lt;EmployeeTransactions&gt;,
-    @InjectModel(Attendence.name)
-    private readonly AttendenceRepo: Model&lt;Attendence&gt;,
+    private userService: UsersService,
+    private branchService: BranchService,
   ) {}
-  async create(createEmployeeDto: CreateEmployeeDto): Promise&lt;Employee&gt; {
+
+  async create(createEmployeeData: EmployeeInterface): Promise&lt;Employee&gt; {
     try {
-      const Newemployee &#x3D; new this.employeeRepo(createEmployeeDto);
+      if (createEmployeeData.user) {
+        const user &#x3D; await this.userService.findOneByid(
+          createEmployeeData.user,
+        );
+        if (!user) throw new NotFoundException(&#x27;User Not Exist&#x27;);
+      }
+
+      const branch &#x3D; await this.branchService.findOneBranchByID(
+        createEmployeeData.working_in,
+      );
+      if (!branch) throw new NotFoundException(&#x27;Branch Not Exist&#x27;);
+
+      const Newemployee &#x3D; new this.employeeRepo(createEmployeeData);
       return await Newemployee.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -1612,16 +1149,14 @@ export class EmployeeService {
     try {
       return await this.employeeRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findById(id: string): Promise&lt;Employee&gt; {
+  async findOneById(id: string): Promise&lt;Employee&gt; {
     try {
-      return await this.employeeRepo.findById(id).populate(&#x27;attendence&#x27;).exec();
+      return await this.employeeRepo.findById(id).exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -1630,7 +1165,6 @@ export class EmployeeService {
     try {
       return await this.employeeRepo.findOne({ user: id });
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -1641,255 +1175,109 @@ export class EmployeeService {
       if (user) return true;
       return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async IsUserWorkingInBranch(userId, branchid: string): Promise&lt;boolean&gt; {
+  async IsUserWorkingInBranchAndHaveRole(
+    userid: string,
+    branchid: string,
+    role: Roles,
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
     try {
-      const isExist &#x3D; await this.employeeRepo.findOne({
-        user: userId,
-        working_in: branchid,
-      });
-      if (isExist) return true;
+      const employee &#x3D; await this.employeeRepo
+        .findOne({ user: userid, working_in: branchid })
+        .populate(&#x27;user&#x27;)
+        .session(session);
+
+      // Check if the employee exists and if the populated user has the specified role
+      if (
+        employee &amp;&amp;
+        employee.user &amp;&amp;
+        (employee as any).user.roles.includes(role)
+      ) {
+        return true;
+      }
+
       return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
+  async IsUserWorkingInBranch(
+    userId,
+    branchid: string,
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
     try {
-      return await this.employeeRepo.findByIdAndUpdate(id, updateEmployeeDto);
+      const isExist &#x3D; await this.employeeRepo
+        .findOne({
+          user: userId,
+          working_in: branchid,
+        })
+        .session(session)
+        .exec();
+      if (!isExist) return false;
+      return true;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOneByID(id: string, UpdatedData: EmployeeInterface) {
+    try {
+      if (UpdatedData.user) {
+        const user &#x3D; await this.userService.findOneByid(UpdatedData.user);
+        if (!user) throw new NotFoundException(&#x27;User Not Exist&#x27;);
+      }
+
+      if (UpdatedData.working_in) {
+        const branch &#x3D; await this.branchService.findOneBranchByID(
+          UpdatedData.working_in,
+        );
+        if (!branch) throw new NotFoundException(&#x27;Branch Not Exist&#x27;);
+      }
+
+      return await this.employeeRepo.findByIdAndUpdate(id, UpdatedData);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeTicketPoolByEmployeeID(
+    employee_id: string,
+    ticket_pool: TicketsPool,
+  ) {
+    try {
+      return await this.employeeRepo.findByIdAndUpdate(employee_id, {
+        ticket_pool: ticket_pool,
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeTicketPoolByUserID(user_id: string, ticket_pool: TicketsPool) {
+    try {
+      return await this.employeeRepo.findOne(
+        { user: user_id },
+        {
+          ticket_pool: ticket_pool,
+        },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOneByID(id: string) {
     try {
       return await this.employeeRepo.findByIdAndDelete(id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
-  }
-
-  async addEmployeeTransaction(data: EmployeeTransactionInterface) {
-    try {
-      const updatedEmployee &#x3D; await this.employeeRepo.findByIdAndUpdate(
-        data.employee_id,
-        {
-          $push: { transaction: data },
-        },
-        { new: true },
-      );
-      if (!updatedEmployee) {
-        throw new NotFoundException(&#x27;Employee not found&#x27;);
-      }
-
-      return updatedEmployee;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async removeEmployeeTransaction(
-    employeeId: string,
-    transactionId: string,
-  ): Promise&lt;Employee&gt; {
-    try {
-      return await this.employeeRepo.findByIdAndUpdate(
-        employeeId,
-        { $pull: { transaction: { _id: transactionId } } },
-        { new: true },
-      );
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  }
-
-  async AddEmployeeAttendAction(
-    user_id: string,
-    createAttendActionDTO: CreateAttendActionDTO,
-  ) {
-    try {
-      const emp &#x3D; await this.employeeRepo.findById(
-        createAttendActionDTO.employee_id,
-      );
-      const new_Record &#x3D; new this.AttendenceRepo({
-        ...createAttendActionDTO,
-        signby: user_id,
-      });
-
-      if (emp &amp;&amp; emp.attendence) {
-        const last_record &#x3D; emp.attendence[emp.attendence.length - 1];
-        if (last_record &amp;&amp; last_record.action &#x3D;&#x3D; new_Record.action) {
-          throw new ConflictException(&quot;Can&#x27;t Add This Action&quot;);
-        }
-        await emp.attendence.push(new_Record);
-        return await emp.save();
-      }
-      emp.attendence &#x3D; [new_Record];
-      return await emp.save();
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async removeEmployeeAttendAction(
-    employeeId: string,
-    attendenceId: string,
-  ): Promise&lt;Employee&gt; {
-    try {
-      return await this.employeeRepo.findByIdAndUpdate(
-        employeeId,
-        { $pull: { attendence: { _id: attendenceId } } },
-        { new: true },
-      );
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  }
-
-  async AddEmployeePDR(
-    user_id: string,
-    createby: string,
-    data: CreateEmployeePDRDTO,
-  ) {
-    try {
-      data[&#x27;createbu&#x27;] &#x3D; createby;
-      return await this.employeeRepo.findOneAndUpdate(
-        { user: user_id },
-        { $push: { monthly_pdr: data } },
-      );
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async removeEmployeePDR(user_id: string, pdr_id: string): Promise&lt;Employee&gt; {
-    try {
-      return await this.employeeRepo.findOneAndUpdate(
-        { user: user_id },
-        { $pull: { monthly_pdr: { _id: pdr_id } } },
-        { new: true },
-      );
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  }
-
-  async calculateTotalSalaryForMonth(month: string): Promise&lt;any[]&gt; {
-    const employees &#x3D; await this.employeeRepo
-      .find()
-      .populate(&#x27;transaction&#x27;)
-      .exec();
-    const results &#x3D; [];
-
-    for (const employee of employees) {
-      let totalSalary &#x3D; employee.base_salary;
-
-      // Filter transactions for the specified month and adjust totalSalary
-      employee.transaction.forEach((transaction: EmployeeTransactions) &#x3D;&gt; {
-        const transactionMonth &#x3D; (transaction as any).createdAt.getMonth() + 1; // Months are 0-indexed
-        const transactionYear &#x3D; (transaction as any).createdAt.getFullYear();
-        const [year, monthNumber] &#x3D; month.split(&#x27;-&#x27;).map(Number); // Assuming month is in &quot;YYYY-MM&quot; format
-
-        if (transactionYear &#x3D;&#x3D;&#x3D; year &amp;&amp; transactionMonth &#x3D;&#x3D;&#x3D; monthNumber) {
-          if (transaction.transaction &#x3D;&#x3D;&#x3D; Transaction.BONAS) {
-            totalSalary +&#x3D; transaction.amount;
-          } else if (transaction.transaction &#x3D;&#x3D;&#x3D; Transaction.LOAN) {
-            totalSalary -&#x3D; transaction.amount;
-          }
-        }
-      });
-
-      results.push({ employeeId: employee._id, totalSalary });
-    }
-
-    return results;
-  }
-
-  async calculateTotalSalaryForMonthForUser(
-    month: string,
-    user_id: string,
-  ): Promise&lt;any&gt; {
-    const employee &#x3D; await this.employeeRepo
-      .findOne({ user: user_id })
-      .populate(&#x27;transaction&#x27;)
-      .exec();
-    let totalSalary &#x3D; employee.base_salary;
-
-    // Filter transactions for the specified month and adjust totalSalary
-    employee.transaction.forEach((transaction: EmployeeTransactions) &#x3D;&gt; {
-      const transactionMonth &#x3D; (transaction as any).createdAt.getMonth() + 1; // Months are 0-indexed
-      const transactionYear &#x3D; (transaction as any).createdAt.getFullYear();
-      const [year, monthNumber] &#x3D; month.split(&#x27;-&#x27;).map(Number); // Assuming month is in &quot;YYYY-MM&quot; format
-
-      if (transactionYear &#x3D;&#x3D;&#x3D; year &amp;&amp; transactionMonth &#x3D;&#x3D;&#x3D; monthNumber) {
-        if (transaction.transaction &#x3D;&#x3D;&#x3D; Transaction.BONAS) {
-          totalSalary +&#x3D; transaction.amount;
-        } else if (transaction.transaction &#x3D;&#x3D;&#x3D; Transaction.LOAN) {
-          totalSalary -&#x3D; transaction.amount;
-        }
-      }
-    });
-
-    return totalSalary;
-  }
-
-  async calculateWorkingHoursForMonth(
-    month: number,
-    year: number,
-  ): Promise&lt;any[]&gt; {
-    const employees &#x3D; await this.findAll();
-    const workingHours &#x3D; [];
-
-    for (const employee of employees) {
-      let totalHours &#x3D; 0;
-      const attendances &#x3D; employee.attendence.filter((att) &#x3D;&gt; {
-        const attDate &#x3D; moment((att as any).createdAt);
-        return attDate.month() &#x3D;&#x3D;&#x3D; month &amp;&amp; attDate.year() &#x3D;&#x3D;&#x3D; year;
-      });
-
-      let dailyHours &#x3D; 0;
-      let signInTime &#x3D; null;
-
-      for (const attendance of attendances) {
-        const actionTime &#x3D; moment((attendance as any).createdAt);
-
-        if (attendance.action &#x3D;&#x3D;&#x3D; AttendenceActions.SIGNIN) {
-          signInTime &#x3D; actionTime;
-        } else if (
-          attendance.action &#x3D;&#x3D;&#x3D; AttendenceActions.SIGNOUT &amp;&amp;
-          signInTime
-        ) {
-          dailyHours +&#x3D; actionTime.diff(signInTime, &#x27;hours&#x27;, true);
-          signInTime &#x3D; null; // Reset signInTime for the next day
-        }
-      }
-
-      // Add a check for the last action being SignOut
-      if (signInTime !&#x3D;&#x3D; null) {
-        // If the last action is not SignOut, don&#x27;t count the hours for the last day
-        dailyHours &#x3D; 0;
-      }
-
-      totalHours +&#x3D; dailyHours;
-      workingHours.push({
-        employeeId: employee.user,
-        totalHours: totalHours.toFixed(2),
-      });
-    }
-
-    return workingHours;
   }
 }
 </code></pre>

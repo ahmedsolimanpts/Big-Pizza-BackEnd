@@ -152,14 +152,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findOneByID" >findOneByID</a>
+                                <a href="#findOneBranchByID" >findOneBranchByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#IsBranchsAvaliables" >IsBranchsAvaliables</a>
                             </li>
                             <li>
-                                <a href="#update" >update</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeOneBranchById" >removeOneBranchById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOneBranchByID" >updateOneBranchByID</a>
                             </li>
                         </ul>
                     </td>
@@ -179,7 +184,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(branchRepo: <a href="../classes/Branch.html" target="_self">Model&lt;Branch&gt;</a>)</code>
+<code>constructor(branchRepo: <a href="../classes/Branch.html" target="_self">Model&lt;Branch&gt;</a>, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -206,6 +211,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/Branch.html" target="_self" >Model&lt;Branch&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -242,15 +259,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createBranchDto: <a href="../classes/CreateBranchDto.html" target="_self">CreateBranchDto</a>)</code>
+                    <code>create(createBranchData: <a href="../interfaces/BranchInterface.html" target="_self">BranchInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/branch/branch.service.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/branch/branch.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -271,9 +288,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createBranchDto</td>
+                                                <td>createBranchData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateBranchDto.html" target="_self" >CreateBranchDto</a></code>
+                                                            <code><a href="../interfaces/BranchInterface.html" target="_self" >BranchInterface</a></code>
                                             </td>
 
                                             <td>
@@ -286,7 +303,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Branch.html" target="_self" >Promise&lt;Branch&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -318,8 +335,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/branch/branch.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/branch/branch.service.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -328,7 +345,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Branch.html" target="_self" >Promise&lt;Branch[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -339,26 +356,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findOneByID"></a>
+                    <a name="findOneBranchByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findOneByID</b></span>
-                        <a href="#findOneByID"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneBranchByID</b></span>
+                        <a href="#findOneBranchByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneBranchByID(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/branch/branch.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/branch/branch.service.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -379,7 +396,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>branch_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -394,7 +411,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Branch.html" target="_self" >Promise&lt;Branch&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -408,26 +425,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="IsBranchsAvaliables"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>IsBranchsAvaliables</b></span>
+                        <a href="#IsBranchsAvaliables"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsBranchsAvaliables(branch_id: string[])</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/branch/branch.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/branch/branch.service.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -448,7 +465,76 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>branch_id</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOneBranchById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOneBranchById</b></span>
+                        <a href="#removeOneBranchById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOneBranchById(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/branch/branch.service.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branch_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -477,24 +563,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateOneBranchByID"></a>
                     <span class="name">
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneBranchByID</b></span>
+                        <a href="#updateOneBranchByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateBranchDto: <a href="../classes/UpdateBranchDto.html" target="_self">UpdateBranchDto</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneBranchByID(branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, NewBranchData: <a href="../interfaces/BranchInterface.html" target="_self">BranchInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/branch/branch.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/branch/branch.service.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -515,7 +603,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>branch_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -527,9 +615,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateBranchDto</td>
+                                                <td>NewBranchData</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateBranchDto.html" target="_self" >UpdateBranchDto</a></code>
+                                                            <code><a href="../interfaces/BranchInterface.html" target="_self" >BranchInterface</a></code>
                                             </td>
 
                                             <td>
@@ -542,7 +630,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -558,60 +646,80 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateBranchDto } from &#x27;./dto/create-branch.dto&#x27;;
-import { UpdateBranchDto } from &#x27;./dto/update-branch.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { Branch } from &#x27;./Model/branch.model&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
+import { BranchInterface } from &#x27;./interface/branch.interface&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
 
 @Injectable()
 export class BranchService {
   constructor(
     @InjectModel(Branch.name) private readonly branchRepo: Model&lt;Branch&gt;,
+    private userService: UsersService,
   ) {}
-  async create(createBranchDto: CreateBranchDto) {
+
+  async create(createBranchData: BranchInterface): Promise&lt;Branch&gt; {
     try {
-      const branch &#x3D; new this.branchRepo(createBranchDto);
+      if (createBranchData.manager) {
+        const user &#x3D; await this.userService.findOneByid(
+          createBranchData.manager,
+        );
+        if (!user) throw new NotFoundException(&#x27;Wrong Manager ID&#x27;);
+      }
+
+      const branch &#x3D; new this.branchRepo(createBranchData);
       return await branch.save();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findAll() {
+  async findAll(): Promise&lt;Branch[]&gt; {
     try {
       return await this.branchRepo.find().exec();
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async findOneByID(id: string) {
+  async findOneBranchByID(branch_id: string): Promise&lt;Branch&gt; {
     try {
-      return await this.branchRepo.findById(id);
+      return await this.branchRepo.findById(branch_id);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  update(id: string, updateBranchDto: UpdateBranchDto) {
+  async IsBranchsAvaliables(branch_id: string[]) {
     try {
-      return this.branchRepo.findByIdAndUpdate(id, updateBranchDto);
+      const branchs &#x3D; await this.branchRepo.find({ _id: branch_id });
+      if (branchs.length &#x3D;&#x3D; branch_id.length) {
+        return true;
+      }
+      return false;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOneBranchByID(branch_id: string, NewBranchData: BranchInterface) {
     try {
-      return await this.branchRepo.findByIdAndDelete(id);
+      if (NewBranchData.manager) {
+        const user &#x3D; await this.userService.findOneByid(NewBranchData.manager);
+        if (!user) throw new NotFoundException(&#x27;Wrong Manager Id&#x27;);
+      }
+      return await this.branchRepo.findByIdAndUpdate(branch_id, NewBranchData);
     } catch (err) {
-      console.log(err);
+      throw err;
+    }
+  }
+
+  async removeOneBranchById(branch_id: string) {
+    try {
+      return await this.branchRepo.findByIdAndDelete(branch_id);
+    } catch (err) {
       throw err;
     }
   }

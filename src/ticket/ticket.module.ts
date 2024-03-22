@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { TicketService } from './ticket.service';
-import { TicketController } from './ticket.controller';
+import { TicketService } from './service/ticket.service';
+import { TicketController } from './controller/ticket.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Ticket, TicketSchema } from './Models/ticket.model';
 import {
@@ -9,6 +9,8 @@ import {
 } from './Models/ticket-updates.model';
 import { BranchModule } from 'src/branch/branch.module';
 import { UsersModule } from 'src/users/users.module';
+import { TicketUpdatesService } from './service/ticket-updates.service';
+import { TicketUpdatesController } from './controller/ticket-updates.controller';
 
 @Module({
   imports: [
@@ -25,7 +27,7 @@ import { UsersModule } from 'src/users/users.module';
     BranchModule,
     UsersModule,
   ],
-  controllers: [TicketController],
-  providers: [TicketService],
+  controllers: [TicketController, TicketUpdatesController],
+  providers: [TicketService, TicketUpdatesService],
 })
 export class TicketModule {}

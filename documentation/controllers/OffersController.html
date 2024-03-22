@@ -657,12 +657,12 @@ export class OffersController {
 
   @Get()
   findAll() {
-    return this.offersService.findAll();
+    return this.offersService.findAllOffers();
   }
 
   @Get(&#x27;:id&#x27;)
   findOneById(@Param(&#x27;id&#x27;) id: string) {
-    return this.offersService.findOneById(id);
+    return this.offersService.findOneOfferById(id);
   }
 
   @Get(&#x27;search&#x27;)
@@ -672,12 +672,12 @@ export class OffersController {
 
   @Patch(&#x27;:id&#x27;)
   update(@Param(&#x27;id&#x27;) id: string, @Body() updateOfferDto: UpdateOfferDto) {
-    return this.offersService.update(id, updateOfferDto);
+    return this.offersService.updateOneOfferById(id, updateOfferDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.offersService.remove(id);
+    return this.offersService.removeOneOfferByID(id);
   }
 }
 </code></pre>

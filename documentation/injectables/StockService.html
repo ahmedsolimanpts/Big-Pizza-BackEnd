@@ -160,11 +160,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#GetItemsCountAtStock" >GetItemsCountAtStock</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#removeOnebyID" >removeOnebyID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOnebyID" >updateOnebyID</a>
                             </li>
                         </ul>
                     </td>
@@ -184,12 +188,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(stockRepo: <a href="../classes/Stock.html" target="_self">Model&lt;Stock&gt;</a>, stockItemLogRepo: Model<StockItemslogs>, connection: mongoose.Connection)</code>
+<code>constructor(stockRepo: <a href="../classes/Stock.html" target="_self">Model&lt;Stock&gt;</a>, stockItemLogRepo: Model<StockItemslogs>, connection: mongoose.Connection, banchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/stock/service/stock.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/stock/service/stock.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -242,6 +246,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>banchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -271,15 +287,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createStock(createStockDto: <a href="../classes/CreateStockDto.html" target="_self">CreateStockDto</a>)</code>
+                    <code>createStock(createStockData: <a href="../interfaces/StockInterface.html" target="_self">StockInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -300,9 +316,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createStockDto</td>
+                                                <td>createStockData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateStockDto.html" target="_self" >CreateStockDto</a></code>
+                                                            <code><a href="../interfaces/StockInterface.html" target="_self" >StockInterface</a></code>
                                             </td>
 
                                             <td>
@@ -315,7 +331,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Stock.html" target="_self" >Promise&lt;Stock&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -347,8 +363,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -416,8 +432,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -455,8 +471,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -506,26 +522,95 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="GetItemsCountAtStock"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>GetItemsCountAtStock</b></span>
+                        <a href="#GetItemsCountAtStock"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>GetItemsCountAtStock(stockid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>stockid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOnebyID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOnebyID</b></span>
+                        <a href="#removeOnebyID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOnebyID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -575,26 +660,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateOnebyID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateOnebyID</b></span>
+                        <a href="#updateOnebyID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateStockDto: <a href="../classes/UpdateStockDto.html" target="_self">UpdateStockDto</a>)</code>
+                    <code>updateOnebyID(stock_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatedStockData: <a href="../interfaces/StockInterface.html" target="_self">StockInterface</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/stock/service/stock.service.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/stock/service/stock.service.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -615,7 +700,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>stock_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -627,9 +712,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateStockDto</td>
+                                                <td>updatedStockData</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateStockDto.html" target="_self" >UpdateStockDto</a></code>
+                                                            <code><a href="../interfaces/StockInterface.html" target="_self" >StockInterface</a></code>
                                             </td>
 
                                             <td>
@@ -658,14 +743,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateStockDto } from &#x27;../dto/Stock/create-stock.dto&#x27;;
-import { UpdateStockDto } from &#x27;../dto/Stock/update-stock.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from &#x27;@nestjs/common&#x27;;
 import { InjectConnection, InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Stock } from &#x27;../Model/stock.model&#x27;;
 import mongoose, { Model } from &#x27;mongoose&#x27;;
 import { StockItemLogsInterface } from &#x27;../interfaces/Stock-Item-logs.interface&#x27;;
 import { StockItemslogs } from &#x27;../Model/Stock-item-logs.model&#x27;;
+import { StockTransactionTYPE } from &#x27;../enums/Stock-Transactions.enum&#x27;;
+import { StockItem } from &#x27;../Model/Stock-Item.model&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
+import { StockInterface } from &#x27;../interfaces/Stock.interface&#x27;;
 
 @Injectable()
 export class StockService {
@@ -674,22 +765,30 @@ export class StockService {
     @InjectModel(StockItemslogs.name)
     private readonly stockItemLogRepo: Model&lt;StockItemslogs&gt;,
     @InjectConnection() private readonly connection: mongoose.Connection,
+    private banchService: BranchService,
   ) {}
 
-  async createStock(createStockDto: CreateStockDto) {
+  async createStock(createStockData: StockInterface): Promise&lt;Stock&gt; {
     try {
-      const newStock &#x3D; new this.stockRepo(createStockDto);
+      const branch &#x3D; await this.banchService.findOneBranchByID(
+        createStockData.branch,
+      );
+      if (!branch) throw new NotFoundException(&#x27;Branch Not Exist&#x27;);
+      const newStock &#x3D; new this.stockRepo(createStockData);
       return await newStock.save();
     } catch (err) {
+      if (err.code &#x3D;&#x3D; 11000) {
+        throw new ConflictException(&#x27;Stock Already Exist&#x27;);
+      }
       throw err;
     }
   }
 
   async CreateStockItemlog(data: StockItemLogsInterface) {
     try {
-      const { branch_id, ...stocklogdata } &#x3D; data;
+      const { stock_id, ...stocklogdata } &#x3D; data;
       const newStckItemLog &#x3D; new this.stockItemLogRepo(stocklogdata);
-      return await this.stockRepo.findByIdAndUpdate(branch_id, {
+      return await this.stockRepo.findByIdAndUpdate(stock_id, {
         $push: { items: newStckItemLog },
       });
     } catch (err) {
@@ -707,21 +806,68 @@ export class StockService {
 
   async findOneByID(id: string) {
     try {
-      return await this.stockRepo.findById(id);
+      return await this.stockRepo.findById(id).exec();
     } catch (err) {
       throw err;
     }
   }
 
-  async update(id: string, updateStockDto: UpdateStockDto) {
+  async GetItemsCountAtStock(stockid: string) {
     try {
-      return await this.stockRepo.findByIdAndUpdate(id, updateStockDto);
+      const stock &#x3D; await this.stockRepo.findById(stockid).populate({
+        path: &#x27;items&#x27;,
+        populate: {
+          path: &#x27;item&#x27;,
+          populate: {
+            path: &#x27;stock_item&#x27;,
+            model: StockItem.name, // Make sure this matches the name you&#x27;ve given your stock item model
+          },
+        },
+      });
+
+      if (!stock) {
+        throw new Error(&#x27;Stock not found&#x27;);
+      }
+
+      const itemCounts &#x3D; {};
+      stock.items.forEach((log) &#x3D;&gt; {
+        const itemName &#x3D; (log as any).item.stock_item.name;
+        const quantity &#x3D; log.item.quantity;
+        const transactionType &#x3D; log.transaction;
+
+        if (!itemCounts[itemName]) {
+          itemCounts[itemName] &#x3D; 0;
+        }
+
+        // If transaction type is &#x27;add&#x27;, increase the count, otherwise decrease it
+        if (transactionType &#x3D;&#x3D;&#x3D; StockTransactionTYPE.ADD) {
+          itemCounts[itemName] +&#x3D; quantity;
+        } else {
+          itemCounts[itemName] -&#x3D; quantity;
+        }
+      });
+
+      return itemCounts;
     } catch (err) {
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async updateOnebyID(stock_id: string, updatedStockData: StockInterface) {
+    try {
+      if (updatedStockData.branch) {
+        const branch &#x3D; await this.banchService.findOneBranchByID(
+          updatedStockData.branch,
+        );
+        if (!branch) throw new NotFoundException(&#x27;Branch Not Exist&#x27;);
+      }
+      return await this.stockRepo.findByIdAndUpdate(stock_id, updatedStockData);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOnebyID(id: string) {
     try {
       return await this.stockRepo.findByIdAndDelete(id);
     } catch (err) {

@@ -162,11 +162,11 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeBranch" >removeBranch</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#update" >update</a>
+                                <a href="#updateBranch" >updateBranch</a>
                             </li>
                         </ul>
                     </td>
@@ -388,18 +388,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeBranch"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeBranch</b></span>
+                        <a href="#removeBranch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeBranch(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -413,8 +413,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/branch/branch.controller.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/branch/branch.controller.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -464,18 +464,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateBranch"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateBranch</b></span>
+                        <a href="#updateBranch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateBranchDto: <a href="../classes/UpdateBranchDto.html" target="_self">UpdateBranchDto</a>)</code>
+                    <code>updateBranch(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateBranchDto: <a href="../classes/UpdateBranchDto.html" target="_self">UpdateBranchDto</a>)</code>
                 </td>
             </tr>
 
@@ -585,17 +585,20 @@ export class BranchController {
 
   @Get(&#x27;:id&#x27;)
   findOne(@Param(&#x27;id&#x27;) id: string) {
-    return this.branchService.findOneByID(id);
+    return this.branchService.findOneBranchByID(id);
   }
 
   @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updateBranchDto: UpdateBranchDto) {
-    return this.branchService.update(id, updateBranchDto);
+  updateBranch(
+    @Param(&#x27;id&#x27;) id: string,
+    @Body() updateBranchDto: UpdateBranchDto,
+  ) {
+    return this.branchService.updateOneBranchByID(id, updateBranchDto);
   }
 
   @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.branchService.remove(id);
+  removeBranch(@Param(&#x27;id&#x27;) id: string) {
+    return this.branchService.removeOneBranchById(id);
   }
 }
 </code></pre>

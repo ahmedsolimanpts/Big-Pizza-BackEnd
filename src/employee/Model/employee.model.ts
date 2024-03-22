@@ -5,6 +5,7 @@ import { User } from 'src/users/Model/user.model';
 import { Department } from '../enums/department.enums';
 import { Sex } from 'src/users/enums/Sex.enum';
 import { Location } from 'src/location/Model/location.model';
+import { TicketsPool } from 'src/ticket/enums/Ticket-Pool.enum';
 
 @Schema({ timestamps: true })
 export class Employee {
@@ -40,6 +41,9 @@ export class Employee {
 
   @Prop()
   bank_account: string;
+
+  @Prop({ required: true, default: TicketsPool.STAFF })
+  ticket_pool: TicketsPool;
 }
 
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);

@@ -146,10 +146,16 @@
                             <a href="#OrderType" title="src/order/enums/Order-Types.enums.ts" ><b>OrderType</b>&nbsp;&nbsp;&nbsp;(src/.../Order-Types.enums.ts)</a>
                         </li>
                         <li>
+                            <a href="#PaymentCurrency" title="src/payment/enums/payment-currency.enum.ts" ><b>PaymentCurrency</b>&nbsp;&nbsp;&nbsp;(src/.../payment-currency.enum.ts)</a>
+                        </li>
+                        <li>
                             <a href="#PaymentStatus" title="src/payment/enums/payment-status.enums.ts" ><b>PaymentStatus</b>&nbsp;&nbsp;&nbsp;(src/.../payment-status.enums.ts)</a>
                         </li>
                         <li>
                             <a href="#PaymentType" title="src/payment/enums/payment-type.enums.ts" ><b>PaymentType</b>&nbsp;&nbsp;&nbsp;(src/.../payment-type.enums.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PDRActions" title="src/employee/enums/pdr-action.enum.ts" ><b>PDRActions</b>&nbsp;&nbsp;&nbsp;(src/.../pdr-action.enum.ts)</a>
                         </li>
                         <li>
                             <a href="#ProductCategory" title="src/product/enums/product-category.enums.ts" ><b>ProductCategory</b>&nbsp;&nbsp;&nbsp;(src/.../product-category.enums.ts)</a>
@@ -170,6 +176,12 @@
                             <a href="#Sex" title="src/users/enums/Sex.enum.ts" ><b>Sex</b>&nbsp;&nbsp;&nbsp;(src/.../Sex.enum.ts)</a>
                         </li>
                         <li>
+                            <a href="#SpendingAuthorizationStatus" title="src/billing/enum/SpendingAuthorization-status.enum.ts" ><b>SpendingAuthorizationStatus</b>&nbsp;&nbsp;&nbsp;(src/.../SpendingAuthorization-status.enum.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StockItemCategory" title="src/stock/enums/Stock-Item-Category.enum.ts" ><b>StockItemCategory</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-Item-Category.enum.ts)</a>
+                        </li>
+                        <li>
                             <a href="#StockTransactionStatus" title="src/stock/enums/Stock-Transaction-Status.enum.ts" ><b>StockTransactionStatus</b>&nbsp;&nbsp;&nbsp;(src/.../Stock-Transaction-Status.enum.ts)</a>
                         </li>
                         <li>
@@ -182,10 +194,13 @@
                             <a href="#TicketSegment" title="src/ticket/enums/Ticket-Segment.enum.ts" ><b>TicketSegment</b>&nbsp;&nbsp;&nbsp;(src/.../Ticket-Segment.enum.ts)</a>
                         </li>
                         <li>
+                            <a href="#TicketsPool" title="src/ticket/enums/Ticket-Pool.enum.ts" ><b>TicketsPool</b>&nbsp;&nbsp;&nbsp;(src/.../Ticket-Pool.enum.ts)</a>
+                        </li>
+                        <li>
                             <a href="#TicketStatus" title="src/ticket/enums/ticket-status.enum.ts" ><b>TicketStatus</b>&nbsp;&nbsp;&nbsp;(src/.../ticket-status.enum.ts)</a>
                         </li>
                         <li>
-                            <a href="#Transaction" title="src/employee/enums/emp-transaction.enum.ts" ><b>Transaction</b>&nbsp;&nbsp;&nbsp;(src/.../emp-transaction.enum.ts)</a>
+                            <a href="#Transaction" title="src/billing/enum/emp-transaction.enum.ts" ><b>Transaction</b>&nbsp;&nbsp;&nbsp;(src/.../emp-transaction.enum.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -641,6 +656,29 @@
             </tbody>
         </table>
 </section>
+    <h3>src/payment/enums/payment-currency.enum.ts</h3>
+    <section data-compodoc="block-enums">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PaymentCurrency"></a>
+                        <span class="name "><b>PaymentCurrency</b><a href="#PaymentCurrency"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;EG
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>eg</code>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
     <h3>src/payment/enums/payment-status.enums.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
@@ -706,12 +744,45 @@
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;PAYPALL
+                                &nbsp;PAYPAL
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Value : </i><code>paypall</code>
+                                <i>Value : </i><code>paypal</code>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <h3>src/employee/enums/pdr-action.enum.ts</h3>
+    <section data-compodoc="block-enums">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PDRActions"></a>
+                        <span class="name "><b>PDRActions</b><a href="#PDRActions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;POSITIVE
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>positive</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;NEGATIVE
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>negative</code>
                             </td>
                         </tr>
             </tbody>
@@ -985,6 +1056,82 @@
             </tbody>
         </table>
 </section>
+    <h3>src/billing/enum/SpendingAuthorization-status.enum.ts</h3>
+    <section data-compodoc="block-enums">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="SpendingAuthorizationStatus"></a>
+                        <span class="name "><b>SpendingAuthorizationStatus</b><a href="#SpendingAuthorizationStatus"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;OPEN
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>open</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;CLOSE
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>close</code>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <h3>src/stock/enums/Stock-Item-Category.enum.ts</h3>
+    <section data-compodoc="block-enums">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="StockItemCategory"></a>
+                        <span class="name "><b>StockItemCategory</b><a href="#StockItemCategory"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;COOKING_MATERIAL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>cooking_material</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;COOKING_EQUIPMENT
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>cooking_equipment</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;SERVICE_EQUIPMENT
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>service_equipment</code>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
     <h3>src/stock/enums/Stock-Transaction-Status.enum.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
@@ -1187,6 +1334,59 @@
             </tbody>
         </table>
 </section>
+    <h3>src/ticket/enums/Ticket-Pool.enum.ts</h3>
+    <section data-compodoc="block-enums">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="TicketsPool"></a>
+                        <span class="name "><b>TicketsPool</b><a href="#TicketsPool"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;HR
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>hr</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;ACCONTING
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>accounting</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;SALES
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>sales</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;STAFF
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>staff</code>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
     <h3>src/ticket/enums/ticket-status.enum.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
@@ -1220,7 +1420,7 @@
             </tbody>
         </table>
 </section>
-    <h3>src/employee/enums/emp-transaction.enum.ts</h3>
+    <h3>src/billing/enum/emp-transaction.enum.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
             <tbody>

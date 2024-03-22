@@ -586,12 +586,12 @@ export class CouponController {
 
   @Patch(&#x27;:id&#x27;)
   update(@Param(&#x27;id&#x27;) id: string, @Body() updateCouponDto: UpdateCouponDto) {
-    return this.couponService.update(id, updateCouponDto);
+    return this.couponService.updateOneCouponByID(id, updateCouponDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.couponService.remove(id);
+    return this.couponService.removeOneCouponByID(id);
   }
 }
 </code></pre>

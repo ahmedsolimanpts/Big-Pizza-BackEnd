@@ -203,7 +203,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;assign-role&#x27;)<br />@Role(Roles.SUPERUSER)<br /></code>
+                    <code>@Post(&#x27;assign-one-role&#x27;)<br />@Role(Roles.SUPERUSER)<br /></code>
                 </td>
             </tr>
 
@@ -357,7 +357,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;unassign-role&#x27;)<br />@Role(Roles.SUPERUSER)<br /></code>
+                    <code>@Post(&#x27;unassign-one-role&#x27;)<br />@Role(Roles.SUPERUSER)<br /></code>
                 </td>
             </tr>
 
@@ -422,7 +422,7 @@ import { AssignRoleDto } from &#x27;../dto/AssignRole.dto&#x27;;
 import { Roles } from &#x27;../enums/roles.enums&#x27;;
 import { RolesGuard } from &#x27;../guards/roles.guard&#x27;;
 import { AuthService } from &#x27;../auth.service&#x27;;
-import { UsersService } from &#x27;src/users/users.service&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
 
 @ApiTags(&#x27;Auth Admin&#x27;)
 @UseGuards(RolesGuard)
@@ -433,16 +433,16 @@ export class AdminController {
     private userserivce: UsersService,
   ) {}
 
-  @Post(&#x27;assign-role&#x27;)
+  @Post(&#x27;assign-one-role&#x27;)
   @Role(Roles.SUPERUSER)
   AddRoleToUser(@Body() asssignRoleDto: AssignRoleDto) {
-    return this.authService.AddRoleToUser(asssignRoleDto);
+    return this.authService.AddOneRoleToUser(asssignRoleDto);
   }
 
-  @Post(&#x27;unassign-role&#x27;)
+  @Post(&#x27;unassign-one-role&#x27;)
   @Role(Roles.SUPERUSER)
   RemoveRoleFromUser(@Body() asssignRoleDto: AssignRoleDto) {
-    return this.authService.RemoveRoleFromUser(asssignRoleDto);
+    return this.authService.RemoveOneRoleFromUser(asssignRoleDto);
   }
 
   @Post(&#x27;block/:id&#x27;)

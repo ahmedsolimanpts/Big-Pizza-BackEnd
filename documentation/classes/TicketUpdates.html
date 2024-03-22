@@ -148,11 +148,15 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                <a href="#createby" >createby</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
                                 <a href="#description" >description</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#user" >user</a>
+                                <a href="#ticket" >ticket</a>
                             </li>
                         </ul>
                     </td>
@@ -173,6 +177,42 @@
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createby"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>createby</b></span>
+                        <a href="#createby"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Prop({type: undefined, ref: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/ticket/Models/ticket-updates.model.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -202,7 +242,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/ticket/Models/ticket-updates.model.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/ticket/Models/ticket-updates.model.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -213,11 +253,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="user"></a>
+                    <a name="ticket"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>user</b></span>
-                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ticket</b></span>
+                        <a href="#ticket"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -238,7 +278,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/ticket/Models/ticket-updates.model.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/ticket/Models/ticket-updates.model.ts:9</a></div>
                         </td>
                     </tr>
 
@@ -260,11 +300,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Prop, Schema, SchemaFactory } from &#x27;@nestjs/mongoose&#x27;;
 import mongoose from &#x27;mongoose&#x27;;
 import { User } from &#x27;src/users/Model/user.model&#x27;;
+import { Ticket } from &#x27;./ticket.model&#x27;;
 
 @Schema({ timestamps: true })
 export class TicketUpdates {
+  @Prop({ type: mongoose.Types.ObjectId, ref: Ticket.name })
+  ticket: string;
+
   @Prop({ type: mongoose.Types.ObjectId, ref: User.name })
-  user: string;
+  createby: string;
 
   @Prop()
   description: string;

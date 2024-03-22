@@ -148,36 +148,42 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#branch" 
 >
                                             branch
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#category" 
 >
                                             category
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#createby" 
 >
                                             createby
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#description" 
 >
                                             description
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#segment" 
 >
                                             segment
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#status" 
 >
                                             status
@@ -228,6 +234,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -261,6 +272,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -294,6 +310,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -327,6 +348,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -360,6 +386,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -393,6 +424,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -448,17 +484,17 @@ import { TicketCategory } from &#x27;../enums/Ticket-category.enum&#x27;;
 import { TicketStatus } from &#x27;../enums/ticket-status.enum&#x27;;
 
 export interface TicketInterface {
-  status: TicketStatus;
+  status?: TicketStatus;
 
-  createby: string;
+  createby?: string;
 
-  branch: string;
+  branch?: string;
 
-  category: TicketCategory;
+  category?: TicketCategory;
 
-  segment: TicketSegment;
+  segment?: TicketSegment;
 
-  description: string;
+  description?: string;
 
   updates?: TicketUpdates[];
 }

@@ -150,6 +150,9 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#branches" >branches</a>
                             </li>
                             <li>
@@ -210,6 +213,9 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>branches</b></span>
                         <a href="#branches"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -226,13 +232,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;[branch1,branch2]&#x27;, required: false})<br />@IsNotEmpty()<br />@IsArray()<br />
+                            @ApiProperty({example: &#x27;[branch1,branch2]&#x27;, required: false})<br />@IsNotEmpty()<br />@ArrayMinSize(1)<br />@IsString({each: true})<br />@IsMongoId({each: true})<br />@IsArray()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -270,7 +276,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -308,7 +314,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -346,7 +352,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -384,7 +390,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -422,7 +428,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/coupon/dto/create-coupon.dto.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -443,8 +449,10 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 import {
+  ArrayMinSize,
   IsArray,
   IsDateString,
+  IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -465,6 +473,9 @@ export class CreateCouponDto {
     required: false,
   })
   @IsNotEmpty()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
   @IsArray()
   branches: string[];
 

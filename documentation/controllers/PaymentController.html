@@ -149,7 +149,11 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#create" >create</a>
+                                <a href="#createCash" >createCash</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#createPayPal" >createPayPal</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -162,10 +166,6 @@
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#remove" >remove</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -188,18 +188,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="create"></a>
+                    <a name="createCash"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>create</b></span>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createCash</b></span>
+                        <a href="#createCash"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createPaymentDto: <a href="../classes/CreatePaymentDto.html" target="_self">CreatePaymentDto</a>)</code>
+                    <code>createCash(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../classes/CreateBasePaymentDto.html" target="_self">CreateBasePaymentDto</a>, req: Request)</code>
                 </td>
             </tr>
 
@@ -207,14 +207,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br /></code>
+                    <code>@Post(&#x27;cash/:branchid&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/payment/payment.controller.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/payment/payment.controller.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -235,9 +235,133 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createPaymentDto</td>
+                                                <td>branchid</td>
                                             <td>
-                                                            <code><a href="../classes/CreatePaymentDto.html" target="_self" >CreatePaymentDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateBasePaymentDto.html" target="_self" >CreateBasePaymentDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                        <code>Request</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createPayPal"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>createPayPal</b></span>
+                        <a href="#createPayPal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createPayPal(branchid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="../classes/CreateBasePaymentDto.html" target="_self">CreateBasePaymentDto</a>, req: Request)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;paypal&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/payment/payment.controller.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>branchid</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateBasePaymentDto.html" target="_self" >CreateBasePaymentDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                        <code>Request</code>
                                             </td>
 
                                             <td>
@@ -289,8 +413,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/payment/payment.controller.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/payment/payment.controller.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -335,8 +459,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/payment/payment.controller.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/payment/payment.controller.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -411,8 +535,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/payment/payment.controller.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/payment/payment.controller.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -436,94 +560,6 @@
                                                 <td>id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="update"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatePaymentDto: <a href="../classes/UpdatePaymentDto.html" target="_self">UpdatePaymentDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/payment/payment.controller.ts:36</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>updatePaymentDto</td>
-                                            <td>
-                                                            <code><a href="../classes/UpdatePaymentDto.html" target="_self" >UpdatePaymentDto</a></code>
                                             </td>
 
                                             <td>
@@ -553,25 +589,61 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Controller,
   Get,
-  Post,
-  Body,
-  Patch,
   Param,
   Delete,
+  Post,
+  Req,
+  Body,
 } from &#x27;@nestjs/common&#x27;;
-import { PaymentService } from &#x27;./payment.service&#x27;;
-import { CreatePaymentDto } from &#x27;./dto/create-payment.dto&#x27;;
-import { UpdatePaymentDto } from &#x27;./dto/update-payment.dto&#x27;;
+import { PaymentService } from &#x27;./service/payment.service&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { CashService } from &#x27;./service/cash.service&#x27;;
+import { PaypalService } from &#x27;./service/paypal.service&#x27;;
+import { Request } from &#x27;express&#x27;;
+import { CreateCashPaymentInterface } from &#x27;./interface/Cash/Create-Cash-Payment.interface&#x27;;
+import { PaymentType } from &#x27;./enums/payment-type.enums&#x27;;
+import { PaymentStatus } from &#x27;./enums/payment-status.enums&#x27;;
+import { CreateBasePaymentDto } from &#x27;./dto/create-base-payment.dto&#x27;;
+import { CreateBasePaymentInterface } from &#x27;./interface/Create-Base-Payment.interface&#x27;;
 
 @ApiTags(&#x27;payment&#x27;)
 @Controller(&#x27;payment&#x27;)
 export class PaymentController {
-  constructor(private readonly paymentService: PaymentService) {}
+  constructor(
+    private readonly paymentService: PaymentService,
+    private readonly cashService: CashService,
+    private readonly paypalService: PaypalService,
+  ) {}
 
-  @Post()
-  create(@Body() createPaymentDto: CreatePaymentDto) {
-    return this.paymentService.create(createPaymentDto);
+  @Post(&#x27;cash/:branchid&#x27;)
+  createCash(
+    @Param(&#x27;branchid&#x27;) branchid: string,
+    @Body() data: CreateBasePaymentDto,
+    @Req() req: Request,
+  ) {
+    const newData: CreateCashPaymentInterface &#x3D; {
+      branch: branchid,
+      payment_type: PaymentType.CASH,
+      payment_status: PaymentStatus.COMPELETED,
+      ...data,
+      createby: (req as any).user._id,
+    };
+    return this.cashService.createCashPayment(newData);
+  }
+
+  @Post(&#x27;paypal&#x27;)
+  createPayPal(
+    @Param(&#x27;branchid&#x27;) branchid: string,
+    @Body() data: CreateBasePaymentDto,
+    @Req() req: Request,
+  ) {
+    const newData: CreateBasePaymentInterface &#x3D; {
+      payment_type: PaymentType.PAYPAL,
+      payment_status: PaymentStatus.COMPELETED,
+      ...data,
+      createby: (req as any).user._id,
+    };
+    return this.paypalService.createPayPalPayment(newData);
   }
 
   @Get()
@@ -582,11 +654,6 @@ export class PaymentController {
   @Get(&#x27;:id&#x27;)
   findOneById(@Param(&#x27;id&#x27;) id: string) {
     return this.paymentService.findOneById(id);
-  }
-
-  @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updatePaymentDto: UpdatePaymentDto) {
-    return this.paymentService.update(id, updatePaymentDto);
   }
 
   @Delete(&#x27;:id&#x27;)

@@ -298,7 +298,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Prop, Schema, SchemaFactory } from &#x27;@nestjs/mongoose&#x27;;
-import mongoose from &#x27;mongoose&#x27;;
+import * as mongoose from &#x27;mongoose&#x27;;
 import { Branch } from &#x27;src/branch/Model/branch.model&#x27;;
 import { StockItemslogs } from &#x27;./Stock-item-logs.model&#x27;;
 import { StockGard } from &#x27;./Stock-Gard.model&#x27;;
@@ -306,7 +306,7 @@ import { StockGard } from &#x27;./Stock-Gard.model&#x27;;
 @Schema({ timestamps: true })
 export class Stock {
   @Prop({
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: Branch.name,
     required: true,
     unique: true,

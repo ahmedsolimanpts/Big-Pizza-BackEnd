@@ -149,13 +149,6 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#branch" 
->
-                                            branch
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#createby" 
 >
                                             createby
@@ -163,9 +156,16 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#stock_items" 
+                                        <a href="#items" 
 >
-                                            stock_items
+                                            items
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#stock_id" 
+>
+                                            stock_id
                                         </a>
                                 </li>
                             </ul>
@@ -179,44 +179,6 @@
 
             <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="branch"></a>
-                                        <span class="name "><b>branch</b>
-                                            <a href="#branch">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>branch:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -259,9 +221,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="stock_items"></a>
-                                        <span class="name "><b>stock_items</b>
-                                            <a href="#stock_items">
+                                        <a name="items"></a>
+                                        <span class="name "><b>items</b>
+                                            <a href="#items">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -269,7 +231,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>stock_items:     <code>string[]</code>
+                                        <code>items:         <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -277,7 +239,45 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>string[]</code>
+                                            <i>Type : </i>        <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="stock_id"></a>
+                                        <span class="name "><b>stock_id</b>
+                                            <a href="#stock_id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>stock_id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -298,9 +298,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface StockGardInterface {
-  stock_items?: string[];
-  branch?: string;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { StockItemQuantityInterface } from &#x27;./Stock-Item-quantity.interface&#x27;;
+
+export interface StockGardInterface {
+  items?: StockItemQuantityInterface[];
+  stock_id?: string;
   createby?: string;
 }
 </code></pre>

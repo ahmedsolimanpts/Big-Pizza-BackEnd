@@ -156,11 +156,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#removeOneSupplierByID" >removeOneSupplierByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#updateOneSupplierByID" >updateOneSupplierByID</a>
                             </li>
                         </ul>
                     </td>
@@ -185,7 +185,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/supplier/supplier.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/supplier/supplier.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -243,7 +243,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createSupplierDto: <a href="../classes/CreateSupplierDto.html" target="_self">CreateSupplierDto</a>)</code>
+                    <code>create(createSupplierData: <a href="../interfaces/SupplierInterface.html" target="_self">SupplierInterface</a>)</code>
                 </td>
             </tr>
 
@@ -272,9 +272,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createSupplierDto</td>
+                                                <td>createSupplierData</td>
                                             <td>
-                                                            <code><a href="../classes/CreateSupplierDto.html" target="_self" >CreateSupplierDto</a></code>
+                                                            <code><a href="../interfaces/SupplierInterface.html" target="_self" >SupplierInterface</a></code>
                                             </td>
 
                                             <td>
@@ -287,7 +287,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Supplier.html" target="_self" >Promise&lt;Supplier&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -329,7 +329,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Supplier.html" target="_self" >Promise&lt;Supplier[]&gt;</a></code>
 
                         </div>
                 </td>
@@ -351,7 +351,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneById(supplier_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -380,7 +380,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>supplier_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -395,7 +395,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Supplier.html" target="_self" >Promise&lt;Supplier&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -409,26 +409,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeOneSupplierByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>removeOneSupplierByID</b></span>
+                        <a href="#removeOneSupplierByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>removeOneSupplierByID(supplier_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/supplier/supplier.service.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/supplier/supplier.service.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -449,7 +449,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>supplier_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -464,7 +464,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Supplier.html" target="_self" >Promise&lt;Supplier&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -478,18 +478,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateOneSupplierByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateOneSupplierByID</b></span>
+                        <a href="#updateOneSupplierByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateSupplierDto: <a href="../classes/UpdateSupplierDto.html" target="_self">UpdateSupplierDto</a>)</code>
+                    <code>updateOneSupplierByID(supplier_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatedSupplierData: <a href="../interfaces/SupplierInterface.html" target="_self">SupplierInterface</a>)</code>
                 </td>
             </tr>
 
@@ -518,7 +518,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>supplier_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -530,9 +530,9 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateSupplierDto</td>
+                                                <td>updatedSupplierData</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateSupplierDto.html" target="_self" >UpdateSupplierDto</a></code>
+                                                            <code><a href="../interfaces/SupplierInterface.html" target="_self" >SupplierInterface</a></code>
                                             </td>
 
                                             <td>
@@ -545,7 +545,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../classes/Supplier.html" target="_self" >Promise&lt;Supplier&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -562,27 +562,27 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateSupplierDto } from &#x27;./dto/create-supplier.dto&#x27;;
-import { UpdateSupplierDto } from &#x27;./dto/update-supplier.dto&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Supplier } from &#x27;./Model/supplier.Model&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
+import { SupplierInterface } from &#x27;./interface/supplier.interface&#x27;;
 
 @Injectable()
 export class SupplierService {
   constructor(
     @InjectModel(Supplier.name) private readonly supplierRepo: Model&lt;Supplier&gt;,
   ) {}
-  async create(createSupplierDto: CreateSupplierDto) {
+
+  async create(createSupplierData: SupplierInterface): Promise&lt;Supplier&gt; {
     try {
-      const newSupplier &#x3D; new this.supplierRepo(createSupplierDto);
+      const newSupplier &#x3D; new this.supplierRepo(createSupplierData);
       return await newSupplier.save();
     } catch (err) {
       throw err;
     }
   }
 
-  async findAll() {
+  async findAll(): Promise&lt;Supplier[]&gt; {
     try {
       return await this.supplierRepo.find().exec();
     } catch (err) {
@@ -590,25 +590,31 @@ export class SupplierService {
     }
   }
 
-  async findOneById(id: string) {
+  async findOneById(supplier_id: string): Promise&lt;Supplier&gt; {
     try {
-      return await this.supplierRepo.findById(id);
+      return await this.supplierRepo.findById(supplier_id);
     } catch (err) {
       throw err;
     }
   }
 
-  async update(id: string, updateSupplierDto: UpdateSupplierDto) {
+  async updateOneSupplierByID(
+    supplier_id: string,
+    updatedSupplierData: SupplierInterface,
+  ): Promise&lt;Supplier&gt; {
     try {
-      return await this.supplierRepo.findByIdAndUpdate(id, updateSupplierDto);
+      return await this.supplierRepo.findByIdAndUpdate(
+        supplier_id,
+        updatedSupplierData,
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async remove(id: string) {
+  async removeOneSupplierByID(supplier_id: string): Promise&lt;Supplier&gt; {
     try {
-      return await this.supplierRepo.findByIdAndDelete(id);
+      return await this.supplierRepo.findByIdAndDelete(supplier_id);
     } catch (err) {
       throw err;
     }

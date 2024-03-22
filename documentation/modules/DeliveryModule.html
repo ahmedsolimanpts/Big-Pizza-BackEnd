@@ -222,12 +222,12 @@
 import { DeliveryService } from &#x27;./delivery.service&#x27;;
 import { DeliveryController } from &#x27;./delivery.controller&#x27;;
 import { MongooseModule } from &#x27;@nestjs/mongoose&#x27;;
-import { DelivereyOrder, DeliveryOrderSchema } from &#x27;./Model/delivery.model&#x27;;
+import { Delivery, DeliverySchema } from &#x27;./Model/delivery.model&#x27;;
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: DelivereyOrder.name, schema: DeliveryOrderSchema },
+      { name: Delivery.name, schema: DeliverySchema },
     ]),
   ],
   controllers: [DeliveryController],

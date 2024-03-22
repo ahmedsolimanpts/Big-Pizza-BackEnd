@@ -229,8 +229,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/product/product.controller.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/product/product.controller.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -306,8 +306,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/product/product.controller.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/product/product.controller.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -353,8 +353,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/product/product.controller.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/product/product.controller.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -430,8 +430,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/product/product.controller.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/product/product.controller.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -507,8 +507,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/product/product.controller.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/product/product.controller.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -596,8 +596,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="71"
-                                    class="link-to-prism">src/product/product.controller.ts:71</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/product/product.controller.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -673,8 +673,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/product/product.controller.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/product/product.controller.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -744,12 +744,10 @@
   Patch,
   Param,
   Delete,
-  UseGuards,
 } from &#x27;@nestjs/common&#x27;;
 import { ProductService } from &#x27;./product.service&#x27;;
 import { CreateProductDto } from &#x27;./dto/create-product.dto&#x27;;
 import { UpdateProductDto } from &#x27;./dto/update-product.dto&#x27;;
-import { RolesGuard } from &#x27;src/auth/guards/roles.guard&#x27;;
 import { Role } from &#x27;src/auth/decorator/roles.decorator&#x27;;
 import { Roles } from &#x27;src/auth/enums/roles.enums&#x27;;
 import { Public } from &#x27;src/auth/decorator/IsPuplic.decorator&#x27;;
@@ -789,25 +787,25 @@ export class ProductController {
   @Get()
   @Role(Roles.SUPERUSER)
   findAll() {
-    return this.productService.findAll();
+    return this.productService.findAllProducts();
   }
 
   @Get(&#x27;:id&#x27;)
   @Role(Roles.SUPERUSER)
   findOneByID(@Param(&#x27;id&#x27;) id: string) {
-    return this.productService.findOneByID(id);
+    return this.productService.findOneProductByID(id);
   }
 
   @Patch(&#x27;:id&#x27;)
   @Role(Roles.SUPERUSER)
   update(@Param(&#x27;id&#x27;) id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(id, updateProductDto);
+    return this.productService.updateOneProductByID(id, updateProductDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   @Role(Roles.SUPERUSER)
   remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.productService.remove(id);
+    return this.productService.removeOneProductByID(id);
   }
 }
 </code></pre>

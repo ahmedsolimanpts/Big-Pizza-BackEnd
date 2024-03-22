@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { StockItemCategory } from 'src/stock/enums/Stock-Item-Category.enum';
 
 export class CreateStockItemDto {
   @ApiProperty({
@@ -9,6 +10,16 @@ export class CreateStockItemDto {
   @IsNotEmpty()
   @IsString()
   name: string;
+
+  @ApiProperty({
+    description: 'The category of the stock item',
+    enum: StockItemCategory,
+    example: StockItemCategory,
+  })
+  @IsNotEmpty()
+  @IsEnum(StockItemCategory)
+  @IsString()
+  category: StockItemCategory;
 
   @ApiPropertyOptional({
     description: 'A brief description of the stock item',

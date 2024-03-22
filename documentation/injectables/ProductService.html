@@ -144,15 +144,19 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#AreProductsAvailableInBranch" >AreProductsAvailableInBranch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findAll" >findAll</a>
+                                <a href="#findAllProducts" >findAllProducts</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findOneByID" >findOneByID</a>
+                                <a href="#findOneProductByID" >findOneProductByID</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -168,11 +172,31 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#IsExtraProducts" >IsExtraProducts</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update" >update</a>
+                                <a href="#IsProductAvailableInBranch" >IsProductAvailableInBranch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#IsProductAvailableInBranchWithQuantity" >IsProductAvailableInBranchWithQuantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#IsProductsAvailable" >IsProductsAvailable</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeOneProductByID" >removeOneProductByID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#SubtractproductQuantity" >SubtractproductQuantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOneProductByID" >updateOneProductByID</a>
                             </li>
                         </ul>
                     </td>
@@ -192,7 +216,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productRepo: <a href="../classes/Product.html" target="_self">Model&lt;Product&gt;</a>)</code>
+<code>constructor(productRepo: <a href="../classes/Product.html" target="_self">Model&lt;Product&gt;</a>, branchService: <a href="../injectables/BranchService.html" target="_self">BranchService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -226,6 +250,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>branchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BranchService.html" target="_self" >BranchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -244,26 +280,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="create"></a>
+                    <a name="AreProductsAvailableInBranch"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>create</b></span>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>AreProductsAvailableInBranch</b></span>
+                        <a href="#AreProductsAvailableInBranch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createProductDto: <a href="../classes/CreateProductDto.html" target="_self">CreateProductDto</a>)</code>
+                    <code>AreProductsAvailableInBranch(productIds: string[], branchId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/product/product.service.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/product/product.service.ts:167</a></div>
                         </td>
                     </tr>
 
@@ -284,9 +320,102 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>createProductDto</td>
+                                                <td>productIds</td>
                                             <td>
-                                                            <code><a href="../classes/CreateProductDto.html" target="_self" >CreateProductDto</a></code>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>branchId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(NewProductData: <a href="../interfaces/ProductInterface.html" target="_self">ProductInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/product/product.service.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>NewProductData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ProductInterface.html" target="_self" >ProductInterface</a></code>
                                             </td>
 
                                             <td>
@@ -313,26 +442,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findAll"></a>
+                    <a name="findAllProducts"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findAll</b></span>
-                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAllProducts</b></span>
+                        <a href="#findAllProducts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findAll()</code>
+                    <code>findAllProducts()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/product/product.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/product/product.service.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -352,26 +481,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findOneByID"></a>
+                    <a name="findOneProductByID"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>findOneByID</b></span>
-                        <a href="#findOneByID"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findOneProductByID</b></span>
+                        <a href="#findOneProductByID"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOneByID(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOneProductByID(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/product/product.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/product/product.service.ts:188</a></div>
                         </td>
                     </tr>
 
@@ -392,13 +521,25 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>product_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
                                                     No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
                                             </td>
 
 
@@ -439,8 +580,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/product/product.service.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/product/product.service.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -508,8 +649,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/product/product.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/product/product.service.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -589,8 +730,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/product/product.service.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/product/product.service.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -664,26 +805,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="IsExtraProducts"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>IsExtraProducts</b></span>
+                        <a href="#IsExtraProducts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>IsExtraProducts(products: string[], session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/product/product.service.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/product/product.service.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -704,7 +845,355 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>products</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IsProductAvailableInBranch"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>IsProductAvailableInBranch</b></span>
+                        <a href="#IsProductAvailableInBranch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>IsProductAvailableInBranch(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, session?: ClientSession)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/product/product.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>product_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IsProductAvailableInBranchWithQuantity"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>IsProductAvailableInBranchWithQuantity</b></span>
+                        <a href="#IsProductAvailableInBranchWithQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>IsProductAvailableInBranchWithQuantity(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, branch_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, session?: ClientSession)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/product/product.service.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>product_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>branch_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>quantity</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IsProductsAvailable"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>IsProductsAvailable</b></span>
+                        <a href="#IsProductsAvailable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>IsProductsAvailable(products_id: string[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/product/product.service.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>products_id</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOneProductByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOneProductByID</b></span>
+                        <a href="#removeOneProductByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOneProductByID(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/product/product.service.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>product_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -733,26 +1222,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="SubtractproductQuantity"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>SubtractproductQuantity</b></span>
+                        <a href="#SubtractproductQuantity"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateProductDto: <a href="../classes/UpdateProductDto.html" target="_self">UpdateProductDto</a>)</code>
+                    <code>SubtractproductQuantity(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, session?: ClientSession)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="71"
-                                    class="link-to-prism">src/product/product.service.ts:71</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/product/product.service.ts:143</a></div>
                         </td>
                     </tr>
 
@@ -773,7 +1262,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>product_id</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -785,9 +1274,102 @@
 
                                         </tr>
                                         <tr>
-                                                <td>updateProductDto</td>
+                                                <td>quantity</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateProductDto.html" target="_self" >UpdateProductDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>session</td>
+                                            <td>
+                                                        <code>ClientSession</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Promise&lt;Product&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneProductByID"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneProductByID</b></span>
+                        <a href="#updateOneProductByID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneProductByID(product_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, newProductData: <a href="../interfaces/ProductInterface.html" target="_self">ProductInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="207"
+                                    class="link-to-prism">src/product/product.service.ts:207</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>product_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>newProductData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ProductInterface.html" target="_self" >ProductInterface</a></code>
                                             </td>
 
                                             <td>
@@ -816,40 +1398,60 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateProductDto } from &#x27;./dto/create-product.dto&#x27;;
-import { UpdateProductDto } from &#x27;./dto/update-product.dto&#x27;;
-import { Model } from &#x27;mongoose&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+import { ClientSession, Model } from &#x27;mongoose&#x27;;
 import { Product } from &#x27;./Model/product.model&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { ProductCategory } from &#x27;./enums/product-category.enums&#x27;;
 import { ProductSubCategory } from &#x27;./enums/product-subcategory.enum&#x27;;
+import { ProductInterface } from &#x27;./interface/product.interface&#x27;;
+import { BranchService } from &#x27;src/branch/branch.service&#x27;;
 
 @Injectable()
 export class ProductService {
-  constructor(@InjectModel(Product.name) private productRepo: Model&lt;Product&gt;) {}
+  constructor(
+    @InjectModel(Product.name) private productRepo: Model&lt;Product&gt;,
+    private branchService: BranchService,
+  ) {}
 
-  async create(createProductDto: CreateProductDto): Promise&lt;Product&gt; {
+  async create(NewProductData: ProductInterface): Promise&lt;Product&gt; {
     try {
-      const product &#x3D; new this.productRepo(createProductDto);
+      const branch &#x3D; await this.branchService.findOneBranchByID(
+        NewProductData.branch,
+      );
+      if (!branch) throw new NotFoundException(&#x27;Wrong Branch Id&#x27;);
+      const product &#x3D; new this.productRepo(NewProductData);
       return await product.save();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async findAll(): Promise&lt;Product[]&gt; {
+  async findAllProducts(): Promise&lt;Product[]&gt; {
     try {
       return await this.productRepo.find().exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
+
+  async IsProductsAvailable(products_id: string[]): Promise&lt;boolean&gt; {
+    try {
+      const products &#x3D; await this.productRepo.find({ _id: products_id }).exec();
+      if (products.length &#x3D;&#x3D; products_id.length) {
+        return true;
+      }
+      return false;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async findProductsByBranchID(branchid: string): Promise&lt;Product[]&gt; {
     try {
       return await this.productRepo.find({ branch: branchid }).exec();
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -878,28 +1480,155 @@ export class ProductService {
     }
   }
 
-  async findOneByID(id: string): Promise&lt;Product&gt; {
+  async IsProductAvailableInBranch(
+    product_id: string,
+    branch_id: string,
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
     try {
-      return await this.productRepo.findById(id).exec();
+      const product &#x3D; await this.productRepo
+        .findOne({ _id: product_id, branch: branch_id })
+        .session(session)
+        .exec();
+      if (product &amp;&amp; product.quantity &gt; 0) {
+        return true;
+      }
+
+      return false;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async update(
-    id: string,
-    updateProductDto: UpdateProductDto,
+  async IsExtraProducts(
+    products: string[],
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
+    try {
+      const product &#x3D; await this.productRepo
+        .find({ _id: products, is_extra: true })
+        .session(session)
+        .exec();
+      if (product &amp;&amp; product.length &#x3D;&#x3D; products.length) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async IsProductAvailableInBranchWithQuantity(
+    product_id: string,
+    branch_id: string,
+    quantity: number,
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
+    try {
+      const product &#x3D; await this.productRepo
+        .findOne({ _id: product_id, branch: branch_id })
+        .session(session)
+        .exec();
+      if (product &amp;&amp; product.quantity &gt;&#x3D; quantity) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async SubtractproductQuantity(
+    product_id: string,
+    quantity: number,
+    session?: ClientSession,
   ): Promise&lt;Product&gt; {
     try {
-      return await this.productRepo.findByIdAndUpdate(id, updateProductDto);
+      const product &#x3D; await this.productRepo
+        .findById(product_id)
+        .session(session)
+        .exec();
+
+      // Check if the product exists
+      if (!product) {
+        throw new Error(&#x27;Product not found&#x27;);
+      }
+
+      // Subtract the quantity and save
+      product.quantity -&#x3D; quantity; // Simplified subtraction operation
+      return await product.save({ session });
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
-  async remove(id: string): Promise&lt;Product&gt; {
+  async AreProductsAvailableInBranch(
+    productIds: string[],
+    branchId: string,
+    session?: ClientSession,
+  ): Promise&lt;boolean&gt; {
     try {
-      return await this.productRepo.findByIdAndDelete(id);
+      const products &#x3D; await this.productRepo
+        .find({
+          _id: { $in: productIds },
+          branch: branchId,
+          quantity: { $gt: 0 },
+        })
+        .session(session)
+        .exec();
+
+      return products.length &#x3D;&#x3D;&#x3D; productIds.length;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findOneProductByID(
+    product_id: string,
+    session?: ClientSession,
+  ): Promise&lt;Product&gt; {
+    try {
+      let query &#x3D; this.productRepo.findById(product_id);
+
+      // If a session is provided, use it with the query
+      if (session) {
+        query &#x3D; query.session(session);
+      }
+
+      // Now execute the query with or without the session, as applicable
+      return await query.exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateOneProductByID(
+    product_id: string,
+    newProductData: ProductInterface,
+  ): Promise&lt;Product&gt; {
+    try {
+      if (newProductData.branch) {
+        const branch &#x3D; await this.branchService.findOneBranchByID(
+          newProductData.branch,
+        );
+
+        if (!branch) throw new NotFoundException(&#x27;Wrong Branch Id&#x27;);
+      }
+
+      return await this.productRepo.findByIdAndUpdate(
+        product_id,
+        newProductData,
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOneProductByID(product_id: string): Promise&lt;Product&gt; {
+    try {
+      return await this.productRepo.findByIdAndDelete(product_id);
     } catch (err) {
       console.log(err);
     }

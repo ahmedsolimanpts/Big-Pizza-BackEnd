@@ -4,6 +4,7 @@ import { IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator';
 import { TicketSegment } from '../enums/Ticket-Segment.enum';
 import { TicketCategory } from '../enums/Ticket-category.enum';
 import { TicketStatus } from '../enums/ticket-status.enum';
+import { TicketsPool } from '../enums/Ticket-Pool.enum';
 
 export class UpdateTicketDto extends PartialType(CreateTicketDto) {
   @ApiPropertyOptional({
@@ -29,6 +30,14 @@ export class UpdateTicketDto extends PartialType(CreateTicketDto) {
   @IsOptional()
   @IsEnum(TicketSegment)
   segment?: TicketSegment;
+
+  @ApiPropertyOptional({
+    enum: TicketsPool,
+    description: 'The Pool of the ticket',
+  })
+  @IsOptional()
+  @IsEnum(TicketsPool)
+  pool?: TicketsPool;
 
   @ApiPropertyOptional({
     description: 'The Mongo ID of the user who created the ticket',

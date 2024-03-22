@@ -156,6 +156,13 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#items_quantity" 
+>
+                                            items_quantity
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#status" 
 >
                                             status
@@ -163,23 +170,16 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#stock_items" 
+                                        <a href="#stock" 
 >
-                                            stock_items
+                                            stock
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#transfer_from" 
+                                        <a href="#updated_user" 
 >
-                                            transfer_from
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#transfer_to" 
->
-                                            transfer_to
+                                            updated_user
                                         </a>
                                 </li>
                             </ul>
@@ -216,6 +216,44 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="items_quantity"></a>
+                                        <span class="name "><b>items_quantity</b>
+                                            <a href="#items_quantity">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>items_quantity:         <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
 
                                         </td>
                                     </tr>
@@ -273,9 +311,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="stock_items"></a>
-                                        <span class="name "><b>stock_items</b>
-                                            <a href="#stock_items">
+                                        <a name="stock"></a>
+                                        <span class="name "><b>stock</b>
+                                            <a href="#stock">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -283,45 +321,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>stock_items:         <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/StockItemQuantityInterface.html" target="_self" >StockItemQuantityInterface[]</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="transfer_from"></a>
-                                        <span class="name "><b>transfer_from</b>
-                                            <a href="#transfer_from">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>transfer_from:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>stock:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -349,9 +349,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="transfer_to"></a>
-                                        <span class="name "><b>transfer_to</b>
-                                            <a href="#transfer_to">
+                                        <a name="updated_user"></a>
+                                        <span class="name "><b>updated_user</b>
+                                            <a href="#updated_user">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -359,7 +359,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>transfer_to:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>updated_user:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -392,11 +392,14 @@
 import { StockItemQuantityInterface } from &#x27;./Stock-Item-quantity.interface&#x27;;
 
 export interface StockTransactionInterface {
-  stock_items?: StockItemQuantityInterface[];
+  items_quantity?: StockItemQuantityInterface[];
 
-  transfer_from?: string;
-  transfer_to?: string;
+  stock?: string;
+
   createby?: string;
+
+  updated_user?: string;
+
   status?: StockTransactionStatus;
 }
 </code></pre>

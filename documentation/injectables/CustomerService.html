@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/customer/customer.service.ts</code>
+            <code>src/customer/service/customer.service.ts</code>
         </p>
 
 
@@ -143,19 +143,28 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
-                                <a href="#findAll" >findAll</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllCustomers" >findAllCustomers</a>
                             </li>
                             <li>
-                                <a href="#findOne" >findOne</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAllCustomersByPhone" >findAllCustomersByPhone</a>
                             </li>
                             <li>
-                                <a href="#remove" >remove</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOneCustomerById" >findOneCustomerById</a>
                             </li>
                             <li>
-                                <a href="#update" >update</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeOneCustomerById" >removeOneCustomerById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOneCustomerById" >updateOneCustomerById</a>
                             </li>
                         </ul>
                     </td>
@@ -169,6 +178,66 @@
     </table>
 </section>
 
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(customerRepo: <a href="../classes/Customer.html" target="_self">Model&lt;Customer&gt;</a>, UserService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/customer/service/customer.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>customerRepo</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Customer.html" target="_self" >Model&lt;Customer&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>UserService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section data-compodoc="block-methods">
     
@@ -181,6 +250,7 @@
                 <td class="col-md-4">
                     <a name="create"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -188,111 +258,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>create(createCustomerDto: <a href="../classes/CreateCustomerDto.html" target="_self">CreateCustomerDto</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="7"
-                                    class="link-to-prism">src/customer/customer.service.ts:7</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>createCustomerDto</td>
-                                            <td>
-                                                            <code><a href="../classes/CreateCustomerDto.html" target="_self" >CreateCustomerDto</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findAll"></a>
-                    <span class="name">
-                        <span ><b>findAll</b></span>
-                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>findAll()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/customer/customer.service.ts:11</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findOne"></a>
-                    <span class="name">
-                        <span ><b>findOne</b></span>
-                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(createData: <a href="../interfaces/CustomerInterface.html" target="_self">CustomerInterface</a>)</code>
                 </td>
             </tr>
 
@@ -300,7 +267,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/customer/customer.service.ts:15</a></div>
+                                    class="link-to-prism">src/customer/service/customer.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -321,9 +288,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>createData</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="../interfaces/CustomerInterface.html" target="_self" >CustomerInterface</a></code>
                                             </td>
 
                                             <td>
@@ -336,7 +303,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -350,24 +317,65 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="findAllCustomers"></a>
                     <span class="name">
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllCustomers</b></span>
+                        <a href="#findAllCustomers"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllCustomers()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/customer/customer.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/customer/service/customer.service.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAllCustomersByPhone"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllCustomersByPhone</b></span>
+                        <a href="#findAllCustomersByPhone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllCustomersByPhone(phoneNumber: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/customer/service/customer.service.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -388,9 +396,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>phoneNumber</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -403,7 +411,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <b>Returns : </b>        <code><a href="../classes/Customer.html" target="_self" >Promise&lt;Customer[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
@@ -417,24 +425,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="findOneCustomerById"></a>
                     <span class="name">
-                        <span ><b>update</b></span>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>findOneCustomerById</b></span>
+                        <a href="#findOneCustomerById"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateCustomerDto: <a href="../classes/UpdateCustomerDto.html" target="_self">UpdateCustomerDto</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOneCustomerById(customer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/customer/customer.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/customer/service/customer.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -455,21 +465,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>id</td>
+                                                <td>customer_id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>updateCustomerDto</td>
-                                            <td>
-                                                            <code><a href="../classes/UpdateCustomerDto.html" target="_self" >UpdateCustomerDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -482,7 +480,157 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeOneCustomerById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeOneCustomerById</b></span>
+                        <a href="#removeOneCustomerById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeOneCustomerById(customer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/customer/service/customer.service.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>customer_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOneCustomerById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOneCustomerById</b></span>
+                        <a href="#updateOneCustomerById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOneCustomerById(customer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, NewUpdateData: <a href="../interfaces/CustomerInterface.html" target="_self">CustomerInterface</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/customer/service/customer.service.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>customer_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>NewUpdateData</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CustomerInterface.html" target="_self" >CustomerInterface</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -498,30 +646,86 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateCustomerDto } from &#x27;./dto/create-customer.dto&#x27;;
-import { UpdateCustomerDto } from &#x27;./dto/update-customer.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
+import { Customer } from &#x27;../Model/customer.model&#x27;;
+import { Model } from &#x27;mongoose&#x27;;
+import { CustomerInterface } from &#x27;../interface/Customer.interface&#x27;;
+import { UsersService } from &#x27;src/users/service/users.service&#x27;;
 
 @Injectable()
 export class CustomerService {
-  create(createCustomerDto: CreateCustomerDto) {
-    return &#x27;This action adds a new customer&#x27;;
+  constructor(
+    @InjectModel(Customer.name) private readonly customerRepo: Model&lt;Customer&gt;,
+    private UserService: UsersService,
+  ) {}
+
+  async create(createData: CustomerInterface) {
+    try {
+      if (createData.user) {
+        const user &#x3D; await this.UserService.findOneByid(createData.user);
+        if (!user) throw new NotFoundException(&#x27;Wrong User ID&#x27;);
+      }
+      const newCustomer &#x3D; new this.customerRepo(createData);
+      return await newCustomer.save();
+    } catch (err) {
+      throw err;
+    }
   }
 
-  findAll() {
-    return &#x60;This action returns all customer&#x60;;
+  async findAllCustomers() {
+    try {
+      return await this.customerRepo.find().exec();
+    } catch (err) {
+      throw err;
+    }
   }
 
-  findOne(id: number) {
-    return &#x60;This action returns a #${id} customer&#x60;;
+  async findAllCustomersByPhone(phoneNumber: string): Promise&lt;Customer[]&gt; {
+    try {
+      return await this.customerRepo
+        .find({ phone: { $in: [phoneNumber] } }) // Searches for customers with the given phone number in their phone array
+        .exec();
+    } catch (err) {
+      throw err;
+    }
   }
 
-  update(id: number, updateCustomerDto: UpdateCustomerDto) {
-    return &#x60;This action updates a #${id} customer&#x60;;
+  async findOneCustomerById(customer_id: string) {
+    try {
+      return await this.customerRepo.findById(customer_id).exec();
+    } catch (err) {
+      throw err;
+    }
   }
 
-  remove(id: number) {
-    return &#x60;This action removes a #${id} customer&#x60;;
+  async updateOneCustomerById(
+    customer_id: string,
+    NewUpdateData: CustomerInterface,
+  ) {
+    try {
+      if (NewUpdateData.user) {
+        const user &#x3D; await this.UserService.findOneByid(NewUpdateData.user);
+        if (!user) throw new NotFoundException(&#x27;Wrong User ID&#x27;);
+      }
+      return await this.customerRepo.findByIdAndUpdate(
+        customer_id,
+        NewUpdateData,
+        {
+          new: true,
+        },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async removeOneCustomerById(customer_id: string) {
+    try {
+      return await this.customerRepo.findByIdAndDelete(customer_id);
+    } catch (err) {
+      throw err;
+    }
   }
 }
 </code></pre>
