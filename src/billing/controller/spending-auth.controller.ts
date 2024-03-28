@@ -11,14 +11,14 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { SpendingAuthService } from '../service/spending-auth.service';
 import { CreateEmployeeSpendingAuthDto } from '../dto/Spending-Auth/Employee/Create-Emp-Spending-Auth.dto';
-import { EmployeeSpendingAuthInteface } from '../interface/Spending Authriztion/Employee-Spending-Auth.interface';
 import { EmployeeSpendingAuthorization } from '../Model/Spending Authorization/Emp-Spending-Auth.model';
 import { Request } from 'express';
 import { CreateInvoiceSpendingAuthDto } from '../dto/Spending-Auth/Invoice/Create-Invoice-Spending-Auth.dto';
-import { InvoiceSpendingAuthInteface } from '../interface/Spending Authriztion/Invoice-Spending-Auth.interface';
 import { InvoiceSpendingAuthorization } from '../Model/Spending Authorization/Invoice-Spending-Auth.model';
 import { UpdateInvoiceSpendingAuthDto } from '../dto/Spending-Auth/Invoice/Update-Invoice-Spending-Auth.dto';
 import { UpdateEmployeeSpendingAuthDto } from '../dto/Spending-Auth/Employee/Update-Emp-Spending-Auth.dto';
+import { CreateInvoiceSpendingAuthInteface } from '../interface/Spending Authriztion/create/create-Invoice-Spending-Auth.interface';
+import { CreateEmployeeSpendingAuthInteface } from '../interface/Spending Authriztion/create/Create-Employee-Spending-Auth.interface';
 
 @ApiTags('Spending Auth')
 @Controller('spending-auth')
@@ -30,7 +30,7 @@ export class SpendingAuthController {
     @Body() bodyData: CreateEmployeeSpendingAuthDto,
     @Req() req: Request,
   ) {
-    const data: EmployeeSpendingAuthInteface = {
+    const data: CreateEmployeeSpendingAuthInteface = {
       ...bodyData,
       type: EmployeeSpendingAuthorization.name,
       createby: (req as any).user._id,
@@ -43,7 +43,7 @@ export class SpendingAuthController {
     @Body() bodyData: CreateInvoiceSpendingAuthDto,
     @Req() req: Request,
   ) {
-    const data: InvoiceSpendingAuthInteface = {
+    const data: CreateInvoiceSpendingAuthInteface = {
       ...bodyData,
       type: InvoiceSpendingAuthorization.name,
       createby: (req as any).user._id,
@@ -54,6 +54,14 @@ export class SpendingAuthController {
   @Get()
   findAll() {
     return this.spendingAuthService.findAll();
+  }
+
+  @Patch('release/:id')
+  ReleaseById(@Param('id') id: string, @Req() req: Request) {
+    return this.spendingAuthService.ReleaseSpendingAuthById(
+      id,
+      (req as any).user._id,
+    );
   }
 
   @Patch(':id')

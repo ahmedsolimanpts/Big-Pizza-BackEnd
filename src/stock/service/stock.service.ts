@@ -3,27 +3,21 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { Stock } from '../Model/stock.model';
-import mongoose, { Model } from 'mongoose';
-import { StockItemLogsInterface } from '../interfaces/Stock-Item-logs.interface';
-import { StockItemslogs } from '../Model/Stock-item-logs.model';
-import { StockTransactionTYPE } from '../enums/Stock-Transactions.enum';
-import { StockItem } from '../Model/Stock-Item.model';
+import { Model } from 'mongoose';
 import { BranchService } from 'src/branch/branch.service';
-import { StockInterface } from '../interfaces/Stock.interface';
+import { CreateStockInterface } from '../interfaces/Stock/Create-Stock.interface';
+import { UpdateStockInterface } from '../interfaces/Stock/Update-Stock.interface';
 
 @Injectable()
 export class StockService {
   constructor(
     @InjectModel(Stock.name) private readonly stockRepo: Model<Stock>,
-    @InjectModel(StockItemslogs.name)
-    private readonly stockItemLogRepo: Model<StockItemslogs>,
-    @InjectConnection() private readonly connection: mongoose.Connection,
     private banchService: BranchService,
   ) {}
 
-  async createStock(createStockData: StockInterface): Promise<Stock> {
+  async createStock(createStockData: CreateStockInterface): Promise<Stock> {
     try {
       const branch = await this.banchService.findOneBranchByID(
         createStockData.branch,
@@ -39,19 +33,7 @@ export class StockService {
     }
   }
 
-  async CreateStockItemlog(data: StockItemLogsInterface) {
-    try {
-      const { stock_id, ...stocklogdata } = data;
-      const newStckItemLog = new this.stockItemLogRepo(stocklogdata);
-      return await this.stockRepo.findByIdAndUpdate(stock_id, {
-        $push: { items: newStckItemLog },
-      });
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async findAll() {
+  async findAll(): Promise<Stock[]> {
     try {
       return await this.stockRepo.find().exec();
     } catch (err) {
@@ -59,7 +41,7 @@ export class StockService {
     }
   }
 
-  async findOneByID(id: string) {
+  async findOneByID(id: string): Promise<Stock> {
     try {
       return await this.stockRepo.findById(id).exec();
     } catch (err) {
@@ -67,48 +49,10 @@ export class StockService {
     }
   }
 
-  async GetItemsCountAtStock(stockid: string) {
-    try {
-      const stock = await this.stockRepo.findById(stockid).populate({
-        path: 'items',
-        populate: {
-          path: 'item',
-          populate: {
-            path: 'stock_item',
-            model: StockItem.name, // Make sure this matches the name you've given your stock item model
-          },
-        },
-      });
-
-      if (!stock) {
-        throw new Error('Stock not found');
-      }
-
-      const itemCounts = {};
-      stock.items.forEach((log) => {
-        const itemName = (log as any).item.stock_item.name;
-        const quantity = log.item.quantity;
-        const transactionType = log.transaction;
-
-        if (!itemCounts[itemName]) {
-          itemCounts[itemName] = 0;
-        }
-
-        // If transaction type is 'add', increase the count, otherwise decrease it
-        if (transactionType === StockTransactionTYPE.ADD) {
-          itemCounts[itemName] += quantity;
-        } else {
-          itemCounts[itemName] -= quantity;
-        }
-      });
-
-      return itemCounts;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async updateOnebyID(stock_id: string, updatedStockData: StockInterface) {
+  async updateOnebyID(
+    stock_id: string,
+    updatedStockData: UpdateStockInterface,
+  ): Promise<Stock> {
     try {
       if (updatedStockData.branch) {
         const branch = await this.banchService.findOneBranchByID(
@@ -122,7 +66,7 @@ export class StockService {
     }
   }
 
-  async removeOnebyID(id: string) {
+  async removeOnebyID(id: string): Promise<Stock> {
     try {
       return await this.stockRepo.findByIdAndDelete(id);
     } catch (err) {

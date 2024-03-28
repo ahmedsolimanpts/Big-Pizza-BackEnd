@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Req,
@@ -28,34 +27,27 @@ export class StockGardController {
     @Param('stock_id') stock_id: string,
     @Req() req: Request,
   ) {
-    const stock = await this.stockService.findOneByID(stock_id);
-    if (!stock) throw new NotFoundException('No Stock With This ID');
     const createby = (req as any).user._id;
     const data = {
       createby,
-      stock_id,
+      stock: stock_id,
       ...createDto,
     };
     return this.stockGardService.create(data);
   }
 
   @Get(':stockid')
-  findAllForOneBranch(@Param('stockid') stockid: string) {
+  findAllForOneStock(@Param('stockid') stockid: string) {
     return this.stockGardService.findAllForOneStock(stockid);
   }
 
-  @Get(':gard_id/:stockid')
-  async findOneBranchGardById(
-    @Param('gard_id') gard_id: string,
-    @Param('stockid') stockid: string,
-  ) {
-    const stock = await this.stockService.findOneByID(stockid);
-    if (!stock) throw new NotFoundException('No Stock With This ID');
-    return this.stockGardService.findOneStockGardById(gard_id, stockid);
+  @Get(':id')
+  async findOneStockGardById(@Param('id') id: string) {
+    return this.stockGardService.findOneStockGardById(id);
   }
 
-  @Delete(':gard_id/:stockid')
-  remove(@Param('gard_id') gard_id: string, @Param('stockid') stockid: string) {
-    return this.stockGardService.DeleteStockGardById(gard_id, stockid);
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.stockGardService.DeleteStockGardById(id);
   }
 }

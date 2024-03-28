@@ -1,13 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsString,
-  IsMongoId,
-  ValidateNested,
-  IsOptional,
-} from 'class-validator';
-import { Type } from 'class-transformer';
-import { CreateStockItemLogsDto } from '../Stock Item Logs/create-Stock-Item-Logs.dto';
+import { IsNotEmpty, IsString, IsMongoId } from 'class-validator';
 
 export class CreateStockDto {
   @ApiProperty({
@@ -18,15 +10,4 @@ export class CreateStockDto {
   @IsString()
   @IsMongoId()
   branch: string;
-
-  @ApiProperty({
-    description: 'List of stock item logs',
-    type: CreateStockItemLogsDto,
-    isArray: true,
-    required: false,
-  })
-  @IsOptional()
-  @ValidateNested({ each: true })
-  @Type(() => CreateStockItemLogsDto)
-  items?: CreateStockItemLogsDto[];
 }

@@ -22,6 +22,7 @@ import { StockModule } from './stock/stock.module';
 import { BillingModule } from './billing/billing.module';
 import { WalletModule } from './wallet/wallet.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { CashierModule } from './cashier/cashier.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -30,7 +31,6 @@ async function bootstrap() {
       transform: true,
       whitelist: true,
       forbidNonWhitelisted: true,
-      // exceptionFactory: (errors) => new BadRequestException(errors),
     }),
   );
   app.enableCors({ origin: '*' });
@@ -62,6 +62,7 @@ async function bootstrap() {
       BillingModule,
       WalletModule,
       NotificationsModule,
+      CashierModule,
     ],
   });
   SwaggerModule.setup('swagger', app, document);

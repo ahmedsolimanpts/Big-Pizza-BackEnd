@@ -20,6 +20,7 @@ import { Invoice, InvoiceSchema } from './Model/Invoice.model';
 import { SpendingAuthController } from './controller/spending-auth.controller';
 import { SpendingAuthService } from './service/spending-auth.service';
 import { InvoiceService } from './service/invoice.service';
+import { CashierModule } from 'src/cashier/cashier.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { InvoiceService } from './service/invoice.service';
     ]),
     UsersModule,
     EmployeeModule,
+    CashierModule,
   ],
   controllers: [BillingController, SpendingAuthController],
   providers: [BillingService, SpendingAuthService, InvoiceService],

@@ -1,14 +1,12 @@
 import { SpendingAuthorizationStatus } from 'src/billing/enum/SpendingAuthorization-status.enum';
 
-export interface InvoiceSpendingAuthInteface {
-  type?: string;
+export interface UpdateSpendingAuthBaseInteface {
   amount?: number;
-
-  invoice?: string;
 
   createby?: string;
 
   note?: string;
+  type?: string;
 
   status?: SpendingAuthorizationStatus;
   releasedby?: string;

@@ -1,19 +1,22 @@
 import {
   ConflictException,
+  forwardRef,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
 import { StockTransactionStatus } from '../enums/Stock-Transaction-Status.enum';
-import { StockTransactionInterface } from '../interfaces/Stock-Transaction.interface';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
 import { StockTransaction } from '../Model/Stock-Transaction.model';
-import { StockItemLogsInterface } from '../interfaces/Stock-Item-logs.interface';
 import { StockTransactionTYPE } from '../enums/Stock-Transactions.enum';
 import { StockItemLogsService } from './stock-item-logs.service';
 import { UsersService } from 'src/users/service/users.service';
 import { StockService } from './stock.service';
 import { StockItemService } from './stock-item.service';
+import { CreateStockTransactionInterface } from '../interfaces/Stock Transaction/Create-Stock-Transaction.interface';
+import { CreateStockItemLogsInterface } from '../interfaces/Stock Item Logs/Create-Stock-Item-logs.interface';
+import { UpdateStockTransactionInterface } from '../interfaces/Stock Transaction/Update-Stock-Transaction.interface';
 
 @Injectable()
 export class StockTransactionService {
@@ -24,10 +27,13 @@ export class StockTransactionService {
     @InjectConnection() private readonly connection: mongoose.Connection,
     private userService: UsersService,
     private stockService: StockService,
+    @Inject(forwardRef(() => StockItemService))
     private stockItemService: StockItemService,
   ) {}
 
-  async Create(data: StockTransactionInterface): Promise<StockTransaction> {
+  async Create(
+    data: CreateStockTransactionInterface,
+  ): Promise<StockTransaction> {
     try {
       // Check If User Valid
       const createby = await this.userService.findOneByid(data.createby);
@@ -103,19 +109,19 @@ export class StockTransactionService {
   }
 
   async AddTransactionToStock(
-    transaction: StockTransactionInterface,
+    transaction: CreateStockTransactionInterface,
     createby: string,
   ): Promise<void> {
     try {
       const session = await this.connection.startSession();
       await session.withTransaction(async () => {
         (await transaction).items_quantity.forEach(async (item) => {
-          const newLogData: StockItemLogsInterface = {
+          const newLogData: CreateStockItemLogsInterface = {
             item: { stock_item: item.stock_item, quantity: item.quantity },
             createby,
             transaction: StockTransactionTYPE.ADD,
             transaction_id: (transaction as any)._id,
-            stock_id: transaction.stock,
+            stock: transaction.stock,
           };
           await this.stockItemlogSerivce.create(newLogData);
         });
@@ -156,7 +162,7 @@ export class StockTransactionService {
 
   async UpdateOneByID(
     transaction_id: string,
-    data: StockTransactionInterface,
+    data: UpdateStockTransactionInterface,
   ): Promise<StockTransaction> {
     try {
       if (data.stock) {

@@ -1,13 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import mongoose, { Model } from 'mongoose';
 import { SpendingAuthorization } from '../Model/Spending Authorization/Spending-Authorization.model';
-import { EmployeeSpendingAuthInteface } from '../interface/Spending Authriztion/Employee-Spending-Auth.interface';
-import { InvoiceSpendingAuthInteface } from '../interface/Spending Authriztion/Invoice-Spending-Auth.interface';
 import { EmployeeService } from 'src/employee/service/employee.service';
 import { UsersService } from 'src/users/service/users.service';
 import { InvoiceService } from './invoice.service';
 import { SpendingAuthorizationStatus } from '../enum/SpendingAuthorization-status.enum';
+import { CashierService } from 'src/cashier/cashier.service';
+import { CreateInvoiceSpendingAuthInteface } from '../interface/Spending Authriztion/create/create-Invoice-Spending-Auth.interface';
+import { CreateEmployeeSpendingAuthInteface } from '../interface/Spending Authriztion/create/Create-Employee-Spending-Auth.interface';
+import { UpdateEmployeeSpendingAuthInteface } from '../interface/Spending Authriztion/update/Update-Employee-Spending-Auth.interface';
+import { UpdateInvoiceSpendingAuthInteface } from '../interface/Spending Authriztion/update/Update-Invoice-Spending-Auth.interface';
+import { CreateCashierShiftInterface } from 'src/cashier/interface/Create-Cashier-Shift.interface';
+import { CashierTransaction } from 'src/cashier/enum/cashier-transaction.enum';
 
 @Injectable()
 export class SpendingAuthService {
@@ -17,10 +22,14 @@ export class SpendingAuthService {
     private employeeService: EmployeeService,
     private userService: UsersService,
     private invoiceService: InvoiceService,
+    private cashierService: CashierService,
+    @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
   async create(
-    data: EmployeeSpendingAuthInteface | InvoiceSpendingAuthInteface,
+    data:
+      | CreateInvoiceSpendingAuthInteface
+      | CreateEmployeeSpendingAuthInteface,
   ): Promise<SpendingAuthorization> {
     try {
       if ('employee' in data) {
@@ -46,6 +55,44 @@ export class SpendingAuthService {
   async findAll(): Promise<SpendingAuthorization[]> {
     try {
       return await this.spendingAuthRepo.find().exec();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ReleaseSpendingAuthById(
+    id: string,
+    release_by: string,
+  ): Promise<SpendingAuthorization> {
+    try {
+      const session = await this.connection.startSession();
+      let spendingAuthRow;
+
+      await session.withTransaction(async () => {
+        const user = await this.userService.findOneByid(release_by);
+        if (!user) throw new NotFoundException('User Not Exist');
+
+        spendingAuthRow = await this.spendingAuthRepo
+          .findByIdAndUpdate(id, {
+            releasedby: release_by,
+            status: SpendingAuthorizationStatus.CLOSE,
+          })
+          .exec();
+
+        if (spendingAuthRow) {
+          const CashierShift: CreateCashierShiftInterface = {
+            amount: spendingAuthRow.amount,
+            create_by: release_by,
+            transaction: CashierTransaction.SUBTRACT,
+          };
+
+          await this.cashierService.create(CashierShift);
+        }
+      });
+
+      session.endSession();
+
+      return spendingAuthRow;
     } catch (err) {
       throw err;
     }
@@ -91,7 +138,9 @@ export class SpendingAuthService {
 
   async updateOneById(
     id: string,
-    data: EmployeeSpendingAuthInteface | InvoiceSpendingAuthInteface,
+    data:
+      | UpdateEmployeeSpendingAuthInteface
+      | UpdateInvoiceSpendingAuthInteface,
   ): Promise<SpendingAuthorization> {
     try {
       if ('employee' in data) {

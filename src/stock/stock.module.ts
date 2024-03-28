@@ -37,20 +37,20 @@ import { StockItemQuantityService } from './service/stock-item-quantity.service'
         schema: StockSchema,
       },
       {
-        name: StockItemQuantity.name,
-        schema: StockItemQuantitySchema,
-      },
-      {
         name: StockItem.name,
         schema: StockItemSchema,
       },
       {
-        name: StockItemslogs.name,
-        schema: StockItemslogsSchema,
+        name: StockItemQuantity.name,
+        schema: StockItemQuantitySchema,
       },
       {
         name: StockTransaction.name,
         schema: StockTransactionSchema,
+      },
+      {
+        name: StockItemslogs.name,
+        schema: StockItemslogsSchema,
       },
       {
         name: StockGard.name,
@@ -70,11 +70,18 @@ import { StockItemQuantityService } from './service/stock-item-quantity.service'
   providers: [
     StockService,
     StockItemService,
+    StockItemQuantityService,
     StockTransactionService,
     StockItemLogsService,
     StockGardService,
-    StockItemQuantityService,
   ],
-  exports: [StockService, StockItemService, StockTransactionService],
+  exports: [
+    StockService,
+    StockItemService,
+    StockItemQuantityService,
+    StockTransactionService,
+    StockItemLogsService,
+    StockGardService,
+  ],
 })
 export class StockModule {}

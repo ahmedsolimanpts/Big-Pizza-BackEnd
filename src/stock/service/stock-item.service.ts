@@ -1,8 +1,9 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { StockItemInterface } from '../interfaces/Stock-Item.interface';
 import { StockItem } from '../Model/Stock-Item.model';
+import { CreateStockItemInterface } from '../interfaces/Stock Item/Create-Stock-Item.interface';
+import { UpdateStockItemInterface } from '../interfaces/Stock Item/Update-Stock-Item.interface';
 
 @Injectable()
 export class StockItemService {
@@ -11,7 +12,7 @@ export class StockItemService {
     private readonly stockItemRepo: Model<StockItem>,
   ) {}
 
-  async create(data: StockItemInterface) {
+  async create(data: CreateStockItemInterface): Promise<StockItem> {
     try {
       const newItem = new this.stockItemRepo(data);
       return await newItem.save();
@@ -23,7 +24,7 @@ export class StockItemService {
     }
   }
 
-  async findAll() {
+  async findAll(): Promise<StockItem[]> {
     try {
       return await this.stockItemRepo.find().exec();
     } catch (err) {
@@ -43,7 +44,7 @@ export class StockItemService {
     }
   }
 
-  async findOneById(item_id: string) {
+  async findOneById(item_id: string): Promise<StockItem> {
     try {
       return await this.stockItemRepo.findById(item_id).exec();
     } catch (err) {
@@ -51,7 +52,10 @@ export class StockItemService {
     }
   }
 
-  async UpdateById(item_id: string, data: StockItemInterface) {
+  async UpdateById(
+    item_id: string,
+    data: UpdateStockItemInterface,
+  ): Promise<StockItem> {
     try {
       return await this.stockItemRepo
         .findByIdAndUpdate(item_id, { data }, { new: true })
@@ -61,7 +65,7 @@ export class StockItemService {
     }
   }
 
-  async DeleteById(item_id: string) {
+  async DeleteById(item_id: string): Promise<StockItem> {
     try {
       return await this.stockItemRepo.findByIdAndDelete(item_id).exec();
     } catch (err) {

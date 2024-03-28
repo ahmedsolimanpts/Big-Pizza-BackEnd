@@ -17,8 +17,8 @@ export class CreateStockItemDto {
     example: StockItemCategory,
   })
   @IsNotEmpty()
-  @IsEnum(StockItemCategory)
   @IsString()
+  @IsEnum(StockItemCategory)
   category: StockItemCategory;
 
   @ApiPropertyOptional({

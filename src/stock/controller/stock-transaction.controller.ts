@@ -14,7 +14,7 @@ import { CreateTransactionDto } from '../dto/Stock Transaction/create-Transactio
 import { UpdateStockTransactionDto } from '../dto/Stock Transaction/update-Transaction.dto';
 import { StockTransactionStatus } from '../enums/Stock-Transaction-Status.enum';
 import { Request } from 'express';
-import { StockTransactionInterface } from '../interfaces/Stock-Transaction.interface';
+import { CreateStockTransactionInterface } from '../interfaces/Stock Transaction/Create-Stock-Transaction.interface';
 
 @ApiTags('Stock Transaction')
 @Controller('stock-transaction')
@@ -25,7 +25,8 @@ export class StockTransactionController {
 
   @Post()
   create(@Req() req: Request, @Body() createDto: CreateTransactionDto) {
-    const data: StockTransactionInterface = {
+    const data: CreateStockTransactionInterface = {
+      status: StockTransactionStatus.INPROGRESS,
       createby: (req as any).user._id,
       ...createDto,
     };
