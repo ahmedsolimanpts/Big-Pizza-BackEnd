@@ -6,11 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
-import { WalletService } from './wallet.service';
-import { CreateWalletDto } from './dto/create-wallet.dto';
-import { UpdateWalletDto } from './dto/update-wallet.dto';
+import { WalletService } from './service/wallet.service';
+import { CreateWalletDto } from './dto/wallet/create-wallet.dto';
+import { UpdateWalletDto } from './dto/wallet/update-wallet.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Request } from 'express';
+import { CreateWalletInterface } from './interface/wallet/Create-Wallet.interface';
 
 @ApiTags('Wallet')
 @Controller('wallet')
@@ -18,8 +21,12 @@ export class WalletController {
   constructor(private readonly walletService: WalletService) {}
 
   @Post()
-  create(@Body() createWalletDto: CreateWalletDto) {
-    return this.walletService.create(createWalletDto);
+  create(@Body() createWalletDto: CreateWalletDto, @Req() req: Request) {
+    const newWallet: CreateWalletInterface = {
+      ...createWalletDto,
+      user: (req as any).user._id,
+    };
+    return this.walletService.create(newWallet);
   }
 
   @Get()
@@ -29,16 +36,16 @@ export class WalletController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.walletService.findOne(+id);
+    return this.walletService.findOneOneByID(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateWalletDto: UpdateWalletDto) {
-    return this.walletService.update(+id, updateWalletDto);
+    return this.walletService.updateOneByID(id, updateWalletDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.walletService.remove(+id);
+    return this.walletService.removeOneByID(id);
   }
 }

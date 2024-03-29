@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsMongoId, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 export class CreateStockItemQuantityDto {
   @ApiProperty({
@@ -18,5 +24,6 @@ export class CreateStockItemQuantityDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   quantity: number;
 }

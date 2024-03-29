@@ -15,6 +15,7 @@ import { Roles } from 'src/auth/enums/roles.enums';
 import { Public } from 'src/auth/decorator/IsPuplic.decorator';
 import { ProductCategory } from './enums/product-category.enums';
 import { ApiTags } from '@nestjs/swagger';
+import { ProductQuantityOperations } from './interface/product-Quantity-Operation.enum';
 
 @ApiTags('product')
 @Controller('product')
@@ -50,6 +51,39 @@ export class ProductController {
   @Role(Roles.SUPERUSER)
   findAll() {
     return this.productService.findAllProducts();
+  }
+
+  @Post('add-quantity/:id/:quantity')
+  AddProductQuantityByProductID(
+    @Param('id') id: string,
+    @Param('quantity') quantity: string,
+  ) {
+    return this.productService.ChangeProductQuantityByProductID(
+      id,
+      +quantity,
+      ProductQuantityOperations.ADD,
+    );
+  }
+
+  @Post('subtract-quantity/:id/:quantity')
+  SubtractProductQuantityByProductID(
+    @Param('id') id: string,
+    @Param('quantity') quantity: string,
+  ) {
+    return this.productService.ChangeProductQuantityByProductID(
+      id,
+      +quantity,
+      ProductQuantityOperations.SUBTRACT,
+    );
+  }
+
+  @Role(Roles.SUPERUSER)
+  @Post('quantity/:id/:quantity')
+  ChangeProductQuantityByProductID(
+    @Param('id') id: string,
+    @Param('quantity') quantity: string,
+  ) {
+    return this.productService.updateProductQuantityByProductID(id, +quantity);
   }
 
   @Get(':id')

@@ -17,7 +17,7 @@ export class CreateStockItemLogsDto {
     type: CreateStockItemQuantityDto,
   })
   @IsNotEmpty()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @ArrayMinSize(1)
   @ArrayMaxSize(1)
   @Type(() => CreateStockItemQuantityDto)

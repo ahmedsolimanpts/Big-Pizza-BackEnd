@@ -35,7 +35,7 @@ export class UpdateSupplierDto extends PartialType(CreateSupplierDto) {
     type: () => CreateLocationDto,
   })
   @IsOptional()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => CreateLocationDto)
   location?: CreateLocationDto;
 }

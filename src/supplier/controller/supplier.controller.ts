@@ -7,9 +7,9 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { SupplierService } from './supplier.service';
-import { CreateSupplierDto } from './dto/create-supplier.dto';
-import { UpdateSupplierDto } from './dto/update-supplier.dto';
+import { SupplierService } from '../service/supplier.service';
+import { CreateSupplierDto } from '../dto/supplier/create-supplier.dto';
+import { UpdateSupplierDto } from '../dto/supplier/update-supplier.dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('supplier')

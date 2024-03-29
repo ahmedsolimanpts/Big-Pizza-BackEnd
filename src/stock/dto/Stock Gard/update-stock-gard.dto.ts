@@ -1,12 +1,6 @@
 import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateStockGardDto } from './create-stock-gard.dto';
-import {
-  IsEnum,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
+import { IsEnum, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateStockItemQuantityDto } from '../stock item quantity/create-stock-item-quantity.dto';
 import { StockItemCategory } from 'src/stock/enums/Stock-Item-Category.enum';
@@ -17,17 +11,17 @@ export class UpdateStockGardDto extends PartialType(CreateStockGardDto) {
     enum: StockItemCategory,
     example: StockItemCategory,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsEnum(StockItemCategory)
   @IsString()
-  category: StockItemCategory;
+  category?: StockItemCategory;
 
   @ApiPropertyOptional({
     description: 'Optional: Array of stock item quantities to update',
     type: [CreateStockItemQuantityDto],
   })
   @IsOptional()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => CreateStockItemQuantityDto)
   items?: CreateStockItemQuantityDto[];
 }

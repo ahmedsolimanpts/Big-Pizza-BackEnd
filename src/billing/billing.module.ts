@@ -16,7 +16,7 @@ import {
   InvoiceSpendingAuthorizationSchema,
 } from './Model/Spending Authorization/Invoice-Spending-Auth.model';
 import { EmployeeModule } from 'src/employee/employee.module';
-import { Invoice, InvoiceSchema } from './Model/Invoice.model';
+import { Invoice, InvoiceSchema } from './Model/Invoice/Invoice.model';
 import { SpendingAuthController } from './controller/spending-auth.controller';
 import { SpendingAuthService } from './service/spending-auth.service';
 import { InvoiceService } from './service/invoice.service';

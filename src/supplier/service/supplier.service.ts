@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Supplier } from './Model/supplier.Model';
+import { Supplier } from '../Model/supplier.Model';
 import { Model } from 'mongoose';
-import { SupplierInterface } from './interface/supplier.interface';
+import { CreateSupplierInterface } from '../interface/Supplier/Create-supplier.interface';
+import { UpdateSupplierInterface } from '../interface/Supplier/supplier.interface';
 
 @Injectable()
 export class SupplierService {
@@ -10,7 +11,7 @@ export class SupplierService {
     @InjectModel(Supplier.name) private readonly supplierRepo: Model<Supplier>,
   ) {}
 
-  async create(createSupplierData: SupplierInterface): Promise<Supplier> {
+  async create(createSupplierData: CreateSupplierInterface): Promise<Supplier> {
     try {
       const newSupplier = new this.supplierRepo(createSupplierData);
       return await newSupplier.save();
@@ -37,7 +38,7 @@ export class SupplierService {
 
   async updateOneSupplierByID(
     supplier_id: string,
-    updatedSupplierData: SupplierInterface,
+    updatedSupplierData: UpdateSupplierInterface,
   ): Promise<Supplier> {
     try {
       return await this.supplierRepo.findByIdAndUpdate(

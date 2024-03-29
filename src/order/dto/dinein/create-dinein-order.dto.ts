@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { CreateBaseOrderDto } from '../base-order.dto';
+import { CreateBaseOrderDto } from '../Create-base-order.dto';
 
 export class CreateDineInOrderDto extends CreateBaseOrderDto {
   @IsString()

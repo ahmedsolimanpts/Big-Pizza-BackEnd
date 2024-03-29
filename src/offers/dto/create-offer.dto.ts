@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   ArrayMinSize,
   IsArray,
@@ -7,6 +7,7 @@ import {
   IsNotEmpty,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
 } from 'class-validator';
 
@@ -30,7 +31,7 @@ export class CreateOfferDto {
   @IsNotEmpty()
   branches: string[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: '2020-02-02',
     required: true,
   })
@@ -38,7 +39,7 @@ export class CreateOfferDto {
   @IsOptional()
   from?: Date;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: '2020-02-02',
     required: true,
   })
@@ -52,6 +53,7 @@ export class CreateOfferDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   quantity: number;
 
   @ApiProperty({
@@ -71,5 +73,6 @@ export class CreateOfferDto {
   })
   @IsNumber()
   @IsNotEmpty()
+  @IsPositive()
   price: number;
 }

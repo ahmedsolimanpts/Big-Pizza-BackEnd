@@ -7,6 +7,7 @@ import {
   IsNotEmpty,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
 } from 'class-validator';
 
@@ -52,6 +53,7 @@ export class CreateCouponDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   quantity: number;
 
   @ApiProperty({
@@ -60,5 +62,6 @@ export class CreateCouponDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   percent_discount: number;
 }

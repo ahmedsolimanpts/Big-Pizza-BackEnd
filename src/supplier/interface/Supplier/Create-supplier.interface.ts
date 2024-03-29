@@ -1,7 +1,7 @@
 import { LocationInterface } from 'src/location/interface/Location.interface';
 
-export interface SupplierInterface {
-  name?: string;
+export interface CreateSupplierInterface {
+  name: string;
 
   phones?: string[];
 

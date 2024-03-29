@@ -10,9 +10,9 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TicketUpdatesService } from '../service/ticket-updates.service';
-import { CreateTicketUpdateDto } from '../dto/Create-Ticket-updates.dto';
+import { CreateTicketUpdateDto } from '../dto/Ticket Updates/Create-Ticket-updates.dto';
 import { TicketUpdatesInterface } from '../interface/Ticket-Updates.inteface';
-import { UpdateTicketUpdatesDto } from '../dto/update-ticket-updates.dto';
+import { UpdateTicketUpdatesDto } from '../dto/Ticket Updates/update-ticket-updates.dto';
 import { Role } from 'src/auth/decorator/roles.decorator';
 import { Roles } from 'src/auth/enums/roles.enums';
 

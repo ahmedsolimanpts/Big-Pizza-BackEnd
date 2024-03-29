@@ -6,13 +6,14 @@ import {
   IsNotEmpty,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
 } from 'class-validator';
 import { ProductCategory } from '../enums/product-category.enums';
 import { ProductComponents } from '../enums/product-components.enum';
 import { ProductSubCategory } from '../enums/product-subcategory.enum';
 import { ProductSize } from '../enums/size.enum';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateProductDto {
   @ApiProperty({
@@ -29,6 +30,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   price: number;
 
   @ApiProperty({
@@ -37,14 +39,16 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   quantity: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 100,
     required: false,
   })
   @IsOptional()
   @IsNumber()
+  @IsPositive()
   production_price: number;
 
   @ApiProperty({
@@ -62,6 +66,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsEnum(ProductCategory)
+  @IsString()
   category: ProductCategory;
 
   @ApiProperty({
@@ -70,6 +75,7 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsEnum(ProductSubCategory)
+  @IsString()
   subcategory: ProductSubCategory;
 
   @ApiProperty({
@@ -78,17 +84,18 @@ export class CreateProductDto {
   })
   @IsNotEmpty()
   @IsEnum(ProductSize)
+  @IsString()
   size: ProductSize;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: ProductComponents,
     required: false,
   })
   @IsOptional()
   @IsEnum(ProductComponents)
-  components: ProductComponents[];
+  components?: ProductComponents[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'http://example.com',
     required: false,
   })
@@ -97,7 +104,7 @@ export class CreateProductDto {
   @IsString()
   images?: string[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'true',
     required: false,
   })
@@ -105,7 +112,7 @@ export class CreateProductDto {
   @IsBoolean()
   can_deliver?: boolean;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'true',
     required: false,
   })
@@ -113,7 +120,7 @@ export class CreateProductDto {
   @IsBoolean()
   is_sensetive?: boolean;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'true',
     required: false,
   })

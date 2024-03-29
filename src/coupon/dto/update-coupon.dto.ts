@@ -1,59 +1,65 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateCouponDto } from './create-coupon.dto';
 import {
   IsArray,
   IsDateString,
+  IsMongoId,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
 } from 'class-validator';
 
 export class UpdateCouponDto extends PartialType(CreateCouponDto) {
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 'copoun1',
     required: false,
   })
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: '[branch1,branch2]',
     required: false,
   })
   @IsOptional()
   @IsArray()
-  branches: string[];
+  @IsString({ each: true })
+  @IsMongoId({ each: true })
+  branches?: string[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: '2020-02-03',
     required: false,
   })
   @IsOptional()
   @IsDateString()
-  from: Date;
+  from?: Date;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: '2020-02-03',
     required: false,
   })
   @IsOptional()
   @IsDateString()
-  to: Date;
+  to?: Date;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 20,
     required: true,
   })
   @IsOptional()
   @IsNumber()
-  quantity: number;
+  @IsPositive()
+  quantity?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 10,
     required: true,
   })
   @IsOptional()
   @IsNumber()
-  percent_discount: number;
+  @IsPositive()
+  percent_discount?: number;
 }

@@ -9,8 +9,8 @@ import {
   Req,
 } from '@nestjs/common';
 import { TicketService } from '../service/ticket.service';
-import { CreateTicketDto } from '../dto/create-ticket.dto';
-import { UpdateTicketDto } from '../dto/update-ticket.dto';
+import { CreateTicketDto } from '../dto/ticket/create-ticket.dto';
+import { UpdateTicketDto } from '../dto/ticket/update-ticket.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { TicketInterface } from '../interface/Ticket.interface';

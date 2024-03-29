@@ -16,7 +16,7 @@ export class CreateAttendenceDTO {
   @ApiProperty({ description: 'The unique identifier of the employee' })
   @IsMongoId()
   @IsNotEmpty()
-  employee_id: string;
+  employee: string;
 
   @ApiProperty({
     description: 'Action taken for attendance',

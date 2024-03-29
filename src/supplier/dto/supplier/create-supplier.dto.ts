@@ -32,7 +32,7 @@ export class CreateSupplierDto {
     type: () => CreateLocationDto,
   })
   @IsOptional()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => CreateLocationDto)
   location?: CreateLocationDto;
 }

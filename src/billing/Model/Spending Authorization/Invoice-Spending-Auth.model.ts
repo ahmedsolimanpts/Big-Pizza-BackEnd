@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { Invoice } from '../Invoice.model';
+import { Invoice } from '../Invoice/Invoice.model';
 
 @Schema()
 export class InvoiceSpendingAuthorization {

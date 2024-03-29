@@ -20,7 +20,7 @@ export class UpdateStockItemLogsDto extends PartialType(
     type: CreateStockItemQuantityDto,
   })
   @IsOptional()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => CreateStockItemQuantityDto)
   item?: CreateStockItemQuantityDto;
 

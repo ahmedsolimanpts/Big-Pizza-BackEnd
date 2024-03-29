@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsMongoId,
   IsEnum,
@@ -34,7 +34,7 @@ export class CreateEmployeeDto {
   user: string;
 
   @ApiProperty({
-    description: 'Working in MongoDB ID',
+    description: 'Working in Branch MongoDB ID',
     example: '507f191e810c19729de860eb',
   })
   @IsNotEmpty()
@@ -69,7 +69,7 @@ export class CreateEmployeeDto {
   @IsNotEmpty()
   gender: Sex;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Address of the employee',
     type: CreateLocationDto,
     required: false,
@@ -79,7 +79,7 @@ export class CreateEmployeeDto {
   @Type(() => CreateLocationDto)
   address?: CreateLocationDto;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Social Security ID (optional)',
     required: false,
     example: '123-45-6789',

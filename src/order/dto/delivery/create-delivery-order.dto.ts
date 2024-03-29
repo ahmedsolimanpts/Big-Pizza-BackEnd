@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { CreateBaseOrderDto } from '../base-order.dto';
+import { CreateBaseOrderDto } from '../Create-base-order.dto';
 import { DeliveryPrice } from 'src/delivery/enums/Deliver-price.enums';
 import { ApiProperty } from '@nestjs/swagger';
 import { DelivereyMethod } from 'src/delivery/enums/Deliverey-method.enums';

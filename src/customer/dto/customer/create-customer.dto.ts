@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   ArrayMinSize,
   IsArray,
@@ -28,7 +28,7 @@ export class CreateCustomerDto {
   @IsArray()
   phone: string[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Optional notes about the customer',
     example: 'Important client',
     required: false,
@@ -37,20 +37,20 @@ export class CreateCustomerDto {
   @IsString()
   notes?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Optional Notification Phone for the customer',
     required: false,
   })
   @IsOptional()
   @IsString()
-  notification_phone: string;
+  notification_phone?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Optional Notification Email for the customer',
 
     required: false,
   })
   @IsOptional()
   @IsString()
-  notification_email: string;
+  notification_email?: string;
 }

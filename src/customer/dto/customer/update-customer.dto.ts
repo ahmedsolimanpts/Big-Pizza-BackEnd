@@ -37,7 +37,7 @@ export class UpdateCustomerDto extends PartialType(CreateCustomerDto) {
   })
   @IsOptional()
   @IsString()
-  notification_phone: string;
+  notification_phone?: string;
 
   @ApiPropertyOptional({
     description: 'Optional Notification Email for the customer',
@@ -46,5 +46,5 @@ export class UpdateCustomerDto extends PartialType(CreateCustomerDto) {
   })
   @IsOptional()
   @IsString()
-  notification_email: string;
+  notification_email?: string;
 }

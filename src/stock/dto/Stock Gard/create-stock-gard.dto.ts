@@ -28,7 +28,7 @@ export class CreateStockGardDto {
   })
   @IsNotEmpty()
   @ArrayMinSize(1)
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => CreateStockItemQuantityDto)
   items: CreateStockItemQuantityDto[];
 }

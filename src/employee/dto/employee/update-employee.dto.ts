@@ -32,7 +32,7 @@ export class UpdateEmployeeDto {
   user?: string;
 
   @ApiPropertyOptional({
-    description: 'Working in MongoDB ID',
+    description: 'Working in Branch MongoDB ID',
     example: '507f191e810c19729de860eb',
   })
   @IsMongoId()

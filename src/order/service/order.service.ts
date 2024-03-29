@@ -16,6 +16,7 @@ import { BranchService } from 'src/branch/branch.service';
 import { Roles } from 'src/auth/enums/roles.enums';
 import { CustomerService } from 'src/customer/service/customer.service';
 import { CustomerLocationsService } from 'src/customer/service/customer-locations.service';
+import { ProductQuantityOperations } from 'src/product/interface/product-Quantity-Operation.enum';
 
 @Injectable()
 export class OrderService {
@@ -118,9 +119,10 @@ export class OrderService {
         }
         // Subtract from stock quantity
         for (const item of items) {
-          await this.productService.SubtractproductQuantity(
+          await this.productService.ChangeProductQuantityByProductID(
             item.product,
             item.quantity,
+            ProductQuantityOperations.SUBTRACT,
             session,
           );
         }

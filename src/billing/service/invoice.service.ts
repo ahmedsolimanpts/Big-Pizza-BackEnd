@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Invoice } from '../Model/Invoice.model';
+import { Invoice } from '../Model/Invoice/Invoice.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 

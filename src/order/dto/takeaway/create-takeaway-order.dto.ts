@@ -1,3 +1,3 @@
-import { CreateBaseOrderDto } from '../base-order.dto';
+import { CreateBaseOrderDto } from '../Create-base-order.dto';
 
 export class CreateTakeAwayOrderDto extends CreateBaseOrderDto {}

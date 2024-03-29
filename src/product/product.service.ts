@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { ClientSession, Model } from 'mongoose';
 import { Product } from './Model/product.model';
 import { InjectModel } from '@nestjs/mongoose';
@@ -6,6 +10,7 @@ import { ProductCategory } from './enums/product-category.enums';
 import { ProductSubCategory } from './enums/product-subcategory.enum';
 import { ProductInterface } from './interface/product.interface';
 import { BranchService } from 'src/branch/branch.service';
+import { ProductQuantityOperations } from './interface/product-Quantity-Operation.enum';
 
 @Injectable()
 export class ProductService {
@@ -140,30 +145,6 @@ export class ProductService {
     }
   }
 
-  async SubtractproductQuantity(
-    product_id: string,
-    quantity: number,
-    session?: ClientSession,
-  ): Promise<Product> {
-    try {
-      const product = await this.productRepo
-        .findById(product_id)
-        .session(session)
-        .exec();
-
-      // Check if the product exists
-      if (!product) {
-        throw new Error('Product not found');
-      }
-
-      // Subtract the quantity and save
-      product.quantity -= quantity; // Simplified subtraction operation
-      return await product.save({ session });
-    } catch (err) {
-      throw err;
-    }
-  }
-
   async AreProductsAvailableInBranch(
     productIds: string[],
     branchId: string,
@@ -221,6 +202,48 @@ export class ProductService {
         product_id,
         newProductData,
       );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateProductQuantityByProductID(
+    product_id: string,
+    ProductQuantityNumber: number,
+  ): Promise<Product> {
+    try {
+      if (ProductQuantityNumber > 0) {
+        return await this.productRepo.findByIdAndUpdate(product_id, {
+          quantity: ProductQuantityNumber,
+        });
+      }
+      throw new BadRequestException('Quantity Must Be Positive');
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async ChangeProductQuantityByProductID(
+    product_id: string,
+    quantity: number,
+    operation: ProductQuantityOperations,
+    session?: ClientSession,
+  ): Promise<Product> {
+    try {
+      const product = await this.productRepo
+        .findById(product_id)
+        .session(session)
+        .exec();
+
+      if (!product) {
+        throw new Error('Product not found');
+      }
+      if (operation == ProductQuantityOperations.ADD) {
+        product.quantity += quantity;
+      } else {
+        product.quantity -= quantity;
+      }
+      return await product.save({ session });
     } catch (err) {
       throw err;
     }

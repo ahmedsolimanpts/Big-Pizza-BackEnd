@@ -8,6 +8,7 @@ import {
   IsArray,
   IsBoolean,
   IsMongoId,
+  IsPositive,
 } from 'class-validator';
 import { ProductCategory } from '../enums/product-category.enums';
 import { ProductComponents } from '../enums/product-components.enum';
@@ -29,6 +30,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsNumber()
+  @IsPositive()
   price?: number;
 
   @ApiPropertyOptional({
@@ -37,6 +39,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsNumber()
+  @IsPositive()
   quantity?: number;
 
   @ApiPropertyOptional({
@@ -45,6 +48,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsNumber()
+  @IsPositive()
   production_price?: number;
 
   @ApiPropertyOptional({
@@ -62,6 +66,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsEnum(ProductCategory)
+  @IsString()
   category?: ProductCategory;
 
   @ApiPropertyOptional({
@@ -70,6 +75,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsEnum(ProductSubCategory)
+  @IsString()
   subcategory?: ProductSubCategory;
 
   @ApiPropertyOptional({
@@ -78,6 +84,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsEnum(ProductSize)
+  @IsString()
   size?: ProductSize;
 
   @ApiPropertyOptional({
@@ -86,6 +93,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   })
   @IsOptional()
   @IsEnum(ProductComponents)
+  @IsString()
   components?: ProductComponents[];
 
   @ApiPropertyOptional({

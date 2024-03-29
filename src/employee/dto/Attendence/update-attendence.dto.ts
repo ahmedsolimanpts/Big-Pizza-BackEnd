@@ -15,7 +15,7 @@ export class UpdateAttendenceDTO {
   @ApiPropertyOptional({ description: 'The unique identifier of the employee' })
   @IsMongoId()
   @IsOptional()
-  employee_id?: string;
+  employee?: string;
 
   @ApiPropertyOptional({
     description: 'Action taken for attendance',

@@ -1,6 +1,12 @@
 import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateStockItemQuantityDto } from './create-stock-item-quantity.dto';
-import { IsMongoId, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsMongoId,
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 export class UpdateStockItemQuantityDto extends PartialType(
   CreateStockItemQuantityDto,
@@ -21,5 +27,6 @@ export class UpdateStockItemQuantityDto extends PartialType(
   })
   @IsOptional()
   @IsNumber()
+  @IsPositive()
   quantity?: number;
 }

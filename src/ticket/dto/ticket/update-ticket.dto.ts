@@ -1,10 +1,10 @@
 import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateTicketDto } from './create-ticket.dto';
 import { IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator';
-import { TicketSegment } from '../enums/Ticket-Segment.enum';
-import { TicketCategory } from '../enums/Ticket-category.enum';
-import { TicketStatus } from '../enums/ticket-status.enum';
-import { TicketsPool } from '../enums/Ticket-Pool.enum';
+import { TicketSegment } from '../../enums/Ticket-Segment.enum';
+import { TicketCategory } from '../../enums/Ticket-category.enum';
+import { TicketStatus } from '../../enums/ticket-status.enum';
+import { TicketsPool } from '../../enums/Ticket-Pool.enum';
 
 export class UpdateTicketDto extends PartialType(CreateTicketDto) {
   @ApiPropertyOptional({
